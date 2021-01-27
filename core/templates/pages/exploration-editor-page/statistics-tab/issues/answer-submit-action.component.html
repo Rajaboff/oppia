@@ -1,9 +1,9 @@
-<[$ctrl.actionIndex]>. Submitted answer "
+<[$ctrl.actionIndex]>. Отправленный ответ "
 <angular-html-bind html-data="$ctrl.getShortAnswerHtml()"></angular-html-bind>
 <span ng-if="$ctrl.currentStateName == $ctrl.destStateName">
-  " in card "<[$ctrl.currentStateName]>".
+  " в карточке "<[$ctrl.currentStateName]>".
 </span>
 <span ng-if="$ctrl.currentStateName != $ctrl.destStateName">
-  " and moved to card "<[$ctrl.destStateName]>" after spending <[$ctrl.timeSpentInStateSecs]>
-  seconds on card "<[$ctrl.currentStateName]>".
+  " и перешли на карту "<[$ctrl.destStateName]>" после отправки <[$ctrl.timeSpentInStateSecs]>
+  секунды на карте "<[$ctrl.currentStateName]>".
 </span>

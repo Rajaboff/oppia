@@ -80,16 +80,16 @@ angular.module('oppia').component('explorationEditorTab', {
           StateEditorService.getActiveStateName() ===
           ExplorationInitStateNameService.savedMemento) {
           return (
-            'This is the first card of your exploration. Use this space ' +
-            'to introduce your topic and engage the learner, then ask ' +
-            'them a question.');
+            'Это первая карта вашего занятия. Используйте это пространство ' +
+            'представить свою тему, заинтересовать учащегося, а затем спросить ' +
+            'ответы.');
         } else {
           return (
-            'You can speak to the learner here, then ask them a question.');
+            'Здесь вы можете поговорить с учеником, а затем задать ему вопрос.');
         }
       };
       ctrl.getStateContentSaveButtonPlaceholder = function() {
-        return 'Save Content';
+        return 'Сохранить контент';
       };
 
       ctrl.addState = function(newStateName) {

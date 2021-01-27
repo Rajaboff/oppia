@@ -6,7 +6,7 @@
        class="filepath-editor-img-toolbar"
        ng-attr-style="<[$ctrl.getToolbarDynamicStyles()]>">
     <div class="filepath-editor-img-toolbar-resize">
-      Resize to:
+      Изменить размер до:
       <span class="filepath-editor-button filepath-editor-decrease-size"
             ng-click="$ctrl.decreaseResizePercent(10)">-
       </span>
@@ -18,7 +18,7 @@
       </span>
     </div>
     <div class="filepath-editor-img-toolbar-size">
-      Image Size:
+      Размер:
       <span><[$ctrl.calculateTargetImageDimensions().width]></span>
       &times;
       <span><[$ctrl.calculateTargetImageDimensions().height]></span>
@@ -53,11 +53,11 @@
            ng-attr-style="<[$ctrl.getCropButtonBarDynamicStyles()]>">
         <div class="filepath-editor-button filepath-editor-crop-button"
              ng-click="$ctrl.confirmCropImage()">
-          Crop
+          Обрезать
         </div>
         <div class="filepath-editor-button filepath-editor-crop-button"
              ng-click="$ctrl.cancelCropImage()">
-          Cancel
+          Отмена
         </div>
       </div>
       <img ng-src="<[$ctrl.data.metadata.uploadedImageData]>"
@@ -79,20 +79,20 @@
             class="btn btn-success filepath-editor-use"
             ng-click="$ctrl.saveUploadedFile()"
             ng-disabled="$ctrl.isUserCropping()">
-      Use This Image
+      Использовать
     </button>
     <button type="button"
             class="btn btn-secondary filepath-editor-discard"
             ng-click="$ctrl.discardUploadedFile()"
             ng-disabled="$ctrl.isUserCropping()">
-      Discard
+      Убрать
     </button>
   </div>
   <div class="oppia-form-error oppia-unsupported-svg-tag-attribute-error" ng-if="$ctrl.invalidTagsAndAttributes.tags.length">
-    Unsupported SVG tags found: <[$ctrl.invalidTagsAndAttributes.tags]>
+    Обнаружены неподдерживаемые теги SVG: <[$ctrl.invalidTagsAndAttributes.tags]>
   </div>
   <div class="oppia-form-error oppia-unsupported-svg-tag-attribute-error" ng-if="$ctrl.invalidTagsAndAttributes.attrs.length">
-    Unsupported SVG attributes found: <[$ctrl.invalidTagsAndAttributes.attrs]>
+    Обнаружены неподдерживаемые атрибуты SVG: <[$ctrl.invalidTagsAndAttributes.attrs]>
   </div>
 </div>
 
@@ -149,7 +149,7 @@
   }
 
   filepath-editor .filepath-editor-crop-area {
-    border: 3px dotted blue;
+    border: 3px dotted #007EFF;
     margin: auto;
     position: absolute;
     z-index: 20;

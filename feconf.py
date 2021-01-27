@@ -285,7 +285,7 @@ DEFAULT_EXPLORATION_OBJECTIVE = ''
 # modified.
 
 # Default name for the initial state of an exploration.
-DEFAULT_INIT_STATE_NAME = 'Introduction'
+DEFAULT_INIT_STATE_NAME = 'Введение'
 # Default content id for the state's content.
 DEFAULT_NEW_STATE_CONTENT_ID = 'content'
 # Default content id for the interaction's default outcome.
@@ -417,9 +417,8 @@ REDISPORT = 6379
 
 # NOTE TO RELEASE COORDINATORS: Replace this project id with the correct oppia
 # project id when switching to the prod server.
-OPPIA_PROJECT_ID = 'dev-project-id'
-GOOGLE_APP_ENGINE_REGION = 'us-central1'
-
+OPPIA_PROJECT_ID = 'oqustudykz'
+GOOGLE_APP_ENGINE_REGION = 'eur4'
 # Committer id for system actions. The username for the system committer
 # (i.e. admin) is also 'admin'.
 SYSTEM_COMMITTER_ID = 'admin'
@@ -691,7 +690,7 @@ FOUNDATION_SITE_URL = 'http://oppiafoundation.org'
 # Change to the correct url for internal testing in the testing production
 # environment.
 # Change to the production URL when deploying to production site.
-OPPIA_SITE_URL = 'http://localhost:8181'
+OPPIA_SITE_URL = 'http://oqustudy.kz:80'
 
 # Prefix for all taskqueue-related URLs.
 TASKQUEUE_URL_PREFIX = '/task'

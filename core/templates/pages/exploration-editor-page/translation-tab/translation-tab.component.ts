@@ -162,11 +162,11 @@ angular.module('oppia').component('translationTab', {
         $scope.translationTutorial = false;
         $scope.TRANSLATION_TUTORIAL_OPTIONS = [{
           type: 'title',
-          heading: 'Translations In Oppia',
+          heading: 'Переводы в Oqustudy.kz',
           text: (
-            'Hello, welcome to Translation Tab! ' +
-            'This tour will walk you through the translation page. ' +
-            'Hit the "Next" button to begin.')
+            'Привет, добро пожаловать во вкладку «Переводы»! ' +
+            'Этот тур проведет вас по странице перевода. ' +
+            'Нажмите кнопку "Дальше", чтобы начать.')
         }, {
           type: 'function',
           fn: function(isGoingForward) {
@@ -177,10 +177,10 @@ angular.module('oppia').component('translationTab', {
         }, {
           type: 'element',
           selector: _ID_TUTORIAL_TRANSLATION_LANGUAGE,
-          heading: 'Choose Language',
+          heading: 'Выберите язык',
           text: (
-            'Start your translation by choosing the language that ' +
-            'you want to translate to.'),
+            'Начните свой перевод с выбора языка, на котором ' +
+            'ты хочешь перевести.'),
           placement: 'bottom'
         }, {
           type: 'function',
@@ -195,12 +195,12 @@ angular.module('oppia').component('translationTab', {
         }, {
           type: 'element',
           selector: _ID_TUTORIAL_TRANSLATION_OVERVIEW,
-          heading: 'Choose a Card to Translate',
+          heading: 'Выберите карточку для перевода',
           text: (
-            'Then, choose a card from the exploration overview by ' +
-            'clicking on the card. The selected card will have ' +
-            'a bolded border. Cards that have missing translations are ' +
-            'coloured yellow or red, and these are good places to start.'),
+            'Затем выберите карточку в обзоре занятий, нажав ' +
+            'нажав на карточку. На выбранной карточке будет ' +
+            'выделены края. Карточки с отсутствующим переводом ' +
+            'окрашены в желтый или красный цвет, и эти карточки доработки.'),
           placement: 'left'
         }, {
           type: 'function',
@@ -215,12 +215,12 @@ angular.module('oppia').component('translationTab', {
         }, {
           type: 'element',
           selector: _ID_TUTORIAL_TRANSLATION_STATE,
-          heading: 'Choose a Part of the Card to Translate',
+          heading: 'Выберите часть карточки для перевода',
           text: (
-            '<p>Next choose one of the parts of the lesson card from ' +
-            'menu at the top. This lists all the translatable parts ' +
-            'of the card. Within each tab, multiple sections may be ' +
-            'available for translating.</p>'),
+            '<p>Затем выберите одну из частей карточки урока из ' +
+            'меню сверху. Здесь перечислены все переводимые части ' +
+            'карточек. На каждой вкладке может быть несколько разделов ' +
+            'доступные для перевода.</p>'),
           placement: 'bottom'
         }, {
           type: 'function',
@@ -231,33 +231,33 @@ angular.module('oppia').component('translationTab', {
           }
         }, {
           type: 'title',
-          heading: 'Recording Audio',
+          heading: 'Запись аудио',
           text: (
-            '<p>To create audio translations in Oppia, ' +
-            'simply follow these 3 steps:</p>' +
+            '<p>Чтобы создать аудиоперевод в Oqustudy.kz, ' +
+            'просто выполните следующие 3 шага:</p>' +
             '<ol>' +
             '  <li>' +
-            '    To start <b>recording</b>, click the ' +
-            '    <i class="material-icons" style="color:#009688">' +
-            '    mic</i> button. ' +
-            '    If the browser pops up a message asking if you’d ' +
-            '    like to record audio, accept it. ' +
+            '    Для старта нажмите <b>запись</b>, нажмите' +
+            '    <i class="material-icons" style="color:#007EFF">' +
+            '    mic</i> кнопку. ' +
+            '    Если в браузере появляется сообщение с вопросом, хотите ли вы ' +
+            '    начать записывать звук, примите это. ' +
             '  </li>' +
             '  <li>' +
-            '    When you are ready to end the recording, click ' +
-            '    <i class="material-icons" style="color:#009688">' +
-            '    &#xE047;</i> to <b>stop</b>. ' +
+            '    Когда вы будете готовы завершить запись, нажмите ' +
+            '    <i class="material-icons" style="color:#007EFF">' +
+            '    &#xE047;</i> на <b>стоп</b>. ' +
             '  </li>' +
             '  <li>' +
-            '    Hit the <b>save</b> <i class="material-icons"' +
-            '    style="color:#009688" > &#xE161;</i> button ' +
-            '    to confirm the recording.' +
+            '    Нажмите на <b>сохранить</b> <i class="material-icons"' +
+            '    style="color:#007EFF" > &#xE161;</i> кнопка ' +
+            '    для подтверждения записи.' +
             '  </li>' +
             '</ol>' +
-            '<p>Alternatively, you can use the ' +
-            '<i class="material-icons" style="color:#009688" >' +
+            '<p>В качестве альтернативы вы можете использовать ' +
+            '<i class="material-icons" style="color:#007EFF" >' +
             '&#xE2C6;</i>' +
-            'button to <b>upload</b> audio files from your computer.</p>')
+            'кнопку <b>обновить</b> аудио файлы с вашего компьютера.</p>')
         }, {
           type: 'function',
           fn: function(isGoingForward) {
@@ -267,31 +267,31 @@ angular.module('oppia').component('translationTab', {
           }
         }, {
           type: 'title',
-          heading: 'Re-record/Re-upload audio',
+          heading: 'Запись/обновление аудио',
           text: (
-            '<p>The audio recording also has options related ' +
-            'to updating and deleting translations.</p>' +
+            '<p>Аудиозапись также имеет параметры, связанные ' +
+            'с обновлением и удалением переводов.</p>' +
             '<ul>' +
             '  <li>' +
-            '    To revert and cancel any unsaved translation(s),' +
-            '    click the ' +
-            '    <i class="material-icons" style="color:#009688">' +
-            '    &#xE5C9;</i> button.' +
+            '    Чтобы вернуть и отменить любой несохраненный перевод,' +
+            '    нажать ' +
+            '    <i class="material-icons" style="color:#007EFF">' +
+            '    &#xE5C9;</i> кнопку.' +
             '  </li>' +
             '  <li>' +
-            '    To play the audio, click the ' +
-            '    <i class="material-icons" style="color:#009688" >' +
-            '    &#xE039;</i> button. ' +
+            '    Чтобы воспроизвести звук, нажмите на ' +
+            '    <i class="material-icons" style="color:#007EFF" >' +
+            '    &#xE039;</i> кнопку. ' +
             '  </li>' +
             '  <li>' +
-            '    To do retakes, click ' +
-            '    <i class="material-icons" style="color:#009688">' +
-            '    &#xE028;</i> button. ' +
+            '    Чтобы сделать повторные попытки, нажмите ' +
+            '    <i class="material-icons" style="color:#007EFF">' +
+            '    &#xE028;</i> кнопку. ' +
             '  </li>' +
             '  <li>' +
-            '    To delete a recording, click ' +
-            '    <i class="material-icons" style="color:#009688">' +
-            '    &#xE872;</i> button. ' +
+            '    Чтобы удалить запись, нажмите ' +
+            '    <i class="material-icons" style="color:#007EFF">' +
+            '    &#xE872;</i> кнопку. ' +
             '  </li>' +
             '</ul>')
         }, {
@@ -303,19 +303,19 @@ angular.module('oppia').component('translationTab', {
           }
         }, {
           type: 'title',
-          heading: 'Tutorial Complete',
+          heading: 'Учебник завершен',
           text: (
             '<p>' +
-            'Now, you are ready to begin adding translations ' +
-            'to your explorations! ' +
-            'This marks the end of this tour. ' +
-            'Remember to save your progress periodically using ' +
-            'the save button in the navigation bar at the top: ' +
+            'Теперь вы готовы начать добавлять переводы ' +
+            'к вашим занятиям! ' +
+            'Это говорит о конце этого тура. ' +
+            'Не забывайте периодически сохранять свой прогресс, используя ' +
+            'кнопка сохранения на панели навигации вверху: ' +
             '<button class="btn btn-success" disabled>' +
             '<i class="material-icons" >&#xE161;' +
             '</i></button>.<br> ' +
-            'Thank you for making this lesson more accessible ' +
-            'for non-native speakers!')
+            'Спасибо, что сделали этот урок более доступным ' +
+            'для не носителей языка!')
         }];
         $templateCache.put(
           'ng-joyride-title-tplv1.html', ngJoyrideTemplate);

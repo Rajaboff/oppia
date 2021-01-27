@@ -2,20 +2,20 @@
   <ul>
     <li ng-repeat="lostChange in $ctrl.lostChanges">
       <span ng-if="lostChange.cmd === 'add_state'">
-        Added state: <[lostChange.stateName]>
+        Добавлено состояние: <[lostChange.stateName]>
       </span>
       <span ng-if="lostChange.cmd === 'rename_state'">
-        Renamed state: <[lostChange.oldStateName]> to <[lostChange.newStateName]>
+        Переименовано состояние: <[lostChange.oldStateName]> to <[lostChange.newStateName]>
       </span>
       <span ng-if="lostChange.cmd === 'delete_state'">
-        Deleted state: <[lostChange.stateName]>
+        Удалено состояние: <[lostChange.stateName]>
       </span>
       <div ng-if="lostChange.cmd === 'edit_state_property'">
-        Edits to state: <[lostChange.stateName]>
+        Изменено состояние: <[lostChange.stateName]>
         <ng-content ng-switch="lostChange.propertyName">
           <div ng-switch-when="content">
             <div ng-if="!lostChange.isNewValueEmpty()" class="state-edit-desc">
-              <strong>Edited content: </strong>
+              <strong>Изменен контент: </strong>
               <div class="content" ng-bind-html="lostChange.newValue.html">
               </div>
             </div>
@@ -23,37 +23,37 @@
 
           <div ng-switch-when="widget_id" class="state-edit-desc">
             <span ng-if="lostChange.isAddingInteraction()">
-              <strong>Added Interaction: </strong>
+              <strong>Добавлен интерактив: </strong>
               <[lostChange.newValue]>
             </span>
 
             <span ng-if="lostChange.isEndingExploration()">
-              Ended Exploration
+              Завершено занятие
             </span>
 
             <span ng-if="!lostChange.isOldValueEmpty()">
-              <strong>Deleted Interaction: </strong>
+              <strong>Удалено занятие: </strong>
               <[lostChange.oldValue]>
             </span>
           </div>
 
           <div ng-switch-when="widget_customization_args" class="state-edit-desc">
             <span ng-if="lostChange.isOldValueEmpty()">
-              Added Interaction Customizations
+              Добавлены настройки интерактива
             </span>
             <span ng-if="!lostChange.isOldValueEmpty() && lostChange.isNewValueEmpty()">
-              Removed Interaction Customizations
+              Удалены настройки интерактива
             </span>
             <span ng-if="!lostChange.isOldValueEmpty() && !lostChange.isNewValueEmpty()">
-              Edited Interaction Customizations
+              Изменены настройки интерактива
             </span>
           </div>
 
           <div ng-switch-when="answer_groups">
             <div ng-if="lostChange.getRelativeChangeToGroups() === 'added'" class="state-edit-desc answer-group">
-              <strong>Added answer group: </strong>
+              <strong>Добавлена ​​группа ответов: </strong>
               <p class="sub-edit">
-                <i>Destination: </i><[lostChange.newValue.outcome.dest]>
+                <i>Назначение: </i><[lostChange.newValue.outcome.dest]>
               </p>
 
               <div class="sub-edit">
@@ -64,11 +64,11 @@
               </div>
 
               <div class="sub-edit" ng-if="lostChange.newValue.rules.length > 0">
-                <i>Rules: </i>
+                <i>Правила: </i>
                 <ol class="rules-list">
                   <li ng-repeat="rule in lostChange.newValue.rules">
-                    <p>Type: <[rule.type]></p>
-                    <p>Value:
+                    <p>Тип: <[rule.type]></p>
+                    <p>Ценность:
                       <span> </span>
                       <ng-content ng-repeat="input in rule.inputs">
                         <[ $last ? input : (input + ',')]>
@@ -81,9 +81,9 @@
             </div>
 
             <div ng-if="lostChange.getRelativeChangeToGroups() === 'edited'" class="state-edit-desc answer-group">
-              <strong>Edited answer group: </strong>
+              <strong>Изменена ​​группа ответов: </strong>
               <p class="sub-edit" ng-if="!isOutcomeDestEqual()">
-                <i>Destination: </i>
+                <i>Назначение: </i>
                 <[lostChange.newValue.outcome.dest]>
               </p>
 
@@ -95,11 +95,11 @@
               </div>
 
               <div class="sub-edit" ng-if="lostChange.isRulesEqual()">
-                <i>Rules: </i>
+                <i>Правила: </i>
                 <ol class="rules-list">
                   <li ng-repeat="rule in lostChange.newValue.rules track by $index">
-                    <p>Type: <[rule.type]></p>
-                    <p>Value:
+                    <p>Тип: <[rule.type]></p>
+                    <p>Ценность:
                       <span> </span>
                       <ng-content ng-repeat="input in rule.inputs">
                         <[ $last ? input : (input + ',')]>
@@ -111,15 +111,15 @@
             </div>
 
             <div ng-if="lostChange.getRelativeChangeToGroups() === 'deleted'" class="state-edit-desc">
-              Deleted answer group
+              Удалена ​​группа ответов
             </div>
           </div>
 
           <div ng-switch-when="default_outcome">
             <div ng-if="lostChange.getRelativeChangeToGroups() === 'added'" class="state-edit-desc default-outcome">
-              Added default outcome:
+              Добавлен исход по умолчанию:
               <p class="sub-edit">
-                <i>Destination: </i><[lostChange.newValue.dest]>
+                <i>Назначение: </i><[lostChange.newValue.dest]>
               </p>
               <div class="sub-edit">
                 <i>Feedback: </i>
@@ -130,9 +130,9 @@
             </div>
 
             <div ng-if="lostChange.getRelativeChangeToGroups() === 'edited'" class="state-edit-desc default-outcome">
-              Edited default outcome:
+              Изменен исход по умолчанию:
               <p class="sub-edit" ng-if="!isDestEqual()">
-                <i>Destination: </i><[lostChange.newValue.dest]>
+                <i>Назначение: </i><[lostChange.newValue.dest]>
               </p>
 
               <div class="sub-edit" ng-if="lostChange.isFeedbackEqual()">
@@ -144,7 +144,7 @@
             </div>
 
             <div ng-if="lostChange.getRelativeChangeToGroups() === 'deleted'" class="state-edit-desc">
-              Deleted default outcome
+              Удален исход по умолчанию
             </div>
           </div>
         </ng-content>

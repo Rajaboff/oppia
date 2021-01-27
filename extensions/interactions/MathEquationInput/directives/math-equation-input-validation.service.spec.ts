@@ -106,8 +106,8 @@ describe('MathEquationInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by an \'IsEquivalentTo\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'IsEquivalentTo\' правило с подходящим входом.'
     }]);
 
 
@@ -131,8 +131,8 @@ describe('MathEquationInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by an \'IsEquivalentTo\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'IsEquivalentTo\' правило с подходящим входом.'
     }]);
 
 
@@ -158,8 +158,8 @@ describe('MathEquationInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'MatchesExactlyWith\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'MatchesExactlyWith\' правило с подходящим входом.'
     }]);
   });
 
@@ -210,8 +210,8 @@ describe('MathEquationInputValidationService', () => {
     expect(warnings).toEqual([{
       type: AppConstants.WARNING_TYPES.ERROR,
       message: (
-        'The following variables are present in some of the answer groups ' +
-        'but are missing from the custom letters list: x,α')
+        'В некоторых группах ответов присутствуют следующие переменные. ' +
+        'но отсутствуют в списке пользовательских букв: x,α')
     }]);
   });
 
@@ -234,7 +234,7 @@ describe('MathEquationInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: AppConstants.WARNING_TYPES.ERROR,
-      message: 'The number of custom letters cannot be more than 10.'
+      message: 'Количество произвольных букв не может быть больше 10.'
     }]);
   });
 });

@@ -1,10 +1,10 @@
 <div class="modal-header">
-  <h3>Add Some Details</h3>
+  <h3>Добавить некоторые детали</h3>
 </div>
 
 <div class="modal-body oppia-long-text">
   <p>
-    Just a few more things before you publish:
+    Еще несколько вещей перед публикацией:
   </p>
   <exploration-title-editor ng-if="requireTitleToBeSpecified"
                             label-text="Add a title: what should your exploration be called?"
@@ -15,10 +15,10 @@
                                 form-style="{'font-weight': 'normal'}">
   </exploration-objective-editor>
   <p ng-if="requireCategoryToBeSpecified">
-    <label class="font-weight-normal"> Add a category: How would you categorize your exploration?
+    <label class="font-weight-normal"> Добавьте категорию: Как бы вы классифицировали свое занятие?
       <select2-dropdown item="explorationCategoryService.displayed"
                         choices="CATEGORY_LIST_FOR_SELECT2"
-                        placeholder="Choose or type a new category"
+                        placeholder="Выберите или введите новую категорию"
                         new-choice-regex="^[A-Z a-z]+$"
                         width="100%"
                         invalid-search-term-message="Invalid category name">
@@ -26,7 +26,7 @@
     </label>
   </p>
   <p ng-if="askForLanguageCheck">
-    <label class="font-weight-normal"> Verify the language: Is your exploration written in this language
+    <label class="font-weight-normal"> Проверьте язык: написано ли ваше занятие на этом языке
       <select class="form-control protractor-test-exploration-language-select"
               ng-model="explorationLanguageCodeService.displayed"
               ng-change="saveExplorationLanguageCode()"
@@ -36,14 +36,14 @@
     </label>
   </p>
   <p ng-if="askForTags">
-    <label class="font-weight-normal"> Add tags to help learners discover your exploration.
+    <label class="font-weight-normal"> Добавьте теги, чтобы помочь учащимся открыть для себя ваши занятие.
       <select2-dropdown item="explorationTagsService.displayed"
                         choices="explorationTagsService.displayed"
                         allow-multiple-choices="true"
                         invalid-search-term-message="Add a new tag (using lowercase letters and spaces)..."
                         new-choice-regex="<[::TAG_REGEX]>"
                         width="100%"
-                        placeholder="Skills, concepts, topics..."
+                        placeholder="Навыки, направления, темы ..."
                         class="protractor-test-tags"
                         on-selection-change="saveExplorationTags()">
       </select2-dropdown>
@@ -52,6 +52,6 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary" ng-click="cancel()">Cancel</button>
-  <button class="btn btn-success protractor-test-confirm-pre-publication" ng-click="save()" ng-disabled="!isSavingAllowed()">Save Changes</button>
+  <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
+  <button class="btn btn-success protractor-test-confirm-pre-publication" ng-click="save()" ng-disabled="!isSavingAllowed()">Сохранить изенения</button>
 </div>

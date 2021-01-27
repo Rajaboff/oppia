@@ -49,7 +49,7 @@ export class InteractiveMapValidationService {
         customizationArgs.latitude.value > 90) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please pick a starting latitude between -90 and 90.'
+        message: 'Выберите начальную широту от -90 до 90.'
       });
     }
 
@@ -57,7 +57,7 @@ export class InteractiveMapValidationService {
         customizationArgs.longitude.value > 180) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please pick a starting longitude between -180 and 180.'
+        message: 'Выберите начальную долготу от -180 до 180.'
       });
     }
     return warningsList;
@@ -79,9 +79,9 @@ export class InteractiveMapValidationService {
           if (rules[j].inputs.d < 0) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.CRITICAL,
-              message: 'Please ensure that rule ' + String(j + 1) +
-                ' in group ' + String(i + 1) +
-                ' refers to a valid distance.'
+              message: 'Пожалуйста, убедитесь, что правило ' + String(j + 1) +
+                ' в группе ' + String(i + 1) +
+                ' относится к допустимому расстоянию.'
             });
           }
         }

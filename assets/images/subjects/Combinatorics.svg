@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="combinatorics_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" viewBox="0 0 186.9 187.2" enable-background="new 0 0 186.9 187.2" xml:space="preserve">
-<rect x="0.2" y="0" fill="none" width="186.7" height="186.7"/>
-<circle fill="#EFF4FB" cx="70.3" cy="95.7" r="4.4"/>
-<circle fill="#EFF4FB" cx="91.3" cy="116.7" r="4.4"/>
-<rect x="91.6" y="65.9" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 93.7289 225.5622)" fill="#EFF4FB" width="3.9" height="55"/>
-<circle fill="#EFF4FB" cx="70.3" cy="69.2" r="4.4"/>
-<circle fill="#EFF4FB" cx="70.3" cy="42.7" r="4.4"/>
-<circle fill="#EFF4FB" cx="117.7" cy="90.2" r="4.4"/>
-<path fill="#EFF4FB" d="M93.6,13.8C49.6,13.8,14,49.4,14,93.4c0,43.9,35.6,79.5,79.5,79.5c43.9,0,79.5-35.6,79.5-79.5
-	C173.1,49.4,137.5,13.8,93.6,13.8z M121.4,155.1c-2.3,2.3-6,2.3-8.2,0L31.8,73.8c-2.3-2.3-2.3-6,0-8.2l33.9-33.9
-	c2.3-2.3,6-2.3,8.2,0l81.4,81.4c2.3,2.3,2.3,6,0,8.2L121.4,155.1z"/>
-<circle fill="#EFF4FB" cx="144.2" cy="116.7" r="4.4"/>
-<circle fill="#EFF4FB" cx="117.7" cy="116.7" r="4.4"/>
-<circle fill="#EFF4FB" cx="117.7" cy="143.1" r="4.4"/>
-</svg>
+<svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="141" x2="141" y1="481" y2="31"><stop offset="0" stop-color="#addcff"/><stop offset=".5028" stop-color="#eaf6ff"/><stop offset="1" stop-color="#eaf6ff"/></linearGradient><linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="338.5" x2="338.5" y1="481" y2="31"><stop offset="0" stop-color="#5558ff"/><stop offset="1" stop-color="#00c0ff"/></linearGradient><g><g><g><path d="m256 121h-66.23c3.34-10.74 5.23-21.29 5.23-30 0-33.08-26.92-60-60-60s-60 26.92-60 60c0 8.71 1.89 19.26 5.23 30h-65.23c-8.28 0-15 6.72-15 15v87.36c0 5.19 2.69 10.02 7.11 12.75 4.41 2.74 9.93 2.99 14.58.67 12.74-6.35 28.49-10.78 38.31-10.78 16.54 0 30 13.46 30 30s-13.46 30-30 30c-9.82 0-25.57-4.43-38.31-10.78-4.65-2.32-10.17-2.07-14.58.67-4.42 2.73-7.11 7.56-7.11 12.75v87.36c0 8.28 6.72 15 15 15h65.23c-3.34 10.74-5.23 21.29-5.23 30 0 33.08 26.92 60 60 60s60-26.92 60-60c0-8.71-1.89-19.26-5.23-30h66.23l26-80.37v-109.26z" fill="url(#SVGID_1_)"/></g></g><g><g><path d="m451 226c8.79 0 25.11 3.7 39.31 10.78 4.65 2.32 10.17 2.07 14.58-.67 4.42-2.73 7.11-7.56 7.11-12.75v-87.36c0-8.28-6.72-15-15-15h-66.23c3.34-10.74 5.23-21.29 5.23-30 0-33.08-26.92-60-60-60s-60 26.92-60 60c0 8.71 1.89 19.26 5.23 30h-65.23v80.37c-11.07-3.38-22.17-5.37-31-5.37-33.08 0-60 26.92-60 60s26.92 60 60 60c8.83 0 19.93-1.99 31-5.37v80.37l65.23-.01c-3.34 10.74-5.23 21.3-5.23 30.01 0 33.08 26.92 60 60 60s60-26.92 60-60c0-8.71-1.89-19.26-5.23-30h66.23c8.28 0 15-6.72 15-15v-87.36c0-5.19-2.69-10.02-7.11-12.75-4.42-2.74-9.93-2.99-14.58-.67-14.2 7.08-30.52 10.78-39.31 10.78-16.54 0-30-13.46-30-30s13.46-30 30-30z" fill="url(#SVGID_2_)"/></g></g></g></svg>

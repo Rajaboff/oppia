@@ -7,9 +7,9 @@
   <tr>
     <th ng-repeat="key in STORY_TABLE_COLUMN_HEADINGS"
         class="dashboard-table-headings">
-      <p ng-if="key === 'title'" class="text-left">Title</p>
-      <p ng-if="key === 'node_count'" class="text-center">Chapters</p>
-      <p ng-if="key === 'publication_status'" class="text-center">Published?</p>
+      <p ng-if="key === 'title'" class="text-left">Заголовок</p>
+      <p ng-if="key === 'node_count'" class="text-center">Главы</p>
+      <p ng-if="key === 'publication_status'" class="text-center">Опубликовать</p>
     </th>
   </tr>
   <tr ng-repeat="summary in storySummaries track by $index"
@@ -30,7 +30,7 @@
     </td>
     <td>
       <a ng-click="openStoryEditor(summary.getId())" class="list-summary text-center">
-        <span class="protractor-test-story-publication-status"> <[summary.isStoryPublished() ? "Yes" : "No"]> </span>
+        <span class="protractor-test-story-publication-status"> <[summary.isStoryPublished() ? "Да" : "Нет"]> </span>
       </a>
     </td>
     <td>
@@ -87,6 +87,7 @@
     display: inline-block;
     line-height: normal;
     vertical-align: middle;
+    color: #007EFF;
   }
 
   topic-editor-stories-list .oppia-colgroup-col-1 {

@@ -1,12 +1,12 @@
 <div class="modal-header protractor-test-add-response-modal-header">
-  <h3>Add Response</h3>
+  <h3>Добавить ответ</h3>
   <i class="fa fa-times" ng-click="cancel()"></i>
 </div>
 
 <div class="modal-body">
   <form name="addAnswerGroupForm.outcomeDetailsForm" class="form-inline protractor-test-add-response-details">
     <div class="oppia-rule-details-header">
-      <strong>If the learner's answer...</strong>
+      <strong>Если ученик отвечает</strong>
     </div>
 
     <rule-editor rule="tmpRule" is-editable="EditabilityService.isEditable()" is-editing-rule-inline="false">
@@ -21,10 +21,10 @@
           <div class="oppia-click-to-start-editing protractor-test-open-feedback-editor" ng-click="openFeedbackEditor()">
             <i class="material-icons oppia-editor-edit-icon" title="Edit Feedback">&#xE254;</i>
           </div>
-          <strong>Oppia tells the learner...</strong>
+          <strong>Oqustudy рассказывает ученику ...</strong>
           <div class="position-relative">
             <span class="oppia-nothing-text">
-              <em>Nothing</em>
+              <em>Ничего</em>
             </span>
           </div>
         </div>
@@ -45,7 +45,7 @@
   </form>
 
   <div class="oppia-correctness-label-editor" ng-if="isCorrectnessFeedbackEnabled() && !isCurrentInteractionLinear()">
-    <strong>The answers in this group are correct</strong>
+    <strong>Ответы в этой группе правильные</strong>
     <input class="protractor-test-editor-correctness-toggle" type="checkbox" ng-model="tmpOutcome.labelledAsCorrect">
   </div>
   <question-misconception-editor is-editable="true"
@@ -59,9 +59,9 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary protractor-test-close-add-response-modal" ng-click="cancel()">Cancel</button>
-  <button class="btn btn-success protractor-test-add-new-response" ng-click="saveResponse(false)" ng-disabled="addAnswerGroupForm.outcomeDetailsForm.$invalid || isSelfLoopWithNoFeedback(tmpOutcome)">Save Response</button>
-  <button class="btn btn-success" ng-click="saveResponse(true)" ng-disabled="addAnswerGroupForm.outcomeDetailsForm.$invalid || isSelfLoopWithNoFeedback(tmpOutcome)">Save and Add Another</button>
+  <button class="btn btn-secondary protractor-test-close-add-response-modal" ng-click="cancel()">Отмена</button>
+  <button class="btn btn-success protractor-test-add-new-response" ng-click="saveResponse(false)" ng-disabled="addAnswerGroupForm.outcomeDetailsForm.$invalid || isSelfLoopWithNoFeedback(tmpOutcome)">Сохранить ответ</button>
+  <button class="btn btn-success" ng-click="saveResponse(true)" ng-disabled="addAnswerGroupForm.outcomeDetailsForm.$invalid || isSelfLoopWithNoFeedback(tmpOutcome)">Сохранить и добавить еще</button>
 </div>
 <style>
   outcome-feedback-editor {
@@ -92,7 +92,7 @@
       min-height: 100vh;
     }
     .add-answer-group-modal .modal-header {
-      background-color: #00609C;
+      background-color: #007EFF;
     }
     .add-answer-group-modal .modal-header i {
       color: #FFF;

@@ -7,8 +7,8 @@
 </div>
 <table class="oppia-issues-learner-action-table">
   <tr>
-    <th>Answer</th>
-    <th>Feedback</th>
+    <th>Ответ</th>
+    <th>Отзыв</th>
   </tr>
   <tr ng-repeat="action in $ctrl.finalBlock" ng-if="$ctrl.isActionSubmit(action)">
     <td><angular-html-bind html-data="$ctrl.getShortAnswerHtml(action)"></angular-html-bind></td>

@@ -4,7 +4,7 @@
       <div class="oppia-editor-card-body">
         <div class="state-solution-header-container" ng-click="toggleSolutionCard()">
           <div class="state-solution-header oppia-mobile-collapsible-card-header">
-            <h3 class="oppia-exp-solution-card-header">Solution</h3>
+            <h3 class="oppia-exp-solution-card-header">Решение</h3>
             <i class="fa fa-caret-down"
                ng-if="!solutionCardIsShown"
                aria-hidden="true">
@@ -22,7 +22,7 @@
                       type="button"
                       class="btn btn-secondary oppia-add-hint-button protractor-test-oppia-add-solution-button"
                       ng-click="openAddOrUpdateSolutionModal()">
-                + ADD SOLUTION
+                + Добавить решение
               </button>
             </div>
           </div>
@@ -67,13 +67,14 @@
 <style>
   state-solution-editor .state-solution-header-container {
     padding: 0 30px;
+    background-color: #B3D8FF;
   }
   state-solution-editor .state-solution-header {
     align-content: center;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 30px 0 0;
+    padding: 20px 0px 20px;
   }
   state-solution-editor .state-solution-header i {
     display: none;
@@ -83,6 +84,7 @@
   }
   state-solution-editor .state-solution-content-container {
     padding: 15px 30px;
+
   }
   state-solution-editor .oppia-add-hint-button-container {
     margin: 10px 0;

@@ -51,7 +51,7 @@
           <search-bar enable-dropup="false"></search-bar>
         </div>
 
-        <div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED">
+        <div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" >
           <div class="oppia-classroom-text">
             <h2 class="oppia-classroom-h2" translate="I18N_CLASSROOM_CALLOUT_HEADING_2"></h2>
             <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_1"></h1>
@@ -59,12 +59,29 @@
             <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/math" href="/learn/math"></a>
           </div>
           <picture>
-            <source type="image/webp"
-                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/matthew_paper.webp')]>">
+            
             <source type="image/png"
-                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/matthew_paper.png')]>">
-            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/matthew_paper.png')]>"
-                 alt="math classroom illustration">
+                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/math.png')]>">
+            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/math.png')]>"
+                 alt="math classroom illustration" style="
+    margin: 0px 10px 0px 30px;">
+          </picture>
+        </div>
+
+<div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" style="
+    background-color: #FFE4CC;">
+          <div class="oppia-classroom-text">
+            <h2 class="oppia-classroom-h2" translate="I18N_CLASSROOM_CALLOUT_HEADING_2"></h2>
+            <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_11"></h1>
+            <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_11"></p>
+            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/programming" href="/learn/programming"></a>
+          </div>
+          <picture>
+            <source type="image/png"
+                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/programming.png')]>">
+            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/programming.png')]>"
+                 alt="math classroom illustration" style="
+    margin: 0px 10px 0px 30px;">
           </picture>
         </div>
 
@@ -199,25 +216,26 @@
 </div>
 <style>
   library-page .oppia-classroom-div {
-    background-color: whitesmoke;
-    border: 4px solid #04857c;
+    background-color: #B3D8FF;
+   
     border-radius: 10px;
     height: 300px;
-    margin: 0px 45px;
+    margin: 10px 45px;
     overflow: hidden;
     padding: 30px 45px 45px 45px;
     position: relative;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
   library-page .oppia-classroom-text {
     float: left;
-    width: 62%;
+    width: 72%;
   }
   library-page .oppia-classroom-h1 {
-    color: #033e39;
+    color: #000;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
   }
   library-page .oppia-classroom-h2 {
-    color: #033e39;
+    color: #000;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
   }
   library-page .oppia-classroom-p {
@@ -235,16 +253,16 @@
     width: 180px;
   }
   library-page .oppia-group-page-header {
-    color: #2c4841;
+    color: #000;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
     font-size: 2em;
   }
   library-page .oppia-library-h1 {
-    color: #033e39;
+    color: #000;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
   }
   library-page .oppia-library-h2 {
-    color: #047C74;
+    color: #000;
     font-family: "Rubik, regular", "Roboto", Arial, sans-serif;
     padding-bottom: 1em;
   }
@@ -283,7 +301,7 @@
     min-width: 126px;
   }
   library-page .oppia-library-group-header.active {
-    color: #04857c;
+    color: #007EFF;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
   }
   @media(max-width: 720px) {
@@ -306,7 +324,7 @@
   }
   library-page .oppia-library-group-header a:hover,
   library-page .oppia-library-group-header a:focus {
-    color: #04857c;
+    color: #007EFF;
     text-decoration: none;
   }
   @media (max-width: 720px) {
@@ -315,7 +333,7 @@
     }
   }
   library-page .oppia-library-carousel-scroller {
-    color: #2c4841;
+    color: #52575C;
     cursor: default;
     float: left;
     height: 60px;

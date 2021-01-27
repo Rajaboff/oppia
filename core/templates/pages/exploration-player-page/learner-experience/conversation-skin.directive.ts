@@ -1262,7 +1262,7 @@ angular.module('oppia').directive('conversationSkin', [
             $scope.explorationId = ExplorationEngineService.getExplorationId();
             $scope.isInPreviewMode = ExplorationEngineService.isInPreviewMode();
             $scope.isIframed = UrlService.isIframed();
-            LoaderService.showLoadingScreen('Loading');
+            LoaderService.showLoadingScreen('Загрузка');
             $scope.hasFullyLoaded = false;
             $scope.recommendedExplorationSummaries = null;
             $scope.answerIsCorrect = false;

@@ -48,9 +48,9 @@ export class FractionInputValidationService {
     return {
       type: AppConstants.WARNING_TYPES.ERROR,
       message: (
-        'Rule ' + (j + 1) + ' from answer group ' +
-        (i + 1) + ' is invalid: input should be an ' +
-        'integer.')
+        'Правило ' + (j + 1) + ' из группы ответов ' +
+        (i + 1) + ' недействителен: ввод должен быть ' +
+        'целым числом.')
     };
   }
   getCustomizationArgsWarnings(
@@ -150,10 +150,10 @@ export class FractionInputValidationService {
                 warningsList.push({
                   type: AppConstants.WARNING_TYPES.ERROR,
                   message: (
-                    'Rule ' + (j + 1) + ' from answer group ' +
+                    'Правило ' + (j + 1) + ' из группы ответов ' +
                     (i + 1) +
-                    ' will never be matched because it is not ' +
-                    'in simplest form.')
+                    ' никогда не будет совпадать, потому что это не ' +
+                    'в простейшей форме.')
                 });
               }
             }
@@ -164,10 +164,10 @@ export class FractionInputValidationService {
                 warningsList.push({
                   type: AppConstants.WARNING_TYPES.ERROR,
                   message: (
-                    'Rule ' + (j + 1) + ' from answer group ' +
+                    'Правило ' + (j + 1) + ' из группы ответов ' +
                     (i + 1) +
-                    ' will never be matched because it is an ' +
-                    'improper fraction')
+                    ' никогда не будет сопоставлен, потому что это ' +
+                    'неделимая дробь')
                 });
               }
             }
@@ -178,10 +178,10 @@ export class FractionInputValidationService {
                 warningsList.push({
                   type: AppConstants.WARNING_TYPES.ERROR,
                   message: (
-                    'Rule ' + (j + 1) + ' from answer group ' +
+                    'Правило ' + (j + 1) + ' из группы ответов ' +
                     (i + 1) +
-                    ' will never be matched because it has a ' +
-                    'non zero integer part')
+                    'никогда не будет сопоставлен, потому что у него есть ' +
+                    'ненулевая целая часть')
                 });
               }
             }
@@ -211,10 +211,10 @@ export class FractionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
                   (i + 1) +
-                  ' will never be matched because integer part ' +
-                  'has to be zero')
+                  ' никогда не будет совпадать, потому что целая часть ' +
+                  'должен быть нулевым')
               });
             }
             if (!Number.isInteger(rule.inputs.x)) {
@@ -229,9 +229,9 @@ export class FractionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
-                  (i + 1) + ' is invalid: denominator ' +
-                  'should be greater than zero.')
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
+                  (i + 1) + ' неверно: знаменатель ' +
+                  'должно быть больше нуля.')
               });
             }
             matchedDenominator.denominator = rule.inputs.x;
@@ -241,18 +241,18 @@ export class FractionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
+                  'Правило ' + (j + 1) + 'из группы овтетов ' +
                   (i + 1) +
-                  ' is invalid as integer part should be zero')
+                  ' недействителен, так как целая часть должна быть равна нулю')
               });
             }
             if ((<FractionAnswer> rule.inputs.f).isNegative !== false) {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
                   (i + 1) +
-                  ' is invalid as sign should be positive')
+                  ' недействителен, поскольку знак должен быть положительным')
               });
             }
             if (!allowImproperFraction) {
@@ -262,9 +262,9 @@ export class FractionInputValidationService {
                 warningsList.push({
                   type: AppConstants.WARNING_TYPES.ERROR,
                   message: (
-                    'Rule ' + (j + 1) + ' from answer group ' +
+                    'Правило ' + (j + 1) + ' из группы ответов ' +
                     (i + 1) +
-                    ' is invalid as improper fractions are not allowed')
+                    ' недопустимо, так как неправильные дроби не допускаются')
                 });
               }
             }
@@ -280,10 +280,10 @@ export class FractionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
-                  (i + 1) + ' will never be matched because it ' +
-                  'is made redundant by rule ' + (ranges[k].ruleIndex + 1) +
-                  ' from answer group ' + (ranges[k].answerGroupIndex + 1) +
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
+                  (i + 1) + ' никогда не будет совпадать, потому что это ' +
+                  'делается избыточным правилом ' + (ranges[k].ruleIndex + 1) +
+                  ' из группы ответов ' + (ranges[k].answerGroupIndex + 1) +
                   '.')
               });
             }
@@ -298,11 +298,11 @@ export class FractionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
-                  (i + 1) + ' will never be matched because it ' +
-                  'is made redundant by rule ' +
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
+                  (i + 1) + ' никогда не будет совпадать, потому что это ' +
+                  'делается избыточным правилом ' +
                   (matchedDenominators[k].ruleIndex + 1) +
-                  ' from answer group ' +
+                  ' из группы ответов ' +
                   (matchedDenominators[k].answerGroupIndex + 1) + '.')
               });
             }

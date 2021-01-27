@@ -67,9 +67,9 @@ angular.module('oppia').directive('graphViz', [
           var vizContainer = $($element).find('.oppia-graph-viz-svg');
           // Styling functions.
           var DELETE_COLOR = 'red';
-          var HOVER_COLOR = 'aqua';
-          var SELECT_COLOR = 'orange';
-          var DEFAULT_COLOR = 'black';
+          var HOVER_COLOR = '#DBA5F5';
+          var SELECT_COLOR = '#FFBC1F';
+          var DEFAULT_COLOR = '#BE52F2';
           ctrl.getEdgeColor = function(index) {
             if (!ctrl.isInteractionActive()) {
               return DEFAULT_COLOR;
@@ -575,15 +575,15 @@ angular.module('oppia').directive('graphViz', [
             ctrl.vizWidth = vizContainer.width();
 
             ctrl.graphOptions = [{
-              text: 'Labeled',
+              text: 'Метка',
               option: 'isLabeled'
             },
             {
-              text: 'Directed',
+              text: 'Стрелка',
               option: 'isDirected'
             },
             {
-              text: 'Weighted',
+              text: 'Вес',
               option: 'isWeighted'
             }];
             ctrl.helpText = null;

@@ -1,4 +1,4 @@
-<background-banner></background-banner>
+
 <div class="oppia-profile-container">
   <md-card class="oppia-profile-user-card">
     <div class="oppia-profile-user-container">
@@ -7,7 +7,7 @@
           <a ng-if="$ctrl.profileIsOfCurrentUser" href="/preferences" class="oppia-profile-preferences">
             <div class="oppia-profile-picture-mask">
               <div class="oppia-profile-picture-edit-prompt">
-               Edit avatar
+               Редактировать аватара
                 <i class="material-icons md-18" title="Edit Profile Picture">&#xE254;</i>
               </div>
             </div>
@@ -34,7 +34,7 @@
         </h2>
 
         <p class="oppia-profile-first-contributed" ng-if="$ctrl.firstContributionMsec">
-          Contributing since: <[$ctrl.getLocaleDateString($ctrl.firstContributionMsec)]>
+          Зарегистрирован: <[$ctrl.getLocaleDateString($ctrl.firstContributionMsec)]>
         </p>
       </div>
     </div>
@@ -51,12 +51,12 @@
     <p class="oppia-profile-user-bio protractor-test-profile-bio">
       <span ng-if="$ctrl.userBio" class="oppia-user-bio-text"><[$ctrl.userBio]></span>
       <span ng-if="!$ctrl.userBio">
-        <em>This user has not supplied a bio yet.</em>
+        <em>Этот пользователь еще не заполнил биографию.</em>
       </span>
     </p>
 
     <p class="oppia-profile-subject-interest-container">
-      Interests:
+      Интересы:
       <span ng-if="$ctrl.subjectInterests.length > 0"><br>
         <span ng-repeat="interest in $ctrl.subjectInterests track by $index">
           <span class="oppia-profile-subject-interest protractor-test-profile-interest"
@@ -65,7 +65,7 @@
       </span>
       <span ng-if="$ctrl.subjectInterests.length === 0"
             class="oppia-profile-no-interests-text protractor-test-profile-no-interest">
-        <em>none specified</em>
+        <em>не указано</em>
       </span>
     </p>
 
@@ -121,7 +121,7 @@
          ng-class="{'oppia-navigation-mouse-pointer': $ctrl.startingExplorationNumber !== 1}">
         &#xE5C4;
       </i>
-      Showing <[$ctrl.startingExplorationNumber]> - <[$ctrl.endingExplorationNumber]> of <[$ctrl.numUserPortfolioExplorations]>
+      Показать <[$ctrl.startingExplorationNumber]> - <[$ctrl.endingExplorationNumber]> от <[$ctrl.numUserPortfolioExplorations]>
       <i class="material-icons md-18 oppia-navigation-button"
          ng-disabled="$ctrl.endingExplorationNumber >= $ctrl.numUserPortfolioExplorations"
          ng-click="$ctrl.goToNextPage()"

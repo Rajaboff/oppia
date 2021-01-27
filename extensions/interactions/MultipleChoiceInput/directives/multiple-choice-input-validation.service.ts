@@ -62,13 +62,13 @@ export class MultipleChoiceInputValidationService {
     if (areAnyChoicesEmpty) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure the choices are nonempty.'
+        message: 'Убедитесь, что варианты не пусты.'
       });
     }
     if (areAnyChoicesDuplicated) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure the choices are unique.'
+        message: 'Убедитесь, что выбор уникален.'
       });
     }
     return warningsList;
@@ -96,16 +96,16 @@ export class MultipleChoiceInputValidationService {
           } else {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.CRITICAL,
-              message: 'Please ensure rule ' + String(j + 1) +
-                ' in group ' + String(i + 1) + ' is not equaling the ' +
-                'same multiple choice option as another rule.'
+              message: 'Пожалуйста, обеспечьте правило ' + String(j + 1) +
+                ' в группе ' + String(i + 1) + ' не равно ' +
+                'тот же вариант множественного выбора, что и другое правило.'
             });
           }
           if (rules[j].inputs.x >= numChoices) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.CRITICAL,
-              message: 'Please ensure rule ' + String(j + 1) +
-                ' in group ' + String(i + 1) + ' refers to a valid choice.'
+              message: 'Пожалуйста, обеспечьте правило ' + String(j + 1) +
+                ' в группе ' + String(i + 1) + ' относится к действительному выбору.'
             });
           }
         }
@@ -122,8 +122,8 @@ export class MultipleChoiceInputValidationService {
       if (!defaultOutcome || defaultOutcome.isConfusing(stateName)) {
         warningsList.push({
           type: AppConstants.WARNING_TYPES.ERROR,
-          message: 'Please add something for Oppia to say in the ' +
-            '\"All other answers\" response.'
+          message: 'Добавьте что-нибудь для ответа Oqustudy в ' +
+            '\"All other answers\".'
         });
       }
     }

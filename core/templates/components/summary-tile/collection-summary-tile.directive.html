@@ -7,33 +7,35 @@
                          add-to-playlist-icon-is-shown="!$ctrl.isOwnedByCurrentUser()">
 </learner-dashboard-icons>
 <md-card class="oppia-activity-summary-tile"
-         ng-class="{'oppia-activity-playlist-tile': $ctrl.isPlaylistTile()}">
+         ng-class="{'oppia-activity-playlist-tile': $ctrl.isPlaylistTile()}" style="
+    border-radius: 8px;">
   <a ng-href="<[$ctrl.getCollectionLink()]>" class="thumbnail">
     <div class="title-section" ng-style="{'background-color': $ctrl.getThumbnailBgColor()}">
       <img class="collection-corner-image" ng-src="<[$ctrl.getStaticImageUrl('/general/collection_corner.svg')]>" alt="">
       <img class="thumbnail-image" ng-src="<[$ctrl.getCompleteThumbnailIconUrl()]>" alt="<[$ctrl.getCategory()]>" ng-style="$ctrl.isPlaylistTile() && {'top': '6px', 'width': '60px'}">
       <h3 class="activity-title protractor-test-collection-summary-tile-title" ng-style="$ctrl.isPlaylistTile() && {'width': '93%', 'text-align': 'center'}"><[$ctrl.getCollectionTitle() || $ctrl.DEFAULT_EMPTY_TITLE]></h3>
     </div>
-
-    <div ng-style="$ctrl.isPlaylistTile() && {'float': 'right', 'width': '67%', 'margin-top': '3%'}">
+<div ng-style="{'background-color': $ctrl.getThumbnailBgColor()}" style="border-radius: 0px 0px 8px 8px;">
+    <div ng-style="$ctrl.isPlaylistTile() && {'float': 'right', 'width': '67%', 'margin-top': '3%'}" >
       <div class="objective">
         <[$ctrl.getObjective() | truncateAndCapitalize: 95]>
-        <span ng-if="!$ctrl.getObjective()">No objective specified.</span>
+        <span ng-if="!$ctrl.getObjective()">Цель не указана.</span>
       </div>
       <ul layout="row" class="metrics" layout-align="space-between center">
         <li>
           <span>
-            COLLECTION (<[$ctrl.getNodeCount()]>)
+            Курс (<[$ctrl.getNodeCount()]>)
           </span>
         </li>
         <li>
           <span>
-            <span class="oppia-icon-accessibility-label">Last Updated</span>
+            <span class="oppia-icon-accessibility-label">Последнее обновление</span>
             <[$ctrl.getLastUpdatedDatetime()]>
           </span>
         </li>
       </ul>
     </div>
+  </div>
     <div ng-if="!$ctrl.isPlaylistTile()" class="title-section-mask"
          ng-mouseenter="$ctrl.setHoverState(true)" ng-mouseleave="$ctrl.setHoverState(false)">
     </div>
@@ -44,6 +46,7 @@
   collection-summary-tile .oppia-activity-summary-tile {
     position: relative;
     z-index: 5;
+    box-shadow: 0px 8px 10px rgba(37, 40, 43, 0.18);
   }
 
   collection-summary-tile .oppia-activity-summary-tile .thumbnail {

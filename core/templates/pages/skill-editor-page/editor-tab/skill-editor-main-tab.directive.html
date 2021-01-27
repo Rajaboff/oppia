@@ -3,7 +3,7 @@
     <div class="skill-editor-components-container">
       <p class="topic-dashboard-link">
         <a href="/topics-and-skills-dashboard">
-          Back to Topics Dashboard <i class="fa fa-angle-left"></i>
+          Назад к доске Тем  <i class="fa fa-angle-left"></i>
         </a>
         <span><[skill.getDescription()]></span>
       </p>
@@ -15,11 +15,11 @@
     <div class="skill-editor-info-container">
       <md-card class="oppia-editor-card-section skill-editor-status">
         <strong class="status-heading">
-          Status
+          Статус
         </strong>
         <div class="status-box">
           <strong class="status-key">
-            Topic:
+            Тема:
           </strong>
           <select class="form-control"
                   ng-model="topicName"
@@ -30,13 +30,13 @@
         </div>
         <div class="status-box" ng-if="isTopicDropdownEnabled()">
           <strong class="status-key">
-            Subtopic:
+            Подтема:
           </strong>
           <span ng-if="getSubtopicName()" class="status-value">
             <[getSubtopicName()]>
           </span>
           <span ng-if="!getSubtopicName()" class="status-value">
-            Unassigned
+            Не назначен
           </span>
         </div>
       </md-card>
@@ -45,16 +45,16 @@
           <div class="misconception-count">
             <span class="count-value" ng-if="!hasLoadedSkill()"><loading-dots></loading-dots></span>
             <div class="count-value" ng-if="hasLoadedSkill()"><[skill.getMisconceptions().length]></div>
-            <div class="count-text">Misconceptions</div>
+            <div class="count-text">Заблуждения</div>
           </div>
           <div class="example-count">
             <span class="count-value" ng-if="!hasLoadedSkill()"><loading-dots></loading-dots></span>
             <div class="count-value" ng-if="hasLoadedSkill()"><[skill.getConceptCard().getWorkedExamples().length]></div>
-            <div class="count-text">Worked Examples</div>
+            <div class="count-text">Рабочий пример</div>
           </div>
           <div class="create-question" ng-click="createQuestion()">
             <i class="fa fa-plus-circle"></i>
-            <div class="count-text create-text">Create New Question</div>
+            <div class="count-text create-text">Создание вопроса</div>
           </div>
         </div>
       </md-card>
@@ -95,7 +95,7 @@
   }
 
   .skill-editor .topic-dashboard-link {
-    font-weight: bold;
+    font-weight: normal;
   }
 
   .skill-editor .topic-dashboard-link a {
@@ -122,8 +122,8 @@
   }
 
   .skill-editor .count-value {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: normal;
   }
 
   .skill-editor .count-text {
@@ -136,17 +136,17 @@
   }
 
   .skill-editor .create-question i {
-    color: #0b6c63;
+    color: #007EFF;
     font-size: 30px;
   }
 
   .skill-editor .create-text {
-    color: #0b6c63;
+    color: #007EFF;
   }
   .skill-editor .skill-editor-helper-box {
     align-items: center;
     background-color: #FFF;
-    border: 1px solid #aaaac1;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
     border-radius: 6px;
     box-shadow: none;
     height: 110px;
@@ -155,7 +155,7 @@
     width: 97%;
   }
   .skill-editor .skill-editor-add-btn {
-    font-weight: bold;
+    font-weight: normal;
     margin: 10px 0;
   }
 

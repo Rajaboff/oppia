@@ -11,7 +11,7 @@
              title="Edit Explanation">&#xE254;
           </i>
         </div>
-        <strong>Explanation:</strong>
+        <strong>Объяснение:</strong>
         <span>
           <angular-html-bind class="oppia-rte-editor" html-data="$ctrl.StateSolutionService.savedMemento.explanation.getHtml()">
           </angular-html-bind>
@@ -22,7 +22,7 @@
 
   <div ng-if="$ctrl.isEditable && $ctrl.explanationEditorIsOpen">
     <div class="oppia-rule-details-header">
-      <strong>Explanation:</strong>
+      <strong>Объяснение:</strong>
       <!-- TODO(sll): Find a way to do this without resorting to private properties like _html -->
       <schema-based-editor schema="$ctrl.EXPLANATION_FORM_SCHEMA"
                            local-value="$ctrl.StateSolutionService.displayed.explanation._html">
@@ -34,13 +34,13 @@
         <button type="button"
                 class="btn btn-secondary"
                 ng-click="$ctrl.cancelThisExplanationEdit()">
-          Cancel
+          Отмена
         </button>
         <button type="button"
                 class="btn btn-success"
                 ng-disabled="!$ctrl.StateSolutionService.displayed.explanation.getHtml()"
                 ng-click="$ctrl.saveThisExplanation()">
-          Save
+          Сохранить
         </button>
       </div>
 

@@ -176,8 +176,8 @@ describe('ItemSelectionInputValidationService', () => {
       expect(warnings).toContain({
         type: WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that the max allowed count is not less than the ' +
-          'min count.')
+          'Убедитесь, что максимально допустимое количество не меньше ' +
+          'минимального количества.')
       });
     });
 
@@ -196,7 +196,7 @@ describe('ItemSelectionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that you have enough choices to reach the max count.')
+          'Убедитесь, что у вас достаточно вариантов для достижения максимального количества.')
       }]);
     });
 
@@ -216,7 +216,7 @@ describe('ItemSelectionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that you have enough choices to reach the min count.')
+          'Убедитесь, что у вас достаточно вариантов для достижения минимального количества.')
       }]);
     });
 
@@ -230,7 +230,7 @@ describe('ItemSelectionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure the choices are nonempty.'
+      message: 'Убедитесь, что варианты не пусты.'
     }]);
   });
 
@@ -244,7 +244,7 @@ describe('ItemSelectionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure the choices are unique.'
+      message: 'Убедитесь, что выбор уникален.'
     }]);
   });
 
@@ -258,14 +258,14 @@ describe('ItemSelectionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'In answer group 1, ' +
-          'rule 1, the "proper subset" rule must include at least 2 options.')
+          'В группе ответов 1, ' +
+          'правило 1, правило «правильного подмножества» должно включать как минимум 2 варианта.')
       }]);
     });
 
   it(
-    'should expect number of correct options to be in between the maximum ' +
-    'and minimum allowed selections when the "Equals" rule is used.',
+    'следует ожидать, что количество правильных вариантов будет между максимальным ' +
+    'и минимально допустимый выбор при использовании правила "Equals".',
     () => {
       // Make min allowed selections greater than correct answers.
       customizationArguments.minAllowableSelectionCount.value = 2;
@@ -276,15 +276,15 @@ describe('ItemSelectionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'In answer group 1, rule 1, the number of correct options in ' +
-          'the "Equals" rule should be between 2 and 2 (the ' +
-          'minimum and maximum allowed selection counts).')
+          'В группе ответов 1, правило 1, количество правильных вариантов в ' +
+          'правило "Equals" должно быть от 2 до 2 ( ' +
+          'минимальное и максимальное допустимое количество выборок).')
       }]);
     });
 
   it(
-    'should expect at least one option when ' +
-    '"ContainsAtLeastOneOf" rule is used.',
+    'следует ожидать хотя бы один вариант, когда ' +
+    '"ContainsAtLeastOneOf" правило используется.',
     () => {
       var warnings = validatorService.getAllWarnings(
         currentState, customizationArguments, NoInputAnswerGroups,
@@ -292,8 +292,8 @@ describe('ItemSelectionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'In answer group 1, rule 1, the "ContainsAtLeastOneOf" rule ' +
-          'should have at least one option.')
+          'В группе ответов 1, правило 1, "ContainsAtLeastOneOf" правило ' +
+          'должен быть хотя бы один вариант.')
       }]);
     });
 });

@@ -19,7 +19,7 @@
               <[$ctrl.getTotalWarningsCount()]>
             </span>
             <ul uib-dropdown-menu class="uib-dropdown-menu oppia-editor-warnings-box story-editor-warning-box" ng-if="$ctrl.warningsAreShown">
-              <span class="oppia-editor-warnings-header">Warnings</span>
+              <span class="oppia-editor-warnings-header">Внимание</span>
               <li class="oppia-editor-warnings-text protractor-test-warnings-text"
                   ng-repeat="issue in $ctrl.validationIssues.concat($ctrl.explorationValidationIssues) track by $index">
                 <hr class="oppia-editor-warnings-separator">
@@ -65,8 +65,8 @@
     margin-bottom: 80px;
   }
   story-editor-page .navbar-helper {
-    background-color: #00609C;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.23);
+    background-color: inherit;
+    
     height: 70px;
     margin-bottom: 20px;
     position: fixed;
@@ -83,7 +83,7 @@
     text-align: center;
   }
   story-editor-page .navbar-tab-icon {
-    color: #FFF;
+    color: #A0A4A8;
     display: block;
     font-size: 30px;
     width: 100%;
@@ -96,11 +96,12 @@
     max-width: none;
   }
   story-editor-page .navbar-tab-active {
-    background-color: #e6e6e6;
-    box-shadow: 0 3px 2px 0 #e6e6e6;
+    background-color: #fff;
+
+    
   }
   story-editor-page .navbar-tab-active-icon {
-    color: #00609C;
+    color: #007EFF;
   }
   story-editor-page .topic-warning-container {
     display: block;
@@ -122,7 +123,7 @@
   }
   story-editor-page .navbar-text {
     align-items: center;
-    color: #FFF;
+    color: #007EFF;
     display: flex;
     font-family: Capriola, Roboto, Arial, sans-serif;
     font-size: 20px;
@@ -133,14 +134,18 @@
     display: flex;
   }
   story-editor-page .nav-list-item {
+    background-color: #fff;
     align-items: center;
     cursor: pointer;
     display: flex;
     justify-content: center;
-    width: 90px;
+    width: 80px;
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
+    border-radius: 8px;
+    margin: 6px;
   }
   story-editor-page .navbar-icons li:hover {
-    background-color: #4eb0c0;
+    background-color: #CCE5FF;
   }
   .story-editor-warning-box {
     display: block;

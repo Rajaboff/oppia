@@ -1,32 +1,32 @@
 <div class="modal-header create-new-story-header">
   <h3>
-    New Story
+    Создать историю
   </h3>
 </div>
 <form ng-submit="confirm(story)">
   <div class="modal-body create-new-story">
     <div class="story-input">
       <div class="story-input-header">
-        <span>Title*</span>
+        <span>Название</span>
       </div>
       <input class="form-control protractor-test-new-story-title-field required" ng-model="story.title" maxlength="<[MAX_CHARS_IN_STORY_TITLE]>" aria-label="Title" autofocus>
       <div>
         <span class="oppia-input-box-subtitle">
           <em>
-            Story title should be at most <[MAX_CHARS_IN_STORY_TITLE]> characters.
+            Название истории должно быть не более <[MAX_CHARS_IN_STORY_TITLE]> символов.
           </em>
         </span>
       </div>
     </div>
     <div class="story-input story-input-description">
       <div class="story-input-header">
-        <span>Description*</span>
+        <span>Описание</span>
       </div>
       <textarea rows="3" cols="50" ng-model="story.description" class="form-control protractor-test-new-story-description-field required" aria-label="Description"></textarea>
     </div>
     <div class="story-input">
       <div class="story-input-header">
-        <span>Url Fragment*</span>
+        <span>Фрагмент URL</span>
       </div>
       <input class="form-control protractor-test-new-story-url-fragment-field" ng-model="story.urlFragment" maxlength="<[MAX_CHARS_IN_STORY_URL_FRAGMENT]>"
              ng-class="{'is-invalid': storyUrlFragmentExists || !validUrlFragmentRegex.test(story.urlFragment)}"
@@ -35,21 +35,21 @@
       <div>
         <span class="oppia-input-box-subtitle">
           <em>
-            The story URL fragment is used to uniquely access the story viewer page. It should consist of one or more hyphen-separated words, all in lowercase, with at most <[MAX_CHARS_IN_STORY_URL_FRAGMENT]> characters in total and must be unique across the topic. Please use meaningful keywords, and avoid using words like "and", "of", or "the".
-            This story can be accessed at the following URL:<br>
+            Фрагмент URL-адреса истории используется для однозначного доступа к странице просмотра истории. Он должен состоять из одного или нескольких слов, разделенных дефисом, в нижнем регистре, не более <[MAX_CHARS_IN_STORY_URL_FRAGMENT]> всего символов и должны быть уникальными по теме. Используйте значимые ключевые слова и избегайте таких слов, как "and", "of", или "the".
+            Эта история доступна по следующему URL-адресу:<br>
             <[hostname]>/learn/<[classroomUrlFragment]>/<[topicUrlFragment]>/story/<[story.urlFragment]>
           </em>
         </span>
         <div ng-if="storyUrlFragmentExists" class="oppia-input-box-subtitle text-danger">
           <em>
-            This story URL fragment already exists.
+            Этот фрагмент URL истории уже существует.
           </em>
         </div>
       </div>
     </div>
     <div class="story-input story-input-thumbnail">
       <div class="story-input-header">
-        <span>Thumbnail Image*</span>
+        <span>Обложка</span>
       </div>
       <thumbnail-uploader preview-title="story.title"
                           aspect-ratio="'4:3'"
@@ -57,14 +57,14 @@
                           use-local-storage="true"
                           allowed-bg-colors="allowedBgColors"
                           thumbnail-bg-color="story.getThumbnailBgColor()"
-                          preview-description-bg-color="'#2F6687'">
+                          preview-description-bg-color="'#007EFF'">
       </thumbnail-uploader>
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-secondary" ng-click="cancel()" type="button">Cancel</button>
+    <button class="btn btn-secondary" ng-click="cancel()" type="button">Отмена</button>
     <button class="btn btn-success protractor-test-confirm-story-creation-button" type="submit" ng-disabled="!isValid()">
-      <span>Create Story</span>
+      <span>Создать историю</span>
     </button>
   </div>
 </form>

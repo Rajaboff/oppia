@@ -1,8 +1,8 @@
 <div class="oppia-skills-list-container">
   <md-card class="oppia-page-card oppia-long-text">
     <div class="oppia-skills-mastery">
-      <h3 class="form-heading"> Skills included in this topic </h3>
-      <h4 class="not-logged-in-warning" ng-if="!$ctrl.userIsLoggedIn"> Please login to view your skill mastery. </h4>
+      <h3 class="form-heading"> Навыки, включенные в эту тему </h3>
+      <h4 class="not-logged-in-warning" ng-if="!$ctrl.userIsLoggedIn"> Пожалуйста, войдите, чтобы увидеть свои навыки. </h4>
       <table class="skill-mastery-table" ng-if="$ctrl.skillIdsAndMastery.length > 0">
         <colgroup>
           <col class="oppia-colgroup-col-1">
@@ -10,10 +10,10 @@
         </colgroup>
         <tr>
           <th class="skill-mastery-table-headings">
-            Skill Descriptions
+            Описание навыков
           </th>
           <th class="skill-mastery-table-headings">
-            Skill Mastery
+            Мастерство навыков
           </th>
         </tr>
         <tr ng-repeat="item in $ctrl.skillIdsAndMastery | orderBy: '-mastery'"
@@ -28,7 +28,7 @@
         </tr>
       </table>
       <h4 class="no-skill-warning" ng-if="$ctrl.skillIdsAndMastery.length === 0">
-        No skill is assigned to this topic.
+        Этой теме не присвоены навыки.
       </h4>
     </div>
   </md-card>

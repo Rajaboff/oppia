@@ -12,7 +12,7 @@
                alt="Publish Changes">
               &#xE161;
             </i>
-            <span class="oppia-save-publish-button-label float-left">Publish Changes</span>
+            <span class="oppia-save-publish-button-label float-left">Опубликовать</span>
             <span class="d-none d-md-block float-left oppia-changes-count-text"
                   ng-if="getChangeListCount() > 0">
               (<[getChangeListCount()]>)
@@ -21,7 +21,7 @@
         </span>
 
         <span ng-if="isSaveInProgress()">
-          <span class="oppia-save-publish-button-label">Publishing</span>
+          <span class="oppia-save-publish-button-label">Публикация</span>
           <loading-dots></loading-dots>
         </span>
       </button>
@@ -29,7 +29,7 @@
               ng-disabled="!getChangeListCount()" aria-label="Dropdown toggle" uib-dropdown-toggle>
       </button>
       <ul uib-dropdown-menu role="menu" class="oppia-discard-draft-button-container" ng-style="{ width: getChangeListCount() ? '150px' : '120px' }">
-        <li title="Discard all pending changes"><a ng-click="discardChanges()" ng-class="{'oppia-disabled-link': !getChangeListCount()}" class="dropdown-item">Discard Draft</a></li>
+        <li title="Discard all pending changes"><a ng-click="discardChanges()" ng-class="{'oppia-disabled-link': !getChangeListCount()}" class="dropdown-item">Отменить черновик</a></li>
       </ul>
     </div>
   </li>
@@ -41,13 +41,13 @@
       <div class="skill-nav-dropdown-container">
         <div class="skill-nav-skill-nav-dropdown-options" ng-if="showNavigationOptions">
           <div class="skill-nav-dropdown-option" ng-click="selectMainTab()">
-            <i class="material-icons">&#xE254;</i><span>Editor</span>
+            <i class="material-icons">&#xE254;</i><span>Редактор</span>
           </div>
           <div class="skill-nav-dropdown-option" ng-click="selectQuestionsTab()">
-            <i class="material-icons">&#xE254;</i><span>Questions</span>
+            <i class="material-icons">&#xE254;</i><span>Вопросы</span>
           </div>
           <div class="skill-nav-dropdown-option" ng-click="selectPreviewTab()">
-            <i class="material-icons">&#xE037;</i><span>Preview</span>
+            <i class="material-icons">&#xE037;</i><span>Просмотр</span>
           </div>
         </div>
         <div class="skill-nav-dropdown-content">
@@ -64,12 +64,12 @@
         <div class="skill-nav-skill-nav-dropdown-options" ng-if="showSkillEditOptions">
           <div class="skill-nav-dropdown-option" ng-click="saveChanges()">
             <i class="material-icons">&#xE254;</i>
-            <span>Save Changes</span>
+            <span>Сохранить</span>
           </div>
         </div>
         <div class="skill-nav-dropdown-content right-container">
           <div class="skill-nav-dropdown-text" ng-click="discardChanges()">
-            Discard Changes
+            Отменить изменения
             <span ng-if="getChangeListCount() > 0">
               (<[getChangeListCount()]>)
             </span>
@@ -128,15 +128,15 @@
       width: 50%;
     }
     skill-editor-navbar .discard-changes-btn {
-      background-color: #008098;
+      background-color: #007EFF;
       color: #FFFFFF;
       font-weight: bold;
       width: 100%;
     }
     skill-editor-navbar .publish-skill-btn {
       background-color: #FFFFFF;
-      border: 2px solid #008098;
-      color: #008098;
+      border: 2px solid #007EFF;
+      color: #007EFF;
       font-weight: bold;
     }
     .skill-navbar-mobile-tabs {
@@ -167,7 +167,7 @@
     }
 
      .right-container {
-      background-color: #419889;
+      background-color: #007EFF;
       color: #FFF;
     }
 

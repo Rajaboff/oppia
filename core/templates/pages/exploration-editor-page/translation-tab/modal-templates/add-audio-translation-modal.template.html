@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h3>Add Audio Translation</h3>
+  <h3>Добавить аудио перевод</h3>
 </div>
 
 <div class="modal-body">
@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div role="form" class="form-horizontal">
         <div class="form-group">
-          <label for="audioTranslationFileField" class="col-lg-2 col-md-2 col-sm-2 float-left">Audio File</label>
+          <label for="audioTranslationFileField" class="col-lg-2 col-md-2 col-sm-2 float-left">Аудио файл</label>
           <div class="col-lg-10 col-md-10 col-sm-10">
             <audio-file-uploader id="audioTranslationFileField"
                                  dropped-file="droppedFile"
@@ -16,7 +16,7 @@
             </audio-file-uploader>
             <div ng-if="isAudioAvailable"
                  class="oppia-updated-audio-file-upload-message">
-              <strong>Note:</strong> Uploading a new audio file will replace the existing audio file.
+              <strong>Заметка:</strong> Загрузка нового аудиофайла заменит существующий аудиофайл.
             </div>
             <div ng-if="errorMessage"
                  class="oppia-audio-file-upload-field-error-message protractor-test-audio-file-upload-field-error-message">
@@ -31,7 +31,7 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary protractor-test-close-audio-upload-modal" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-secondary protractor-test-close-audio-upload-modal" ng-click="cancel()">Отмена</button>
   <button class="btn btn-success protractor-test-save-uploaded-audio-button" ng-click="confirm()" ng-disabled="!isAudioTranslationValid() || saveInProgress">
     <[saveButtonText]>
   </button>

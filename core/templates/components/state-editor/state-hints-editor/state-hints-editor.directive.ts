@@ -83,7 +83,7 @@ angular.module('oppia').directive('stateHintsEditor', [
             INTERACTION_SPECS) {
           var ctrl = this;
           $scope.getHintButtonText = function() {
-            var hintButtonText = '+ ADD HINT';
+            var hintButtonText = '+ Добавить подсказку';
             if ($scope.StateHintsService.displayed) {
               if ($scope.StateHintsService.displayed.length >= 5) {
                 hintButtonText = 'Limit Reached';

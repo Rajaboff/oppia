@@ -2,20 +2,20 @@
   <md-card class="oppia-editor-card" ng-if="!loadingMessage">
     <div ng-if="explorationHasBeenVisited">
       <div class="oppia-statistics-display">
-        <h3>Exploration Completion Rate</h3>
+        <h3>Скорость завершения занятия</h3>
         <pie-chart data="pieChartData" options="pieChartOptions">
         </pie-chart>
         <p class="text-center">
           <span ng-if="numPassersby"
                 class="protractor-test-num-passersby font-weight-bold">
-            <[numPassersby]> learners browsed this exploration. They left before reaching the second card.
+            <[numPassersby]> учащиеся просматривали это занятие. Ушли не дойдя до второй карты.
           </span>
           <span ng-if="!numPassersby" class="font-weight-bold">
-            No learners have browsed this exploration yet.
+            Ни один из учащихся еще не просматривал это занятие.
           </span>
         </p>
 
-        <h3>Card statistics</h3>
+        <h3>Карта статистики</h3>
         <div class="container">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -31,7 +31,7 @@
     </div>
     <div ng-if="!explorationHasBeenVisited">
       <em>
-        This exploration has not been visited by anyone yet, so there are no statistics to display.
+        Это занятие еще никто не посещал, поэтому статистика для отображения отсутствует..
       </em>
     </div>
   </md-card>

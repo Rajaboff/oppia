@@ -1,7 +1,7 @@
 <md-card class="oppia-editor-card-with-avatar oppia-mobile-collapsible-card">
   <div class="oppia-editor-card-body">
     <div class="skill-card-header oppia-mobile-collapsible-card-header" ng-click="toggleSkillEditorCard()">
-      <h3 class="skill-card-header-text">Details</h3>
+      <h3 class="skill-card-header-text">Детали</h3>
       <i class="fa fa-caret-down"
          ng-if="!skillEditorCardIsShown"
          aria-hidden="true">
@@ -14,9 +14,9 @@
     <div class="oppia-mobile-collapsible-card-content" ng-if="skillEditorCardIsShown">
       <skill-description-editor></skill-description-editor>
       <div class="oppia-editor-card-section review-material-container">
-        <strong class="heading-text">Review Material</strong>
+        <strong class="heading-text">Обзор материалов</strong>
         <div class="concept-card-subtitle">
-          This gives the learner a brief overview of how to perform the skill.
+          Это дает учащемуся краткое описание того, как выполнять навык.
         </div>
         <review-material-editor bindable-dict="bindableFieldsDict"
                                 on-save-explanation="onSaveExplanation">
@@ -24,14 +24,14 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-default btn-show-preview" ng-if="skillEditorCardIsShown" ng-click="showSkillPreview()">Preview Concept Card</button>
+  <button class="btn btn-default btn-show-preview" ng-if="skillEditorCardIsShown" ng-click="showSkillPreview()">Предпросмотр концептуальной карты</button>
 </md-card>
 
 <md-card class="oppia-editor-card-with-avatar oppia-mobile-collapsible-card">
   <div class="oppia-editor-card-body">
     <div class="oppia-editor-card-section worked-example-content">
       <div class="oppia-worked-examples-header oppia-mobile-collapsible-card-header" ng-click="toggleWorkedExampleList()">
-        <strong class="heading-text">Worked Examples</strong>
+        <strong class="heading-text">Рабочий пример</strong>
         <i class="fa fa-caret-down"
            ng-if="!workedExamplesListIsShown"
            aria-hidden="true">
@@ -43,7 +43,7 @@
       </div>
       <div ng-if="workedExamplesListIsShown" class="oppia-mobile-collapsible-card-content">
         <div class="concept-card-subtitle">
-          These will be displayed one-by-one to the learner, in order, if they ask for them.
+          Они будут отображаться ученику один за другим по порядку, если он их попросит.
         </div>
         <div ng-if="bindableFieldsDict.displayedWorkedExamples.length > 0">
           <ul class="nav oppia-option-list nav-stacked nav-pills worked-examples-list"
@@ -88,7 +88,7 @@
         <button type="button"
                 class="btn btn-add-skill-example skill-editor-add-btn protractor-test-add-worked-example"
                 ng-click="openAddWorkedExampleModal()">
-          + ADD WORKED EXAMPLE
+          + Добавить рабочий пример 
         </button>
       </div>
     </div>
@@ -111,14 +111,15 @@
     position: relative;
   }
   skill-concept-card-editor .btn-add-skill-example {
-    background-color: #058CA6;
+    background-color: #007EFF;
     color: #FFFFFF;
   }
   skill-concept-card-editor .btn-show-preview {
-    border-top: 1px solid #c1c1c1;
-    color: #419889;
+   background-color: #F9F9FA;
+    color: #007EFF;
     font-size: 14px;
     padding: 10px 0;
+    border-radius: 0px;
   }
   skill-concept-card-editor .last-element {
     border-bottom: 1px solid #ccc;

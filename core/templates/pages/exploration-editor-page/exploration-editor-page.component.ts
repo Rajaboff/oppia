@@ -212,10 +212,10 @@ angular.module('oppia').component('explorationEditorPage', {
       var saveButtonTutorialElement = {
         type: 'element',
         selector: _ID_TUTORIAL_SAVE_BUTTON,
-        heading: 'Save',
+        heading: 'Сохранить',
         text: (
-          'When you\'re done making changes, ' +
-          'be sure to save your work.<br><br>'),
+          'Когда вы закончите вносить изменения, ' +
+          'обязательно сохраните свою работу.<br><br>'),
         placement: 'bottom'
       };
 
@@ -464,7 +464,7 @@ angular.module('oppia').component('explorationEditorPage', {
       };
 
       ctrl.getNavbarText = function() {
-        return 'Exploration Editor';
+        return 'Редактор занятий';
       };
 
       ctrl.countWarnings = () => ExplorationWarningsService.countWarnings();
@@ -549,7 +549,7 @@ angular.module('oppia').component('explorationEditorPage', {
         /** ********************************************************
          * Called on initial load of the exploration editor page.
          *********************************************************/
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
 
         ctrl.explorationId = ContextService.getExplorationId();
         ctrl.explorationUrl = '/create/' + ctrl.explorationId;
@@ -564,11 +564,11 @@ angular.module('oppia').component('explorationEditorPage', {
         ctrl.initExplorationPage();
         ctrl.EDITOR_TUTORIAL_OPTIONS = [{
           type: 'title',
-          heading: 'Creating in Oppia',
+          heading: 'Создание в Oqustudy',
           text: (
-            'Explorations are learning experiences that you create using ' +
-            'Oppia. Think of explorations as a conversation between a ' +
-            'student and a tutor.')
+            'Занятие - это практическая образовательная единица обучаюшего материала, который вы создаете используя ' +
+            'Oqustudy.kz. Представьте, что занятия, это как разговор между ' +
+            'учеником и учителем.')
         }, {
           type: 'function',
           fn: function(isGoingForward) {
@@ -579,13 +579,13 @@ angular.module('oppia').component('explorationEditorPage', {
         }, {
           type: 'element',
           selector: _ID_TUTORIAL_STATE_CONTENT,
-          heading: 'Content',
+          heading: 'Карточка контента',
           text: (
-            '<p>An Oppia exploration is divided into several \'cards\'. ' +
-            'The first part of a card is the <b>content</b>.</p>' +
-            '<p>Use the content section to set the scene. ' +
-            'Tell the learner a story, give them some information, ' +
-            'and then ask a relevant question.</p>'),
+            '<p>Занятия Oqustudy.kz разделено на несколько \'карточек\'. ' +
+            'Первая карточка - это <b>контент</b>.</p>' +
+            '<p>Используйте карточку контент, чтобы предоставить вводную информацию. ' +
+            'Расскажите учащемуся историю, опишите контекст, ' +
+            'а затем задайте соответствующий вопрос.</p>'),
           placement: 'bottom'
         }, {
           type: 'function',
@@ -600,25 +600,25 @@ angular.module('oppia').component('explorationEditorPage', {
         }, {
           type: 'title',
           selector: _ID_TUTORIAL_STATE_INTERACTION,
-          heading: 'Interaction',
+          heading: 'Интерактив',
           text: (
-            '<p>After you\'ve written the content of your conversation, ' +
-            'choose an <b>interaction type</b>. ' +
-            'An interaction is how you want your learner to respond ' +
-            'to your question.</p> ' +
-            '<p>Oppia has several built-in interactions, including:</p>' +
+            '<p>После того, как вы написали контент вашего разговора, ' +
+            'выберите <b>тип интерактива</b>. ' +
+            'Интерактив - это то, как вы хотите, чтобы ваш ученик ответил на ваш вопрос' +
+            'каким элементом воспользовался.</p> ' +
+            '<p>В Oqustudy есть несколько встроенных интерактивов, в том числе:</p>' +
             '<ul>' +
             '  <li>' +
-            '    Multiple Choice' +
+            '    Множественный выбор' +
             '  </li>' +
             '  <li>' +
-            '    Text/Number input' +
+            '    Текстовый/числовой ввод' +
             '  </li>' +
             '  <li>' +
-            '    Code snippets' +
+            '    Фрагменты кода' +
             '  </li>' +
             '</ul>' +
-            'and more.')
+            'и другие.')
         }, {
           type: 'function',
           fn: function(isGoingForward) {
@@ -631,12 +631,12 @@ angular.module('oppia').component('explorationEditorPage', {
           }
         }, {
           type: 'title',
-          heading: 'Responses',
+          heading: 'Ответы',
           text: (
-            'After the learner uses the interaction you created, it\'s ' +
-            'your turn again to choose how your exploration will respond ' +
-            'to their input. You can send a learner to a new card or ' +
-            'have them repeat the same card, depending on how they answer.')
+            'После того, как учащийся воспользовался интерактивом, ваша ' +
+            ' задача отреагировать, предоставить объяснение по произведенным действиям' +
+            ' пользователя. Вы можете отправить ученика на новую карточку или ' +
+            'попросите их повторить ту же карточку в зависимости от того, как они ответят.')
         }, {
           type: 'function',
           fn: function(isGoingForward) {
@@ -650,29 +650,29 @@ angular.module('oppia').component('explorationEditorPage', {
         }, {
           type: 'element',
           selector: _ID_TUTORIAL_PREVIEW_TAB,
-          heading: 'Preview',
+          heading: 'Предпросмотр',
           text: (
-            'At any time, you can click the <b>preview</b> button to ' +
-            'play through your exploration.'),
+            'В любой момент вы можете нажать на кнопку<b>предпросмотр</b>,' +
+            'чтобы пройти занятие.'),
           placement: 'bottom'
         }, saveButtonTutorialElement, {
           type: 'title',
-          heading: 'Tutorial Complete',
+          heading: 'Учебник завершен',
           text: (
-            '<h2>Now for the fun part...</h2>' +
-            'That\'s the end of the tour! ' +
-            'To finish up, here are some things we suggest: ' +
+            '<h2>А теперь самое интересное ...</h2>' +
+            'Это конец тура!' +
+            'В заключение мы предлагаем несколько советов: ' +
             '<ul>' +
             '  <li>' +
-            '    Create your first card!' +
+            '    Создайте свою первую карточку!' +
             '  </li>' +
             '  <li>' +
-            '    Preview your exploration.' +
+            '    Просмотрите свое занятие.' +
             '  </li>' +
             '  <li>' +
-            '    Check out more resources in the ' +
-            '    <a href="https://oppia.github.io/#/" target="_blank">' +
-            '      Help Center.' +
+            '    Ознакомьтесь с дополнительными ресурсами в ' +
+            '    <a href="https://oqustudy.github.io/#/" target="_blank">' +
+            '      Центр помощи.' +
             '    </a>' +
             '  </li>' +
             '</ul>')

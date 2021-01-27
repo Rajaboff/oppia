@@ -1,4 +1,4 @@
-<background-banner></background-banner>
+
 <div class="oppia-learner-dashboard-container position-relative">
   <div>
     <h2 class="oppia-learner-dashboard-title"
@@ -13,15 +13,15 @@
     <md-card layout="row"
              ng-style="$ctrl.checkMobileView() ? {'margin-bottom': '10px'} : {'margin-bottom': '40px'}">
       <div class="stats-card">
-        <p class="stat-description">Completed Explorations</p>
+        <p class="stat-description">📈 Завершенные занятия</p>
         <h1 class="stat-value"><[$ctrl.completedExplorationsList.length]></h1>
       </div>
       <div class="stats-card">
-        <p class="stat-description">Completed Collections</p>
+        <p class="stat-description">📊 Завершенные курсы</p>
         <h1 class="stat-value"><[$ctrl.completedCollectionsList.length]></h1>
       </div>
       <div class="stats-card">
-        <p class="stat-description">Subscriptions</p>
+        <p class="stat-description">🧑🏻‍🎓 Подписки</p>
         <h1 class="stat-value"><[$ctrl.subscriptionsList.length]></h1>
       </div>
     </md-card>
@@ -33,7 +33,7 @@
     <div class="col-sm-2"
          ng-style="$ctrl.checkMobileView() ? {'text-align': 'center'} : {'text-align': 'left'}">
       <div class="h-100" ng-if="!$ctrl.checkMobileView()"></div>
-      <img ng-src="<[$ctrl.getStaticImageUrl('/general/collection_mascot.svg')]>"
+      <img ng-src="<[$ctrl.getStaticImageUrl('/general/woman-teacher.png')]>"
            ng-class="{'oppia-learner-dashboard-mascot-mobile': $ctrl.checkMobileView()}"
            class="oppia-learner-dashboard-mascot">
     </div>
@@ -147,7 +147,7 @@
         <span class="sort-explorations-select oppia-learner-dashboard-sort"
               ng-class="{'oppia-learner-dashboard-sort-mobile': $ctrl.checkMobileView()}"
               ng-if="$ctrl.activeSubsection === $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.EXPLORATIONS && (($ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.COMPLETED && $ctrl.completedExplorationsList.length !== 0) || ($ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.INCOMPLETE && $ctrl.incompleteExplorationsList.length !== 0))">
-          <p class="sort-by-text mt-0">Sort By</p>
+          <p class="sort-by-text mt-0">Сортировать по</p>
           <select ng-model="$ctrl.currentExpSortType"
                   class="sort-options mt-0"
                   ng-change="$ctrl.setExplorationsSortingOptions($ctrl.currentExpSortType)"
@@ -162,7 +162,7 @@
         <span class="sort-explorations-select oppia-learner-dashboard-sort oppia-explorations-select"
               ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.SUBSCRIPTIONS && $ctrl.subscriptionsList.length !== 0"
               ng-class="{'oppia-learner-dashboard-sort-mobile': $ctrl.checkMobileView()}">
-          <p class="sort-by-text mt-0">Sort By</p>
+          <p class="sort-by-text mt-0">Сортировать по</p>
           <select ng-model="$ctrl.currentSubscribersSortType"
                   class="sort-options oppia-sort-options"
                   ng-change="$ctrl.setSubscriptionSortingOptions($ctrl.currentSubscribersSortType)"
@@ -177,7 +177,7 @@
         <span class="sort-explorations-select oppia-learner-dashboard-sort oppia-sort-options"
               ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.FEEDBACK && $ctrl.threadSummaries.length !== 0 && !$ctrl.feedbackThreadActive"
               ng-class="{'oppia-learner-dashboard-sort-mobile': $ctrl.checkMobileView()}">
-          <p class="sort-by-text mt-0">Sort By</p>
+          <p class="sort-by-text mt-0">Сортировать по</p>
           <select ng-model="$ctrl.currentFeedbackThreadsSortType"
                   class="sort-options oppia-sort-options"
                   ng-change="$ctrl.setFeedbackSortingOptions($ctrl.currentFeedbackThreadsSortType)"
@@ -546,7 +546,7 @@
                   </strong>
                 </div>
                 <div class="oppia-impact-text">
-                  <span>Impact</span>
+                  <span>Влияние</span>
                   <span><[subscription.impact || 0]></span>
                 </div>
               </span>
@@ -636,7 +636,7 @@
             <tr ng-if="$ctrl.loadingFeedbacks">
               <td class="text-center">
                 <span>
-                  Loading
+                  Загрузка
                   <loading-dots></loading-dots>
                 </span>
               </td>
@@ -747,7 +747,7 @@
   }
 
   .oppia-learner-dashboard-title {
-    color: #01645c;
+    color: #000;
     font-family: 'Capriola', 'Roboto', Arial, sans-serif;
     font-size: 3em;
     margin-bottom: 33px;
@@ -763,13 +763,13 @@
 
   .oppia-learner-dashboard-mascot {
     float: right;
-    margin-top: -40px;
+    margin-top: 0px;
     padding-left: 10px;
     width: 140px;
   }
 
   .oppia-learner-dashboard-menu {
-    border: 1px solid #d0d0d0;
+   background-color: #fff;
     color: black;
     cursor: pointer;
     font-family: 'Capriola', 'Roboto', Arial, sans-serif;
@@ -777,17 +777,17 @@
     font-weight: normal;
     margin: 0;
     padding: 15px 20px 15px 20px;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
 
   .oppia-learner-dashboard-main-menu .oppia-learner-dashboard-sub-section-active {
-    background-color: #aed2e9;
-    border: 1px solid lightgreen;
-    color: black;
+    background-color: #E5F2FF;
+    color: #007EFF;
   }
 
   .oppia-learner-dashboard-submenu {
-    background-color: #fff;
-    border: 1px solid #d0d0d0;
+    background-color: #E5F2FF;
+    
     color: #757575;
     cursor: pointer;
     font-family: 'Capriola', 'Roboto', Arial, sans-serif;
@@ -796,7 +796,7 @@
   }
 
   .oppia-learner-dashboard-section-active {
-    background-color: #018477;
+    background-color: #007EFF;
     color: white;
   }
 
@@ -853,6 +853,7 @@
     margin-left: -76px;
     margin-top: 307px;
     position: absolute;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
 
   .oppia-learner-dashboard-intro-card {
@@ -862,6 +863,7 @@
     margin: 1em 0 0;
     padding: 37px 30px;
     text-align: center;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
 
   .oppia-learner-dashboard-intro-card:before {
@@ -877,7 +879,7 @@
   }
 
   .oppia-learner-dashboard-intro-card:after {
-    background: #e8e7e3;
+    background: #F9F9FA;
     border-bottom-right-radius: 40px 50px;
     bottom: -1.88em;
     content: "";
@@ -889,7 +891,7 @@
   }
 
   .oppia-learner-dashboard-intro-button {
-    background-color: #015c53;
+    background-color: #007EFF;
     color: #fff;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
     font-size: 16px;
@@ -897,13 +899,15 @@
     padding: 8px;
     text-transform: uppercase;
     width: 250px;
+    box-shadow: 0px 8px 16px rgba(0, 126, 255, 0.16);
   }
 
   .oppia-learner-dashboard-intro-button:hover,
   .oppia-learner-dashboard-intro-button:focus,
   .oppia-learner-dashboard-intro-button:active {
-    background-color: rgba(5, 190, 178, 1);
+    background-color: #3398FF;
     color: #fff;
+    box-shadow: 0px 12px 20px rgba(51, 152, 255, 0.24);
   }
 
   .oppia-learner-dashboard-intro-card-message {
@@ -913,7 +917,7 @@
   }
 
   .oppia-learner-dashboard-main-content-title {
-    color: #076962;
+    color: #000;
     display: inline-block;
     font-family: 'Capriola', 'Roboto', Arial, sans-serif;
     font-size: 1.3em;
@@ -929,10 +933,11 @@
 
   .oppia-learner-dashboard-main-content-container .oppia-learner-dashboard-no-activity-card {
     background: rgb(255,255,255);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
     font-family: "Capriola", "Roboto", Arial, sans-serif;
     margin: 0 17px 0 4px;
     padding: 30px 55px 30px 30px;
+    border-radius: 8px;
   }
 
   .oppia-learner-dashboard-sort-mobile {
@@ -1027,6 +1032,7 @@
   learner-dashboard-page .oppia-subscription-container-list {
     margin: 0 8px 0 4px;
     width: 197px;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
   learner-dashboard-page .oppia-subscription-name {
     font-size: 17.5px;
@@ -1172,10 +1178,11 @@
   }
 
   .oppia-dashboard-tooltip-text {
-    background-color: #018477;
+    background-color: #E5F2FF;
+    border: 1px solid #007EFF;
     border-radius: 6px;
     bottom: 97%;
-    color: #fff;
+    color: #007EFF;
     font-size: 0.6em;
     padding: 5px;
     position: absolute;

@@ -1,10 +1,10 @@
 <style>
   .oppia-exploration-footer {
-    background-color: #094142;
-    color: #FFF;
+    background-color: inherit;
+    color: #007EFF;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
     font-size: 13px;
-    height: 42px;
+    height: 12px;
     line-height: 0;
     margin-top: 30px;
     width: 100%;
@@ -23,7 +23,7 @@
   }
 
   .oppia-exploration-footer .author-profile-dropdown-menu li > a {
-    color: #094142;
+    color: #007EFF;
     padding: 3px 6px;
   }
 
@@ -36,18 +36,18 @@
   }
 
   .oppia-exploration-footer .author-profile .hover-link {
-    background-color: #094142;
-    width: 190px;
+    background-color: inherit;
+    width: 160px;
   }
 
   .oppia-exploration-footer .author-profile.hovered-text h4 {
-    color: #094142;
+    color: #007EFF;
   }
 
   .oppia-exploration-footer .author-profile .hover-link:hover,
   .oppia-exploration-footer .author-profile .hover-link:focus {
     background-color: #fff;
-    color: #094142;
+    color: #007EFF;
   }
 
   .oppia-exploration-footer .uib-dropdown-menu.author-profile-dropdown-menu {
@@ -62,7 +62,7 @@
 
   .oppia-exploration-footer .author-profile-dropdown-menu li {
     padding: 15px 0;
-    color: #094142;
+    color: #007EFF;
     float: none;
     text-overflow: clip;
     white-space: nowrap;
@@ -70,8 +70,8 @@
   }
 
   .oppia-exploration-footer .author-profile-dropdown-menu li a:hover {
-    background-color: #eee;
-    color: #888;
+    background-color: #E5F2FF;
+    color: #007EFF;
   }
 
   .oppia-exploration-footer .author-profile-text {
@@ -85,13 +85,13 @@
   }
 
   .oppia-exploration-footer .author-profile-text.not-hovered {
-    color: #fff;
+    color: #007EFF;
     text-transform: uppercase;
   }
 
   .oppia-exploration-footer .author-profile-text.hovered-text,
   .oppia-exploration-footer .author-profile .hover-link:focus .author-profile-text {
-    color: #094142;
+    color: #007EFF;
     text-decoration: none;
     text-transform: uppercase;
   }
@@ -130,7 +130,7 @@
 
   .oppia-exploration-footer .oppia-navbar-footer-info-icon:hover {
     background: #fff;
-    color: #009688;
+    color: #007EFF;
     height: 56px;
     padding: 12px;
   }
@@ -164,11 +164,7 @@
   <div class="row">
     <div class="col-sm-5">
       <ul class="author-profile" ng-if="!windowIsNarrow">
-        <li>
-          <img ng-src="<[getStaticImageUrl('/general/apple.svg')]>"
-               class="exploration-footer-img"
-               alt="">
-        </li>
+        
         <li class="hover-link"
             ng-mouseenter="hovering = true"
             ng-mouseleave="hovering = false"

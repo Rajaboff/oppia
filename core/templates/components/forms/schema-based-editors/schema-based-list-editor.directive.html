@@ -33,14 +33,14 @@
                 ng-click="deleteElement($index)"
                 ng-disabled="isDisabled()">
           <i class="material-icons md-18">&#xE5CD;</i>
-          <span class="oppia-icon-accessibility-label">Delete this list entry</span>
+          <span class="oppia-icon-accessibility-label">Удалить эту запись в списке</span>
         </button>
       </td>
     </tr>
   </table>
 
   <div ng-if="showDuplicatesWarning && hasDuplicates()" class="oppia-form-error" aria-live="assertive">
-    Please ensure that the list has no duplicates.
+    Убедитесь, что в списке нет дубликатов.
   </div>
 
   <!-- The margin-left is added here to left-align the button with the previous list items. -->

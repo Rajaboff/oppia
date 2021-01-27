@@ -12,10 +12,10 @@
       <th ng-repeat="key in $ctrl.SKILL_HEADINGS"
           class="dashboard-table-headings">
         <p ng-if="key === 'index'" class="text-center"></p>
-        <p ng-if="key === 'description'" class="text-left">Skill Description</p>
-        <p ng-if="key === 'worked_examples_count'" class="text-center">Worked Examples</p>
-        <p ng-if="key === 'misconception_count'" class="text-center">Misconceptions</p>
-        <p ng-if="key === 'status'" class="text-right skill-status-heading">Status</p>
+        <p ng-if="key === 'description'" class="text-left">Описание</p>
+        <p ng-if="key === 'worked_examples_count'" class="text-center">Рабочие примеры</p>
+        <p ng-if="key === 'misconception_count'" class="text-center">Заблуждения</p>
+        <p ng-if="key === 'status'" class="text-right skill-status-heading">Статус</p>
       </th>
     </tr>
     <tr ng-repeat="skill in getSkillSummaries() track by $index"
@@ -29,7 +29,7 @@
           <div class="skill-description protractor-test-skill-description"><[skill.description]></div>
           <div class="skill-topic">
             <span ng-if="!skill.topicName">
-              Unassigned
+              Не назначен
               <i class="fa fa-exclamation-triangle"></i>
             </span>
             <span ng-if="skill.topicName">
@@ -51,10 +51,10 @@
       <td class="text-right">
         <span>
           <span ng-if="skill.topicName">
-            Assigned
+            Назначен
           </span>
           <span ng-if="!skill.topicName" class="skill-topic-unassigned protractor-test-assign-skill-to-topic-button" ng-click="$ctrl.assignSkillToTopic(skill.id)">
-            UNASSIGNED
+            Не назначен
           </span>
         </span>
         <div class="skill-list-options-container">
@@ -63,25 +63,25 @@
             <div class="assign-skill-box" ng-if="getEditableTopicSummaries().length > 0 && !isUnpublishedSkill()" ng-click="$ctrl.assignSkillToTopic(skill.id)">
               <span class="skills-list-action-button">
                 <i class="fa fa-wrench"></i>
-                <span> Assign to Topic </span>
+                <span> Назначить тему </span>
               </span>
             </div>
             <div class="merge-skill-box" ng-if="getMergeableSkillSummaries().length > 0" ng-click="$ctrl.mergeSkill(skill)">
               <div class="protractor-test-merge-skills-button">
                 <i class="fa fa-plus"></i>
-                <span>Merge Skill</span>
+                <span>Соединить навык</span>
               </div>
             </div>
             <div class="unassign-skill-box protractor-test-unassign-skill-button" ng-if="skill.topicName" ng-click="$ctrl.unassignSkill(skill.id)">
               <div>
                 <i class="fa fa-minus"></i>
-                <span>Unassign Skill</span>
+                <span>Отменить назначение навыка</span>
               </div>
             </div>
             <div class="delete-icon-box protractor-test-delete-skill-button" ng-click="$ctrl.deleteSkill(skill.id)">
               <a ng-if="canDeleteSkill()">
                 <span class="fa fa-trash-alt"></span>
-                <span>Delete</span>
+                <span>Удалить</span>
               </a>
             </div>
           </div>
@@ -106,26 +106,26 @@
                 <div class="assign-skill-box" ng-if="getEditableTopicSummaries().length > 0 && !isUnpublishedSkill()">
                   <span class="skills-list-action-button" ng-click="$ctrl.assignSkillToTopic(skill.id)">
                     <i class="fa fa-wrench"></i>
-                    <span> Assign to Topic </span>
+                    <span> Назначить тему</span>
                   </span>
                 </div>
                 <div class="merge-skill-box" ng-if="getMergeableSkillSummaries().length > 0" ng-click="$ctrl.mergeSkill(skill)">
                   <div class="protractor-test-merge-skills-button">
                     <i class="fa fa-plus"></i>
-                    <span>Merge Skill</span>
+                    <span>Соединить навык</span>
                   </div>
                 </div>
                 <div class="delete-icon-box" ng-click="$ctrl.deleteSkill(skill.id)">
                   <span ng-if="canDeleteSkill()" >
                     <i class="fa fa-trash-alt"></i>
-                    <span>Delete</span>
+                    <span>Удалить</span>
                   </span>
                 </div>
               </div>
             </div>
             <div class="skill-topic">
               <span ng-if="!skill.topicName">
-                Unassigned
+                Не назначен
                 <i class="fa fa-exclamation-triangle"></i>
               </span>
               <span ng-if="skill.topicName">
@@ -137,24 +137,24 @@
       </div>
       <div class="skill-item-entities">
         <div class="skill-item-entity">
-          <div class="skill-item-key"><span>Worked Examples</span></div>
+          <div class="skill-item-key"><span>Рабочие примеры</span></div>
           <div class="skill-item-value"><span> <[skill.workedExamplesCount]></span></div>
         </div>
         <div class="skill-item-entity">
-          <div class="skill-item-key"><span>Misconceptions</span></div>
+          <div class="skill-item-key"><span>Заблуждения</span></div>
           <div class="skill-item-value"><span> <[skill.misconceptionCount]></span></div>
         </div>
         <div class="skill-item-entity">
-          <div class="skill-item-key"><span>Status</span></div>
+          <div class="skill-item-key"><span>Статус</span></div>
           <div ng-if="skill.topicName" class="skill-item-value"><span> <[skill.topicName]></span></div>
-          <div ng-if="!skill.topicName" class="skill-item-value"><span>Not Assigned</span></div>
+          <div ng-if="!skill.topicName" class="skill-item-value"><span>Не назначен</span></div>
         </div>
       </div>
     </div>
   </div>
 </md-card>
 <span ng-if="!canCreateSkill()">
-  <em>To create new skills, please talk to one of the lesson creation admins.</em>
+  <em>Чтобы создать новые навыки, обратитесь к одному из администраторов создания уроков.</em>
 </span>
 
 <style>
@@ -165,7 +165,7 @@
   }
 
   skills-list .list-item {
-    height: 140px;
+    height: 105px;
     text-align: left;
     vertical-align: baseline;
   }
@@ -199,9 +199,9 @@
   }
 
   skills-list .skill-topic-unassigned {
-    color: #00645C;
+    color: #007EFF;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: normal;
   }
 
   skills-list .skill-edit-box-icon {
@@ -215,16 +215,17 @@
   skills-list .skill-description {
     font-size: 17px;
     font-weight: bold;
+    color: #007EFF;
   }
 
   skills-list .skill-topic {
     font-size: 15px;
     margin: 4px 0;
-    text-transform: uppercase;
+    
   }
 
   skills-list .skill-topic i {
-    color: #D57B00;
+    color: #F6A609;
   }
 
   skills-list .dashboard-table {
@@ -280,24 +281,25 @@
 
   skills-list .skill-edit-options {
     background-color: #fff;
-    border: 1px solid #000;
+    border-radius: 4px;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
     right: 0;
     text-align: left;
     top: 0;
-    width: 140px;
+    width: 180px;
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
   }
 
   skills-list .assign-skill-box,
   skills-list .merge-skill-box,
   skills-list .unassign-skill-box,
   skills-list .delete-icon-box {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #A0A4A8;
     cursor: pointer;
     font-size: 15px;
-    padding: 4px 0 4px 4px;
+    padding: 6px;
     width: 100%;
   }
 
@@ -308,7 +310,8 @@
   skills-list .skill-edit-options div:hover,
   skills-list .skill-edit-options div:active,
   skills-list .skill-edit-options div:visited {
-    background-color: #e6e6e6;
+  
+    color: #007EFF;
   }
 
   @media (max-width: 768px) {
@@ -350,7 +353,7 @@
       margin: 7px 0;
     }
     skills-list .assign-btn {
-      border: 2px solid #00645C;
+      border: 2px solid #007EFF;
     }
 
     skills-list .skill-item-description-mobile {

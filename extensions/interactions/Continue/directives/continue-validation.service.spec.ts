@@ -82,7 +82,7 @@ describe('ContinueValidationService', () => {
         currentState, customizationArguments, [], goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.CRITICAL,
-        message: 'The button text should not be empty.'
+        message: 'Текст кнопки не должен быть пустым.'
       }]);
 
       expect(() => {
@@ -104,7 +104,7 @@ describe('ContinueValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
       message: (
-        'Only the default outcome is necessary for a continue interaction.')
+        'Для продолжения интерактива необходим только результат по умолчанию.')
     }]);
   });
 
@@ -115,7 +115,7 @@ describe('ContinueValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Please specify what Oppia should do after the button is clicked.')
+          'Пожалуйста, укажите, что должно делать oqustudy после нажатия кнопки.')
       }]);
     });
 });

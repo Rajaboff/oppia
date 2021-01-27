@@ -101,11 +101,11 @@ angular.module('oppia').component('storyEditorPage', {
       ctrl.getNavbarText = function() {
         const activeTab = StoryEditorNavigationService.getActiveTab();
         if (activeTab === 'story_editor') {
-          return 'Story Editor';
+          return 'Редактор историй';
         } else if (activeTab === 'story_preview') {
-          return 'Story Preview';
+          return 'Просмотр историй';
         } else if (activeTab === 'chapter_editor') {
-          return 'Chapter Editor';
+          return 'Редактор глав';
         }
       };
 
@@ -201,7 +201,7 @@ angular.module('oppia').component('storyEditorPage', {
       };
 
       ctrl.$onInit = function() {
-        LoaderService.showLoadingScreen('Loading Story');
+        LoaderService.showLoadingScreen('Загрузка  истории');
         ctrl.directiveSubscriptions.add(
           StoryEditorStateService.onStoryInitialized.subscribe(
             () => {

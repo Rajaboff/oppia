@@ -123,10 +123,10 @@ export class NumberWithUnitsValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
-                  (i + 1) + ' will never be matched because it ' +
-                  'is made redundant by rule ' + (ranges[k].ruleIndex + 1) +
-                  ' from answer group ' + (ranges[k].answerGroupIndex + 1) +
+                  'Правило ' + (j + 1) + ' из группа ответов ' +
+                  (i + 1) + ' никогда не будет совпадать, потому что это ' +
+                  'делается избыточным правилом ' + (ranges[k].ruleIndex + 1) +
+                  ' из группы ответов ' + (ranges[k].answerGroupIndex + 1) +
                   '.')
               });
             }
@@ -137,10 +137,10 @@ export class NumberWithUnitsValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
-                  (i + 1) + ' will never be matched because it ' +
-                  'is made redundant by rule ' + (ranges[k].ruleIndex + 1) +
-                  ' from answer group ' + (ranges[k].answerGroupIndex + 1) +
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
+                  (i + 1) + ' никогда не будет совпадать, потому что это ' +
+                  'делается избыточным правилом ' + (ranges[k].ruleIndex + 1) +
+                  ' из группы ответов ' + (ranges[k].answerGroupIndex + 1) +
                   '.')
               });
             }

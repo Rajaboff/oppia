@@ -10,7 +10,7 @@
              alt="Save Story">
             &#xE161;
           </i>
-          <span class="oppia-save-publish-button-label oppia-save-draft-text float-left">Save Draft</span>
+          <span class="oppia-save-publish-button-label oppia-save-draft-text float-left">Сохранить</span>
           <span class="d-none d-md-block float-left oppia-changes-count"
                 ng-if="getChangeListLength() > 0">
             (<[getChangeListLength()]>)
@@ -18,7 +18,7 @@
         </span>
 
         <span ng-if="isSaveInProgress()">
-          <span class="oppia-save-publish-button-label">Saving</span>
+          <span class="oppia-save-publish-button-label">Сохранение</span>
           <loading-dots></loading-dots>
         </span>
       </button>
@@ -26,7 +26,7 @@
               ng-disabled="!getChangeListLength()" aria-label="Dropdown toggle" uib-dropdown-toggle>
       </button>
       <ul uib-dropdown-menu class="oppia-dropdown-menu" ng-style="{ width: getChangeListLength() ? '150px' : '120px' }">
-        <li title="Discard all pending changes"><a ng-click="discardChanges()" ng-class="{'oppia-disabled-link': !getChangeListLength()}" class="dropdown-item protractor-test-discard-story-changes">Discard Draft</a></li>
+        <li title="Discard all pending changes"><a ng-click="discardChanges()" ng-class="{'oppia-disabled-link': !getChangeListLength()}" class="dropdown-item protractor-test-discard-story-changes">Отменить черновик</a></li>
       </ul>
     </div>
   </li>
@@ -40,13 +40,13 @@
          alt="Publish to Oppia Library">
         &#xE2C3;
       </i>
-      <span class="oppia-save-publish-button-label">Publish Story</span>
+      <span class="oppia-save-publish-button-label">Опубликовать</span>
     </button>
     <button type="button" ng-click="unpublishStory()"
             ng-if="isStoryPublished()"
             class="btn btn-secondary protractor-test-unpublish-story-button"
             ng-disabled="isStorySaveable()">
-      Unpublish Story
+      Отменить публикацию
     </button>
   </li>
 </ul>
@@ -55,15 +55,15 @@
     <div class="story-nav-dropdown-container">
       <div class="story-nav-story-nav-dropdown-options" ng-if="showNavigationOptions">
         <div class="story-nav-dropdown-option" ng-click="selectMainTab()">
-          <i class="material-icons">&#xE254;</i><span>Editor</span>
+          <i class="material-icons">&#xE254;</i><span>Редактор</span>
         </div>
         <div class="story-nav-dropdown-option" ng-click="selectPreviewTab()">
-          <i class="material-icons">&#xE037;</i><span>Preview</span>
+          <i class="material-icons">&#xE037;</i><span>Просмотр</span>
         </div>
       </div>
       <div>
         <div ng-if="warningsAreShown" class="warning-box">
-          <span>Warnings</span>
+          <span>Внимание</span>
           <div ng-repeat="issue in validationIssues track by $index">
             <hr class="oppia-editor-warnings-separator">
             <[issue]>
@@ -89,30 +89,30 @@
       <div class="story-nav-story-nav-dropdown-options" ng-if="showStoryEditOptions">
         <div class="story-nav-dropdown-option" ng-click="discardChanges()">
           <i class="material-icons">&#xE254;</i>
-          <span>Discard Changes</span>
+          <span>Отменить изменение</span>
         </div>
         <div class="story-nav-dropdown-option">
           <div ng-if="!isStoryPublished()"
                ng-click="publishStory()"
                ng-disabled="isStorySaveable() || getWarningsCount() > 0 || prepublishValidationIssues.length > 0">
             <i class="material-icons">&#xE254;</i>
-            <span>Publish Story</span>
+            <span>Опубликовать</span>
           </div>
           <div ng-click="unpublishStory()"
                ng-if="isStoryPublished()"
                ng-disabled="isStorySaveable()">
             <i class="material-icons">&#xE254;</i>
-            <span>Unpublish Story</span>
+            <span>Отменить публикацию</span>
           </div>
         </div>
       </div>
       <div class="story-nav-dropdown-content right-container">
         <div class="story-nav-dropdown-text" ng-disabled="!isStorySaveable()" ng-click="saveChanges()">
           <span ng-if="isSaveInProgress()">
-            <span>Saving</span>
+            <span>Сохранение</span>
           </span>
           <span ng-if="!isSaveInProgress()">
-            Save Changes
+            Сохранить изменение
           </span>
           <span ng-if="getChangeListLength() > 0">
             (<[getChangeListLength()]>)
@@ -181,13 +181,13 @@
       width: 50%;
     }
     story-editor-navbar .save-changes-btn {
-      background-color: #008098;
+      background-color: #007EFF;
       color: #FFFFFF;
       font-weight: bold;
       width: 80%;
     }
     story-editor-navbar .discard-changes-btn {
-      background-color: #008098;
+      background-color: #007EFF;
       bottom: 47px;
       color: #FFFFFF;
       font-weight: bold;
@@ -197,8 +197,8 @@
     }
     story-editor-navbar .btn-publish-topic {
       background-color: white;
-      border: 2px solid #008098;
-      color: #008098;
+      border: 2px solid #007EFF;
+      color: #007EFF;
       font-weight: bold;
     }
     .arrow-up-container {
@@ -211,7 +211,7 @@
       width: 20%;
     }
     .arrow-up-container i {
-      color: #008098;
+      color: #007EFF;
     }
     .publish-button-container {
       width: 40%;
@@ -241,7 +241,7 @@
     }
 
     story-editor-navbar .right-container {
-      background-color: #419889;
+      background-color: #007EFF;
       color: #FFF;
     }
 

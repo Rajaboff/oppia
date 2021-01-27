@@ -59,11 +59,14 @@ export class AssetsBackendApiService {
     if (!Constants.DEV_MODE && !Constants.GCS_RESOURCE_BUCKET_NAME) {
       throw new Error('GCS_RESOURCE_BUCKET_NAME is not set in prod.');
     }
-    const urlPrefix = Constants.DEV_MODE ?
+    const urlPrefix = '/assetsdevhandler'
+    this.downloadUrlTemplate = (
+    urlPrefix + '/<entity_type>/<entity_id>/assets/<asset_type>/<filename>');
+    /**const urlPrefix = Constants.DEV_MODE ?
       '/assetsdevhandler' :
       'https://storage.googleapis.com/' + Constants.GCS_RESOURCE_BUCKET_NAME;
     this.downloadUrlTemplate = (
-      urlPrefix + '/<entity_type>/<entity_id>/assets/<asset_type>/<filename>');
+      urlPrefix + '/<entity_type>/<entity_id>/assets/<asset_type>/<filename>');**/
   }
 
   async loadAudio(explorationId: string, filename: string): Promise<AudioFile> {

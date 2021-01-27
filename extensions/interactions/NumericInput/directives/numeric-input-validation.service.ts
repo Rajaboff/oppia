@@ -84,9 +84,9 @@ export class NumericInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
         message: (
-          'In Rule ' + (ruleIndex + 1) + ' from answer group ' +
-          (answerGroupIndex + 1) + ', Please ensure that the second number ' +
-          'is greater than the first number.')
+          'В правиле ' + (ruleIndex + 1) + ' из группы ответов ' +
+          (answerGroupIndex + 1) + ', Убедитесь, что второе число ' +
+          'больше первого числа.')
       });
     };
     for (var i = 0; i < answerGroups.length; i++) {
@@ -142,10 +142,10 @@ export class NumericInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                'Rule ' + (j + 1) + ' from answer group ' +
-                (i + 1) + ' will never be matched because it ' +
-                'is made redundant by rule ' + (ranges[k].ruleIndex + 1) +
-                ' from answer group ' + (ranges[k].answerGroupIndex + 1) + '.')
+                'Правило ' + (j + 1) + ' из группы ответов ' +
+                (i + 1) + ' никогда не будет совпадать, потому что это ' +
+                'делается избыточным правилом ' + (ranges[k].ruleIndex + 1) +
+                ' из группы ответов ' + (ranges[k].answerGroupIndex + 1) + '.')
             });
           }
         }
@@ -162,7 +162,7 @@ export class NumericInputValidationService {
 
   getErrorString(value: number): string {
     if (value === undefined || value === null) {
-      return 'Please enter a valid number.';
+      return 'Пожалуйста введите правильное число.';
     }
     let stringValue = null;
     // Convert exponential notation to decimal number.
@@ -192,7 +192,7 @@ export class NumericInputValidationService {
     }
 
     if (stringValue.match(/\d/g).length > 15) {
-      return 'The answer can contain at most 15 digits (0-9) or symbols ' +
+      return 'Ответ может содержать не более 15 цифр (0–9) или символов. ' +
         '(. or -).';
     }
   }

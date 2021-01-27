@@ -201,11 +201,25 @@ angular.module('oppia').directive('questionPlayer', [
                    src="${getStaticImageUrl('/icons/rocket@2x.png')}"/>
               </picture>`;
             } else if (actionButtonType === 'RETRY_SESSION') {
-              iconHtml = '<i class="material-icons md-36 ' +
-              'action-button-icon">&#xE5D5</i>';
+              iconHtml = `<picture>
+              <source type="image/webp" 
+              srcset="${getStaticImageUrl('/icons/rocket@2x.webp')}">
+              <source type="image/png" 
+              srcset="${getStaticImageUrl('/icons/game.png')}">
+              <img alt=""
+                   class="action-button-icon" 
+                   src="${getStaticImageUrl('/icons/game.png')}"/>
+              </picture>`;
             } else if (actionButtonType === 'DASHBOARD') {
-              iconHtml = '<i class="material-icons md-36 ' +
-              'action-button-icon">&#xE88A</i>';
+              iconHtml = `<picture>
+              <source type="image/webp" 
+              srcset="${getStaticImageUrl('/icons/rocket@2x.webp')}">
+              <source type="image/png" 
+              srcset="${getStaticImageUrl('/icons/house.png')}">
+              <img alt=""
+                   class="action-button-icon" 
+                   src="${getStaticImageUrl('/icons/house.png')}"/>
+              </picture>`;
             }
             return $sce.trustAsHtml($sanitize(iconHtml));
           };

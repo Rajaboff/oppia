@@ -129,10 +129,10 @@ angular.module('oppia').component('stateTranslation', {
       $scope.getEmptyContentMessage = function() {
         if (TranslationTabActiveModeService.isVoiceoverModeActive()) {
           return (
-            'The translation for this section has not been created yet. ' +
-            'Switch to translation mode to add a text translation.');
+            'Перевод этого раздела еще не создан. ' +
+            'Переключитесь в режим перевода, чтобы добавить перевод текста.');
         } else {
-          return 'There is no text available to translate.';
+          return 'Нет текста для перевода.';
         }
       };
 
@@ -209,9 +209,9 @@ angular.module('oppia').component('stateTranslation', {
           summary =
             INTERACTION_SPECS[interactionId].default_outcome_heading;
         } else if (answerGroupCount > 0) {
-          summary = 'All other answers';
+          summary = 'Все другие ответы';
         } else {
-          summary = 'All answers';
+          summary = 'Все ответы';
         }
 
         if (hasFeedback && shortenRule) {
@@ -239,7 +239,7 @@ angular.module('oppia').component('stateTranslation', {
           var firstRule = $filter('convertToPlainText')(
             $filter('parameterizeRuleDescription')(
               answerGroup.rules[0], interactionId, answerChoices));
-          summary = 'Answer ' + firstRule;
+          summary = 'Ответ ' + firstRule;
 
           if (hasFeedback && shortenRule) {
             summary = $filter('wrapTextWithEllipsis')(
@@ -473,11 +473,11 @@ angular.module('oppia').component('stateTranslation', {
         );
 
         if (TranslationTabActiveModeService.isVoiceoverModeActive()) {
-          $scope.needsUpdateTooltipMessage = 'Audio needs update to ' +
-            'match text. Please record new audio.';
+          $scope.needsUpdateTooltipMessage = 'Аудио необходимо обновить до ' +
+            'сопоставить текст. Пожалуйста, запишите новый звук.';
         } else {
-          $scope.needsUpdateTooltipMessage = 'Translation needs update ' +
-            'to match text. Please re-translate the content.';
+          $scope.needsUpdateTooltipMessage = 'Перевод нуждается в обновлении ' +
+            'чтобы соответствовать тексту. Пожалуйста, переведите содержание.';
         }
         $scope.onTabClick($scope.TAB_ID_CONTENT);
       };

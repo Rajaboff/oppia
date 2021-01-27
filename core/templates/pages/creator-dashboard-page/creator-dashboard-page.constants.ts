@@ -38,8 +38,8 @@ export const CreatorDashboardConstants = {
   },
 
   SUBSCRIPTION_SORT_BY_KEYS: {
-    USERNAME: 'username',
-    IMPACT: 'impact'
+    USERNAME: 'Имя',
+    IMPACT: 'Влияние'
   },
 
   HUMAN_READABLE_SUBSCRIPTION_SORT_BY_KEYS: {

@@ -16,7 +16,7 @@
        ng-class="{'oppia-editable-section': isEditable()}"
        ng-click="openStateContentEditor()">
     <i ng-if="isEditable()" class="material-icons oppia-editor-edit-icon protractor-test-edit-content-pencil-button"
-       title="Edit Card Content">&#xE254;
+       title="Редактировать содержимое карты">&#xE254;
     </i>
     <div class="oppia-state-content-display oppia-transition-200"
          ng-class="{'oppia-prevent-selection': isEditable()}"
@@ -47,7 +47,7 @@
             ng-click="onSaveContentButtonClicked()">
       <[getStateContentSaveButtonPlaceholder()]>
     </button>
-    <button type="button" class="btn btn-secondary float-right" ng-click="cancelEdit()">Cancel</button>
+    <button type="button" class="btn btn-secondary float-right" ng-click="cancelEdit()">Отмена</button>
     <div class="oppia-clear"></div>
   </div>
   <div ng-if="isCardHeightLimitReached() && cardHeightLimitWarningIsShown">
@@ -60,7 +60,7 @@
 
 <style>
   .oppia-card-height-limit-warning {
-    color: #0277BD;
+    color: #007EFF;
   }
 
   .oppia-shadow-preview-card {

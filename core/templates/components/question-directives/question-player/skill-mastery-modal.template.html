@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h3 ng-if="userIsLoggedIn"> Learning Tips Based on Your Skill Mastery </h3>
+  <h3 ng-if="userIsLoggedIn"> Советы по обучению, основанные на ваших навыках </h3>
 </div>
 
 <div class="modal-body">
@@ -8,11 +8,11 @@
                         ng-if="userIsLoggedIn">
   </skill-mastery-viewer>
   <div ng-if="!userIsLoggedIn">
-    Looks like you are logged out! Sign in to unlock more features including keeping track of your skill mastery.
+    Похоже, вы вышли из системы! Войдите в систему, чтобы разблокировать больше функций, в том числе отслеживать свои навыки..
   </div>
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-default" ng-click="cancel()"> Close </button>
-  <button class="btn btn-success" ng-click="openConceptCardModal()"> View Concept Card </button>
+  <button class="btn btn-default" ng-click="cancel()"> Закрыть </button>
+  <button class="btn btn-success" ng-click="openConceptCardModal()"> Посмотреть концепт карточки </button>
 </div>

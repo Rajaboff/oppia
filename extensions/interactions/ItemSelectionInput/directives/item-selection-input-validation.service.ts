@@ -66,14 +66,14 @@ export class ItemSelectionInputValidationService {
     if (areAnyChoicesEmpty) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure the choices are nonempty.'
+        message: 'Убедитесь, что варианты не пусты.'
       });
     }
 
     if (areAnyChoicesDuplicated) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure the choices are unique.'
+        message: 'Убедитесь, что выбор уникален.'
       });
     }
 
@@ -86,8 +86,8 @@ export class ItemSelectionInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that the max allowed count is not less than the ' +
-          'min count.')
+          'Убедитесь, что максимально допустимое количество не меньше ' +
+          'минимального количества.')
       });
     }
 
@@ -95,15 +95,15 @@ export class ItemSelectionInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that you have enough choices to reach the min ' +
-          'count.')
+          'Убедитесь, что у вас достаточно вариантов для достижения минимального ' +
+          'количества.')
       });
     } else if (numChoices < maxAllowedCount) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that you have enough choices to reach the max ' +
-          'count.')
+          'Убедитесь, что у вас достаточно вариантов для достижения максимального ' +
+          'количества.')
       });
     }
     return warningsList;
@@ -151,9 +151,9 @@ export class ItemSelectionInputValidationService {
                 warningsList.push({
                   type: AppConstants.WARNING_TYPES.ERROR,
                   message: (
-                    'In answer group ' + (answerIndex + 1) + ', ' +
-                    'rule ' + (ruleIndex + 1) + ', ' +
-                    'please select only one answer choice.')
+                    'В группе овтетов ' + (answerIndex + 1) + ', ' +
+                    'правило ' + (ruleIndex + 1) + ', ' +
+                    'пожалуйста, выберите только один вариант ответа.')
                 });
               }
             } else if (rule.type === 'IsProperSubsetOf') {
@@ -181,8 +181,8 @@ export class ItemSelectionInputValidationService {
         warningsList.push({
           type: AppConstants.WARNING_TYPES.ERROR,
           message: (
-            'Please add something for Oppia to say in the ' +
-            '\"All other answers\" response.')
+            'Пожалуйста, добавьте что-нибудь для Oqustudy в ' +
+            '\"Все ответы ученика\" ответ.')
         });
       }
     }
@@ -197,9 +197,9 @@ export class ItemSelectionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'In answer group ' + (answerIndex + 1) + ', ' +
-                  'rule ' + (ruleIndex + 1) + ', the "proper subset" ' +
-                  'rule must include at least 2 options.')
+                  'В группе ответов ' + (answerIndex + 1) + ', ' +
+                  'правило ' + (ruleIndex + 1) + ', the "proper subset" ' +
+                  'правило должно включать как минимум 2 варианта.')
               });
             }
           } else if (rule.type === 'Equals') {
@@ -208,11 +208,11 @@ export class ItemSelectionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'In answer group ' + (answerIndex + 1) + ', ' +
-                  'rule ' + (ruleIndex + 1) + ', the number of correct ' +
-                  'options in the "Equals" rule should be between ' +
-                    minAllowedCount + ' and ' + maxAllowedCount +
-                  ' (the minimum and maximum allowed selection counts).')
+                  'В группе ответов ' + (answerIndex + 1) + ', ' +
+                  'правило ' + (ruleIndex + 1) + ', количество правильных ' +
+                  'вариантов в "Equals" правило должно быть между ' +
+                    minAllowedCount + ' и ' + maxAllowedCount +
+                  ' (минимальное и максимальное допустимое количество выборок).')
               });
             }
           }
@@ -222,9 +222,9 @@ export class ItemSelectionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                'In answer group ' + (answerIndex + 1) + ', rule ' +
-                (ruleIndex + 1) + ', the "ContainsAtLeastOneOf" rule ' +
-                'should have at least one option.')
+                'В группе ответов ' + (answerIndex + 1) + ', правило ' +
+                (ruleIndex + 1) + ', "ContainsAtLeastOneOf" правило ' +
+                'должен быть хотя бы один вариант.')
             });
           }
         }

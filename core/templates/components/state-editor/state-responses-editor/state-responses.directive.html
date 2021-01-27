@@ -3,7 +3,7 @@
     <div class="oppia-editor-card-body">
       <div class="state-responses-header-container oppia-mobile-collapsible-card-header">
         <div class="state-responses-header" ng-click="toggleResponseCard()">
-          <h3 class="oppia-exp-answer-card-header">Learner's Answers and Oppia's Responses</h3>
+          <h3 class="oppia-exp-answer-card-header">Ответы ученика и учителя</h3>
           <i class="fa fa-caret-down"
              ng-if="!responseCardIsShown"
              aria-hidden="true">
@@ -113,27 +113,27 @@
         <div class="oppia-add-response-button-container">
           <div ng-if="EditabilityService.isEditableOutsideTutorialMode() && !isCurrentInteractionLinear()">
             <button type="button" class="btn btn-secondary oppia-add-response-button protractor-test-open-add-response-modal" ng-click="openAddAnswerGroupModal()">
-              + ADD RESPONSE
+              + Добавить ответ
             </button>
           </div>
         </div>
         <div ng-if="!isInQuestionMode()" class="solicit-answer-checkbox">
           <span ng-if="!isCurrentInteractionTrivial()" ng-hide="!enableSolicitAnswerDetailsFeature" class="solicit-answer-details-span">
             <input id="label-target-solicit-answer-details-checkbox" type="checkbox" class="protractor-test-solicit-answer-details-checkbox" ng-change="onChangeSolicitAnswerDetails()" ng-model="stateSolicitAnswerDetailsService.displayed">
-            <label for="label-target-solicit-answer-details-checkbox">Solicit Answer Details</label>
+            <label for="label-target-solicit-answer-details-checkbox">Запросить подробный ответ</label>
           </span>
         </div>
         <div ng-if="isInQuestionMode() && answerGroups.length > 0 && (containsOptionalMisconceptions || getUnaddressedMisconceptionNames(misconceptionsBySkill).length)" class="misconception-parent-card">
-          <h3>Misconceptions</h3>
-          <small class="text-muted">The following must be addressed by tagging to an incorrect answer. If a misconception is not relevant to this question, mark it as "Not Applicable".</small>
+          <h3>Заблуждения</h3>
+          <small class="text-muted">В следующих случаях необходимо указать неправильный ответ. Если заблуждение не имеет отношения к этому вопросу, отметьте его как «Неприменимо».</small>
           <div class="pt-4" ng-if="getUnaddressedMisconceptionNames(misconceptionsBySkill).length">
-            <h4 class="pl-3">Compulsory</h4>
+            <h4 class="pl-3">Обязательно</h4>
             <p ng-repeat="misconceptionName in getUnaddressedMisconceptionNames(misconceptionsBySkill)" class="misconception-list-item">
               <[misconceptionName]>
             </p>
           </div>
           <div class="pt-4">
-            <h4 class="pl-3" ng-if="containsOptionalMisconceptions">Optional</h4>
+            <h4 class="pl-3" ng-if="containsOptionalMisconceptions">Опционально</h4>
             <div ng-repeat="(skillId, skill) in misconceptionsBySkill">
               <div ng-repeat="misconception in skill">
                 <div ng-if="!misconception.isMandatory()"
@@ -150,12 +150,12 @@
                     <div ng-if="inapplicableSkillMisconceptionIds.includes(skillId + '-' + misconception.getId())"
                          ng-click="updateOptionalMisconceptionIdStatus(skillId + '-' + misconception.getId(), true)"
                          ng-mouseleave="setActiveEditOption(null)">
-                        MARK AS "APPLICABLE"
+                        Отметить как "Применимо"
                     </div>
                     <div ng-if="!inapplicableSkillMisconceptionIds.includes(skillId + '-' + misconception.getId())"
                          ng-click="updateOptionalMisconceptionIdStatus(skillId + '-' + misconception.getId(), false)"
                          ng-mouseleave="setActiveEditOption(null)">
-                        MARK AS "NOT APPLICABLE"
+                        Отметить как "Не применимо"
                     </div>
                   </div>
                   <div ng-if="EditabilityService.isEditable()"
@@ -176,13 +176,14 @@
 <style>
   state-responses .state-responses-header-container {
     padding: 0 30px;
+    background-color: #B3D8FF;
   }
   state-responses .state-responses-header {
     align-content: center;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 30px 0 10px;
+    padding: 20px 0px 20px;
   }
   state-responses .oppia-exp-answer-card-header {
     font-size: 18px;
@@ -191,11 +192,11 @@
     margin-bottom: 0;
   }
   state-responses .nav-pills > li {
-    box-shadow: 1px 2px 5px #939393;
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
     margin: 8px 0;
   }
   state-responses .nav-pills > li > a.oppia-rule-tab {
-    background: #E0F2F1 !important;
+    background: #E5F2FF !important;
   }
   state-responses .state-response-container {
     padding: 15px 30px;
@@ -218,7 +219,7 @@
   }
   state-responses .misconception-list-item {
     background-color: #FFF5C8;
-    border: 2px solid #827127;
+    border: 2px solid #007EFF;
     border-radius: 4px;
     margin: 10px;
     padding: 15px;

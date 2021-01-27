@@ -1,4 +1,7 @@
 <div class="subtopic-card" ng-click="$ctrl.openSubtopicPage()" ng-class="{'disabled-link': !$ctrl.classroomUrlFragment}">
+  <div class="subtopic-title">
+    <[$ctrl.subtopic.getTitle()]>
+  </div>
   <div class="subtopic-thumbnail"
        ng-style="{background: $ctrl.subtopic.getThumbnailBgColor()}">
     <img ng-src="<[$ctrl.thumbnailUrl]>"
@@ -6,15 +9,13 @@
          alt=""
          ng-style="{background: $ctrl.subtopic.getThumbnailBgColor()}">
   </div>
-  <div class="subtopic-title">
-    <[$ctrl.subtopic.getTitle()]>
-  </div>
 </div>
 <style>
   subtopic-summary-tile .subtopic-card {
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    width: 170px;
+    width: 190px;
+    border-radius: 8px;
   }
 
   subtopic-summary-tile .subtopic-card:focus {
@@ -23,8 +24,8 @@
 
   subtopic-summary-tile .subtopic-thumbnail {
     border: 1px solid #ffffff;
-    border-radius: 0.4em 0.4em 0 0;
-    height: 120px;
+    border-radius: 0 0 0.4em 0.4em;
+    height: 240px;
     text-align: center;
     vertical-align: middle;
     width: 100%;
@@ -38,14 +39,15 @@
   }
 
   subtopic-summary-tile .subtopic-title {
-    background-color: #BE563C;
-    border-radius: 0 0 0.4em 0.4em;
+    background-color: #4DA5FF;
+    border-radius: 0.4em 0.4em 0 0;
     color: #ffffff;
     font-family: Roboto, Arial, sans-serif;
-    font-weight: 600;
-    height: 100px;
+    font-weight: 500;
+    height: 60px;
     letter-spacing: 0.5px;
     padding: 5px 5px 5px 15px;
+    font-size: 1.1em;
   }
 
   subtopic-summary-tile .disabled-link,
@@ -57,12 +59,12 @@
 
   @media(max-width: 1024px) {
     subtopics-list .subtopic-card {
-      width: 150px;
+      width: 190px;
     }
 
     subtopic-summary-tile .subtopic-title {
-      font-size: 0.8em;
-      height: 85px;
+      font-size: 1em;
+      height: 55px;
       padding-left: 10px;
     }
   }
@@ -84,11 +86,11 @@
     }
 
     subtopic-summary-tile .subtopic-title {
-      height: 75px;
+      height: 50px;
     }
 
     subtopic-summary-tile .subtopic-thumbnail {
-      height: 100px;
+      height: 160px;
     }
   }
 

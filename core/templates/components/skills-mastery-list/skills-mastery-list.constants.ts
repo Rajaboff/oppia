@@ -24,10 +24,10 @@ export const SkillMasteryListConstants = {
 
   MASTERY_COLORS: {
     // Color green.
-    GOOD_MASTERY_COLOR: 'rgb(0, 150, 136)',
+    GOOD_MASTERY_COLOR: '#1AB759',
     // Color orange.
-    MEDIUM_MASTERY_COLOR: 'rgb(217, 92, 12)',
+    MEDIUM_MASTERY_COLOR: '#E89806',
     // Color red.
-    BAD_MASTERY_COLOR: 'rgb(201, 80, 66)'
+    BAD_MASTERY_COLOR: '#E93C3C'
   },
 } as const;

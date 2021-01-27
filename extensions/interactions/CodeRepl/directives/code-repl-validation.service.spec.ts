@@ -94,7 +94,7 @@ describe('CodeReplValidationService', () => {
       currentState, customizationArguments, [], null);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Programming language name must be a string.'
+      message: 'Название языка программирования должно быть строкой.'
     }]);
   });
 
@@ -108,7 +108,7 @@ describe('CodeReplValidationService', () => {
       currentState, customizationArguments, [], null);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Placeholder text must be a string.'
+      message: 'Текст-заполнитель должен быть строкой.'
     }]);
   });
 
@@ -122,7 +122,7 @@ describe('CodeReplValidationService', () => {
       currentState, customizationArguments, [], null);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'The pre-code text must be a string.'
+      message: 'Текст предварительного кода должен быть строкой.'
     }]);
   });
 
@@ -136,7 +136,7 @@ describe('CodeReplValidationService', () => {
       currentState, customizationArguments, [], null);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'The post-code text must be a string.'
+      message: 'Текст последующего кода должен быть строкой.'
     }]);
   });
 });

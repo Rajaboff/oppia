@@ -52,7 +52,7 @@ angular.module('oppia').factory('StoryCreationService', [
           storyCreationInProgress = true;
           AlertsService.clearWarnings();
           var topic = TopicEditorStateService.getTopic();
-          LoaderService.showLoadingScreen('Creating story');
+          LoaderService.showLoadingScreen('Создание истории');
           var createStoryUrl = UrlInterpolationService.interpolateUrl(
             STORY_CREATOR_URL_TEMPLATE, {
               topic_id: topic.getId()

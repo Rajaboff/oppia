@@ -1,14 +1,14 @@
 <div class="oppia-question-editor-container">
   <div class="modal-header">
     <h3>
-      Question <span ng-if="!newQuestionIsBeingCreated"> and Linked Skills </span> Editor
+      Вопрос <span ng-if="!newQuestionIsBeingCreated"> и связанные навыки </span> Редактор
     </h3>
   </div>
   <div class="modal-body oppia-modal-body">
     <div class="rubric-details" ng-repeat="skillName in skillNames track by $index">
-      <h4 ng-if="skillName"><strong>Skill: <[skillName]></strong></h4>
-      <h4><strong>Difficulty: <[rubrics[$index].getDifficulty()]></strong></h4>
-      <h4 ng-if="rubrics[$index].getExplanations().length > 0"><strong>Difficulty Explanations</strong></h4>
+      <h4 ng-if="skillName"><strong>Навык: <[skillName]></strong></h4>
+      <h4><strong>Сложность: <[rubrics[$index].getDifficulty()]></strong></h4>
+      <h4 ng-if="rubrics[$index].getExplanations().length > 0"><strong>Объяснение сложности</strong></h4>
       <ul>
         <li ng-repeat="explanation in rubrics[$index].getExplanations()">
           <span ng-bind-html="explanation"></span>
@@ -16,7 +16,7 @@
       </ul>
     </div>
     <div ng-if="!newQuestionIsBeingCreated">
-      <h4> <strong> Linked Skills </strong> </h4>
+      <h4> <strong> Связанные навыки </strong> </h4>
       <md-card class="question-skill-id" ng-repeat="skill in associatedSkillSummaries">
         <div class="skill-description-card">
           <span class="float-right" ng-click="removeSkill(skill.getId())" aria-hidden="true">
@@ -27,11 +27,11 @@
           </a>
         </div>
       </md-card>
-      <button class="btn btn-success btn-sm" ng-click="addSkill()">Link Another Skill</button>
-      <button class="btn btn-primary btn-sm" ng-click="undo()" ng-if="getSkillLinkageModificationsArray().length > 0">Undo Skill Changes</button>
+      <button class="btn btn-success btn-sm" ng-click="addSkill()"> + Связать еще навык</button>
+      <button class="btn btn-primary btn-sm" ng-click="undo()" ng-if="getSkillLinkageModificationsArray().length > 0">Отменить изменения навыков</button>
     </div>
 
-    <h4 ng-if="!newQuestionIsBeingCreated" class="oppia-question-editor-container"> <strong> Question Editor </strong> </h4>
+    <h4 ng-if="!newQuestionIsBeingCreated" class="oppia-question-editor-container"> <strong> Редактор вопросов </strong> </h4>
     <question-editor question-id="questionId"
                      misconceptions-by-skill="misconceptionsBySkill"
                      question-state-data="questionStateData"
@@ -44,19 +44,19 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-secondary" ng-click="cancel()"> Cancel </button>
+    <button class="btn btn-secondary" ng-click="cancel()"> Отмена </button>
     <button ng-if="newQuestionIsBeingCreated"
             title="To Save please add: interaction, hint, solution and address all misconceptions"
             class="btn btn-success protractor-test-save-question-button"
             ng-click="done()"
             ng-disabled="!isQuestionValid()">
-      Done
+      Сделано
     </button>
     <button ng-if="!newQuestionIsBeingCreated"
             class="btn btn-success protractor-test-save-question-button"
             ng-click="saveAndCommit()"
             ng-disabled="isSaveAndCommitButtonDisabled()">
-      Save and Commit
+      Сохранить и опубликовать
     </button>
   </div>
 </div>

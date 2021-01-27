@@ -114,7 +114,7 @@ describe('SetInputValidationService', () => {
       );
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Button text must be a string.'
+        message: 'Текст кнопки должен быть строкой.'
       }]);
     });
 
@@ -131,7 +131,7 @@ describe('SetInputValidationService', () => {
       );
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Label for this button should not be empty.'
+        message: 'Ярлык для этой кнопки не должен быть пустым.'
       }]);
     });
   });
@@ -158,12 +158,12 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
-        it('should not generate errors with non-redundant rules of the ' +
+        it('не должны генерировать ошибки с неизбыточными правилами ' +
           'same type', () => {
           let equalsRule1 = rof.createFromBackendDict({
             rule_type: 'Equals',
@@ -192,7 +192,7 @@ describe('SetInputValidationService', () => {
       });
 
       describe('IsSubsetOf', () => {
-        it('should generate errors with identical rules', () => {
+        it('должен генерировать ошибки с идентичными правилами', () => {
           let subsetRule = rof.createFromBackendDict({
             rule_type: 'IsSubsetOf',
             inputs: {
@@ -211,12 +211,12 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
-        it('should not generate errors with non-redundant rules of the ' +
+        it('не должны генерировать ошибки с неизбыточными правилами ' +
           'same type', () => {
           let subsetRule1 = rof.createFromBackendDict({
             rule_type: 'IsSubsetOf',
@@ -245,7 +245,7 @@ describe('SetInputValidationService', () => {
       });
 
       describe('HasElementsIn', () => {
-        it('should generate errors with identical rules', () => {
+        it('должен генерировать ошибки с идентичными правилами', () => {
           let hasElementsInRule = rof.createFromBackendDict({
             rule_type: 'HasElementsIn',
             inputs: {
@@ -264,12 +264,12 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
-        it('should not generate errors with non-redundant rules of the ' +
+        it('не должны генерировать ошибки с неизбыточными правилами ' +
           'same type', () => {
           let hasElementsInRule1 = rof.createFromBackendDict({
             rule_type: 'HasElementsIn',
@@ -317,8 +317,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
@@ -351,7 +351,7 @@ describe('SetInputValidationService', () => {
       });
 
       describe('IsSupersetOf', () => {
-        it('should generate errors with identical rules', () => {
+        it('должен генерировать ошибки с идентичными правилами', () => {
           let supersetRule = rof.createFromBackendDict({
             rule_type: 'IsSupersetOf',
             inputs: {
@@ -370,12 +370,12 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
-        it('should not generate errors with non-redundant rules of the ' +
+        it('не должны генерировать ошибки с неизбыточными правилами ' +
           'same type', () => {
           let supersetRule1 = rof.createFromBackendDict({
             rule_type: 'IsSupersetOf',
@@ -404,7 +404,7 @@ describe('SetInputValidationService', () => {
       });
 
       describe('HasElementsNotIn', () => {
-        it('should generate errors with identical rules', () => {
+        it('должен генерировать ошибки с идентичными правилами', () => {
           let hasElementNotInRule = rof.createFromBackendDict({
             rule_type: 'HasElementsNotIn',
             inputs: {
@@ -423,8 +423,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
@@ -476,8 +476,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 is the same as rule 1 ' +
-            'from answer group 1'
+            message: 'Правило 2 из группы ответов 1 аналогично правилу 1. ' +
+            'из группы ответов 1'
           }]);
         });
 
@@ -542,8 +542,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 will never be matched ' +
-            'because it is made redundant by rule 1 from answer group 1.'
+            message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+            'потому что это делается избыточным правилом 1 из группы ответов 1.'
           }]);
         });
 
@@ -593,8 +593,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 will never be matched ' +
-            'because it is made redundant by rule 1 from answer group 1.'
+            message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+            'потому что это делается избыточным правилом 1 из группы ответов 1.'
           }]);
         });
 
@@ -644,8 +644,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 will never be matched ' +
-            'because it is made redundant by rule 1 from answer group 1.'
+            message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+            'потому что это делается избыточным правилом 1 из группы ответов 1.'
           }]);
         });
 
@@ -695,8 +695,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 will never be matched ' +
-            'because it is made redundant by rule 1 from answer group 1.'
+            message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+            'потому что это делается избыточным правилом 1 из группы ответов 1.'
           }]);
         });
 
@@ -746,8 +746,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 will never be matched ' +
-            'because it is made redundant by rule 1 from answer group 1.'
+            message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+            'потому что это делается избыточным правилом 1 из группы ответов 1.'
           }]);
         });
 
@@ -797,8 +797,8 @@ describe('SetInputValidationService', () => {
           );
           expect(warnings).toEqual([{
             type: WARNING_TYPES.ERROR,
-            message: 'Rule 2 from answer group 1 will never be matched ' +
-            'because it is made redundant by rule 1 from answer group 1.'
+            message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+            'потому что это делается избыточным правилом 1 из группы ответов 1.'
           }]);
         });
 

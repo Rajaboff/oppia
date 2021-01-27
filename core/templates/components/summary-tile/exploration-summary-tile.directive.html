@@ -33,7 +33,7 @@
     <div ng-if="!isPlaylistTile()" class="title-section-mask"
          ng-mouseenter="setHoverState(true)" ng-mouseleave="setHoverState(false)">
     </div>
-    <div ng-attr-section="<[isWindowLarge ? undefined : 'right-section']>" class="summary-section">
+    <div ng-style="{'background-color': getThumbnailBgColor()}" ng-attr-section="<[isWindowLarge ? undefined : 'right-section']>" class="summary-section" style="border-radius: 0px 0px 8px 8px;">
       <div ng-if="isWindowLarge" class="objective protractor-test-exp-summary-tile-objective">
         <[getObjective() | truncateAndCapitalize: 95]>
       </div>
@@ -66,7 +66,7 @@
         </li>
         <li>
           <span ng-if="getLastUpdatedDatetime()">
-            <span class="oppia-icon-accessibility-label">Last Updated</span>
+            <span class="oppia-icon-accessibility-label">Последнее обновление</span>
             <[getLastUpdatedDatetime()]>
           </span>
           <span ng-if="!getLastUpdatedDatetime()" translate="I18N_LIBRARY_N/A" class="oppia-inactive-summary-tile-attribute">
@@ -90,6 +90,7 @@
   exploration-summary-tile .oppia-exploration-dashboard-card {
     position: relative;
     z-index: 5;
+    box-shadow: 0px 8px 10px rgba(37, 40, 43, 0.18);
   }
   exploration-summary-tile .oppia-play-exploration-button {
     display: block;

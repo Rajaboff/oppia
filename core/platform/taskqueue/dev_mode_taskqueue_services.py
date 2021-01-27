@@ -27,7 +27,7 @@ import requests
 
 GOOGLE_APP_ENGINE_PORT = (
     os.environ['SERVER_PORT']
-    if 'SERVER_PORT' in os.environ else '8181')
+    if 'SERVER_PORT' in os.environ else '80')
 
 
 def _task_handler(url, payload, queue_name, task_name=None):
@@ -50,7 +50,7 @@ def _task_handler(url, payload, queue_name, task_name=None):
     # handlers in DEV_mode.
     headers['X-AppEngine-Fake-Is-Admin'] = '1'
     headers['method'] = 'POST'
-    complete_url = 'http://localhost:%s%s' % (GOOGLE_APP_ENGINE_PORT, url)
+    complete_url = 'http://oqustudy.kz:%s%s' % (GOOGLE_APP_ENGINE_PORT, url)
     requests.post(
         complete_url,
         json=payload,

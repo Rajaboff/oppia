@@ -493,7 +493,7 @@ angular.module('oppia').directive('stateResponses', [
               var firstRule = $filter('convertToPlainText')(
                 $filter('parameterizeRuleDescription')(
                   answerGroup.rules[0], interactionId, answerChoices));
-              summary = 'Answer ' + firstRule;
+              summary = 'Если ответы ' + firstRule;
 
               if (hasFeedback && shortenRule) {
                 summary = $filter('wrapTextWithEllipsis')(
@@ -524,9 +524,9 @@ angular.module('oppia').directive('stateResponses', [
               summary =
                 INTERACTION_SPECS[interactionId].default_outcome_heading;
             } else if (answerGroupCount > 0) {
-              summary = 'All other answers';
+              summary = 'Если все другие ответы';
             } else {
-              summary = 'All answers';
+              summary = 'Если все ответы';
             }
 
             if (hasFeedback && shortenRule) {

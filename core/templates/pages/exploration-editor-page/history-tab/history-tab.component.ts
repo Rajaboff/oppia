@@ -85,7 +85,7 @@ angular.module('oppia').component('historyTab', {
 
       // Refreshes the displayed version history log.
       ctrl.refreshVersionHistory = function() {
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         ExplorationDataService.getData().then(function(data) {
           var currentVersion = data.version;
           ctrl.currentVersion = currentVersion;

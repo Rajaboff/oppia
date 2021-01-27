@@ -60,7 +60,7 @@ angular.module('oppia').component('subtopicViewerPage', {
         ctrl.subtopicUrlFragment = (
           UrlService.getSubtopicUrlFragmentFromLearnerUrl());
 
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         SubtopicViewerBackendApiService.fetchSubtopicData(
           ctrl.topicUrlFragment,
           ctrl.classroomUrlFragment,

@@ -68,23 +68,23 @@ angular.module('oppia').directive('oppiaInteractiveFractionInput', [
                 !angular.equals(fraction, fraction.convertToSimplestForm())
               ) {
                 errorMessage = (
-                  'Please enter an answer in simplest form ' +
-                  '(e.g., 1/3 instead of 2/6).');
+                  'Пожалуйста, введите ответ в простейшей форме ' +
+                  '(например, 1/3 вместо 2/6).');
                 ctrl.FractionInputForm.answer.$setValidity(
                   FORM_ERROR_TYPE, false);
               } else if (
                 !allowImproperFraction && fraction.isImproperFraction()) {
                 errorMessage = (
-                  'Please enter an answer with a "proper" fractional part ' +
-                  '(e.g., 1 2/3 instead of 5/3).');
+                  'Пожалуйста, введите ответ с «правильной» дробной частью ' +
+                  '(например, 1 2/3 вместо 5/3).');
                 ctrl.FractionInputForm.answer.$setValidity(
                   FORM_ERROR_TYPE, false);
               } else if (
                 !ctrl.allowNonzeroIntegerPart &&
                   fraction.hasNonzeroIntegerPart()) {
                 errorMessage = (
-                  'Please enter your answer as a fraction (e.g., 5/3 instead ' +
-                  'of 1 2/3).');
+                  'Пожалуйста, введите свой ответ дробью (например, 5/3 вместо ' +
+                  ' 1 2/3).');
                 ctrl.FractionInputForm.answer.$setValidity(
                   FORM_ERROR_TYPE, false);
               } else {

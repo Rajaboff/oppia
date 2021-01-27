@@ -1,7 +1,7 @@
 <div class="oppia-settings-container">
   <md-card class="oppia-editor-card oppia-settings-card-container oppia-basic-settings-card oppia-mobile-collapsible-card">
     <div class="oppia-basic-settings-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleCards('settings')">
-      <h3>Basic Settings</h3>
+      <h3>Основные настройки</h3>
       <i class="fa fa-caret-down"
          ng-if="!$ctrl.basicSettingIsShown"
          aria-hidden="true">
@@ -17,52 +17,46 @@
         <div ng-if="$ctrl.EditabilityService.isEditable()">
           <div role="form" class="form-horizontal">
             <div class="oppia-settings-input-group">
-              <exploration-title-editor label-text="Title"
+              <exploration-title-editor label-text="Название занятия"
                                         focus-label="<[::$ctrl.EXPLORATION_TITLE_INPUT_FOCUS_LABEL]>"
                                         on-input-field-blur="$ctrl.saveExplorationTitle()">
               </exploration-title-editor>
             </div>
             <div class="oppia-settings-input-group">
-              <exploration-objective-editor label-text="Goal"
+              <exploration-objective-editor label-text="Цель"
                                             on-input-field-blur="$ctrl.saveExplorationObjective()">
               </exploration-objective-editor>
             </div>
 
             <div ng-class="{'has-error': !$ctrl.explorationCategoryService.displayed}" class="oppia-settings-input-group">
-              <label for="explorationCategory" class="d-block">Category</label>
+              <label for="explorationCategory" class="d-block">Категории</label>
               <div>
                 <div ng-if="$ctrl.hasPageLoaded">
                   <select2-dropdown id="explorationCategory"
                                     class="protractor-test-exploration-category-input"
                                     item="$ctrl.explorationCategoryService.displayed"
                                     choices="$ctrl.CATEGORY_LIST_FOR_SELECT2"
-                                    placeholder="Choose or type new"
+                                    placeholder="Выбрать или создать"
                                     new-choice-regex="^[A-Z a-z]+$"
                                     on-selection-change="$ctrl.saveExplorationCategory()"
                                     width="100%"
-                                    invalid-search-term-message="Invalid category name">
+                                    invalid-search-term-message="Не валидное название">
                   </select2-dropdown>
                 </div>
               </div>
             </div>
             <div class="oppia-settings-input-group">
-              <label for="explorationLanguageCode" class="d-block">Language</label>
+              <label for="explorationLanguageCode" class="d-block">Язык</label>
               <div>
                 <div>
                   <select id="explorationLanguageCode" class="form-control protractor-test-exploration-language-select" ng-model="$ctrl.explorationLanguageCodeService.displayed" ng-change="$ctrl.saveExplorationLanguageCode()" ng-options="lc.code as lc.description for lc in $ctrl.explorationLanguageCodeService.getSupportedContentLanguages()" width="100%">
                   </select>
                 </div>
-                <div>
-                  <span class="form-text secondary-info-text">
-                    <em>
-                      Don't see the language you want? <a href="https://github.com/oppia/oppia/issues/new?title=Please%20add%20a%20new%20language%20choice%20to%20the%20exploration%20settings%20tab&body=Please%20add%20the%20language%20choice%20%7B%7BYOUR_LANGUAGE_HERE%7D%7D%20to%20the%20exploration%20settings%20tab.%0A%0AHere%20is%20a%20link%20to%20an%20exploration%20that%20uses%20it:%20%7B%7BINSERT_LINK_HERE%7D%7D" target="_blank" rel="noopener">Tell us.</a>
-                    </em>
-                  </span>
-                </div>
+                
               </div>
             </div>
             <div class="oppia-settings-input-group">
-              <label for="explorationInitStateName" class="d-block">Name of first card</label>
+              <label for="explorationInitStateName" class="d-block">Имя первой карточки</label>
               <div>
                 <div>
                   <select id="explorationInitStateName" class="form-control protractor-test-initial-state-select" ng-model="$ctrl.explorationInitStateNameService.displayed" ng-change="$ctrl.saveExplorationInitStateName()" ng-options="name as name for name in $ctrl.stateNames track by name" width="85%">
@@ -70,23 +64,23 @@
                 </div>
                 <div>
                   <span class="form-text secondary-info-text">
-                    <em>This is the first card the learner sees when playing your exploration.</em>
+                    <em>Это первая карта, которую видит учащийся, проходя ваше занятие</em>
                   </span>
                 </div>
               </div>
             </div>
             <div class="oppia-settings-input-group">
-              <label for="explorationTags" class="d-block">Tags</label>
+              <label for="explorationTags" class="d-block">Тэги</label>
               <div>
                 <div>
                   <div ng-if="$ctrl.hasPageLoaded">
                     <select2-dropdown item="$ctrl.explorationTagsService.displayed"
                                       choices="$ctrl.explorationTagsService.displayed"
                                       allow-multiple-choices="true"
-                                      invalid-search-term-message="Add a new tag (using lowercase letters and spaces)..."
+                                      invalid-search-term-message="Добавить новый тег (используя строчные буквы и пробелы) ..."
                                       new-choice-regex="<[::$ctrl.TAG_REGEX]>"
                                       width="100%"
-                                      placeholder="Skills, concepts, topics..."
+                                      placeholder="Навыки, направления, темы ..."
                                       on-selection-change="$ctrl.saveExplorationTags()">
                     </select2-dropdown>
                   </div>
@@ -94,15 +88,15 @@
               </div>
               <div>
                 <span class="form-text secondary-info-text">
-                  <em>Tags help learners discover your exploration when searching.</em>
+                  <em>Теги помогают учащимся обнаружить ваши занятия при поиске.</em>
                 </span>
               </div>
             </div>
             <div class="text-right">
               <button type="button" class="btn btn-secondary protractor-test-open-preview-summary-modal"
                       ng-click="$ctrl.previewSummaryTile()"
-                      title="Preview this exploration's summary card">
-                Preview Summary
+                      title="Посмотрите как будет выглядеть карточка">
+                Предпросмотр
               </button>
             </div>
           </div>
@@ -112,7 +106,7 @@
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 float-left">
               <label for="explorationTitle">
-                Title
+                Название занятия
               </label>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
@@ -125,7 +119,7 @@
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 float-left">
               <label for="explorationObjective">
-                Goal
+                Цель
               </label>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
@@ -138,7 +132,7 @@
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 float-left">
               <label for="explorationCategory">
-                Category
+                Категории
               </label>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
@@ -150,7 +144,7 @@
 
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 float-left">
-              <label for="explorationLanguageCode">Language</label>
+              <label for="explorationLanguageCode">Язык</label>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
               <[$ctrl.explorationLanguageCodeService.getCurrentLanguageDescription()]>
@@ -159,7 +153,7 @@
 
           <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 float-left">
-              <label for="explorationInitStateName">First State</label>
+              <label for="explorationInitStateName">Начальное состояние</label>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10">
               <[$ctrl.explorationInitStateNameService.displayed]>
@@ -172,7 +166,7 @@
 
   <md-card class="oppia-settings-card-container oppia-advanced-features-card oppia-editor-card oppia-mobile-collapsible-card" ng-if="$ctrl.EditabilityService.isEditable()">
     <div class="oppia-basic-settings-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleCards('advanced_features')">
-      <h3>Advanced Features</h3>
+      <h3>Дополнительные настройки</h3>
       <i class="fa fa-caret-down"
          ng-if="!$ctrl.advancedFeaturesIsShown"
          aria-hidden="true">
@@ -187,7 +181,7 @@
       <div role="form" class="form-horizontal">
         <div class="oppia-features-header">
           <label for="$ctrl.enableParameters">
-            Parameters
+            Параметры
           </label>
           <div>
             <div class="oppia-on-off-switch">
@@ -201,7 +195,7 @@
           </div>
         </div>
         <span class="form-text secondary-info-text">
-          Parameters are values that change as the learner moves between cards (<a href="http://oppia.github.io/#/Parameters" target="_blank" rel="noopener">more info</a>).
+          Параметры - это значения, которые изменяются при переходе учащегося между карточками. (<a href="http://oppia.github.io/#/Parameters" target="_blank" rel="noopener">подробнее тут</a>).
         </span>
       </div>
       <hr class="oppia-feature-separator">
@@ -210,7 +204,7 @@
           <div role="form" class="form-horizontal">
             <div class="oppia-features-header">
               <label for="enableAutomaticTextToSpeech">
-                Automatic Text-to-speech
+                Авто преобразование текста в речь
               </label>
               <div>
                 <div class="oppia-on-off-switch">
@@ -224,7 +218,7 @@
               </div>
             </div>
             <span class="form-text secondary-info-text">
-              Automatic text-to-speech generates audio from your content for learners to listen to. It is recommended that you disable this feature if creating an exploration whose content consists of multiple languages.
+              Автоматическое преобразование текста в речь генерирует звук из вашего контента, чтобы учащиеся могли его слушать. Рекомендуется отключить эту функцию при создании исследования, содержание которого состоит из нескольких языков.
             </span>
           </div>
         </div>
@@ -233,7 +227,7 @@
       <div role="form" class="form-horizontal">
         <div class="oppia-features-header">
           <label for="enableCorrectnessFeedback">
-            Correctness Feedback
+            Отзыв по обратной связи
           </label>
           <div>
             <div class="oppia-on-off-switch">
@@ -247,7 +241,7 @@
           </div>
         </div>
         <span class="form-text secondary-info-text">
-          Correctness feedback allows the user to categorise answer groups as correct or incorrect.
+          Отзыв по обратной связи позволяет пользователю разделить группы ответов на правильные или неправильные.
         </span>
       </div>
       <hr class="oppia-feature-separator">
@@ -259,7 +253,7 @@
     <div ng-if="$ctrl.ExplorationRightsService.ownerNames.length > 0 && !$ctrl.ExplorationRightsService.isCloned()">
       <div class="oppia-roles-container">
         <div class="oppia-basic-settings-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleCards('roles')">
-          <h3>Roles</h3>
+          <h3>Роли</h3>
           <i class="fa fa-caret-down"
              ng-if="!$ctrl.rolesCardIsShown"
              aria-hidden="true">
@@ -272,12 +266,12 @@
         <div class="oppia-mobile-collapsible-card-content" ng-if="$ctrl.rolesCardIsShown">
           <div ng-if="$ctrl.canModifyRoles" ng-hide="$ctrl.isRolesFormOpen" class="oppia-edit-roles-btn-container">
             <span ng-click="$ctrl.openEditRolesForm()" class="oppia-edit-roles-btn protractor-test-edit-roles">
-              EDIT
+              Редактировать
             </span>
           </div>
 
           <div ng-show="$ctrl.ExplorationRightsService.ownerNames.length > 0">
-            <strong>Managers</strong>
+            <strong>Менеджеры</strong>
             <ul>
               <li ng-repeat="ownerName in $ctrl.ExplorationRightsService.ownerNames track by $index">
                 <[ownerName]>
@@ -286,7 +280,7 @@
           </div>
 
           <div ng-show="$ctrl.ExplorationRightsService.editorNames.length > 0">
-            <strong>Collaborators</strong>
+            <strong>Соавторы</strong>
             <ul>
               <li ng-repeat="editorName in $ctrl.ExplorationRightsService.editorNames track by $index">
                 <[editorName]>
@@ -295,7 +289,7 @@
           </div>
 
           <div ng-show="$ctrl.ExplorationRightsService.voiceArtistNames.length > 0">
-            <strong>Voice Artists</strong>
+            <strong>Голосвые исполнители</strong>
             <ul>
               <li ng-repeat="voiceArtistName in $ctrl.ExplorationRightsService.voiceArtistNames track by $index">
                 <[voiceArtistName]>
@@ -304,7 +298,7 @@
           </div>
 
           <div ng-show="$ctrl.ExplorationRightsService.viewerNames.length > 0">
-            <strong>Playtesters</strong>
+            <strong>Тестеры</strong>
             <ul>
               <li ng-repeat="viewerName in $ctrl.ExplorationRightsService.viewerNames track by $index">
                 <[viewerName]>
@@ -313,28 +307,28 @@
           </div>
 
           <div ng-if="$ctrl.canModifyRoles" ng-show="$ctrl.isRolesFormOpen">
-            <strong>Add or Change Role</strong>
+            <strong>Добавить или изменить роль</strong>
             <div class="form-group">
               <form ng-submit="$ctrl.editRole($ctrl.newMemberUsername, $ctrl.newMemberRole.value)">
-                <label for="$ctrl.newMemberUsername">Username of invited user</label>
+                <label for="$ctrl.newMemberUsername">Имя приглашенного пользователя</label>
                 <div>
                   <input type="text" id="$ctrl.newMemberUsername" class="form-control protractor-test-role-username" ng-model="$ctrl.newMemberUsername" placeholder="username">
                 </div>
                 <br>
-                <label for="$ctrl.newMemberRole">Role of invited user</label>
+                <label for="$ctrl.newMemberRole">Роль приглашенного пользователя</label>
                 <div>
                   <select ng-model="$ctrl.newMemberRole" class="form-control oppia-role-select protractor-test-role-select" ng-options="r.name for r in $ctrl.ROLES">
                   </select>
                   <span class="form-text">
-                    <p>Note that managers also have the permissions of collaborators, collaborators also have the permissions of voice artists, and voice artists also have the permissions of viewers. Please note that assigning roles is irreversible (though you can always assign somebody to a higher role).</p>
+                    <p>Обратите внимание, что менеджеры также имеют разрешения соавторов, соавторы также имеют разрешения голосовых исполнителей, а голосовые исполнители также имеют разрешения зрителей. Обратите внимание, что назначение ролей необратимо (хотя вы всегда можете назначить кого-то на более высокую роль).</p>
                   </span>
                 </div>
 
                 <input type="submit" class="btn btn-secondary protractor-test-save-role" value="Save" ng-disabled="!$ctrl.isTitlePresent()">
                 <button type="button" class="btn btn-secondary" ng-click="$ctrl.closeEditRolesForm()" ng-show="$ctrl.isRolesFormOpen">
-                  Cancel
+                  Отмена
                 </button>
-                <p ng-show="!$ctrl.isTitlePresent()" class="text-danger protractor-test-title-warning">Please provide a title before inviting.</p>
+                <p ng-show="!$ctrl.isTitlePresent()" class="text-danger protractor-test-title-warning">Пожалуйста, укажите заголовок перед приглашением.</p>
               </form>
             </div>
           </div>
@@ -346,7 +340,7 @@
   <md-card class="oppia-settings-card-container oppia-editor-card oppia-permissions-card oppia-mobile-collapsible-card">
     <div>
       <div class="oppia-basic-settings-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleCards('permissions')">
-        <h3>Permissions</h3>
+        <h3>Доступы</h3>
         <i class="fa fa-caret-down"
            ng-if="!$ctrl.permissionsCardIsShown"
            aria-hidden="true">
@@ -358,44 +352,44 @@
       </div>
       <div class="oppia-mobile-collapsible-card-content" ng-if="$ctrl.permissionsCardIsShown">
         <p ng-if="$ctrl.ExplorationRightsService.isPrivate() && $ctrl.ExplorationRightsService.viewableIfPrivate()">
-          This exploration is <strong>private</strong>. Anyone with the link can access it.
+          Это занятие <strong>приватное</strong>. Все, у кого есть ссылка, могут получить к ней доступ.
         </p>
         <p ng-if="$ctrl.ExplorationRightsService.isPrivate() && !$ctrl.ExplorationRightsService.viewableIfPrivate()">
-          This exploration is <strong>private</strong>. Only invited users, moderators and site admins can
-          access it.
+          Это занятие <strong>приватное</strong>. Только приглашенные пользователи, модераторы и администраторы сайта могут
+          получить доступ к нему.
         </p>
         <p ng-if="!$ctrl.ExplorationRightsService.isPrivate()">
-          This exploration is <strong>public</strong>: anyone can access it.
+          Это занятие <strong>публичное</strong>: любой может получить к нему доступ.
         </p>
 
         <p ng-if="!$ctrl.ExplorationRightsService.isPrivate() || $ctrl.ExplorationRightsService.viewableIfPrivate()">
-          <em>Link to share:</em>
+          <em>Ссылка, чтобы поделиться:</em>
           <input class="form-control" type="text" value="<[$ctrl.getExplorePageUrl(explorationId)]>" readonly="readonly" onClick="this.select();">
         </p>
 
         <br>
 
         <p ng-if="$ctrl.ExplorationRightsService.isPrivate()">
-          It is <strong>not shown</strong> in the Oppia library.
+          <strong>Не показывать</strong> в библиотеке Oqustudy.
         </p>
         <p ng-if="!$ctrl.ExplorationRightsService.isPrivate()">
-          It is <strong>available</strong> in the Oppia library.
+          <strong>Показывать</strong> в библиотеке Oqustudy.
         </p>
 
         <div ng-if="$ctrl.ExplorationRightsService.ownerNames.length === 0 && !$ctrl.ExplorationRightsService.isCloned()">
-          <h3>Permissions</h3>
+          <h3>Доступы</h3>
           <div>
-            This exploration is <strong>public</strong> and <strong>community-editable</strong>.
+            Это занятие <strong>публичное</strong> и <strong>редактируется любым</strong>.
             <p ng-if="!$ctrl.ExplorationRightsService.isPrivate()">
-              It is <strong>available</strong> in the Oppia library.
+             <strong>Показывать</strong> в библиотеке Oqustudy.
             </p>
           </div>
         </div>
 
         <div ng-if="$ctrl.ExplorationRightsService.isCloned()">
-          <h3>Status</h3>
+          <h3>Статус</h3>
           <div>
-            This exploration was <strong>cloned</strong> from another exploration.
+            Это занятие было <strong>клонированно</strong> с другого занятия.
           </div>
         </div>
       </div>
@@ -404,7 +398,7 @@
 
   <md-card class="oppia-settings-card-container oppia-editor-card oppia-feedback-card oppia-mobile-collapsible-card" ng-if="$ctrl.EditabilityService.isEditable()">
     <div class="oppia-basic-settings-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleCards('feedback')">
-      <h3>Feedback/Suggestion Email Preferences</h3>
+      <h3>Настройки электронной почты для отзывов / предложений</h3>
       <i class="fa fa-caret-down"
          ng-if="!$ctrl.feedbackCardIsShown"
          aria-hidden="true">
@@ -418,7 +412,7 @@
       <div role="form" class="form-horizontal">
         <div class="oppia-features-header">
           <label for="FeedbackNotifications">
-            Feedback emails
+            Письма с отзывами
           </label>
           <div>
             <div class="oppia-on-off-switch">
@@ -432,17 +426,17 @@
           </div>
         </div>
         <span class="form-text secondary-info-text" ng-if="!$ctrl.UserEmailPreferencesService.areFeedbackNotificationsMuted()">
-          You are currently receiving notifications of new feedback for this exploration.
+          В настоящее время вы получаете уведомления о новых отзывах об этом исследовании.
         </span>
         <span class="form-text secondary-info-text" ng-if="$ctrl.UserEmailPreferencesService.areFeedbackNotificationsMuted()">
-          You have muted feedback notifications for this exploration. You will not receive an email when new feedback is submitted.
+          Вы отключили уведомления об обратной связи для этого исследования. Вы не получите письмо по электронной почте, когда будет отправлен новый отзыв.
         </span>
       </div>
       <hr class="oppia-feature-separator">
       <div role="form" class="form-horizontal">
         <div class="oppia-features-header">
           <label for="SuggestionNotifications">
-            Suggestion emails
+            Письма с предложениями
           </label>
           <div>
             <div class="oppia-on-off-switch">
@@ -455,10 +449,10 @@
             </div>
           </div>
           <span class="form-text secondary-info-text" ng-if="!$ctrl.UserEmailPreferencesService.areSuggestionNotificationsMuted()">
-            You are currently receiving notifications of new suggestions for this exploration.
+            В настоящее время вы получаете уведомления о новых предложениях по этому исследованию.
           </span>
           <span class="form-text secondary-info-text" ng-if="$ctrl.UserEmailPreferencesService.areSuggestionNotificationsMuted()">
-            You have muted suggestion notifications for this exploration. You will not receive an email when new suggestion is submitted.
+            Вы отключили уведомления о предложениях для этого исследования. Вы не получите письмо по электронной почте, когда будет отправлено новое предложение.
           </span>
         </div>
       </div>
@@ -468,7 +462,7 @@
 
   <md-card class="oppia-settings-card-container oppia-editor-card oppia-mobile-collapsible-card" ng-if="$ctrl.EditabilityService.isEditable()">
     <div class="oppia-basic-settings-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleCards('controls')">
-      <h3>Controls</h3>
+      <h3>Управление</h3>
       <i class="fa fa-caret-down"
          ng-if="!$ctrl.controlsCardIsShown"
          aria-hidden="true">
@@ -481,50 +475,50 @@
     <div class="oppia-mobile-collapsible-card-content" ng-if="$ctrl.controlsCardIsShown">
       <p ng-if="$ctrl.canReleaseOwnership" class="oppia-exploration-ctrl" ng-hide="$ctrl.ExplorationRightsService.isCommunityOwned()">
         <button type="button" class="btn btn-secondary" ng-click="$ctrl.showTransferExplorationOwnershipModal()" ng-disabled="$ctrl.isExplorationLockedForEditing()">
-          Transfer ownership to the community
+          Передать право собственности
         </button>
         <span ng-if="$ctrl.isExplorationLockedForEditing()">
           <br>
-          Please save your changes first.
+          Пожалуйста, сначала сохраните ваши изменения.
         </span>
       </p>
       <p ng-if="$ctrl.canDelete" class="oppia-exploration-ctrl">
         <button type="button" ng-if="$ctrl.ExplorationRightsService.isPrivate()"
                 class="btn oppia-delete-button" ng-click="$ctrl.deleteExploration()"
-                title="Delete this exploration">
-          DELETE EXPLORATION
+                title="Удалить занятие">
+          Удалить занятие
         </button>
       </p>
     </div>
 
     <div class="col-lg-6 col-md-6 col-sm-6" ng-if="$ctrl.currentUserIsAdmin || $ctrl.currentUserIsModerator">
-      <h3>Admin Controls</h3>
+      <h3>Управление админа</h3>
 
       <p ng-if="$ctrl.canUnpublish" class="oppia-exploration-ctrl oppia-exploration-ctrl-admin" ng-show="$ctrl.ExplorationRightsService.isPublic()">
         <button type="button" class="btn btn-secondary" ng-click="$ctrl.unpublishExplorationAsModerator()" ng-disabled="$ctrl.isExplorationLockedForEditing()">
-          Unpublish
-          <span ng-if="$ctrl.currentUserIsAdmin">(as admin)</span>
-          <span ng-if="!$ctrl.currentUserIsAdmin && $ctrl.currentUserIsModerator">(as moderator)</span>
+          Отменить публикацию
+          <span ng-if="$ctrl.currentUserIsAdmin">(как админ)</span>
+          <span ng-if="!$ctrl.currentUserIsAdmin && $ctrl.currentUserIsModerator">(как модератор)</span>
         </button>
       </p>
 
       <p class="oppia-exploration-ctrl oppia-exploration-ctrl-admin" ng-if="$ctrl.ExplorationRightsService.isPublic() && ($ctrl.currentUserIsAdmin || $ctrl.currentUserIsModerator)">
         <button type="button" class="btn oppia-delete-button protractor-test-delete-exploration-button"
                 ng-click="$ctrl.deleteExploration()">
-          DELETE EXPLORATION
-          <span ng-if="$ctrl.currentUserIsAdmin">(as admin)</span>
-          <span ng-if="!$ctrl.currentUserIsAdmin && $ctrl.currentUserIsModerator">(as moderator)</span>
+          Удалить занятие
+          <span ng-if="$ctrl.currentUserIsAdmin">(как админ)</span>
+          <span ng-if="!$ctrl.currentUserIsAdmin && $ctrl.currentUserIsModerator">(как модератор)</span>
         </button>
       </p>
     </div>
   </md-card>
 
   <md-card class="oppia-settings-card-container oppia-editor-card oppia-parameters-card" ng-if="$ctrl.areParametersEnabled()">
-    <h3>Parameters used in this exploration</h3>
+    <h3>Параметры, используемые в этом занятии</h3>
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div ng-show="isEmpty($ctrl.explorationParamSpecsService.savedMemento.getParamDict())">
-          <em>No parameters used.</em>
+          <em>Параметры не используются.</em>
         </div>
         <ol>
           <li ng-repeat="(paramName, paramSpec) in $ctrl.explorationParamSpecsService.savedMemento.getParamDict()">
@@ -535,8 +529,8 @@
     </div>
 
     <h3>
-      Initial parameter changes
-      <i class="material-icons md-18 oppia-info-icon" uib-tooltip="These changes are applied before the learner begins the exploration."
+      Изменение начального параметра
+      <i class="material-icons md-18 oppia-info-icon" uib-tooltip="Эти изменения применяются до того, как учащийся начнет занятие."
          tooltip-placement="right">
         &#xE88E;
       </i>
@@ -577,8 +571,8 @@
     margin-top: 0;
   }
   settings-tab .oppia-settings-card-container {
-    border: 1px solid #707070;
-    box-shadow: none;
+    
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
     padding: 30px 55px;
   }
   settings-tab .oppia-settings-input-group {
@@ -598,16 +592,20 @@
     text-align: right;
   }
   settings-tab .oppia-edit-roles-btn {
-    color: #009C8A;
+    color: #007EFF;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: normal;
+    border: 1px solid #007EFF;
+    border-radius: 19px;
+    padding: 9px;
   }
   settings-tab .oppia-permissions-card {
     color: #666;
   }
   settings-tab .oppia-delete-button {
-    background-color: #C55F45;
+    background-color: #FB4E4E;
     color: #FFF;
+    margin-bottom: 12px;
   }
   settings-tab .secondary-info-text {
     font-size: smaller;

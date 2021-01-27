@@ -18,5 +18,5 @@
 
 export const StateEditorConstants = {
   INFO_MESSAGE_SOLUTION_IS_INVALID_FOR_QUESTION:
-    'The current solution does not correspond to a correct answer.'
+    'Текущее решение не соответствует правильному ответу.'
 } as const;

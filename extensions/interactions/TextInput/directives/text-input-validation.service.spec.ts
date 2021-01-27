@@ -98,7 +98,7 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: ('Placeholder text must be a string.')
+      message: ('Текст-заполнитель должен быть строкой.')
     }]);
   });
 
@@ -110,7 +110,7 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: ('Placeholder text must be a string.')
+      message: ('Текст-заполнитель должен быть строкой.')
     }]);
   });
 
@@ -121,7 +121,7 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: ('Number of rows must be integral.')
+      message: ('Количество строк должно быть целым.')
     }]);
   });
 
@@ -133,7 +133,7 @@ describe('TextInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'Number of rows must be between ' + minRows + ' and ' +
+        'Количество строк должно быть между ' + minRows + ' и ' +
         maxRows + '.')
     }]);
   });
@@ -158,8 +158,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'Contains\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'Contains\' правило с подходящим входом.'
     }]);
 
     answerGroups = [createAnswerGroupByRules(
@@ -182,8 +182,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'Contains\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'Contains\' правило с подходящим входом.'
     }]);
 
     answerGroups = [createAnswerGroupByRules(
@@ -206,8 +206,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'Contains\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'Contains\' правило с подходящим входом.'
     }]);
   });
 
@@ -232,8 +232,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'StartsWith\' rule with a matching prefix.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'StartsWith\' правило с подходящим префиксом.'
     }]);
 
     answerGroups = [createAnswerGroupByRules(
@@ -256,8 +256,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'StartsWith\' rule with a matching prefix.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'StartsWith\' правило с подходящим префиксом.'
     }]);
 
     answerGroups = [createAnswerGroupByRules(
@@ -280,8 +280,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'StartsWith\' rule with a matching prefix.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'StartsWith\' правило с подходящим префиксом.'
     }]);
   });
 
@@ -306,8 +306,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'Equals\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'Equals\' правило с подходящим префиксом.'
     }]);
 
     answerGroups = [createAnswerGroupByRules(
@@ -331,8 +331,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 2 will never be matched because it' +
-      ' is preceded by a \'FuzzyEquals\' rule with a matching input.'
+      message: 'Правило 1 из группы ответов 2 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'FuzzyEquals\' правило с подходящим входом.'
     }]);
   });
 
@@ -357,8 +357,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'FuzzyEquals\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'FuzzyEquals\' правило с подходящим входом.'
     }]);
 
     answerGroups = [createAnswerGroupByRules(
@@ -381,8 +381,8 @@ describe('TextInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'FuzzyEquals\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'FuzzyEquals\' правило с подходящим входом.'
     }]);
   });
 });

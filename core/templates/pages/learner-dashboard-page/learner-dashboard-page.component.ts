@@ -435,7 +435,7 @@ angular.module('oppia').component('learnerDashboardPage', {
           ctrl.profilePictureDataUrl = dataUrl;
         });
 
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка занятий');
         ctrl.username = '';
         var userInfoPromise = UserService.getUserInfoAsync();
         userInfoPromise.then(function(userInfo) {

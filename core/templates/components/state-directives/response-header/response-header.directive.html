@@ -7,10 +7,10 @@
     </div>
     <div class="oppia-responses-mobile">
       <div class="oppia-response-mobile-item oppia-response-mobile-item-incorrect" ng-if="!$ctrl.isCorrect() && $ctrl.isCorrectnessFeedbackEnabled() && $ctrl.isResponse() && !$ctrl.isCurrentInteractionLinear()">
-        Incorrect
+        Не корректно
       </div>
       <div class="oppia-response-mobile-item oppia-response-mobile-item-correct" ng-if="$ctrl.isCorrect() && $ctrl.isCorrectnessFeedbackEnabled() && $ctrl.isResponse() && !$ctrl.isCurrentInteractionLinear()">
-        Correct
+        Корректно
       </div>
     </div>
     <span ng-attr-title="<[$ctrl.getSummary()]>">
@@ -25,7 +25,7 @@
   <br class="break-in-mobile">
   <span ng-if="$ctrl.getOutcome()">→</span>
   <span ng-if="$ctrl.isCorrect() && $ctrl.isInQuestionMode()">
-    Correct
+    Корректно
   </span>
   <span ng-if="$ctrl.getOutcome() && !$ctrl.isOutcomeLooping() && !$ctrl.isCreatingNewState() && !$ctrl.isInQuestionMode()"
         ng-click="$ctrl.navigateToState($ctrl.getOutcome().dest)" class="oppia-nested-link">
@@ -33,13 +33,13 @@
   </span>
   <span class="oppia-nested-link" ng-if="$ctrl.getOutcome() && !$ctrl.isOutcomeLooping() && $ctrl.isCreatingNewState()">
     <em ng-if="$ctrl.getOutcome().newStateName">(<[$ctrl.getOutcome().newStateName]>)</em>
-    <em ng-if="!$ctrl.getOutcome().newStateName">Nowhere yet...</em>
+    <em ng-if="!$ctrl.getOutcome().newStateName">Пока нигде ...</em>
   </span>
   <span ng-if="$ctrl.getOutcome() && !$ctrl.isInQuestionMode() && $ctrl.isOutcomeLooping()">
-    <em>(try again)</em>
+    <em>(попробуй снова)</em>
   </span>
   <span ng-if="$ctrl.getOutcome() && $ctrl.isInQuestionMode() && !$ctrl.isCorrect()">
-    <em>Wrong<br> (try again)</em>
+    <em>Неправильно<br> (попробуй снова)</em>
   </span>
 </div>
 

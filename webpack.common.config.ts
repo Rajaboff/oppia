@@ -31,9 +31,9 @@ var htmlMinifyConfig = {
 };
 var commonPrefix = './core/templates';
 var defaultMeta = {
-  name: 'Personalized Online Learning from Oppia',
-  description: 'Oppia is a free, open-source learning platform. Join ' +
-    'the community to create or try an exploration today!'
+  name: 'Персонализированное онлайн-обучение от Oqustudy.kz',
+  description: 'Oqustudy.kz -  образовательная онлайн платформа адаптивного обучения . Присоединяйтесь ' +
+    ' к сообществу, чтобы создать или попробовать исследования сегодня!'
 };
 
 module.exports = {
@@ -153,11 +153,11 @@ module.exports = {
       filename: 'about-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'With Oppia, you can access free lessons on ' +
-          'math, physics, statistics, chemistry, music, history and ' +
-          'more from anywhere in the world. Oppia is a nonprofit ' +
-          'with the mission of providing high-quality ' +
-          'education to those who lack access to it.'
+        description: 'С Oqustudy.kz вы можете получить доступ к урокам на темы ' +
+          'математики, физики, статистики, химии, музыки, истории и ' +
+          'другие предметы из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование с ' +
+          'высоким качеством контента и процесса обучения ' +
+          'для тех, кому не досточно классического образования.'
       },
       template: commonPrefix + '/pages/about-page/about-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -168,11 +168,11 @@ module.exports = {
       filename: 'admin-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'With Oppia, you can access free lessons on ' +
-          'math, physics, statistics, chemistry, music, history and ' +
-          'more from anywhere in the world. Oppia is a nonprofit ' +
-          'with the mission of providing high-quality ' +
-          'education to those who lack access to it.'
+        description: 'С Oqustudy.kz вы можете получить доступ к урокам на темы ' +
+          'математики, физики, статистики, химии, музыки, истории и  ' +
+          'другие предметы из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование ' +
+          'c высоким качеством контента и процесса обучения ' +
+          'для тех, кому не досточно классического образования.'
       },
       template: commonPrefix + '/pages/admin-page/admin-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -183,8 +183,8 @@ module.exports = {
       filename: 'classroom-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Learn and practice all major math topics, functions, ' +
-        'equations, and formulas through problems, stories, and examples.'
+        description: 'Изучите и практикуйте все основы математики, функции, ' +
+        'уравнения и формулы через задачи, истории и примеры.'
       },
       template:
         commonPrefix + '/pages/classroom-page/' +
@@ -197,8 +197,8 @@ module.exports = {
       filename: 'collection-editor-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Contact the Oppia team, submit feedback, and learn ' +
-          'how to get involved with the Oppia project.'
+        description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
+          'как стать учителем платформы Oqustudy.kz.'
       },
       template:
         commonPrefix + '/pages/collection-editor-page/' +
@@ -211,8 +211,8 @@ module.exports = {
       filename: 'collection-player-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Contact the Oppia team, submit feedback, and learn ' +
-          'how to get involved with the Oppia project.'
+        description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
+          'как стать учителем платформы Oqustudy.kz.'
       },
       template:
         commonPrefix + '/pages/collection-player-page/' +
@@ -225,8 +225,8 @@ module.exports = {
       filename: 'console_errors.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Contact the Oppia team, submit feedback, and learn ' +
-          'how to get involved with the Oppia project.'
+        description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
+          'как стать учителем платформы Oqustudy.kz.'
       },
       template: commonPrefix + '/tests/console_errors.html',
       minify: htmlMinifyConfig,
@@ -237,8 +237,8 @@ module.exports = {
       filename: 'contact-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Contact the Oppia team, submit feedback, and learn ' +
-          'how to get involved with the Oppia project.'
+        description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
+          'как стать учителем платформы Oqustudy.kz.'
       },
       template: commonPrefix + '/pages/contact-page/contact-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -279,8 +279,8 @@ module.exports = {
       filename: 'donate-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Donate to The Oppia Foundation to enable more ' +
-        'students to receive the quality education they deserve.'
+        description: 'Сделайте пожертвование платформе Oqustudy.kz, чтобы ' +
+        'ученики получали качественное образование, которого они заслуживают.'
       },
       template: commonPrefix + '/pages/donate-page/donate-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -363,8 +363,8 @@ module.exports = {
       filename: 'exploration-editor-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Help others learn new things. Create lessons through ' +
-          'explorations and share your knowledge with the community.'
+        description: 'Проектируйте новые методы обучения. Создавайте уроки через ' +
+          'платформу Oqustudy.kz, тем самым дать хорошее образование большему количеству людей .'
       },
       template:
         commonPrefix + '/pages/exploration-editor-page/' +
@@ -419,10 +419,10 @@ module.exports = {
       filename: 'library-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Looking to learn something new? Learn any subject ' +
-          'of your choice created by professors, teachers and Oppia ' +
-          'users! Free lessons are always available for any topic and ' +
-          'level you want.'
+        description: 'Хотите узнать что-то новое? Учите любой предмет ' +
+          'на ваш выбор, созданные методистами, учителями платформы Oqustudy.kz ' +
+          'Уроки всегда доступны на любую тему и ' +
+          'любого уровня подготовки.'
       },
       template: commonPrefix + '/pages/library-page/library-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -451,8 +451,8 @@ module.exports = {
       filename: 'notifications-dashboard-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Keep track of the lessons you have created, as well ' +
-          'as feedback from learners.'
+        description: 'Также следите за созданными вами уроками ' +
+          'своевременно реагируя на обратную связь от учащихся.'
       },
       template: (
         commonPrefix +
@@ -487,7 +487,7 @@ module.exports = {
       filename: 'preferences-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Change your Oppia profile settings and preferences'
+        description: 'Измените настройки и предпочтения вашего профиля Oqustudy.kz'
       },
       template:
         commonPrefix + '/pages/preferences-page/preferences-page.mainpage.html',
@@ -545,10 +545,11 @@ module.exports = {
       filename: 'splash-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'With Oppia, you can access free lessons on math, ' +
-        'physics, statistics, chemistry, music, history and more from ' +
-        'anywhere in the world. Oppia is a nonprofit with the mission ' +
-        'of providing high-quality education to those who lack access to it.'
+        description: 'С Oqustudy.kz вы можете получить доступ к урокам на темы  ' +
+        'математики, физики, химии, музыки, истории и ' +
+        'другие предметы из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование с ' +
+        'высоким качеством контента и процесса обучения ' +
+          'для тех, кому не досточно классического образования.'
       },
       template: commonPrefix + '/pages/splash-page/splash-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -600,9 +601,9 @@ module.exports = {
       filename: 'teach-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'The Oppia library is full of user-created lessons ' +
-        'called \'explorations\'. Read about how to participate in the ' +
-        'community and begin creating explorations.'
+        description: 'Библиотека Oqustudy.kz полна уроков, созданных методистами и преподавателями. ' +
+        'называется \'занятия\'. Читайте о том, как принять участие в ' +
+        'создании контента и начать с создания занятия.'
       },
       template: commonPrefix + '/pages/teach-page/teach-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -613,9 +614,9 @@ module.exports = {
       filename: 'terms-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Oppia is a 501(c)(3) registered non-profit open-source' +
-        ' e-learning platform. Learn about our terms and conditions for ' +
-        'creating and distributing learning material.'
+        description: 'Oqustudy.kz - зарегистрированная в соответствии с 501 (c) (3) коммерческая организация.' +
+        ' платформа электронного обучения. Узнайте о наших условиях для ' +
+        'создание и распространение учебных материалов.'
       },
       template: commonPrefix + '/pages/terms-page/terms-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -626,7 +627,7 @@ module.exports = {
       filename: 'thanks-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Thank you for donating to The Oppia Foundation!'
+        description: 'Спасибо за пожертвование проекту Oqustudy.kz!'
       },
       template: commonPrefix + '/pages/thanks-page/thanks-page.mainpage.html',
       minify: htmlMinifyConfig,

@@ -1,6 +1,6 @@
 <p class="oppia-mobile-back-to-parent" ng-click="returnToTopicEditorPage()">
   <i class="fa fa-angle-left"></i>
-  <span>Back to Topic</span>
+  <span>Назад к теме</span>
 </p>
 <div class="topic-story-name">
   <span class="topic-name protractor-test-return-to-topic-button" ng-click="returnToTopicEditorPage()">
@@ -15,7 +15,7 @@
     <div class="content-container">
       <md-card class="oppia-page-card oppia-long-text content-card story-content-card oppia-mobile-collapsible-card">
         <div class="chapter-list-card-header oppia-mobile-collapsible-card-header" ng-click="toggleStoryEditorCard()">
-          <h3 class="story-card-header">Story Card</h3>
+          <h3 class="story-card-header">Карточка истории</h3>
           <i class="fa fa-caret-down"
              ng-if="!mainStoryCardIsShown"
              aria-hidden="true">
@@ -28,18 +28,18 @@
         <div class="oppia-mobile-collapsible-card-content" ng-if="mainStoryCardIsShown">
           <div class="story-content">
             <div class="story-title">
-              <label for="storyTitle" class="form-heading">Title*</label>
+              <label for="storyTitle" class="form-heading">Название</label>
               <input id="storyTitle" type="text" class="form-control protractor-test-story-title-field"
                      ng-model="editableTitle" ng-blur="updateStoryTitle(editableTitle)"
                      placeholder="Enter a title for the story." maxlength="<[MAX_CHARS_IN_STORY_TITLE]>" ng-trim="false">
               <span class="oppia-input-box-subtitle">
                 <em>
-                  Story title should be at most <[MAX_CHARS_IN_STORY_TITLE]> characters.
+                  Название истории должно быть не более <[MAX_CHARS_IN_STORY_TITLE]> символов.
                 </em>
               </span>
             </div>
             <div class="story-description" ng-class="{'has-error': editableDescriptionIsEmpty && storyDescriptionChanged}">
-              <label for="storyDescription" class="form-heading">Description*</label>
+              <label for="storyDescription" class="form-heading">Описание</label>
               <textarea type="text" class="form-control protractor-test-story-description-field"
                         ng-model="editableDescription"
                         ng-change="updateStoryDescriptionStatus(editableDescription)"
@@ -47,38 +47,38 @@
                         placeholder="Enter the description of the story">
               </textarea>
               <span ng-if="editableDescriptionIsEmpty && storyDescriptionChanged" class="form-text story-contain-text">
-                What does this story contain?
+               Что содержит эта история?
               </span>
             </div>
             <div class="story-meta-tag-content" ng-class="{'has-error': editableMetaTagContent.length === 0}">
-              <label for="storyMetaTagContent" class="form-heading protractor-test-story-meta-tag-content-label">Meta Tag Content</label>
+              <label for="storyMetaTagContent" class="form-heading protractor-test-story-meta-tag-content-label">Содержимое метатега</label>
               <textarea type="text" class="form-control protractor-test-story-meta-tag-content-field"
                         ng-model="editableMetaTagContent"
                         ng-blur="updateStoryMetaTagContent(editableMetaTagContent)"
-                        placeholder="Enter the meta tag content for the story">
+                        placeholder="Введите содержимое метатега для истории">
               </textarea>
             </div>
             <div class="story-url-fragment">
-              <label for="storyUrlFragment" class="form-heading">Url Fragment*</label>
+              <label for="storyUrlFragment" class="form-heading">Фрагмент URL</label>
               <input id="storyUrlFragment" type="text" class="form-control protractor-test-story-url-fragment-field"
                      ng-model="editableUrlFragment" ng-blur="updateStoryUrlFragment(editableUrlFragment)"
-                     placeholder="Enter url fragment for the story." maxlength="<[MAX_CHARS_IN_STORY_URL_FRAGMENT]>" ng-trim="true"
+                     placeholder="Введите фрагмент URL-адреса истории." maxlength="<[MAX_CHARS_IN_STORY_URL_FRAGMENT]>" ng-trim="true"
                      ng-class="{'is-invalid': storyUrlFragmentExists}">
               <span class="oppia-input-box-subtitle">
                 <em>
-                  The story URL fragment is used to uniquely access the story viewer page. It should consist of one or more hyphen-separated words, all in lowercase, with at most <[MAX_CHARS_IN_STORY_URL_FRAGMENT]> characters in total and must be unique across the topic. Please use meaningful keywords, and avoid using words like "and", "of", or "the".
-                  This story can be accessed at the following URL:<br>
+                  Фрагмент URL-адреса истории используется для однозначного доступа к странице просмотра истории. Он должен состоять из одного или нескольких слов, разделенных дефисом, в нижнем регистре, не более <[MAX_CHARS_IN_STORY_URL_FRAGMENT]> всего символов и должны быть уникальными по теме. Используйте значимые ключевые слова и избегайте таких слов, как "and", "of", или "the".
+                  Эта история доступна по следующему URL-адресу:<br>
                   <[hostname]>/learn/<[getClassroomUrlFragment()]>/<[getTopicUrlFragment()]>/story/<[editableUrlFragment]>
                 </em>
               </span>
               <div ng-if="storyUrlFragmentExists" class="oppia-input-box-subtitle text-danger">
                 <em>
-                  This story URL fragment already exists.
+                  Этот фрагмент URL истории уже существует.
                 </em>
               </div>
             </div>
             <div class="story-thumbnail">
-              <label class="form-heading">Thumbnail Image*</label>
+              <label class="form-heading">Обложка</label>
               <thumbnail-uploader filename="story.getThumbnailFilename()"
                                   update-filename="updateStoryThumbnailFilename"
                                   bg-color="story.getThumbnailBgColor()"
@@ -93,7 +93,7 @@
             </div>
             <div class="story-notes">
               <div class="oppia-editor-card-body">
-                <label class="form-heading">Notes</label>
+                <label class="form-heading">Заметка</label>
                 <div ng-if="!notesEditorIsShown">
                   <div ng-class="oppia-editable-section" ng-click="openNotesEditor()" class="protractor-test-open-story-notes-editor-button">
                     <i class="material-icons oppia-editor-edit-icon float-right"
@@ -103,7 +103,7 @@
                          ng-class="oppia-prevent-selection"
                          title="Story notes">
                       <span class="oppia-placeholder" ng-show="editableNotes === ''">
-                          Add notes about the story to help other contributors.
+                          Добавляйте примечания к истории, чтобы помочь другим участникам.
                       </span>
                       <angular-html-bind class="story-notes protractor-test-story-notes" html-data="editableNotes">
                       </angular-html-bind>
@@ -122,9 +122,9 @@
                             class="btn btn-success oppia-save-state-item-button float-right protractor-test-save-story-notes-button"
                             ng-disabled="!editableNotes"
                             ng-click="updateNotes(editableNotes)">
-                      Save
+                      Сохранить
                     </button>
-                    <button type="button" class="btn btn-secondary float-right" ng-click="closeNotesEditor()">Cancel</button>
+                    <button type="button" class="btn btn-secondary float-right" ng-click="closeNotesEditor()">Отмена</button>
                   </div>
                 </div>
               </div>
@@ -134,13 +134,13 @@
         <div ng-if="story.getThumbnailFilename() && mainStoryCardIsShown">
           <div ng-if="!storyPreviewCardIsShown" >
             <button class="btn btn-default show-story-preview-button" ng-click="togglePreview()">
-              Expand Preview
+              Развернуть предпросмотр
               <i class="fa fa-angle-down"></i>
             </button>
           </div>
           <div ng-if="storyPreviewCardIsShown">
             <button class="btn btn-default show-story-preview-button" ng-click="togglePreview()">
-              Collapse Preview
+              Свернуть предпросмотр
               <i class="fa fa-angle-up"></i>
             </button>
           </div>
@@ -150,7 +150,7 @@
                                description="editableDescription"
                                filename = "story.getThumbnailFilename()"
                                thumbnail-bg-color="story.getThumbnailBgColor()"
-                               bg-color="'#2F6687'">
+                               bg-color="'#007EFF'">
             </preview-thumbnail>
           </div>
         </div>
@@ -161,7 +161,7 @@
       <md-card class="oppia-page-card oppia-long-text content-card oppia-mobile-collapsible-card">
         <div class="story-node-editor">
           <div class="chapter-list-card-header oppia-mobile-collapsible-card-header" ng-click="toggleChapterLists()">
-            <span>Chapters</span>
+            <span>Главы</span>
             <i class="fa fa-caret-down"
                ng-if="!chaptersListIsShown"
                aria-hidden="true">
@@ -175,16 +175,16 @@
         <div ng-if="chaptersListIsShown" class="oppia-mobile-collapsible-card-content">
           <div>
             <button ng-click="createNode()" class="btn add-chapter-btn protractor-test-add-chapter-button">
-              + ADD CHAPTER
+              + Добавить главу
             </button>
             <div ng-if="!linearNodesList.length">
               <p class="no-chapters-message">
-                This story has no chapters.
+                В этой истории нет глав.
               </p>
             </div>
             <div ng-if="linearNodesList.length">
               <div class="chapter-list-card-heading">
-                <span>Name</span>
+                <span>Название</span>
               </div>
               <div class="story-nodes-container">
                 <div ng-repeat="node in linearNodesList track by $index">
@@ -206,7 +206,7 @@
                     <div class="chapter-option-box" ng-if="selectedChapterIndex === $index" ng-mouseleave="toggleChapterEditOptions(-1)" ng-click="toggleChapterEditOptions(-1);$event.stopPropagation()">
                       <div class="chapter-edit-option protractor-test-delete-chapter-button" ng-click="deleteNode(node.getId())">
                         <i class="fa fa-trash"></i>
-                        <span>Delete</span>
+                        <span>Удалить</span>
                       </div>
                     </div>
                   </div>
@@ -240,6 +240,7 @@
   }
 
   story-editor .story-editor-node-title {
+    color: #007EFF;
     cursor: pointer;
     text-align: left;
     width: 95%;
@@ -256,7 +257,7 @@
   }
 
   story-editor .topic-name {
-    color: #666;
+    color: #007EFF;
     cursor: pointer;
   }
 
@@ -332,11 +333,12 @@
     width: 80%;
   }
   story-editor .show-story-preview-button {
-    border-top: 1px solid #c1c1c1;
-    color: #419889;
+    background-color: #F9F9FA;
+    color: #007EFF;
     font-size: 15px;
     padding: 10px 0;
     width: 100%;
+    border-radius: 0px;
   }
   story-editor .story-content-card {
     padding: 0;
@@ -355,9 +357,9 @@
     font-size: smaller;
   }
   story-editor .add-chapter-btn {
-    background-color: #008098;
+    background-color: #007EFF;
     color: #FFF;
-    font-weight: bold;
+    font-weight: normal;
     margin: 15px 0 15px;
     text-align: left;
   }
@@ -377,13 +379,14 @@
     font-weight: bold;
   }
   story-editor .chapter-option-box {
-    background-color: #e1dcdc;
-    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 8px;
     padding: 0;
     position: absolute;
     right: -5px;
     width: 140px;
     z-index: 1;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
   story-editor .chapter-edit-option {
     cursor: pointer;
@@ -395,6 +398,7 @@
     margin-left: 5%;
   }
   story-editor .chapter-edit-toggle-button {
+    color: #52575C;
     cursor: pointer;
     position: relative;
   }

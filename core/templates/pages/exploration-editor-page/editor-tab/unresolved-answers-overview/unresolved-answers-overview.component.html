@@ -25,16 +25,16 @@
 
 <div ng-if="isUnresolvedAnswersOverviewShown()">
   <span class="oppia-improvements-overview-header">
-    <strong>Improvements Overview</strong>
+    <strong>Обзор улучшений</strong>
   </span>
   <md-card class="oppia-unresolved-answers-card">
-    <strong>Unresolved Student Answers</strong>
+    <strong>Неразрешенные ответы учащихся</strong>
     <ul>
       <li ng-repeat="data in getUnresolvedStateStats()" class="answer-container">
-        <strong>(<[data.frequency]> times)</strong>: <span ng-bind-html="data.answerHtml"></span>
+        <strong>(<[data.frequency]> часов)</strong>: <span ng-bind-html="data.answerHtml"></span>
       </li>
       <li ng-if="getUnresolvedStateStats().length === 0">
-        <em>No outstanding answers require attention.</em>
+        <em>Никакие выдающиеся ответы не требуют внимания.</em>
       </li>
     </ul>
   </md-card>
@@ -42,7 +42,7 @@
   <md-card class="oppia-unresolved-answers" ng-if="SHOW_TRAINABLE_UNRESOLVED_ANSWERS && isCurrentInteractionTrainable()">
     <div ng-if="isEditableOutsideTutorialMode() && !isCurrentInteractionLinear()">
       <button type="button" class="btn btn-secondary btn-lg oppia-add-response-button protractor-test-open-teach-modal" ng-click="openTeachOppiaModal()">
-        Train Oppia
+        Тренировать вместе с Oqustudy
       </button>
     </div>
   </md-card>

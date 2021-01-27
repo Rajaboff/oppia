@@ -120,7 +120,7 @@ angular.module('oppia').directive('learnerLocalNav', [
               });
             ctrl.username = '';
             ctrl.feedbackOptionIsShown = true;
-            LoaderService.showLoadingScreen('Loading');
+            LoaderService.showLoadingScreen('Загрузка');
             UserService.getUserInfoAsync().then(function(userInfo) {
               ctrl.username = userInfo.getUsername();
               if (

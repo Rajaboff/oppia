@@ -1,8 +1,8 @@
 <md-card class="oppia-page-card oppia-long-text" ng-if="$ctrl.hasPageLoaded()">
-  <h2>Collection Permissions</h2>
+  <h2>Уровни доступа к курсу</h2>
   <div class="row">
     <div class="col-lg-5 col-md-5 col-sm-5">
-      <h3>Managers</h3>
+      <h3>Менеджеры</h3>
       <ul>
         <li ng-repeat="ownerName in $ctrl.collectionRights.getOwnerNames() track by $index">
           <[ownerName]>
@@ -11,18 +11,18 @@
     </div>
 
     <div class="col-lg-7 col-md-7 col-sm-7">
-      <h3>Permissions</h3>
+      <h3>Доступы</h3>
       <div ng-if="$ctrl.collectionRights.isPrivate()">
-        This collection is <strong>private</strong>.
+        Этот курс <strong>приватный</strong>.
         <br>
         <br>
-        It is <strong>not shown</strong> in the Oppia library.
+        Это <strong>не отображено</strong> в библиотеке Oqustudy.
       </div>
       <div ng-if="$ctrl.collectionRights.isPublic()">
-        This collection is <strong>public</strong>: anyone can access it.
+        Этот курс <strong>публичный</strong>: любой может получить к нему доступ.
         <br>
         <br>
-        It is <strong>available</strong> in the Oppia library.
+        Это <strong>доступно</strong> в библиотеке Oqustudy.
       </div>
     </div>
   </div>

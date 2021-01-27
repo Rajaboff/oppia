@@ -1,5 +1,5 @@
 <div class="modal-header protractor-test-hint-modal">
-  <h3>Add Hint</h3>
+  <h3>Добавить подсказку</h3>
   <i class="fa fa-times" ng-click="cancel()"></i>
 </div>
 
@@ -7,7 +7,7 @@
   <form name="addHintForm.hintTextForm"
         class="form-inline">
     <div class="oppia-rule-details-header">
-      <strong>Hint #<[hintIndex]> is...</strong>
+      <strong>Подсказка #<[hintIndex]> ...</strong>
       <schema-based-editor class="protractor-test-hint-text"
                            schema="HINT_FORM_SCHEMA"
                            local-value="tmpHint">
@@ -17,8 +17,8 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary protractor-test-cancel-hint" ng-click="cancel()">Cancel</button>
-  <button class="btn btn-success protractor-test-save-hint" ng-click="saveHint()" ng-disabled="!tmpHint">Save Hint</button>
+  <button class="btn btn-secondary protractor-test-cancel-hint" ng-click="cancel()">Отмена</button>
+  <button class="btn btn-success protractor-test-save-hint" ng-click="saveHint()" ng-disabled="!tmpHint">Сохранить подсказку</button>
 </div>
 
 <style>
@@ -33,7 +33,7 @@
       height: 100vh;
     }
     .add-hint-modal .modal-header {
-      background-color: #00609C;
+      background-color: #007EFF;
     }
     .add-hint-modal .modal-header i {
       color: #FFF;

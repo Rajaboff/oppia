@@ -1,7 +1,8 @@
 <style>
   graph-viz .oppia-graph-input-viz-container {
-    border: 1px solid black;
+    border: 1px solid white;
     background-color: white;
+    border-radius: 4px;
     cursor: default;
   }
   graph-viz .oppia-graph-button-label {
@@ -37,7 +38,7 @@
               ng-attr-y="<[10 + 50 * $index]>"
               rx="5"
               ry="5"
-              ng-attr-style="stroke: black; fill: white; stroke-width: <[$ctrl.graph[button.option] ? 3 : 1]>;"
+              ng-attr-style="stroke: #80BFFF; fill: #E5F2FF; stroke-width: <[$ctrl.graph[button.option] ? 3 : 1]>;"
               ng-click="$ctrl.toggleGraphOption(button.option)">
         </rect>
         <text class="unselectable-text unclickable-text oppia-graph-type-text"
@@ -59,7 +60,7 @@
             ng-click="$ctrl.onClickModeButton(button.mode, $event)"
             ng-mouseenter="$ctrl.state.hoveredModeButton = button.mode"
             ng-mouseleave="$ctrl.state.hoveredModeButton = ($ctrl.state.hoveredModeButton == button.mode) ? null : $ctrl.state.hoveredModeButton"
-            ng-attr-style="fill: white; stroke: black; stroke-width: <[($ctrl.state.currentMode == button.mode) ? 3 : 1]>;">
+            ng-attr-style="fill: #80BFFF; stroke: #007EFF; stroke-width: <[($ctrl.state.currentMode == button.mode) ? 3 : 1]>;">
       </rect>
       <text class="oppia-graph-button-label unselectable-text unclickable-text" x="18" ng-attr-y="<[32 + 50 * $index]>">
         <[button.text]>
@@ -74,7 +75,7 @@
           ng-attr-y1="<[$ctrl.graph.vertices[$ctrl.state.addEdgeVertex].y]>"
           ng-attr-x2="<[$ctrl.state.mouseX]>"
           ng-attr-y2="<[$ctrl.state.mouseY]>"
-          ng-style="{'stroke': 'black', 'stroke-width': $ctrl.EDGE_WIDTH}">
+          ng-style="{'stroke': '#DBA5F5', 'stroke-width': $ctrl.EDGE_WIDTH}">
     </line>
     <g ng-repeat="edge in $ctrl.graph.edges">
       <line class="protractor-test-graph-edge"

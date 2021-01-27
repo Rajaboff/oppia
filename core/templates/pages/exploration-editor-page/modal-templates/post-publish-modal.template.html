@@ -5,8 +5,8 @@
   }
 
   .oppia-share-publish-modal .oppia-share-publish-close {
-    background-color: #015c53;
-    border-radius: 0;
+    background-color: #007EFF;
+    border-radius: 19px;
     color: #fff;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
     font-size: 14px;
@@ -14,17 +14,18 @@
     text-transform: uppercase;
     width: 200px;
     text-align: center;
+    box-shadow: 0px 8px 16px rgba(0, 126, 255, 0.16);
   }
 
   .oppia-share-publish-modal .oppia-share-publish-close:hover {
-    background-color: #05beb2;
+    background-color: #3398FF;
     color: #fff;
   }
 
   .oppia-share-publish-modal .oppia-share-publish-header {
     text-align: center;
-    background: #009688;
-    border-radius: 5px 5px 0 0;
+    background: #007EFF;
+    border-radius: 8px 8px 0 0;
   }
 
   .oppia-share-publish-modal .oppia-share-publish-header h3 {
@@ -74,17 +75,17 @@
 <div class="oppia-share-publish-modal protractor-test-share-publish-modal">
   <div class="modal-header oppia-share-publish-header">
     <img ng-src="<[congratsImgUrl]>">
-    <h3>Awesome!</h3>
+    <h3>Отлично!</h3>
   </div>
 
   <div class="modal-body oppia-long-text oppia-share-publish-body">
     <p>
-      Now that you're a published Oppia teacher, you can share your creation.
+      Теперь, когда вы опубликовали занятие в библиотеке Oqustudy, вы можете поделиться своим творением.
     </p>
     <div class="oppia-share-publish-link">
-      Here's your exploration link:<br>
+      Вот ваша ссылка занятия:<br>
       <div ng-click="selectText($event)"><[explorationLink]></div>
-      <span ng-show="explorationLinkCopied">Copied<i class="fa fa-check" aria-hidden="true"></i></span>
+      <span ng-show="explorationLinkCopied">Скопировано<i class="fa fa-check" aria-hidden="true"></i></span>
     </div>
     <sharing-links layout-type="row"
                    layout-align-type="center center"
@@ -93,7 +94,7 @@
     </sharing-links>
     <button class="btn btn-secondary oppia-share-publish-close protractor-test-share-publish-close"
             ng-click="cancel()">
-      Close
+      Закрыть
     </button>
   </div>
 </div>

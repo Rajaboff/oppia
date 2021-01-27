@@ -2,19 +2,19 @@
   "ImageClickInput": {
     "can_have_solution": false,
     "show_generic_submit_button": false,
-    "instructions": "Click on the image",
+    "instructions": "Нажмите на изображение",
     "is_trainable": false,
-    "narrow_instructions": "View image",
-    "description": "Allows learners to click on regions of an image.",
+    "narrow_instructions": "Просмотр изображения",
+    "description": "Позволяет учащимся нажимать на области изображения.",
     "needs_summary": false,
-    "name": "Image Region",
+    "name": "Область изображения",
     "answer_type": "ClickOnImage",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "ImageClickInput",
     "customization_arg_specs": [
       {
-        "description": "Image",
+        "description": "Изображение",
         "name": "imageAndRegions",
         "schema": {
           "obj_type": "ImageWithRegions",
@@ -26,7 +26,7 @@
         }
       },
       {
-        "description": "Highlight regions when the learner hovers over them",
+        "description": "Выделять область, когда учащийся наводит на них курсор.",
         "name": "highlightRegionsOnHover",
         "schema": {
           "type": "bool"
@@ -37,7 +37,7 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "IsInRegion": "is in the region {{x|UnicodeString}}"
+      "IsInRegion": "находится в области {{x|UnicodeString}}"
     }
   },
   "NumberWithUnits": {
@@ -46,9 +46,9 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter number with units.",
+    "description": "Позволяет учащимся вводить числа с единицами измерения.",
     "needs_summary": false,
-    "name": "Number With Units",
+    "name": "Число с ед.измерения",
     "answer_type": "NumberWithUnits",
     "is_linear": false,
     "display_mode": "inline",
@@ -57,8 +57,8 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "IsEqualTo": "is equal to {{f|NumberWithUnits}}",
-      "IsEquivalentTo": "is equivalent to {{f|NumberWithUnits}}"
+      "IsEqualTo": "равно {{f|NumberWithUnits}}",
+      "IsEquivalentTo": "эквивалентно {{f|NumberWithUnits}}"
     }
   },
   "NumericExpressionInput": {
@@ -67,15 +67,15 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter numeric expressions.",
+    "description": "Позволяет учащимся вводить числовые выражения.",
     "needs_summary": false,
-    "name": "Numeric Expression Input",
+    "name": "Ввод числового выражения",
     "answer_type": "NumericExpression",
     "is_linear": false,
     "display_mode": "inline",
     "id": "NumericExpressionInput",
     "customization_arg_specs": [{
-      "description": "Placeholder text",
+      "description": "Текст-заполнитель",
       "name": "placeholder",
       "schema": {
         "type": "custom",
@@ -83,16 +83,16 @@
       },
       "default_value": {
         "content_id": null,
-        "unicode_str": "Type an expression here, using only numbers."
+        "unicode_str": "Введите здесь выражение, используя только числа."
       }
     }],
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "MatchesExactlyWith": "matches exactly with {{x|NumericExpression}}",
-      "IsEquivalentTo": "is equivalent to {{x|NumericExpression}}",
-      "ContainsSomeOf": "contains at least one of the terms present in {{x|NumericExpression}}",
-      "OmitsSomeOf": "omits at least one of the terms present in {{x|NumericExpression}}"
+      "MatchesExactlyWith": "точно соответствует {{x|NumericExpression}}",
+      "IsEquivalentTo": "эквивалентно {{x|NumericExpression}}",
+      "ContainsSomeOf": "содержит хотя бы один из терминов, присутствующих в {{x|NumericExpression}}",
+      "OmitsSomeOf": "опускает по крайней мере один из терминов, присутствующих в {{x|NumericExpression}}"
     }
   },
   "NumericInput": {
@@ -101,9 +101,9 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter integers and floating point numbers.",
+    "description": "Позволяет учащимся вводить целые числа и числа с плавающей запятой.",
     "needs_summary": false,
-    "name": "Number Input",
+    "name": "Ввод числа",
     "answer_type": "Real",
     "is_linear": false,
     "display_mode": "inline",
@@ -112,31 +112,31 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "Equals": "is equal to {{x|Real}}",
-      "IsGreaterThanOrEqualTo": "is greater than or equal to {{x|Real}}",
-      "IsLessThanOrEqualTo": "is less than or equal to {{x|Real}}",
-      "IsLessThan": "is less than {{x|Real}}",
-      "IsWithinTolerance": "is within {{tol|Real}} of {{x|Real}}",
-      "IsGreaterThan": "is greater than {{x|Real}}",
-      "IsInclusivelyBetween": "is between {{a|Real}} and {{b|Real}}, inclusive"
+      "Equals": "равно {{x|Real}}",
+      "IsGreaterThanOrEqualTo": "Больше или равно {{x|Real}}",
+      "IsLessThanOrEqualTo": "меньше или равно {{x|Real}}",
+      "IsLessThan": "меньше, чем {{x|Real}}",
+      "IsWithinTolerance": "внутри {{tol|Real}} от {{x|Real}}",
+      "IsGreaterThan": "больше, чем {{x|Real}}",
+      "IsInclusivelyBetween": "между {{a|Real}} и {{b|Real}}, включчительно"
     }
   },
   "DragAndDropSortInput": {
     "can_have_solution": true,
     "show_generic_submit_button": true,
-    "instructions": "Drag and drop items",
+    "instructions": "Drag and drop элементы",
     "is_trainable": false,
-    "narrow_instructions": "Drag and drop items",
-    "description": "Allows learners to drag and drop items for sorting.",
+    "narrow_instructions": "Drag and drop элементы",
+    "description": "Позволяет учащимся перетаскивать элементы для сортировки.",
     "needs_summary": true,
-    "name": "Drag And Drop Sort",
+    "name": "Сортировка Drag And Drop",
     "answer_type": "ListOfSetsOfHtmlStrings",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "DragAndDropSortInput",
     "customization_arg_specs": [
       {
-        "description": "Items for drag and drop",
+        "description": "Элементы для Drag And Drop",
         "name": "choices",
         "schema": {
           "items": {
@@ -145,7 +145,7 @@
             "replacement_ui_config": {
               "html": {
                 "hide_complex_extensions": true,
-                "placeholder": "Enter an option for the learner to drag and drop."
+                "placeholder": "Введите параметр, позволяющий учащемуся перетащить его."
               }
             }
           },
@@ -157,7 +157,7 @@
             }
           ],
           "ui_config": {
-            "add_element_text": "Add a new item"
+            "add_element_text": "Добавить элемент"
           }
         },
         "default_value": [
@@ -168,7 +168,7 @@
         ]
       },
       {
-        "description": "Allow multiple sort items in the same position",
+        "description": "Разрешить несколько элементов сортировки в одной позиции",
         "name": "allowMultipleItemsInSamePosition",
         "schema": {
           "type": "bool"
@@ -179,10 +179,10 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "HasElementXAtPositionY": "has element {{x|DragAndDropHtmlString}} at position {{y|DragAndDropPositiveInt}}",
-      "IsEqualToOrdering": "is equal to ordering {{x|ListOfSetsOfHtmlStrings}}",
-      "HasElementXBeforeElementY": "has element {{x|DragAndDropHtmlString}} before element {{y|DragAndDropHtmlString}}",
-      "IsEqualToOrderingWithOneItemAtIncorrectPosition": "is equal to ordering with one item at incorrect position {{x|ListOfSetsOfHtmlStrings}}"
+      "HasElementXAtPositionY": "этот элемент {{x|DragAndDropHtmlString}} на позиции {{y|DragAndDropPositiveInt}}",
+      "IsEqualToOrdering": "имеет порядок {{x|ListOfSetsOfHtmlStrings}}",
+      "HasElementXBeforeElementY": "этот элемент {{x|DragAndDropHtmlString}} перед элементом {{y|DragAndDropHtmlString}}",
+      "IsEqualToOrderingWithOneItemAtIncorrectPosition": "равно порядку с одним элементом в неправильной позиции {{x|ListOfSetsOfHtmlStrings}}"
     }
   },
   "ItemSelectionInput": {
@@ -191,16 +191,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to select various options.",
+    "description": "Позволяет учащимся выбирать различные варианты.",
     "needs_summary": false,
-    "name": "Item Selection",
+    "name": "Выбор варианта",
     "answer_type": "SetOfHtmlString",
     "is_linear": false,
     "display_mode": "inline",
     "id": "ItemSelectionInput",
     "customization_arg_specs": [
       {
-        "description": "Minimum number of selections permitted.",
+        "description": "Разрешено минимальное количество вариантов выбора.",
         "name": "minAllowableSelectionCount",
         "schema": {
           "type": "int",
@@ -214,7 +214,7 @@
         "default_value": 1
       },
       {
-        "description": "Maximum number of selections permitted",
+        "description": "Максимальное разрешенное количество вариантов выбора",
         "name": "maxAllowableSelectionCount",
         "schema": {
           "type": "int",
@@ -228,7 +228,7 @@
         "default_value": 1
       },
       {
-        "description": "Items for selection",
+        "description": "Варианты для выбора",
         "name": "choices",
         "schema": {
           "items": {
@@ -237,13 +237,13 @@
             "replacement_ui_config": {
               "html": {
                 "hide_complex_extensions": true,
-                "placeholder": "Sample item answer"
+                "placeholder": "Пример варианта ответа"
               }
             }
           },
           "type": "list",
           "ui_config": {
-            "add_element_text": "Add item for selection"
+            "add_element_text": "Добавить вариант ответа"
           }
         },
         "default_value": [{"content_id": null, "html": ""}]
@@ -252,10 +252,10 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "DoesNotContainAtLeastOneOf": "omits at least one of {{x|SetOfHtmlString}}",
-      "IsProperSubsetOf": "is a proper subset of {{x|SetOfHtmlString}}",
-      "ContainsAtLeastOneOf": "contains at least one of {{x|SetOfHtmlString}}",
-      "Equals": "is equal to {{x|SetOfHtmlString}}"
+      "DoesNotContainAtLeastOneOf": "опускает по крайней мере один из {{x|SetOfHtmlString}}",
+      "IsProperSubsetOf": "является собственным подмножеством {{x|SetOfHtmlString}}",
+      "ContainsAtLeastOneOf": "содержит по крайней мере один из {{x|SetOfHtmlString}}",
+      "Equals": "равно {{x|SetOfHtmlString}}"
     }
   },
   "Continue": {
@@ -264,9 +264,9 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "A simple 'go to next state' button.",
+    "description": "Простая кнопка перехода к следующему состоянию.",
     "needs_summary": false,
-    "name": "Continue Button",
+    "name": "Кнопка Продолжить ",
     "answer_type": null,
     "is_linear": true,
     "display_mode": "inline",
@@ -281,30 +281,30 @@
         },
         "default_value": {
           "content_id": null,
-          "unicode_str": "Continue"
+          "unicode_str": "Далее"
         }
       }
     ],
     "is_terminal": false,
-    "default_outcome_heading": "When the button is clicked",
+    "default_outcome_heading": "Когда кнопка нажата",
     "rule_descriptions": {}
   },
   "GraphInput": {
     "can_have_solution": true,
     "show_generic_submit_button": true,
-    "instructions": "Create a graph",
+    "instructions": "Создать граф",
     "is_trainable": false,
-    "narrow_instructions": "View graph",
-    "description": "Allows learners to create and manipulate graphs.",
+    "narrow_instructions": "Просмотр графа",
+    "description": "Позволяет учащимся создавать графики и управлять ими.",
     "needs_summary": true,
-    "name": "Graph Theory",
+    "name": "Теория графов",
     "answer_type": "Graph",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "GraphInput",
     "customization_arg_specs": [
       {
-        "description": "Initial graph",
+        "description": "Просмотр графа",
         "name": "graph",
         "schema": {
           "obj_type": "Graph",
@@ -346,7 +346,7 @@
         }
       },
       {
-        "description": "Allow learner to add vertices",
+        "description": "Разрешить учащемуся добавлять вершины",
         "name": "canAddVertex",
         "schema": {
           "type": "bool"
@@ -354,7 +354,7 @@
         "default_value": false
       },
       {
-        "description": "Allow learner to delete vertices",
+        "description": "Разрешить учащемуся удалять вершины",
         "name": "canDeleteVertex",
         "schema": {
           "type": "bool"
@@ -362,7 +362,7 @@
         "default_value": false
       },
       {
-        "description": "Allow learner to move vertices",
+        "description": "Разрешить учащемуся перемещать вершины",
         "name": "canMoveVertex",
         "schema": {
           "type": "bool"
@@ -370,7 +370,7 @@
         "default_value": true
       },
       {
-        "description": "Allow learner to edit vertex labels",
+        "description": "Разрешить учащемуся редактировать метки вершин",
         "name": "canEditVertexLabel",
         "schema": {
           "type": "bool"
@@ -378,7 +378,7 @@
         "default_value": false
       },
       {
-        "description": "Allow learner to add edges",
+        "description": "Разрешить учащемуся добавлять края",
         "name": "canAddEdge",
         "schema": {
           "type": "bool"
@@ -386,7 +386,7 @@
         "default_value": true
       },
       {
-        "description": "Allow learner to delete edges",
+        "description": "Разрешить учащемуся удалять края",
         "name": "canDeleteEdge",
         "schema": {
           "type": "bool"
@@ -394,7 +394,7 @@
         "default_value": true
       },
       {
-        "description": "Allow learner to edit edge weights",
+        "description": "Разрешить учащемуся редактировать веса ребер",
         "name": "canEditEdgeWeight",
         "schema": {
           "type": "bool"
@@ -405,7 +405,7 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "IsIsomorphicTo": "is isomorphic to {{g|Graph}}, including matching labels"
+      "IsIsomorphicTo": "изоморфен {{g|Graph}}, включая соответствующие ярлыки"
     }
   },
   "EndExploration": {
@@ -414,16 +414,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Ends the exploration, and suggests recommendations for explorations to try next.",
+    "description": "Завершить занятие и предлагает рекомендации по дальнейшим занятиям..",
     "needs_summary": false,
-    "name": "End Exploration",
+    "name": "Конец занятия",
     "answer_type": null,
     "is_linear": false,
     "display_mode": "inline",
     "id": "EndExploration",
     "customization_arg_specs": [
       {
-        "description": "IDs of explorations to recommend to the learner (at most 3 are shown). The ID of an exploration is the string of characters appearing after '/explore/' in the URL bar.",
+        "description": "ID занятий, которые можно рекомендовать учащемуся (показано не более 3). ID занятия - это строка символов, следующая после '/explore/' в адресной строке.",
         "name": "recommendedExplorationIds",
         "schema": {
           "items": {
@@ -431,7 +431,7 @@
           },
           "type": "list",
           "ui_config": {
-            "add_element_text": "Add exploration ID"
+            "add_element_text": "Добавить ID занятия"
           }
         },
         "default_value": []
@@ -447,16 +447,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter an unordered set of strings.",
+    "description": "Позволяет учащимся вводить неупорядоченный набор строк.",
     "needs_summary": false,
-    "name": "Set Input",
+    "name": "Множественный ввод",
     "answer_type": "SetOfUnicodeString",
     "is_linear": false,
     "display_mode": "inline",
     "id": "SetInput",
     "customization_arg_specs": [
       {
-        "description": "Label for the 'Add Item' button",
+        "description": "Ярлык для кнопки Добавить элемент ",
         "name": "buttonText",
         "schema": {
           "type": "custom",
@@ -464,38 +464,38 @@
         },
         "default_value": {
           "content_id": null,
-          "unicode_str": "Add Item"
+          "unicode_str": "Добавить элемент"
         }
       }
     ],
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "HasElementsNotIn": "has elements not in {{x|SetOfUnicodeString}}",
-      "Equals": "is equal to {{x|SetOfUnicodeString}}",
-      "IsSupersetOf": "is a proper superset of {{x|SetOfUnicodeString}}",
-      "OmitsElementsIn": "omits some elements of {{x|SetOfUnicodeString}}",
-      "HasElementsIn": "has elements in common with {{x|SetOfUnicodeString}}",
-      "IsSubsetOf": "is a proper subset of {{x|SetOfUnicodeString}}",
-      "IsDisjointFrom": "has no elements in common with {{x|SetOfUnicodeString}}"
+      "HasElementsNotIn": "имеет элементы не в {{x|SetOfUnicodeString}}",
+      "Equals": "равно {{x|SetOfUnicodeString}}",
+      "IsSupersetOf": "является правильным надмножеством {{x|SetOfUnicodeString}}",
+      "OmitsElementsIn": "опускает некоторые элементы {{x|SetOfUnicodeString}}",
+      "HasElementsIn": "имеет общие элементы с {{x|SetOfUnicodeString}}",
+      "IsSubsetOf": "является собственным подмножеством {{x|SetOfUnicodeString}}",
+      "IsDisjointFrom": "не имеет общих элементов с {{x|SetOfUnicodeString}}"
     }
   },
   "CodeRepl": {
     "can_have_solution": true,
     "show_generic_submit_button": true,
-    "instructions": "Type code in the editor",
+    "instructions": "Введите код в редакторе",
     "is_trainable": true,
-    "narrow_instructions": "Go to code editor",
-    "description": "Allows learners to enter code and get it evaluated.",
+    "narrow_instructions": "Перейти в редактор кода",
+    "description": "Позволяет учащимся вводить код и оценивать его.",
     "needs_summary": true,
-    "name": "Code Editor",
+    "name": "Редактор кода",
     "answer_type": "CodeEvaluation",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "CodeRepl",
     "customization_arg_specs": [
       {
-        "description": "Programming language",
+        "description": "Язык программирования",
         "name": "language",
         "schema": {
           "type": "unicode",
@@ -506,7 +506,7 @@
         "default_value": "python"
       },
       {
-        "description": "Initial code displayed",
+        "description": "Отображается исходный код",
         "name": "placeholder",
         "schema": {
           "type": "unicode",
@@ -514,10 +514,10 @@
             "coding_mode": "none"
           }
         },
-        "default_value": "# Type your code here."
+        "default_value": "# Введите здесь свой код."
       },
       {
-        "description": "Code to prepend to the learner's submission",
+        "description": "Код для добавления к отправке учащегося",
         "name": "preCode",
         "schema": {
           "type": "unicode",
@@ -528,7 +528,7 @@
         "default_value": ""
       },
       {
-        "description": "Code to append after the learner's submission",
+        "description": "Код, добавляемый после отправки учащимся",
         "name": "postCode",
         "schema": {
           "type": "unicode",
@@ -542,31 +542,31 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "OutputEquals": "has output equal to {{x|CodeString}}",
-      "CodeContains": "has code that contains {{x|CodeString}}",
-      "CodeEquals": "has code equal to {{x|CodeString}}",
-      "ResultsInError": "results in an error when run",
-      "ErrorContains": "has error message that contains {{x|UnicodeString}}",
-      "OutputContains": "has output that contains {{x|CodeString}}",
-      "CodeDoesNotContain": "has code that does not contain {{x|CodeString}}"
+      "OutputEquals": "имеет выход равный {{x|CodeString}}",
+      "CodeContains": "имеет код, содержащий {{x|CodeString}}",
+      "CodeEquals": "имеет код, равный {{x|CodeString}}",
+      "ResultsInError": "приводит к ошибке при запуске",
+      "ErrorContains": "есть сообщение об ошибке, которое содержит {{x|UnicodeString}}",
+      "OutputContains": "имеет вывод, содержащий {{x|CodeString}}",
+      "CodeDoesNotContain": "имеет код, который не содержит {{x|CodeString}}"
     }
   },
   "LogicProof": {
     "can_have_solution": true,
     "show_generic_submit_button": true,
-    "instructions": "Construct a proof",
+    "instructions": "Постройте доказательство",
     "is_trainable": false,
-    "narrow_instructions": "Construct a proof",
-    "description": "Allows learners to write proofs for simple logical statements.",
+    "narrow_instructions": "Постройте доказательство",
+    "description": "Позволяет учащимся писать доказательства для простых логических утверждений.",
     "needs_summary": true,
-    "name": "Logic Proof",
+    "name": "Логический аппарат",
     "answer_type": "CheckedProof",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "LogicProof",
     "customization_arg_specs": [
       {
-        "description": "Question to ask",
+        "description": "Задать вопрос",
         "name": "question",
         "schema": {
           "obj_type": "LogicQuestion",
@@ -596,9 +596,9 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "Correct": "is correct",
-      "NotCorrect": "is not correct",
-      "NotCorrectByCategory": "is not correct due to {{c|LogicErrorCategory}}"
+      "Correct": "правильно",
+      "NotCorrect": "не является правильным",
+      "NotCorrectByCategory": "неверно из-за {{c|LogicErrorCategory}}"
     }
   },
   "MathEquationInput": {
@@ -607,16 +607,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter math equations.",
+    "description": "Позволяет учащимся вводить математические уравнения.",
     "needs_summary": false,
-    "name": "Math Equation Input",
+    "name": "Ввод мат.уравнения",
     "answer_type": "MathEquation",
     "is_linear": false,
     "display_mode": "inline",
     "id": "MathEquationInput",
     "customization_arg_specs": [
       {
-        "description": "Shortcut variables that the learner can access in the on-screen keyboard. (The order of these variables will be reflected in the learner's keyboard)",
+        "description": "Переменные быстрого доступа, к которым учащийся может получить доступ с экранной клавиатуры. (Порядок этих переменных будет отражен на клавиатуре учащегося)",
         "name": "customOskLetters",
         "schema": {
           "obj_type": "CustomOskLetters",
@@ -628,11 +628,11 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "MatchesExactlyWith": "matches exactly with {{x|MathEquation}} {{y|PositionOfTerms}}",
-      "IsEquivalentTo": "is equivalent to {{x|MathEquation}}",
-      "ContainsSomeOf": "contains at least one of the terms present in {{x|MathEquation}} {{y|PositionOfTerms}}",
-      "OmitsSomeOf": "omits at least one of the terms present in {{x|MathEquation}} {{y|PositionOfTerms}}",
-      "MatchesWithGeneralForm": "matches the form of {{x|MathEquation}} with placeholders {{y|SetOfAlgebraicIdentifier}}"
+      "MatchesExactlyWith": "точно соответствует {{x|MathEquation}} {{y|PositionOfTerms}}",
+      "IsEquivalentTo": "эквивалентно {{x|MathEquation}}",
+      "ContainsSomeOf": "содержит хотя бы один из терминов, присутствующих в {{x|MathEquation}} {{y|PositionOfTerms}}",
+      "OmitsSomeOf": "опускает по крайней мере один из терминов, присутствующих в {{x|MathEquation}} {{y|PositionOfTerms}}",
+      "MatchesWithGeneralForm": "соответствует форме {{x|MathEquation}} с заполнителями {{y|SetOfAlgebraicIdentifier}}"
     }
   },
   "MultipleChoiceInput": {
@@ -641,16 +641,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to select one of a list of multiple-choice options.",
+    "description": "Позволяет учащимся выбрать один из списка вариантов с множественным выбором.",
     "needs_summary": false,
-    "name": "Multiple Choice",
+    "name": "Множественный выбор",
     "answer_type": "NonnegativeInt",
     "is_linear": false,
     "display_mode": "inline",
     "id": "MultipleChoiceInput",
     "customization_arg_specs": [
       {
-        "description": "Multiple Choice options",
+        "description": "Варианты множественного выбора",
         "name": "choices",
         "schema": {
           "items": {
@@ -659,7 +659,7 @@
             "replacement_ui_config": {
               "html": {
                 "hide_complex_extensions": true,
-                "placeholder": "Enter an option for the learner to select"
+                "placeholder": "Введите вариант, который должен выбрать учащийся"
               }
             }
           },
@@ -671,7 +671,7 @@
             }
           ],
           "ui_config": {
-            "add_element_text": "Add multiple choice option"
+            "add_element_text": "Добавить вариант"
           }
         },
         "default_value": [{
@@ -680,7 +680,7 @@
         }]
       }, {
         "name": "showChoicesInShuffledOrder",
-        "description": "Shuffle answer choices",
+        "description": "Перемешать варианты ответов",
         "schema": {
             "type": "bool"
         },
@@ -690,25 +690,25 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "Equals": "is equal to {{x|NonnegativeInt}}"
+      "Equals": "равно {{x|NonnegativeInt}}"
     }
   },
   "PencilCodeEditor": {
     "can_have_solution": true,
     "show_generic_submit_button": false,
-    "instructions": "Edit the code. Click 'Play' to check it!",
+    "instructions": "Отредактируйте код. Нажмите 'Играть', чтобы проверить это.",
     "is_trainable": false,
-    "narrow_instructions": "Show code editor",
-    "description": "Allows learners to edit code in Pencil Code.",
+    "narrow_instructions": "Показать редактор кода",
+    "description": "Позволяет учащимся редактировать код в Pencil Code.",
     "needs_summary": true,
-    "name": "Pencil Code Editor",
+    "name": "Редактор Pencil кода",
     "answer_type": "CodeEvaluation",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "PencilCodeEditor",
     "customization_arg_specs": [
       {
-        "description": "The initial code",
+        "description": "Исходный код",
         "name": "initialCode",
         "schema": {
           "type": "unicode",
@@ -716,19 +716,19 @@
             "coding_mode": "coffeescript"
           }
         },
-        "default_value": "# Add the initial code snippet here."
+        "default_value": "# Добавьте сюда исходный фрагмент кода."
       }
     ],
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "OutputEquals": "has output equal to {{x|CodeString}}",
-      "CodeContains": "has code that contains {{x|CodeString}}",
-      "CodeEquals": "has code equal to {{x|CodeString}}",
-      "ResultsInError": "results in an error when run",
-      "ErrorContains": "has error message that contains {{x|UnicodeString}}",
-      "OutputRoughlyEquals": "has output equal to {{x|CodeString}}, ignoring spacing and case",
-      "CodeDoesNotContain": "has code that does not contain {{x|CodeString}}"
+      "OutputEquals": "имеет выход равный {{x|CodeString}}",
+      "CodeContains": "имеет код, содержащий {{x|CodeString}}",
+      "CodeEquals": "имеет код, равный {{x|CodeString}}",
+      "ResultsInError": "приводит к ошибке при запуске",
+      "ErrorContains": "есть сообщение об ошибке, которое содержит {{x|UnicodeString}}",
+      "OutputRoughlyEquals": "имеет выход равный {{x|CodeString}}, игнорирование пробелов и регистра",
+      "CodeDoesNotContain": "имеет код, который не содержит {{x|CodeString}}"
     }
   },
   "TextInput": {
@@ -737,16 +737,16 @@
     "instructions": null,
     "is_trainable": true,
     "narrow_instructions": null,
-    "description": "Allows learners to enter arbitrary text strings.",
+    "description": "Позволяет учащимся вводить произвольные текстовый ввод.",
     "needs_summary": false,
-    "name": "Text Input",
+    "name": "Текстовый ввод",
     "answer_type": "NormalizedString",
     "is_linear": false,
     "display_mode": "inline",
     "id": "TextInput",
     "customization_arg_specs": [
       {
-        "description": "Placeholder text (optional)",
+        "description": "Текст-заполнитель (необязательно)",
         "name": "placeholder",
         "schema": {
           "type": "custom",
@@ -758,7 +758,7 @@
         }
       },
       {
-        "description": "Height (in rows)",
+        "description": "Высота строки (в рядах)",
         "name": "rows",
         "schema": {
           "type": "int",
@@ -779,28 +779,28 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "StartsWith": "starts with {{x|NormalizedString}}",
-      "Contains": "contains {{x|NormalizedString}}",
-      "Equals": "is equal to {{x|NormalizedString}}, without taking case into account",
-      "FuzzyEquals": "is equal to {{x|NormalizedString}}, misspelled by at most one character"
+      "StartsWith": "начинается с {{x|NormalizedString}}",
+      "Contains": "содержит {{x|NormalizedString}}",
+      "Equals": "равно {{x|NormalizedString}}, без учета случая",
+      "FuzzyEquals": "равно {{x|NormalizedString}}, неправильно написано не более чем одним символом"
     }
   },
   "InteractiveMap": {
     "can_have_solution": false,
     "show_generic_submit_button": false,
-    "instructions": "Click on the map",
+    "instructions": "Нажмите на карту",
     "is_trainable": false,
-    "narrow_instructions": "View map",
-    "description": "Allows learners to specify a position on a world map.",
+    "narrow_instructions": "Просмотр карты",
+    "description": "Позволяет учащимся указать положение на карте мира.",
     "needs_summary": true,
-    "name": "World Map",
+    "name": "Карта мира",
     "answer_type": "CoordTwoDim",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "InteractiveMap",
     "customization_arg_specs": [
       {
-        "description": "Starting center latitude (-90 to 90)",
+        "description": "Широта начального центра (от -90 до 90)",
         "name": "latitude",
         "schema": {
           "type": "float",
@@ -818,7 +818,7 @@
         "default_value": 0.0
       },
       {
-        "description": "Starting center longitude (-180 to 180)",
+        "description": "Долгота начального центра (от -180 до 180)",
         "name": "longitude",
         "schema": {
           "type": "float",
@@ -836,7 +836,7 @@
         "default_value": 0.0
       },
       {
-        "description": "Starting zoom level (0 shows the entire earth)",
+        "description": "Начальный уровень масштабирования (0 показывает всю землю)",
         "name": "zoom",
         "schema": {
           "type": "float"
@@ -847,26 +847,26 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "Within": "is within {{d|Real}} km of {{p|CoordTwoDim}}",
-      "NotWithin": "is not within {{d|Real}} km of {{p|CoordTwoDim}}"
+      "Within": "внутри {{d|Real}} км от {{p|CoordTwoDim}}",
+      "NotWithin": "снаружи {{d|Real}} км от {{p|CoordTwoDim}}"
     }
   },
   "MusicNotesInput": {
     "can_have_solution": true,
     "show_generic_submit_button": true,
-    "instructions": "Drag notes to the staff to form a sequence",
+    "instructions": "Перетащите ноты на ряд, чтобы сформировать последовательность",
     "is_trainable": false,
-    "narrow_instructions": "Show music staff",
-    "description": "Allows learners to drag and drop notes onto the lines of a music staff.",
+    "narrow_instructions": "Показать музыкальный ряд",
+    "description": "Позволяет учащимся перетаскивать ноты на линии музыкального ряда.",
     "needs_summary": true,
-    "name": "Music Notes Input",
+    "name": "Ввод музыкальных нот",
     "answer_type": "MusicPhrase",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "MusicNotesInput",
     "customization_arg_specs": [
       {
-        "description": "Correct sequence of notes",
+        "description": "Правильная последовательность нот",
         "name": "sequenceToGuess",
         "schema": {
           "obj_type": "MusicPhrase",
@@ -875,7 +875,7 @@
         "default_value": []
       },
       {
-        "description": "Starting notes on the staff",
+        "description": "Ноты в музкальном ряде начинаются с",
         "name": "initialSequence",
         "schema": {
           "obj_type": "MusicPhrase",
@@ -887,12 +887,12 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "Equals": "is equal to {{x|MusicPhrase}}",
-      "IsEqualToExceptFor": "is equal to {{x|MusicPhrase}} except for {{k|NonnegativeInt}} notes",
-      "IsTranspositionOfExceptFor": "is a transposition of {{x|MusicPhrase}} by {{y|Int}} semitones except for {{k|NonnegativeInt}} notes",
-      "IsLongerThan": "has more than {{k|NonnegativeInt}} notes",
-      "IsTranspositionOf": "is a transposition of {{x|MusicPhrase}} by {{y|Int}} semitones",
-      "HasLengthInclusivelyBetween": "has between {{a|NonnegativeInt}} and {{b|NonnegativeInt}} notes, inclusive"
+      "Equals": "равно {{x|MusicPhrase}}",
+      "IsEqualToExceptFor": "равно{{x|MusicPhrase}} кроме {{k|NonnegativeInt}} нот",
+      "IsTranspositionOfExceptFor": "это транспозиция {{x|MusicPhrase}} {{y|Int}} полутонов, кроме {{k|NonnegativeInt}} нот",
+      "IsLongerThan": "имеет более чем {{k|NonnegativeInt}} нот",
+      "IsTranspositionOf": "это транспозиция {{x|MusicPhrase}} {{y|Int}} полутоны",
+      "HasLengthInclusivelyBetween": "находится между {{a|NonnegativeInt}} и {{b|NonnegativeInt}} ноты, включительно"
     }
   },
   "AlgebraicExpressionInput": {
@@ -901,16 +901,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter algebraic expressions.",
+    "description": "Позволяет учащимся вводить алгебраические выражения.",
     "needs_summary": false,
-    "name": "Algebraic Expression Input",
+    "name": "Ввод алгебраических выражений",
     "answer_type": "AlgebraicExpression",
     "is_linear": false,
     "display_mode": "inline",
     "id": "AlgebraicExpressionInput",
     "customization_arg_specs": [
       {
-        "description": "Shortcut variables that the learner can access in the on-screen keyboard. (The order of these variables will be reflected in the learner's keyboard)",
+        "description": "Переменные быстрого доступа, к которым учащийся может получить доступ с экранной клавиатуры. (Порядок этих переменных будет отражен на клавиатуре учащегося)",
         "name": "customOskLetters",
         "schema": {
           "obj_type": "CustomOskLetters",
@@ -922,11 +922,11 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "MatchesExactlyWith": "matches exactly with {{x|AlgebraicExpression}}",
-      "IsEquivalentTo": "is equivalent to {{x|AlgebraicExpression}}",
-      "ContainsSomeOf": "contains at least one of the terms present in {{x|AlgebraicExpression}}",
-      "OmitsSomeOf": "omits at least one of the terms present in {{x|AlgebraicExpression}}",
-      "MatchesWithGeneralForm": "matches the form of {{x|AlgebraicExpression}} with placeholders {{y|SetOfAlgebraicIdentifier}}"
+      "MatchesExactlyWith": "точно соответствует {{x|AlgebraicExpression}}",
+      "IsEquivalentTo": "эквивалентно {{x|AlgebraicExpression}}",
+      "ContainsSomeOf": "содержит хотя бы один из терминов, присутствующих в {{x|AlgebraicExpression}}",
+      "OmitsSomeOf": "опускает по крайней мере один из терминов, присутствующих в {{x|AlgebraicExpression}}",
+      "MatchesWithGeneralForm": "соответствует форме {{x|AlgebraicExpression}} с заполнителями {{y|SetOfAlgebraicIdentifier}}"
     }
   },
   "FractionInput": {
@@ -935,16 +935,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allows learners to enter integers and fractions.",
+    "description": "Позволяет учащимся вводить целые числа и дроби.",
     "needs_summary": false,
-    "name": "Fraction Input",
+    "name": "Ввод дробных чисел",
     "answer_type": "Fraction",
     "is_linear": false,
     "display_mode": "inline",
     "id": "FractionInput",
     "customization_arg_specs": [
       {
-        "description": "Require the learner's answer to be in simplest form",
+        "description": "Требовать, чтобы ответ учащегося был в простейшей форме",
         "name": "requireSimplestForm",
         "schema": {
           "type": "bool"
@@ -952,7 +952,7 @@
         "default_value": false
       },
       {
-        "description": "Allow improper fractions in the learner's answer",
+        "description": "Допускать неправильные дроби в ответе учащегося",
         "name": "allowImproperFraction",
         "schema": {
           "type": "bool"
@@ -960,7 +960,7 @@
         "default_value": true
       },
       {
-        "description": "Allow the answer to contain an integer part",
+        "description": "Разрешить ответу содержать целую часть",
         "name": "allowNonzeroIntegerPart",
         "schema": {
           "type": "bool"
@@ -968,7 +968,7 @@
         "default_value": true
       },
       {
-        "description": "Custom placeholder text (optional)",
+        "description": "Пользовательский текст-заполнитель (необязательно)",
         "name": "customPlaceholder",
         "schema": {
           "type": "custom",
@@ -983,16 +983,16 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "HasNoFractionalPart": "has no fractional part",
-      "HasFractionalPartExactlyEqualTo": "has fractional part exactly equal to {{f|Fraction}}",
-      "IsEquivalentToAndInSimplestForm": "is equivalent to {{f|Fraction}} and in simplest form",
-      "IsExactlyEqualTo": "exactly matches {{f|Fraction}}",
-      "HasNumeratorEqualTo": "has numerator equal to {{x|Int}}",
-      "IsLessThan": "is less than {{f|Fraction}}",
-      "IsGreaterThan": "is greater than {{f|Fraction}}",
-      "HasIntegerPartEqualTo": "has integer part equal to {{x|Int}}",
-      "IsEquivalentTo": "is equivalent to {{f|Fraction}}",
-      "HasDenominatorEqualTo": "has denominator equal to {{x|NonnegativeInt}}"
+      "HasNoFractionalPart": "не имеет дробной части",
+      "HasFractionalPartExactlyEqualTo": "имеет дробную часть, точно равную {{f|Fraction}}",
+      "IsEquivalentToAndInSimplestForm": "эквивалентно {{f|Fraction}} и в простейшем виде",
+      "IsExactlyEqualTo": "точно соответствует {{f|Fraction}}",
+      "HasNumeratorEqualTo": "имеет числитель, равный {{x|Int}}",
+      "IsLessThan": "меньше чем {{f|Fraction}}",
+      "IsGreaterThan": "больше, чем {{f|Fraction}}",
+      "HasIntegerPartEqualTo": "имеет целую часть, равную {{x|Int}}",
+      "IsEquivalentTo": "эквивалентно {{f|Fraction}}",
+      "HasDenominatorEqualTo": "имеет знаменатель, равный {{x|NonnegativeInt}}"
     }
   },
   "RatioExpressionInput": {
@@ -1001,16 +1001,16 @@
     "instructions": null,
     "is_trainable": false,
     "narrow_instructions": null,
-    "description": "Allow learners to enter ratios.",
+    "description": "Разрешите учащимся вводить коэффициенты.",
     "needs_summary": false,
-    "name": "Ratio Expression Input",
+    "name": "Ввод отношений значений",
     "answer_type": "RatioExpression",
     "is_linear": false,
     "display_mode": "inline",
     "id": "RatioExpressionInput",
     "customization_arg_specs": [
       {
-        "description": "Custom placeholder text (optional)",
+        "description": "Пользовательский текст-заполнитель (необязательно)",
         "name": "placeholder",
         "schema": {
           "type": "custom",
@@ -1022,7 +1022,7 @@
         }
       },
       {
-        "description": "The number of elements that the answer must have. If set to 0, a ratio of any length will be accepted.",
+        "description": "Количество элементов, которые должен иметь ответ. Если установлено значение 0, будет приниматься соотношение любой длины.",
         "name": "numberOfTerms",
         "schema": {
           "type": "int",
@@ -1039,9 +1039,9 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "Equals": "is equal to {{x|RatioExpression}}",
-      "IsEquivalent": "is equivalent to {{x|RatioExpression}}",
-      "HasNumberOfTermsEqualTo": "has number of terms equal to {{y|NonnegativeInt}}"
+      "Equals": "равно {{x|RatioExpression}}",
+      "IsEquivalent": "эквивалентно {{x|RatioExpression}}",
+      "HasNumberOfTermsEqualTo": "имеет количество членов, равное {{y|NonnegativeInt}}"
     }
   }
 }

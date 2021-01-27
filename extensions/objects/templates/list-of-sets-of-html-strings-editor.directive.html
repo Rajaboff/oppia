@@ -4,10 +4,6 @@
   }
 
   .col-sm-10 {
-    border: 1px solid #000000;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    margin-left: 10px;
   }
 
   p {
@@ -20,7 +16,7 @@
 
 <div class="container-fluid" ng-model="$ctrl.localValue"
      ui-validate="'$ctrl.validOrdering'" ui-validate-watch="'$ctrl.validOrdering'">
-  <p>NOTE: Two or more items may occupy the same slot.</p>
+  <p>Примечание: два или более элемента могут занимать один и тот же слот.</p>
   <div ng-repeat="choice in $ctrl.choices track by $index">
     <div class="row">
       <div class="col-sm-1">

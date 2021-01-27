@@ -1,16 +1,16 @@
-<div class="oppia-question-player-container">
+  <div class="oppia-question-player-container">
   <!-- Question Player -->
   <div class="oppia-question-player" ng-if="!resultsLoaded">
     <div class="oppia-question-player-card">
       <div ng-show="$ctrl.totalQuestions > 0">
-        <h3 class="oppia-question-player-header">Question <[$ctrl.currentQuestion]>/<[$ctrl.totalQuestions]></h3>
+        <h3 class="oppia-question-player-header">Вопрос <[$ctrl.currentQuestion]>/<[$ctrl.totalQuestions]></h3>
         <div class="oppia-question-player-progress">
           <div class="current-progress" ng-style="{width: $ctrl.currentProgress + '%'}"></div>
         </div>
       </div>
       <div ng-show="$ctrl.totalQuestions === 0">
-        <h4 class="practice-questions-coming-soon-header">Coming Soon!</h4>
-        <div class="practice-questions-coming-soon-text">There are no questions created yet for the selected subtopic(s). Please check back later!</div>
+        <h4 class="practice-questions-coming-soon-header">Скоро будет!</h4>
+        <div class="practice-questions-coming-soon-text">По выбранным подтемам еще не создано вопросов. Пожалуйста, зайдите позже!</div>
       </div>
     </div>
     <div class="oppia-question-player-body">
@@ -57,7 +57,7 @@
       <button class="btn btn-secondary oppia-review-and-retry-button oppia-review-and-retry-button-text"
               ng-if="!$ctrl.testIsPassed"
               ng-click="$ctrl.reviewConceptCardAndRetryTest()">
-        Review and Retry
+        Проверить и повторить
       </button>
     </div>
 
@@ -86,41 +86,48 @@
   .oppia-question-player-container .action-button-icon {
     font-size: 36px;
     height: 36px;
-    margin-top: 12px;
-    width: 36px;
+    margin-top: 5px;
+    width: 76px;
+    padding-left: 40px;
+
   }
 
   .oppia-question-player-container .action-button-inner {
-    height: 85px;
+    height: 65px;
     text-align: center;
     vertical-align: center;
     width: 85px;
+    color: #007EFF;
   }
 
   .oppia-question-player-container .action-button {
-    border-radius: 4px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
     cursor: pointer;
     display: inline-block;
-    height: 100px;
+    height: 80px;
     margin-top: 14px;
     padding: 8px;
     vertical-align: top;
-    width: 100px;
+    width: 140px;
   }
 
   .oppia-question-player-container .action-button-text {
-    font-size: 12px;
+    font-size: 13px;
     margin: 0 auto;
-    width: 50px;
+        width: 120px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-top: 5px;
   }
 
   .oppia-question-player-container .boost-score-outer {
-    background-color: #D95C0C;
+    background-color: #fff;
   }
 
   .oppia-question-player-container .boost-score-inner {
-    background-color: #F3EAE6;
+    background-color: #fff;
   }
 
   .oppia-question-player-container .last-child {
@@ -129,30 +136,30 @@
   }
 
   .oppia-question-player-container .learn-more {
-    color: #0D48A1;
+    color: #007EFF;
     margin-top: -15px;
   }
 
   .oppia-question-player-container .my-dashboard-outer {
-    background-color: #009688;
+    background-color: #fff;
   }
 
   .oppia-question-player-container .my-dashboard-inner {
-    background-color: #E9F2F2;
+    background-color: #fff;
   }
 
   .oppia-question-player-container .new-session-outer {
-    background-color: #0D48A1;
+    background-color: #fff;
   }
 
   .oppia-question-player-container .new-session-inner {
-    background-color: #E3ECF2;
+    background-color: #fff;
   }
 
   .oppia-question-player-container .oppia-question-player-card {
-    background: #FFFFFF;
+
     border-radius: 4px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
     height: 100px;
     margin: 0 20px;
     text-align: center;
@@ -170,7 +177,7 @@
   }
 
   .oppia-question-player-container .oppia-question-player-header {
-    color: #015C53;
+    color: #000;
     font-family: "Capriola", "Roboto", Arial, sans-serif;
     font-size: 24px;
     font-style: normal;
@@ -181,16 +188,18 @@
   }
 
   .oppia-question-player-container .oppia-question-player-progress {
-    background: #FFFFFF;
-    border: 2px solid #0D48A1;
+    background: #E5F2FF;
+   
     box-sizing: border-box;
-    height: 20px;
+    height: 16px;
     margin: 10px 25px 0;
+    border-radius: 30px;
   }
 
   .oppia-question-player-progress .current-progress {
-    background: #0D48A1;
+    background: #007EFF;
     height: 16px;
+    border-radius: 30px;
   }
 
   .oppia-question-player-container .question-player-results-header {
@@ -203,9 +212,10 @@
   }
 
   .oppia-question-player-container .question-player-skills-results .skill-score-table {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 16px;
-    text-align: center;
+    margin-top: 40px;
+    text-align: left;
     width: 100%;
   }
 
@@ -222,8 +232,9 @@
     margin: 10px 25px 0;
   }
 
-  .oppia-question-player-container .skill-score-table .list-item:not(:last-child) {
+  .oppia-question-player-container .skill-score-table .list-item {
     border-bottom: 1px solid #bbb;
+    color: #007EFF;
   }
 
   .oppia-question-player-container .skill-score-table .list-item:hover {
@@ -244,7 +255,7 @@
   }
 
   .oppia-question-player-container .practice-questions-coming-soon-header {
-    color: #01645c;
+    color: #007EFF;
     font-family: Capriola, Roboto, Arial, sans-serif;
     font-size: 2em;
     margin-left: 0;

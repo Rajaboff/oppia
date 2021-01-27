@@ -79,8 +79,8 @@ class AssetDevHandler(base.BaseHandler):
             encoded_filename: str. The asset filename. This
                 string is encoded in the frontend using encodeURIComponent().
         """
-        if not constants.DEV_MODE:
-            raise self.PageNotFoundException
+       # if not constants.DEV_MODE:
+        #    raise self.PageNotFoundException
 
         try:
             filename = python_utils.urllib_unquote(encoded_filename)

@@ -2,9 +2,9 @@
   <div class="skill-editor-preview">
     <div class="content-box">
       <div class="question-filter-box">
-        <div><span class="headings">Selection</span></div>
+        <div><span class="headings">Выбор</span></div>
         <div class="question-box">
-          <div><span class="heading-secondary">Questions</span></div>
+          <div><span class="heading-secondary">Вопросы</span></div>
           <div ng-if="$ctrl.questionsFetched">
             <div class="question-filters">
               <input type="text" ng-model="$ctrl.questionTextFilter" ng-change="$ctrl.applyFilters()">
@@ -39,7 +39,7 @@
           <div class="skill-description">
             <div class="content-text-box">
               <span class="heading-secondary">
-                Content
+                Содержание
               </span>
             </div>
             <div ng-if="$ctrl.htmlData">
@@ -53,7 +53,7 @@
         <div class="seperator"></div>
       </div>
       <div class="skill-question-container">
-        <div><span class="headings">Preview</span></div>
+        <div><span class="headings">Просмотр</span></div>
         <div class="preview-box" ng-if="$ctrl.displayCardIsInitialized">
           <tutor-card displayed-card="$ctrl.displayedCard"
                       avatar-image-is-shown="false"

@@ -1,20 +1,20 @@
 <div class="oppia-creator-view-suggestion">
   <div class="modal-header">
-    <h3>Review Suggestion</h3>
+    <h3>Предложение обзора</h3>
   </div>
 
   <div class="modal-body">
     <section ng-class="['oppia-suggestion-review-container', {'oppia-edit-mode': suggestionEditorIsShown}]">
       <div class="oppia-suggestion-review-panel-container float-left">
-        <strong>Current:</strong>
+        <strong>Текущий:</strong>
         <div class="oppia-suggestion-review-panel">
           <angular-html-bind ng-if="oldContent" html-data="oldContent.html">
           </angular-html-bind>
-          <div ng-if="!oldContent" class="oppia-state-not-exist-text">Oops! This state no longer exists!</div>
+          <div ng-if="!oldContent" class="oppia-state-not-exist-text">Ой! Это состояние больше не существует!</div>
         </div>
       </div>
       <div class="oppia-suggestion-review-panel-container float-right">
-        <strong>Suggested:</strong>
+        <strong>Предлагаемый:</strong>
         <div class="oppia-suggestion-review-panel" ng-show="!suggestionEditorIsShown">
           <angular-html-bind html-data="newContent.html">
           </angular-html-bind>
@@ -26,9 +26,9 @@
       </div>
     </section>
     <div class="oppia-review-message-container" ng-show="canReviewActiveThread">
-      Review message (required if rejecting):
+      Сообщение с проверкой (требуется при отклонении):
       <input type="text" ng-model="reviewMessage" class="w-100">
-      Brief Description of Changes (required if accepting):
+      Краткое описание изменений (требуется в случае принятия):
       <input class="w-100 protractor-test-suggestion-commit-message"type="text" ng-model="commitMessage" maxlength="1000">
     </div>
   </div>
@@ -37,11 +37,11 @@
     <div ng-show="errorMessage && !isResubmitButtonShown()" class="oppia-suggestion-review-error">
       <[ errorMessage ]>
     </div>
-    <button class="btn btn-secondary" ng-click="cancel()">Cancel</button>
-    <button class="btn btn-info" ng-if="isEditButtonShown()" ng-click="editSuggestion()">Edit</button>
-    <button class="btn btn-primary" ng-if="isResubmitButtonShown()" ng-disabled="isResubmitButtonDisabled()" ng-click="resubmitChanges()">Submit Changes</button>
-    <button class="btn btn-danger" ng-show="canReviewActiveThread && isNotHandled" ng-click="rejectSuggestion()">Reject</button>
-    <button class="btn btn-success protractor-test-exploration-accept-suggestion-btn" ng-show="canReviewActiveThread && isNotHandled" ng-click="acceptSuggestion()" ng-disabled="commitMessage.length == 0">Accept</button>
+    <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
+    <button class="btn btn-info" ng-if="isEditButtonShown()" ng-click="editSuggestion()">Редактирование</button>
+    <button class="btn btn-primary" ng-if="isResubmitButtonShown()" ng-disabled="isResubmitButtonDisabled()" ng-click="resubmitChanges()">Отправить изменения</button>
+    <button class="btn btn-danger" ng-show="canReviewActiveThread && isNotHandled" ng-click="rejectSuggestion()">Отклонить</button>
+    <button class="btn btn-success protractor-test-exploration-accept-suggestion-btn" ng-show="canReviewActiveThread && isNotHandled" ng-click="acceptSuggestion()" ng-disabled="commitMessage.length == 0">Принять</button>
   </div>
 </div>
 <style type="text/css">

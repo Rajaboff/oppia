@@ -37,71 +37,6 @@
              translate="I18N_TOPNAV_LIBRARY">
           </a>
         </li>
-        <li ng-class="{'open' : $ctrl.activeMenuName === 'aboutMenu'}" uib-dropdown ng-show="$ctrl.navElementsVisibilityStatus.I18N_TOPNAV_ABOUT" class="nav-item  oppia-navbar-clickable-dropdown protractor-test-about-oppia-list-item">
-          <a ng-keydown="$ctrl.onMenuKeypress($event, 'aboutMenu', {shiftTab: $ctrl.ACTION_CLOSE, enter: $ctrl.ACTION_OPEN})" class="nav-link oppia-navbar-tab dropdown-toggle"
-             aria-haspopup="true"
-             aria-expanded="false"
-             tabindex="0"
-             ng-mouseover="$ctrl.openSubmenu($event, 'aboutMenu')"
-             ng-mouseleave="$ctrl.closeSubmenuIfNotMobile($event)">
-            <span class="oppia-navbar-tab-content" translate="I18N_TOPNAV_ABOUT"></span>
-          </a>
-          <ul uib-dropdown-menu class="uib-dropdown-menu oppia-navbar-dropdown"
-              ng-mouseover="$ctrl.openSubmenu($event, 'aboutMenu')"
-              ng-mouseleave="$ctrl.closeSubmenuIfNotMobile($event)">
-            <li class="nav-item">
-              <a ng-keydown="$ctrl.onMenuKeypress($event, 'aboutMenu', {shiftTab: $ctrl.ACTION_CLOSE})"
-                 class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-about-link"
-                 href="/about"
-                 translate="I18N_TOPNAV_ABOUT_OPPIA">
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-get-started-link "
-                 href="/get-started"
-                 translate="I18N_TOPNAV_GET_STARTED">
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-playbook-link "
-                 href="/teach#participation"
-                 translate="I18N_TOPNAV_PARTICIPATION_PLAYBOOK">
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="dropdown-item nav-link oppia-navbar-tab-content"
-                 href="https://medium.com/oppia-org"
-                 target="_blank"
-                 rel="noopener"
-                 translate="I18N_TOPNAV_BLOG">
-                Blog
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="dropdown-item nav-link oppia-navbar-tab-content"
-                 href="/contact"
-                 translate="I18N_TOPNAV_CONTACT_US">
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="dropdown-item nav-link oppia-navbar-tab-content"
-                 href="http://oppiafoundation.org"
-                 target="_blank"
-                 rel="noopener"
-                 translate="I18N_TOPNAV_OPPIA_FOUNDATION">
-              </a>
-            </li>
-            <li class="nav-item">
-              <a ng-keydown="$ctrl.onMenuKeypress($event, 'aboutMenu', {tab: $ctrl.ACTION_CLOSE})"
-                 class="dropdown-item nav-link oppia-navbar-tab-content"
-                 href="https://oppiafoundation.org/volunteer"
-                 target="_blank"
-                 rel="noopener"
-                 translate="I18N_TOPNAV_GET_INVOLVED">
-              </a>
-            </li>
-          </ul>
-        </li>
         <li ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED"
             ng-class="{'open' : $ctrl.activeMenuName === 'classroomMenu'}"
             uib-dropdown
@@ -129,16 +64,18 @@
                  href="/learn/math" translate="I18N_TOPNAV_CLASSROOM_BASIC_MATHS">
               </a>
             </li>
+            <li class="nav-item">
+              <a ng-keydown="$ctrl.onMenuKeypress($event, 'classroomMenu', {shiftTab: $ctrl.ACTION_CLOSE})"
+                 class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-classroom-link"
+                 href="/learn/programming" translate="I18N_CLASSROOM_CALLOUT_HEADING_11">
+              </a>
+            </li>
           </ul>
+
+
+
         </li>
-        <li class="nav-item" ng-mouseover="$ctrl.blurNavigationLinks($event)" ng-show="$ctrl.navElementsVisibilityStatus.I18N_TOPNAV_DONATE">
-          <div class="oppia-navbar-button-container">
-            <a href="/donate"
-               class="btn oppia-navbar-button nav-link oppia-navbar-hide-on-small-width oppia-transition-200">
-              <span class="oppia-navbar-tab-content" translate="I18N_TOPNAV_DONATE"></span>
-            </a>
-          </div>
-        </li>
+        
         <li ng-if="!$ctrl.inClassroomPage">
           <create-activity-button ng-mouseover="$ctrl.blurNavigationLinks($event)" ng-show="$ctrl.navElementsVisibilityStatus.I18N_CREATE_EXPLORATION_CREATE"></create-activity-button>
         </li>
@@ -161,7 +98,7 @@
           </span>
           <span ng-if="!$ctrl.profilePictureDataUrl">
             <i class="material-icons md-40 oppia-user-avatar-icon">&#xE853;</i>
-            <span class="oppia-icon-accessibility-label">User Avatar</span>
+            <span class="oppia-icon-accessibility-label">Аватарка </span>
           </span>
 
           <div class="oppia-navbar-dashboard-indicator ng-cloak" ng-if="$ctrl.numUnseenNotifications > 0">
@@ -260,12 +197,7 @@
         <li class="nav-item">
           <a href="" ng-click="$ctrl.onLoginButtonClicked()"
              class="nav-link oppia-nav-link">
-            <div class="oppia-signin-google">
-              <div class="oppia-signin-g-icon">
-                <img ng-src="<[$ctrl.googleSignInIconUrl]>" alt="Google signin icon">
-              </div>
-              <span class="oppia-signin-text" translate="I18N_TOPNAV_SIGN_IN_WITH_GOOGLE"></span>
-            </div>
+            
           </a>
         </li>
       </ul>
@@ -311,7 +243,7 @@
     padding: 10px 24px 10px 0;
   }
   top-navigation-bar .oppia-navbar-menu-icon {
-    color: #fff;
+    color: #007EFF;
     margin-top: -5px;
   }
   top-navigation-bar .oppia-navbar-dashboard-indicator-text {
@@ -371,7 +303,7 @@
     width: 15px;
   }
   top-navigation-bar .oppia-navbar-close-icon {
-    color: #fff;
+    color: #007EFF;
     margin-right: 4px;
     margin-top: -10px;
   }

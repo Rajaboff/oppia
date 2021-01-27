@@ -135,15 +135,15 @@ angular.module('oppia').directive('topicEditorPage', [
             if (TopicEditorStateService.hasLoadedTopic()) {
               const activeTab = ctrl.getActiveTabName();
               if (activeTab === 'main') {
-                return 'Topic Editor';
+                return 'Редактор тем';
               } else if (activeTab === 'subtopic_editor') {
-                return 'Subtopic Editor';
+                return 'Редактор подтем';
               } else if (activeTab === 'subtopic_preview') {
-                return 'Subtopic Preview';
+                return 'Просмотр подтем';
               } else if (activeTab === 'questions') {
-                return 'Question Editor';
+                return 'Редактор вопросов';
               } else if (activeTab === 'topic_preview') {
-                return 'Topic Preview';
+                return 'Просмотр тем';
               }
             }
           };
@@ -193,7 +193,7 @@ angular.module('oppia').directive('topicEditorPage', [
           };
 
           ctrl.$onInit = function() {
-            LoaderService.showLoadingScreen('Loading Topic');
+            LoaderService.showLoadingScreen('Загрузка тем');
             ctrl.directiveSubscriptions.add(
               TopicEditorStateService.onTopicInitialized.subscribe(
                 () => {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="oppia" lang="<[currentLang]>" itemscope itemtype="http://schema.org/Organization">
   <head>
-    @load('base-components/header.template.html', {"title": "Oppia"})
+    @load('base-components/header.template.html', {"title": "Oqustudy"})
 
     <!-- Updated previous version to current version of google charts
     https://developers.google.com/chart/interactive/docs/basic_load_libs#update-library-loader-code -->
@@ -16,7 +16,7 @@
     </script>
     <style>
       html, body {
-        background-color: #eee;
+        background-color: #F9F9FA;
       }
     </style>
   </head>
@@ -27,7 +27,7 @@
       -->
       <div ng-controller="Base">
         <div ng-if="!iframed">
-          <div role="button" tabindex="0" ng-click="skipToMainContent()" class="oppia-skip-to-content protractor-test-skip-link">Skip to Main Content</div>
+          <div role="button" tabindex="0" ng-click="skipToMainContent()" class="oppia-skip-to-content protractor-test-skip-link">Перейти к основному содержанию</div>
           <promo-bar>
           </promo-bar>
           <div ng-if="isBackgroundMaskActive()" class="ng-cloak oppia-background-mask">
@@ -108,9 +108,7 @@
             </div>
           </div>
 
-          <div ng-if="DEV_MODE" class="oppia-dev-mode" ng-cloak>
-            Dev Mode
-          </div>
+         
 
         </div>
       </div>

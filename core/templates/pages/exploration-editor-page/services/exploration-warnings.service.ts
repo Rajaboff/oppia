@@ -136,19 +136,19 @@ angular.module('oppia').factory('ExplorationWarningsService', [
           paramWarningsList.push({
             type: WARNING_TYPES.CRITICAL,
             message: (
-              'Please ensure the value of parameter "' +
+              'Убедитесь, что значение параметра "' +
               unsetParameterData.paramName +
-              '" is set before it is referred to in the initial list of ' +
-              'parameter changes.')
+              '" устанавливается до ссылки на него в начальном списке ' +
+              'изменения параметров.')
           });
         } else {
           // The parameter value is required in a subsequent state.
           paramWarningsList.push({
             type: WARNING_TYPES.CRITICAL,
             message: (
-              'Please ensure the value of parameter "' +
+              'Убедитесь, что значение параметра "' +
               unsetParameterData.paramName +
-              '" is set before using it in "' + unsetParameterData.stateName +
+              '" устанавливается перед использованием  "' + unsetParameterData.stateName +
               '".')
           });
         }
@@ -288,11 +288,11 @@ angular.module('oppia').factory('ExplorationWarningsService', [
 
       if (Object.keys(stateWarnings).length) {
         var errorString = (
-          Object.keys(stateWarnings).length > 1 ? 'cards have' : 'card has');
+          Object.keys(stateWarnings).length > 1 ? 'карты' : 'карта');
         _warningsList.push({
           type: WARNING_TYPES.ERROR,
           message: (
-            'The following ' + errorString + ' errors: ' +
+            'Следующая(-ие)  ' + errorString + ' содержит ошибки: ' +
             Object.keys(stateWarnings).join(', ') + '.')
         });
       }
@@ -300,13 +300,13 @@ angular.module('oppia').factory('ExplorationWarningsService', [
       var statesWithAnswerGroupsWithEmptyClassifiers = (
         _getStatesAndAnswerGroupsWithEmptyClassifiers());
       statesWithAnswerGroupsWithEmptyClassifiers.forEach(function(result) {
-        var warningMessage = 'In \'' + result.stateName + '\'';
+        var warningMessage = 'В \'' + result.stateName + '\'';
         if (result.groupIndexes.length !== 1) {
-          warningMessage += ', the following answer groups have classifiers ';
-          warningMessage += 'with no training data: ';
+          warningMessage += ', следующие группы ответов имеют классификаторы ';
+          warningMessage += 'без данных обучения: ';
         } else {
-          warningMessage += ', the following answer group has a classifier ';
-          warningMessage += 'with no training data: ';
+          warningMessage += ', следующие группы ответов имеют классификаторы ';
+          warningMessage += 'без данных обучения: ';
         }
         warningMessage += result.groupIndexes.join(', ');
 

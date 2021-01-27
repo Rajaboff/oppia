@@ -3,8 +3,7 @@
   <div class="oppia-splash-rows-container">
     <div class="oppia-splash-background-icon-rows-container">
       <div class="oppia-splash-background-icon-row">
-        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/books.svg')]>" class="oppia-splash-books oppia-splash-books-image" alt="">
-
+        
         <img ng-src="<[$ctrl.getStaticSubjectImageUrl('Humor')]>" class="oppia-splash-background-icon" alt="">
         <img ng-src="<[$ctrl.getStaticSubjectImageUrl('Combinatorics')]>" class="oppia-splash-background-icon" alt="">
         <img ng-src="<[$ctrl.getStaticSubjectImageUrl('Cooking')]>" class="oppia-splash-background-icon" alt="">
@@ -132,7 +131,7 @@
   <div class="oppia-splash-section-two-content oppia-splash-section-two-content-extra-info">
     <div class="oppia-splash-bullet oppia-splash-bullet-extra-info">
       <div class="oppia-splash-bullet-block oppia-splash-block-left-image">
-        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/bullet1icon.svg')]>" class="oppia-splash-overlapping-image-1" alt="">
+        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/bullet1icon.png')]>" class="oppia-splash-overlapping-image-1" alt="">
       </div>
       <div class="oppia-splash-bullet-block oppia-splash-block-right-text"
            translate="I18N_SPLASH_FIRST_EXPLORATION_DESCRIPTION"
@@ -142,7 +141,7 @@
 
     <div class="oppia-splash-bullet">
       <div class="oppia-splash-bullet-block oppia-splash-block-right-image">
-        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/bullet2icon.svg')]>" alt="">
+        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/bullet2icon.png')]>" alt="">
       </div>
       <div class="oppia-splash-bullet-block oppia-splash-block-left-text"
            translate="I18N_SPLASH_SECOND_EXPLORATION_DESCRIPTION"
@@ -152,7 +151,7 @@
 
     <div class="oppia-splash-bullet">
       <div class="oppia-splash-bullet-block oppia-splash-block-left-image">
-        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/bullet3icon.svg')]>" alt="">
+        <img ng-src="<[$ctrl.getStaticImageUrl('/splash/bullet3icon.png')]>" alt="">
       </div>
       <div class="oppia-splash-bullet-block oppia-splash-block-right-text"
            translate="I18N_SPLASH_THIRD_EXPLORATION_DESCRIPTION"
@@ -180,16 +179,18 @@
   splash-page .oppia-splash-browse-button-position {
     bottom: 210px;
     z-index: 10;
+    box-shadow: 0px -10px 40px 40px rgb(250,250,250);
   }
   splash-page .oppia-splash-create-button-position {
     bottom: 150px;
     z-index: 10;
+    box-shadow: 0px 40px 30px 15px rgb(250,250,250);
   }
   splash-page .oppia-splash-h2-text {
-    font-size: 1.6em;
+    font-size: 2em;
     max-width: 700px;
     padding-bottom: 30px;
-    padding-top: 100px;
+    padding-top: 80px;
   }
   splash-page .oppia-splash-section-two-content-extra-info {
     padding-top: 0;

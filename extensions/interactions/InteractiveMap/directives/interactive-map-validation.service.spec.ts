@@ -125,10 +125,10 @@ describe('InteractiveMapValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please pick a starting latitude between -90 and 90.'
+      message: 'Выберите начальную широту от -90 до 90.'
     }, {
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please pick a starting longitude between -180 and 180.'
+      message: 'Выберите начальную долготу от -180 до 180.'
     }]);
 
     customizationArguments.latitude.value = 120;
@@ -138,10 +138,10 @@ describe('InteractiveMapValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please pick a starting latitude between -90 and 90.'
+      message: 'Выберите начальную широту от -90 до 90.'
     }, {
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please pick a starting longitude between -180 and 180.'
+      message: 'Выберите начальную долготу от -180 до 180.'
     }]);
   });
 
@@ -155,11 +155,11 @@ describe('InteractiveMapValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that rule 1 in group 1 refers to a valid distance.')
+          'Убедитесь, что правило 1 в группе 1 относится к допустимому расстоянию.')
       }, {
         type: WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure that rule 2 in group 1 refers to a valid distance.')
+          'Убедитесь, что правило 2 в группе 1 относится к допустимому расстоянию.')
       }]);
     }
   );

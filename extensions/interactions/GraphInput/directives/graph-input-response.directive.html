@@ -1,6 +1,6 @@
 <style>
   .oppia-graph-response-container {
-    border: 1px solid black;
+    border: 1px solid white;
     background-color: white;
     cursor: default;
   }
@@ -23,11 +23,11 @@
             ng-attr-y1="<[$ctrl.graph.vertices[edge.src].y]>"
             ng-attr-x2="<[$ctrl.graph.vertices[edge.dst].x - $ctrl.GRAPH_INPUT_LEFT_MARGIN]>"
             ng-attr-y2="<[$ctrl.graph.vertices[edge.dst].y]>"
-            ng-attr-style="stroke: black; stroke-width: <[::$ctrl.EDGE_WIDTH]>;">
+            ng-attr-style="stroke: #DBA5F5; stroke-width: <[::$ctrl.EDGE_WIDTH]>;">
       </line>
       <polygon ng-if="$ctrl.graph.isDirected"
                ng-attr-points="<[$ctrl.getDirectedEdgeArrowPoints($index)]>"
-               ng-attr-style="fill: black;">
+               ng-attr-style="fill: #DBA5F5;">
       </polygon>
       <text ng-if="$ctrl.graph.isWeighted"
             ng-attr-x="<[$ctrl.getEdgeCentre($index).x - $ctrl.GRAPH_INPUT_LEFT_MARGIN]>"

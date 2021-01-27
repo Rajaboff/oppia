@@ -2,7 +2,7 @@
   <div>
     <div class="oppia-exp-interaction-card-header-container oppia-mobile-collapsible-card-header" ng-click="toggleInteractionEditor()">
       <h3 class="oppia-exp-interaction-card-header">
-        Interaction
+        Интерактив
       </h3>
       <i class="fa fa-caret-down"
          ng-if="!interactionEditorIsShown"
@@ -15,7 +15,7 @@
     </div>
     <div class="oppia-add-interaction-button-container" ng-if="!interactionId">
       <button type="button" class="btn btn-secondary oppia-add-interaction-button protractor-test-open-add-interaction-modal" ng-click="openInteractionCustomizerModal()">
-        + ADD INTERACTION
+        + Добавить интерактив
       </button>
     </div>
   </div>
@@ -55,12 +55,13 @@
   state-interaction-editor .oppia-exp-interaction-card-header {
     font-size: 18px;
     margin: 0;
-    padding: 30px 30px 0;
+    padding: 20px 30px 20px;
   }
   state-interaction-editor .oppia-exp-interaction-card-header-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: #B3D8FF;
   }
   state-interaction-editor .oppia-add-interaction-button-container {
     padding: 20px 30px;
@@ -69,7 +70,7 @@
     display: none;
   }
   state-interaction-editor .oppia-exp-interaction-container {
-    border: 1.5px solid #d3d1d1;
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
     border-radius: 4px;
     margin: 15px auto 30px;
     width: 87%;
@@ -90,7 +91,7 @@
       display: block;
     }
     state-interaction-editor .oppia-exp-interaction-card-header-container {
-      background-color: #FFF;
+      background-color: #B3D8FF;
     }
   }
 </style>
