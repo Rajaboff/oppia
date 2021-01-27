@@ -16,7 +16,7 @@
              class="oppia-search-button protractor-test-search-button"
              ng-click="$ctrl.onSearchQueryChangeExec()"
              title="Click here to search">
-          Go!
+          Искать!
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
         </a>
       </li>
       <li ng-if="$ctrl.selectionDetails.categories.numSelections > 1">
-        <a href="" ng-click="$ctrl.deselectAll('categories')" class="dropdown-item"><i>Deselect All</i></a>
+        <a href="" ng-click="$ctrl.deselectAll('categories')" class="dropdown-item"><i>Убрать выделенные</i></a>
       </li>
       <hr ng-if="$ctrl.selectionDetails.categories.numSelections > 0" class="oppia-search-bar-hr">
       <li ng-repeat="item in $ctrl.selectionDetails.categories.masterList track by $index"
@@ -94,7 +94,7 @@
       </a>
     </li>
     <li ng-if="$ctrl.selectionDetails.languageCodes.numSelections > 1">
-      <a href="" ng-click="$ctrl.deselectAll('languageCodes')" class="dropdown-item"><i>Deselect All</i></a>
+      <a href="" ng-click="$ctrl.deselectAll('languageCodes')" class="dropdown-item"><i>Убрать выделенные</i></a>
     </li>
     <hr ng-if="$ctrl.selectionDetails.languageCodes.numSelections > 0" class="oppia-search-bar-hr">
     <li ng-repeat="item in $ctrl.selectionDetails.languageCodes.masterList track by $index"
@@ -119,17 +119,17 @@
 <style>
   search-bar .oppia-search-bar-input,
   search-bar .oppia-search-button {
-    background: #257D76;
-    border: 1px solid #257D76;
+    background: #E8E8E8;
+    border: 1px solid #E8E8E8;
     border-radius: 0;
-    color: white;
+    color: black;
     font-size: 15px;
     height: 35px;
   }
 
   search-bar .oppia-search-button {
-    border-left: 1px solid #00645C;
-    border-right: 1px solid #00645C;
+    border-left: 1px solid #E8E8E8;
+    border-right: 1px solid #E8E8E8;
     padding: 5px 15px 0 15px;
   }
 
@@ -142,16 +142,16 @@
     padding-right: 0;
   }
   search-bar .oppia-search-bar-input.btn {
-    color: rgba(255,255,255,0.95);
+    color: #000;
   }
   search-bar .oppia-search-bar-icon {
-    background: #257D76;
-    border: 1px solid #257D76;
-    color: rgba(255,255,255,0.95);
+    background: #E8E8E8;
+    border: 1px solid #E8E8E8;
+    color: #000;
   }
   search-bar .oppia-search-bar-input.btn:hover,
   search-bar .oppia-search-bar-input.btn:focus {
-    color: #fff;
+    color: #007EFF;
   }
 
   search-bar .oppia-search-bar-input.btn:focus {
@@ -160,16 +160,16 @@
   }
 
   search-bar .oppia-search-bar-input::-webkit-input-placeholder {
-    color: rgba(255,255,255,0.95);
+    color: #000;
   }
   search-bar .oppia-search-bar-input::-moz-placeholder {
-    color: rgba(255,255,255,0.95);
+    color: #000;
   }
   search-bar .oppia-search-bar-input:-moz-placeholder {
-    color: rgba(255,255,255,0.95);
+    color: #000;
   }
   search-bar .oppia-search-bar-input:-ms-input-placeholder {
-    color: rgba(255,255,255,0.95);
+    color: #000;
   }
   search-bar .oppia-input-group {
     max-width: 375px;
@@ -186,8 +186,8 @@
     margin: 2px;
   }
   search-bar .oppia-search-bar-dropdown-toggle-button {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+    border-bottom-right-radius: 19px;
+    border-top-right-radius: 19px;
     max-width: 130px;
   }
 
@@ -207,33 +207,33 @@
 
   @media (max-width: 767px) {
     search-bar .oppia-search-bar-input {
-      background: #ffffff;
-      color: #257D76;
+      background: #E8E8E8;
+      color: #000;
     }
     search-bar .oppia-search-bar-input::-webkit-input-placeholder {
-      color: #257D76;
+      color: #000;
     }
     search-bar .oppia-search-bar-input::-moz-placeholder {
-      color: #257D76;
+      color: #000;
     }
     search-bar .oppia-search-bar-input:-moz-placeholder {
-      color: #257D76;
+      color: #000;
     }
     search-bar .oppia-search-bar-input:-ms-input-placeholder {
-      color: #257D76;
+      color: #000;
     }
     search-bar .oppia-search-bar-icon {
-      background: #ffffff;
-      color: #257D76;
+      background: #E8E8E8;
+      color: #000;
     }
     search-bar .oppia-search-bar-input.btn {
-      color: #257D76;
+      color: #007EFF;
       margin-left: 10px;
       margin-top: -64px;
     }
     search-bar .oppia-search-bar-input.btn:hover,
     search-bar .oppia-search-bar-input.btn:focus {
-      color: #257D76;
+      color: #007EFF;
     }
     search-bar .protractor-test-search-bar-dropdown-menu {
       margin-top: -25px;
@@ -245,8 +245,8 @@
 
   @media(min-width: 786px) {
     search-bar .oppia-search-bar-input:focus {
-      background-color: #257D76;
-      color: white;
+      background-color: #E8E8E8;
+      color: #007EFF;
     }
   }
 

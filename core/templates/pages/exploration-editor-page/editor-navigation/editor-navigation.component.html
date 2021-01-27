@@ -4,7 +4,7 @@
     padding: 15px 11px;
   }
   editor-navigation .oppia-exploration-open-threads-count {
-    background-color: #4078C0;
+    background-color: #007EFF;
     border: 1px solid;
     border-radius: 10px;
     bottom: 8px;
@@ -17,7 +17,7 @@
     text-shadow: 0 1px rgba(0, 0, 0, 0.25);
   }
   editor-navigation .oppia-exploration-open-threads-color {
-    background-color: #4078C0;
+    background-color: #007EFF;
   }
   editor-navigation .oppia-exploration-open-threads-indicator {
     border-radius: 50%;
@@ -127,7 +127,7 @@
     justify-content: space-between;
   }
   editor-navigation .right-container {
-    background-color: #419889;
+    background-color: #007EFF;
     color: #FFF;
   }
   editor-navigation .exp-nav-dropdown-icon {
@@ -142,7 +142,7 @@
     width: 20%;
   }
   editor-navigation .publish-button {
-    background-color: #419889;
+    background-color: #007EFF;
     color: #FFF;
   }
 </style>
@@ -153,7 +153,7 @@
       <div class="exp-nav-dropdown-content" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <a>
           <i ng-if="!getTotalWarningsCount()" class="material-icons">&#xE254;</i>
-          Options
+          Параметры
         </a>
         <div class="exp-nav-dropdown-icon" ng-click="toggleNavigationOptions()">
           <i class="fa fa-caret-down"></i>
@@ -163,7 +163,7 @@
             <a href="#" uib-tooltip="Editor" tooltip-placement="<[countWarnings() ? 'left' : 'bottom']>" ng-click="selectMainTab()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE254;</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">Editor</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">Редактор</span>
             </a>
             <div ng-show="countWarnings()" class="oppia-editor-warnings-indicator" ng-click="selectMainTab()" ng-class="{'oppia-editor-warnings-critical-color': hasCriticalWarnings(), 'oppia-editor-warnings-error-color': !hasCriticalWarnings()}">
               <span class="oppia-editor-warnings-count">
@@ -171,7 +171,7 @@
               </span>
             </div>
             <ul uib-dropdown-menu class="uib-dropdown-menu oppia-editor-warnings-box">
-              <span class="oppia-editor-warnings-header">Warnings</span>
+              <span class="oppia-editor-warnings-header">Внимание</span>
               <li class="oppia-editor-warnings-text" ng-repeat="warning in getWarnings() track by $index">
                 <hr class="oppia-editor-warnings-separator">
                 <span ng-if="warning.type === 'critical'">
@@ -187,35 +187,35 @@
             <a href="#" uib-tooltip="Tmaterial-iconsmaterial-iconsranslations and Voiceovers" tooltip-placement="bottom" ng-click="selectTranslationTab()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE029;</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">Translations</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">Переводы</span>
             </a>
           </li>
           <li class="dropdown-item oppia-exploration-editor-tabs-dropdown-item" ng-if="isUserLoggedIn()" ng-class="{'active': getActiveTabName() === 'preview'}">
             <a href="#" uib-tooltip="Preview" tooltip-placement="bottom" ng-click="selectPreviewTab()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE037;</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">Preview</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">Просмотр</span>
             </a>
           </li>
           <li class="dropdown-item oppia-exploration-editor-tabs-dropdown-item" ng-class="{'active': getActiveTabName() === 'settings'}">
             <a href="#" uib-tooltip="Settings" tooltip-placement="bottom" ng-click="selectSettingsTab()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE8B8;</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">Settings</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">Настройки</span>
             </a>
           </li>
           <li class="dropdown-item oppia-exploration-editor-tabs-dropdown-item" ng-class="{'active': getActiveTabName() === 'stats'}">
             <a href="#" uib-tooltip="Statistics" tooltip-placement="bottom" ng-click="selectStatsTab()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE24B;</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">Statistics</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">Статистика</span>
             </a>
           </li>
           <li class="dropdown-item oppia-exploration-editor-tabs-dropdown-item" ng-class="{'active': getActiveTabName() === 'improvements'}" ng-if="isImprovementsTabEnabled()">
             <a href="#" uib-tooltip="Improvements" tooltip-placement="bottom" ng-click="selectImprovementsTab()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">trending_up</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">Improvements</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">Улучшения</span>
             </a>
           </li>
           <li class="dropdown-item oppia-exploration-editor-tabs-dropdown-item" ng-class="{'active': getActiveTabName() === 'history'}">
@@ -223,7 +223,7 @@
                disabled="ExplorationRightsService.isCloned()"
                class="oppia-exploration-editor-tabs-dropdown-element">
               <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE192;</i>
-              <span class="oppia-exploration-editor-tabs-dropdown-inner">History</span>
+              <span class="oppia-exploration-editor-tabs-dropdown-inner">История</span>
             </a>
           </li>
           <li class="dropdown-item oppia-exploration-editor-tabs-dropdown-item" ng-class="{'active': getActiveTabName() === 'feedback'}">
@@ -253,20 +253,20 @@
                      alt="Save Draft">
                       &#xE161;
                   </i>
-                  <span>Save Draft</span>
+                  <span>Сохранить черновик</span>
                   <span class="d-none d-md-block" ng-if="getChangeListLength()">(<[getChangeListLength()]>)</span>
                 </span>
                 <span class="oppia-publish-label-container" ng-if="!isPrivate()" title="Publish Changes">
-                  <span>Publish</span>
+                  <span>Опубликовать</span>
                   <span ng-if="getChangeListLength()">(<[getChangeListLength()]>)</span>
                 </span>
               </span>
               <span ng-if="saveIsInProcess">
                 <span ng-if="isPrivate()">
-                  Saving
+                  Сохранение
                 </span>
                 <span ng-if="!isPrivate()">
-                  Publishing
+                  Публикация
                 </span>
                 <loading-dots ng-show="loadingDotsAreShown"></loading-dots>
               </span>
@@ -281,7 +281,7 @@
         <ul class="dropdown-menu" aria-labelledby="discardButtonPopup">
           <div ng-click="discardChanges()">
             <i class="material-icons oppia-mobile-exploration-editor-tabs-icon">&#xE254;</i>
-            Discard
+            Отменить
           </div>
           <div ng-if="showPublishButton()" ng-class="{'disable-publish-button': isExplorationLockedForEditing() || countWarnings()}">
             <button type="button" class="btn btn-light"
@@ -301,7 +301,7 @@
                   <loading-dots ng-show="loadingDotsAreShown"></loading-dots>
                 </i>
                 <span>
-                  Publishing
+                  Публикация
                   <loading-dots ng-show="loadingDotsAreShown"></loading-dots>
                 </span>
               </span>

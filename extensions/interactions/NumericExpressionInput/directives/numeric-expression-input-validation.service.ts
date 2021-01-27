@@ -86,9 +86,9 @@ export class NumericExpressionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                'Rule ' + (j + 1) + ' from answer group ' + (i + 1) +
-                ' will never be matched because it is preceded ' +
-                'by an \'IsEquivalentTo\' rule with a matching input.')
+                'Правило ' + (j + 1) + ' из группы ответов ' + (i + 1) +
+                ' никогда не будет совпадать, потому что ему предшествует ' +
+                ' \'IsEquivalentTo\' правило с подходящим входом.')
             });
           } else if (currentRuleType === 'MatchesExactlyWith' && (
             algebraicRulesService.MatchesExactlyWith(
@@ -98,9 +98,9 @@ export class NumericExpressionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                'Rule ' + (j + 1) + ' from answer group ' + (i + 1) +
-                ' will never be matched because it is preceded ' +
-                'by a \'MatchesExactlyWith\' rule with a matching input.')
+                'Правило ' + (j + 1) + ' из группы ответов ' + (i + 1) +
+                ' никогда не будет совпадать, потому что ему предшествует ' +
+                ' \'MatchesExactlyWith\' правило с подходящим входом.')
             });
           }
         }

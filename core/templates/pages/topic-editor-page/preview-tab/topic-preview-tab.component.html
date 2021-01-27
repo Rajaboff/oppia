@@ -1,6 +1,6 @@
 <div class="topic-preview-parent">
   <div>
-    <background-banner></background-banner>
+   
   </div>
   <div class="topic-preview-container">
     <div class="topic-preview-nav">
@@ -10,7 +10,7 @@
             <img alt="" class="tab-icon" ng-src="<[$ctrl.getStaticImageUrl('/icons/play_icon_24px.svg')]>">
           </div>
           <div class="topic-preview-text">
-            Lessons
+            Уроки
           </div>
         </div>
         <div class="topic-preview-navbar-tab" ng-class="{'topic-preview-nav-active': $ctrl.activeTab === 'practice'}" ng-click="$ctrl.changePreviewTab('practice')">
@@ -18,7 +18,7 @@
             <img alt="" class="tab-icon" ng-src="<[$ctrl.getStaticImageUrl('/icons/train_icon_24px.svg')]>">
           </div>
           <div class="topic-preview-text">
-            Practice
+            Практика
           </div>
         </div>
         <div class="topic-preview-navbar-tab" ng-class="{'topic-preview-nav-active': $ctrl.activeTab === 'subtopic'}" ng-click="$ctrl.changePreviewTab('subtopic')">
@@ -26,7 +26,7 @@
             <img alt="" class="tab-icon" ng-src="<[$ctrl.getStaticImageUrl('/icons/review_icon_24px.svg')]>">
           </div>
           <div class="topic-preview-text">
-            Revision
+            Редакция
           </div>
         </div>
       </div>
@@ -60,15 +60,14 @@
     margin: 0 auto;
     position: relative;
     top: 50px;
-    width: 50%;
+    width: 100%;
   }
   topic-preview-tab .topic-preview-parent {
     margin-top: -40px;
   }
   topic-preview-tab .topic-preview-nav {
-    background-color: #00645c;
-    box-shadow: 0 2px 8px #000000cf;
-    margin-bottom: 12px;
+    background-color: #007EFF;
+    
   }
   topic-preview-tab .topic-preview-navbar-tabs {
     display: flex;
@@ -84,7 +83,7 @@
     height: 100%;
     padding: 20px 0;
     text-align: center;
-    width: 25%;
+    width: 10%;
   }
   topic-preview-tab .topic-preview-icon img {
     height: 40px;

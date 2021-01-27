@@ -84,7 +84,7 @@ _PARSER.add_argument(
         'optional; if specified, build webpack with source maps.'),
     action='store_true')
 
-PORT_NUMBER_FOR_GAE_SERVER = 8181
+PORT_NUMBER_FOR_GAE_SERVER = 80
 
 
 def cleanup():
@@ -158,8 +158,8 @@ def main(args=None):
 
     python_utils.PRINT('Starting GAE development server')
     background_processes.append(subprocess.Popen(
-        'python %s/dev_appserver.py %s %s %s --admin_host 0.0.0.0 '
-        '--admin_port 8000 --host 0.0.0.0 --port %s %s --skip_sdk_update_check '
+        'python %s/dev_appserver.py %s %s %s --admin_host oqustudy.kz '
+        '--admin_port 8000 --host oqustudy.kz --port %s %s --skip_sdk_update_check '
         'true %s' % (
             common.GOOGLE_APP_ENGINE_SDK_HOME, clear_datastore_arg,
             enable_console_arg, disable_host_checking_arg, no_auto_restart,
@@ -180,35 +180,35 @@ def main(args=None):
                 'INFORMATION',
                 'Setting up a local development server. You can access this '
                 'server',
-                'by navigating to localhost:%s in a browser window.'
+                'by navigating to oqustudy.kz:%s in a browser window.'
                 % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER)])
         else:
             common.print_each_string_after_two_new_lines([
                 'INFORMATION',
-                'Setting up a local development server at localhost:%s. '
+                'Setting up a local development server at oqustudy.kz:%s. '
                 % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER),
                 'Opening a default browser window pointing to this server'])
             time.sleep(5)
             background_processes.append(
                 subprocess.Popen([
-                    'xdg-open', 'http://localhost:%s/'
+                    'xdg-open', 'http://oqustudy.kz:%s/'
                     % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER)]))
     elif common.is_mac_os() and not parsed_args.no_browser:
         common.print_each_string_after_two_new_lines([
             'INFORMATION',
-            'Setting up a local development server at localhost:%s. '
+            'Setting up a local development server at oqustudy.kz:%s. '
             % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER),
             'Opening a default browser window pointing to this server.'])
         time.sleep(5)
         background_processes.append(
             subprocess.Popen([
-                'open', 'http://localhost:%s/'
+                'open', 'http://oqustudy.kz:%s/'
                 % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER)]))
     else:
         common.print_each_string_after_two_new_lines([
             'INFORMATION',
             'Setting up a local development server. You can access this server',
-            'by navigating to localhost:%s in a browser window.'
+            'by navigating to oqustudy.kz:%s in a browser window.'
             % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER)])
 
     python_utils.PRINT('Done!')

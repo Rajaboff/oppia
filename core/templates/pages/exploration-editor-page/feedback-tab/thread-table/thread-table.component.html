@@ -9,10 +9,10 @@
 <table class="table">
   <thead>
     <tr ng-if="$ctrl.getThreads().length > 0">
-      <th>Status</th>
-      <th>Subject</th>
-      <th>Original author</th>
-      <th>Last updated</th>
+      <th>Статус</th>
+      <th>Темы</th>
+      <th>Автор оригинала</th>
+      <th>Последнее обновление</th>
     </tr>
   </thead>
   <tr ng-repeat="thread in $ctrl.getThreads()|orderBy:'-lastUpdatedMsecs'" ng-click="$ctrl.onClickRow(thread.threadId)" class="oppia-feedback-tab-row protractor-test-oppia-feedback-tab-row">

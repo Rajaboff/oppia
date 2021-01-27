@@ -13,12 +13,12 @@
     content: ' ';
   }
   answer-group-editor .oppia-add-rule-button {
-    background-color: rgba(165,165,165,0.9);
-    border: 0;
+    background-color: #fff;
+    border: 2px solid #66B2FF;
     border-radius: 0;
-    color: white;
+    color: #007EFF;
     opacity: 0.9;
-    padding: 7px;
+    padding: 5px;
     width: 100%;
   }
 
@@ -28,7 +28,7 @@
   answer-group-editor .oppia-modify-training-data-button:active,
   answer-group-editor .oppia-modify-training-data-button:focus,
   answer-group-editor .oppia-modify-training-data-button:hover {
-    background-color: rgba(165,165,165,1);
+    background-color: #007EFF;
     color: white;
     opacity: 1;
   }
@@ -63,13 +63,13 @@
   <!-- For the default answer group, 'rules' is null. Otherwise, 'rules' is a list of rules. -->
   <div ng-if="$ctrl.rules">
     <strong>
-      If the learner's answer...
+      Если ответ ученика ...
     </strong>
     <ul class="nav oppia-option-list nav-stacked nav-pills" role="tablist" ng-model="$ctrl.rules">
       <li ng-repeat="rule in $ctrl.rules" ng-class="{'active': $ctrl.activeRuleIndex === $index, 'oppia-answer-rule-block': $last}" class="mt-0 oppia-rule-block oppia-sortable-rule-block protractor-test-rule-block">
         <a ng-click="$ctrl.openRuleEditor($index)" ng-hide="$ctrl.activeRuleIndex === $index" class="oppia-rule-tab protractor-test-answer-tab" ng-class="{'oppia-rule-tab-disabled': !$ctrl.isEditable}">
           <div class="oppia-rule-header">
-            <span ng-if="$index > 0">or</span>
+            <span ng-if="$index > 0">или</span>
             <span ng-if="$ctrl.getCurrentInteractionId() !== 'MultipleChoiceInput' && $index !== $ctrl.activeRuleIndex">
               <[rule | parameterizeRuleDescription:$ctrl.getCurrentInteractionId():$ctrl.answerChoices]>...
             </span>
@@ -97,12 +97,12 @@
     </ul>
 
     <button type="button" ng-if="$ctrl.isEditable" class="btn btn-secondary btn-lg oppia-add-rule-button protractor-test-add-answer" ng-click="$ctrl.addNewRule()">
-      + Add Another Possible Answer
+      + Добавить еще ответ
     </button>
 
     <div ng-if="$ctrl.isEditable && $ctrl.isCurrentInteractionTrainable() && $ctrl.isMLEnabled() && !$ctrl.isInQuestionMode()">
       <button type="button" class="btn btn-secondary btn-lg oppia-modify-training-data-button" ng-click="$ctrl.openTrainingDataEditor()">
-        <i class="material-icons md-24">playlist_add</i> Modify Training Data
+        <i class="material-icons md-24">playlist_add</i>Изменить данные обучения
       </button>
     </div>
   </div>

@@ -22,7 +22,7 @@
                        height="530px"
                        xmlns="http://www.w3.org/1600/svg">
                     <path fill="none"
-                          ng-attr-stroke="{{node.isCompleted() && '#296E5F' || 'rgb(204, 204, 204)' }}"
+                          ng-attr-stroke="{{node.isCompleted() && '#007EFF' || 'rgb(204, 204, 204)' }}"
                           stroke-dasharray="30,16"
                           stroke-linecap="round"
                           stroke-width="9"
@@ -48,21 +48,21 @@
 
                   <div class="oppia-story-viewer-card-content">
                     <svg width="240"
-                         height="180"
+                         height="150"
                          xmlns="http://www.w3.org/1600/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink"
                          version="1.1"
                          class="oppia-story-viewer-card-content-img">
                       <defs>
-                        <pattern id="image<[$index]>" patternUnits="userSpaceOnUse" height="160" width="240">
+                        <pattern id="image<[$index]>" patternUnits="userSpaceOnUse" height="150" width="240">
                           <rect width="240"
-                                height="180"
+                                height="150"
                                 ng-attr-fill="<[$ctrl.pathIconParameters[$index].thumbnailBgColor]>">
                           </rect>
 
                           <image x="0"
                                  y="0"
-                                 height="180"
+                                 height="150"
                                  width="240"
                                  ng-attr-xlink:href="<[$ctrl.pathIconParameters[$index].thumbnailIconUrl]>"
                                  xlink:href="">
@@ -71,7 +71,7 @@
                       </defs>
                       <a xlink:href="<[$ctrl.getExplorationUrl(node)]>" ng-class="{'disabled-link': $ctrl.isChapterLocked(node)}">
                         <rect width="240"
-                              height="180"
+                              height="150"
                               fill="url(#image<[$index]>)"
                               rx="4">
                         </rect>
@@ -91,7 +91,7 @@
                          version="1.1"
                         >
                       <defs>
-                        <pattern id="image2<[$index]>" patternUnits="userSpaceOnUse" height="160" width="240">
+                        <pattern id="image2<[$index]>" patternUnits="userSpaceOnUse" height="150" width="240">
                           <rect width="185"
                                 height="150"
                                 ng-attr-fill="<[$ctrl.pathIconParameters[$index].thumbnailBgColor]>">
@@ -99,7 +99,7 @@
 
                           <image x="0"
                                  y="0"
-                                 width="185"
+                                 width="1"
                                  height="150"
                                  ng-attr-xlink:href="<[$ctrl.pathIconParameters[$index].thumbnailIconUrl]>"
                                  xlink:href="">
@@ -134,7 +134,8 @@
   }
 
   story-viewer-page .oppia-story-viewer-container a:hover, a:hover span {
-    color: #0844aa;
+    color: #007EFF;
+    
   }
 
   story-viewer-page .disabled-link {
@@ -145,9 +146,12 @@
   story-viewer-page .oppia-story-viewer-card-content-img {
     margin-bottom: 10px;
     margin-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
+
   }
 
   story-viewer-page .oppia-story-description-text {
-    font-size: 20px;
+    font-size: 18px;
   }
 </style>

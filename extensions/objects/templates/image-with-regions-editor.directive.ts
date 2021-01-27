@@ -43,7 +43,7 @@ angular.module('oppia').directive('imageWithRegionsEditor', [
           // Dynamically defines the CSS style for the region rectangle.
           ctrl.getRegionStyle = function(index) {
             if (index === ctrl.selectedRegion) {
-              return 'fill: #00f; opacity: 0.5; stroke: #00d';
+              return 'fill: #007EFF; stroke: #046EEF';
             } else {
               return 'fill: white; opacity: 0.5; stroke: #ddd';
             }

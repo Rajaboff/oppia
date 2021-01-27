@@ -94,11 +94,11 @@ export class SetInputValidationService {
     if (!buttonText || !angular.isString(buttonText.getUnicode())) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Button text must be a string.'
+        message: 'Текст кнопки должен быть строкой.'
       });
     } else if (buttonText.getUnicode().length === 0) {
       warningsList.push({
-        message: 'Label for this button should not be empty.',
+        message: 'Ярлык для этой кнопки не должен быть пустым.',
         type: AppConstants.WARNING_TYPES.ERROR
       });
     }
@@ -124,10 +124,10 @@ export class SetInputValidationService {
           if (this.areSameRule(prevRule.rule, rule)) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
-              message: `Rule ${ruleIndex + 1} from answer group ` +
-                `${answerGroupIndex + 1} is the same as ` +
-                `rule ${prevRule.ruleIndex + 1} from ` +
-                `answer group ${prevRule.answerGroupIndex + 1}`
+              message: `Правило ${ruleIndex + 1} из группы ответов ` +
+                `${answerGroupIndex + 1} такой же как ` +
+                `правило ${prevRule.ruleIndex + 1} из ` +
+                `группы ответов ${prevRule.answerGroupIndex + 1}`
             });
           } else if (prevRule.rule.type === rule.type) {
             /*
@@ -167,10 +167,10 @@ export class SetInputValidationService {
             if (isRuleCoveredByAnyPrevRule) {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
-                message: `Rule ${ruleIndex + 1} from answer group ` +
-                  `${answerGroupIndex + 1} will never be matched because it ` +
-                  `is made redundant by rule ${prevRule.ruleIndex + 1}` +
-                  ` from answer group ${prevRule.answerGroupIndex + 1}.`
+                message: `Правило ${ruleIndex + 1} из группы ответов ` +
+                  `${answerGroupIndex + 1} никогда не будет совпадать, потому что это ` +
+                  `делается избыточным правилом ${prevRule.ruleIndex + 1}` +
+                  ` из группы ответов ${prevRule.answerGroupIndex + 1}.`
               });
             }
           }

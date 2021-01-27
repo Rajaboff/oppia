@@ -148,8 +148,8 @@ describe('GraphInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'The graph used in customization exceeds supported maximum ' +
-          'number of vertices of 50.'
+      message: 'Граф, используемый при настройке, превышает поддерживаемый максимум ' +
+          'количество вершин 50.'
     }]);
   });
 
@@ -163,16 +163,16 @@ describe('GraphInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'The graph used in the rule 1 in group 1 exceeds supported ' +
-          'maximum number of vertices of 10 for isomorphism check.'
+      message: 'Граф, используемый в правиле 1 в группе 1, превышает поддерживаемые ' +
+          'максимальное количество вершин 10 для проверки изоморфизма.'
     }, {
       type: WARNING_TYPES.CRITICAL,
-      message: 'The graph used in the rule 2 in group 1 exceeds supported ' +
-          'maximum number of vertices of 10 for isomorphism check.'
+      message: 'График, используемый в правиле 2 в группе 1, превышает поддерживаемые ' +
+          'максимальное количество вершин 10 для проверки изоморфизма.'
     }, {
       type: WARNING_TYPES.CRITICAL,
-      message: 'The graph used in the rule 1 in group 2 exceeds supported ' +
-          'maximum number of vertices of 10 for isomorphism check.'
+      message: 'График, используемый в правиле 1 в группе 2, превышает поддерживаемые ' +
+          'максимальное количество вершин 10 для проверки изоморфизма.'
     }]);
   });
 
@@ -185,7 +185,7 @@ describe('GraphInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
       message: (
-        'The learner cannot edit edge weights for an unweighted graph.')
+        'Учащийся не может редактировать веса ребер невзвешенного графа.')
     }]);
   });
 
@@ -198,7 +198,7 @@ describe('GraphInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
       message: (
-        'The learner cannot edit vertex labels for an unlabeled graph.')
+        'Учащийся не может редактировать метки вершин для немаркированного графа..')
     }]);
   });
 });

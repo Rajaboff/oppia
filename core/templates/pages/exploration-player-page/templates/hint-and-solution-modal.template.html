@@ -7,7 +7,7 @@
     </angular-html-bind>
   </span>
   <div ng-if="!isHint">
-    <label><[shortAnswerHtml.prefix]> solution is: &nbsp; </label>
+    <label><[shortAnswerHtml.prefix]> решение : &nbsp; </label>
     <span>
       <angular-html-bind class="oppia-learner-hint-and-solution-modal-body"
                          html-data="shortAnswerHtml.answer">
@@ -15,7 +15,7 @@
     </span>
     <br>
     <br>
-    <label>Explanation: </label>
+    <label>Объяснение: </label>
     <span>
       <angular-html-bind class="oppia-learner-hint-and-solution-modal-body"
                          html-data="solutionExplanationHtml">
@@ -26,13 +26,13 @@
 
 <button class="oppia-learner-got-it-button md-button md-default-theme ml-auto"
         ng-click="closeModal()">
-  GOT IT
+  Понял
 </button>
 <span class="clearfix"></span>
 
 <style>
   .oppia-learner-hint-and-solution-modal-title {
-    color: #00786D;
+    color: #007EFF;
     font-family: 'Capriola', 'Roboto', 'Arial', sans-serif;
     font-size: 1.75em;
     font-weight: bold;

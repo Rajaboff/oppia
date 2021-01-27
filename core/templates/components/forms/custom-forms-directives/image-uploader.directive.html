@@ -5,11 +5,7 @@
     <i class="material-icons">&#xE002;</i>
     <[errorMessage]>
   </span>
-  <span class="image-uploader-license-warning">
-    Before uploading images, please ensure that they are<br>
-    compatible with the <a href="/about#license" target="_blank" rel="noopener">license terms</a> of the site.<br>
-    Please do not upload watermarked images.
-  </span>
+  
   <label for="image-file-input" translate="I18N_DIRECTIVES_UPLOAD_A_FILE" class="image-uploader-upload-label-button"></label>
   <!-- The onclick="this.value=null" attribute resets the value of the input so that uploading the same image twice in a row works. This fix is only needed for chrome. Reference: stackoverflow.com/q/12030686 -->
   <input type="file" id="image-file-input" onclick="this.value = null"
@@ -32,8 +28,8 @@
   }
 
   .image-uploader-drop-area {
-    background: #eee;
-    color: black;
+    background: #E5F2FF;
+    color: #007EFF;
     font-size: 16px;
     height: 200px;
     padding-top: 74px;
@@ -65,15 +61,10 @@
   }
 
   label.image-uploader-upload-label-button {
-    background: grey;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F2F2F2), color-stop(1, #BFBFBF));
-    background-image: -o-linear-gradient(bottom, #F2F2F2 0%, #BFBFBF 100%);
-    background-image: -moz-linear-gradient(bottom, #F2F2F2 0%, #BFBFBF 100%);
-    background-image: -webkit-linear-gradient(bottom, #F2F2F2 0%, #BFBFBF 100%);
-    background-image: -ms-linear-gradient(bottom, #F2F2F2 0%, #BFBFBF 100%);
-    background-image: linear-gradient(to bottom, #F2F2F2 0%, #BFBFBF 100%);
-    border: solid #707070 1px;
-    border-radius: 2px;
+    background: #E5F2FF;
+    
+    border: solid #007EFF 1px;
+    border-radius: 19px;
     bottom: 6px;
     cursor: default;
     display: inline;
@@ -86,25 +77,17 @@
   }
 
   label.image-uploader-upload-label-button:hover {
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EAF6FD), color-stop(1, #A7D8F5));
-    background-image: -o-linear-gradient(bottom, #EAF6FD 0%, #A7D8F5 100%);
-    background-image: -moz-linear-gradient(bottom, #EAF6FD 0%, #A7D8F5 100%);
-    background-image: -webkit-linear-gradient(bottom, #EAF6FD 0%, #A7D8F5 100%);
-    background-image: -ms-linear-gradient(bottom, #EAF6FD 0%, #A7D8F5 100%);
-    background-image: linear-gradient(to bottom, #EAF6FD 0%, #A7D8F5 100%);
-    border: #3c7fb1 solid 1px;
+    background-color: #007EFF;
+    border: #007EFF solid 1px;
     cursor: pointer;
+    color: white;
   }
 
   label.image-uploader-upload-label-button:active {
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #E5F4FC), color-stop(0.5, #C4E5F6), color-stop(0.51, #98D0EF), color-stop(1, #68B3DB));
-    background-image: -o-linear-gradient(bottom, #E5F4FC 0%, #C4E5F6 50%, #98D0EF 51%, #68B3DB 100%);
-    background-image: -moz-linear-gradient(bottom, #E5F4FC 0%, #C4E5F6 50%, #98D0EF 51%, #68B3DB 100%);
-    background-image: -webkit-linear-gradient(bottom, #E5F4FC 0%, #C4E5F6 50%, #98D0EF 51%, #68B3DB 100%);
-    background-image: -ms-linear-gradient(bottom, #E5F4FC 0%, #C4E5F6 50%, #98D0EF 51%, #68B3DB 100%);
-    background-image: linear-gradient(to bottom, #E5F4FC 0%, #C4E5F6 50%, #98D0EF 51%, #68B3DB 100%);
-    border: solid #2c628b 1px;
+    background-color: #007EFF;
+    border: solid #007EFF 1px;
     padding: 4px 8px;
+    color: white;
   }
 
   .image-uploader-error-message {

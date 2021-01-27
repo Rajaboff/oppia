@@ -52,7 +52,7 @@ angular.module('oppia').component('searchResults', {
         ctrl.someResultsExist = true;
 
         ctrl.userIsLoggedIn = null;
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         var userInfoPromise = UserService.getUserInfoAsync();
         userInfoPromise.then(function(userInfo) {
           ctrl.userIsLoggedIn = userInfo.isLoggedIn();

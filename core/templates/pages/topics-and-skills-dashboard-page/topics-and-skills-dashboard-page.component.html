@@ -1,4 +1,4 @@
-<background-banner></background-banner>
+
 <div class="oppia-topics-and-skills-dashboard position-relative">
   <div>
     <h2 class="dashboard-title" translate="I18N_DASHBOARD_TOPICS_AND_SKILLS_DASHBOARD"
@@ -7,11 +7,11 @@
     <div class="create-buttons" ng-if="!($ctrl.topicSummaries.length === 0 && $ctrl.untriagedSkillSummaries.length === 0)">
       <button ng-click="$ctrl.createTopic()" ng-if="$ctrl.userCanCreateTopic"
               class="btn oppia-navbar-button oppia-transition-200">
-        <span class="oppia-navbar-tab-content">Create Topic</span>
+        <span class="oppia-navbar-tab-content">Создать тему</span>
       </button>
       <button ng-click="$ctrl.createSkill()" ng-if="$ctrl.userCanCreateSkill"
               class="btn oppia-navbar-button oppia-transition-200">
-        <span class="oppia-navbar-tab-content">Create Skill</span>
+        <span class="oppia-navbar-tab-content">Создать навык</span>
       </button>
     </div>
   </div>
@@ -31,34 +31,34 @@
             <li ng-class="{'dashboard-tabs-active': $ctrl.activeTab === $ctrl.TAB_NAME_TOPICS}">
               <a class="dashboard-tabs-text"
                  ng-click="$ctrl.setActiveTab($ctrl.TAB_NAME_TOPICS)">
-                Topics
+                Темы
               </a>
             </li>
             <li ng-class="{'dashboard-tabs-active': $ctrl.activeTab === $ctrl.TAB_NAME_SKILLS}">
               <a class="dashboard-tabs-text protractor-test-skills-tab"
                  ng-click="$ctrl.setActiveTab($ctrl.TAB_NAME_SKILLS)">
-                Skills
+                Навыки
               </a>
             </li>
           </ul>
         </div>
         <div class="filter-mobile-box">
           <button class="btn btn-default" ng-click="$ctrl.toggleFilterBox()">
-            <span ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_TOPICS">TOPIC FILTERS</span>
-            <span ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_SKILLS">SKILL FILTERS</span>
+            <span ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_TOPICS">Фильтр по темам</span>
+            <span ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_SKILLS">Фильтр по навыкам</span>
           </button>
         </div>
         <div class="dashboard-list">
           <div class="dashboard-list-header" ng-if="$ctrl.topicSummaries.length>0 || $ctrl.skillSummaries.length>0">
             <div class="dashboard-list-header-count" ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_TOPICS">
-              <span>Displaying <[$ctrl.pageNumber * $ctrl.itemsPerPage + 1]> - <[$ctrl.getUpperLimitValueForPagination()]> of <[$ctrl.currentCount]></span>
+              <span>Отображение <[$ctrl.pageNumber * $ctrl.itemsPerPage + 1]> - <[$ctrl.getUpperLimitValueForPagination()]> из <[$ctrl.currentCount]></span>
             </div>
             <div class="dashboard-list-header-count" ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_SKILLS">
-              <span>Displaying <[$ctrl.pageNumber * $ctrl.itemsPerPage + 1]> - <[$ctrl.getUpperLimitValueForPagination()]> of <[$ctrl.getTotalCountValueForSkills()]></span>
+              <span>Отображение <[$ctrl.pageNumber * $ctrl.itemsPerPage + 1]> - <[$ctrl.getUpperLimitValueForPagination()]> из <[$ctrl.getTotalCountValueForSkills()]></span>
             </div>
             <div class="dashboard-list-pagination">
               <div>
-                <span>Items Per Page: </span>
+                <span>Пунктов на странице: </span>
                 <select ng-options="choice as choice for choice in $ctrl.itemsPerPageChoice"
                         ng-model="$ctrl.itemsPerPage"
                         ng-change="$ctrl.refreshPagination()"
@@ -94,7 +94,7 @@
                          user-can-delete-topic="$ctrl.userCanDeleteTopic">
             </topics-list>
             <p class="intro-card-message" ng-if="!$ctrl.topicSummaries.length">
-              No topics to display.
+              Нет тем для отображения.
             </p>
           </div>
           <div ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_SKILLS">
@@ -110,7 +110,7 @@
                          skills-categorized-by-topics="$ctrl.skillsCategorizedByTopics">
             </skills-list>
             <p class="intro-card-message protractor-test-no-skills-present-message" ng-if="!$ctrl.displayedSkillSummaries.length">
-              No skills to display.
+              Нет навыков для отображения.
             </p>
           </div>
           <div class="pagination-mobile">
@@ -135,51 +135,51 @@
         <div class="topic-skill-count">
           <div class="topic-count">
             <span class="topic-count-value"><[$ctrl.totalTopicSummaries.length]></span>
-            <span class="topic-count-text">Topics</span>
+            <span class="topic-count-text">Темы</span>
           </div>
           <div class="skill-count">
             <span class="skill-count-value"><[$ctrl.totalSkillCount]></span>
-            <span class="skill-count-text">Skills</span>
+            <span class="skill-count-text">Навыки</span>
           </div>
           <div class="create-topic-skill">
             <div ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_TOPICS"  ng-click="$ctrl.createTopic()" class="protractor-test-create-topic-button">
               <i class="fa fa-plus-circle"></i>
-              <span>Create New Topic</span>
+              <span>Создать тему</span>
             </div>
             <div ng-if="$ctrl.activeTab === $ctrl.TAB_NAME_SKILLS"  ng-click="$ctrl.createSkill()" class="protractor-test-create-skill-button-circle">
               <i class="fa fa-plus-circle"></i>
-              <span>Create New Skill</span>
+              <span>Создать навык</span>
             </div>
           </div>
         </div>
         <div class="topic-skill-filter" ng-if="$ctrl.filterBoxIsShown">
           <div class="topic-skill-filter-content">
             <div class="topic-skill-filter-header">
-              <span class="topic-skill-filter-heading">Filter</span>
-              <span class="topic-skill-filter-reset protractor-test-topic-filter-reset" ng-click="$ctrl.resetFilters()">Reset</span>
+              <span class="topic-skill-filter-heading">Фильтр</span>
+              <span class="topic-skill-filter-reset protractor-test-topic-filter-reset" ng-click="$ctrl.resetFilters()">Сброс</span>
               <i class="fa fa-times dashboard-cross-icon" ng-click="$ctrl.toggleFilterBox()"></i>
             </div>
             <div class="topic-skill-filter-header-mobile">
               <div class="topic-skill-filter-heading">
-                <span>Filter</span>
+                <span>Фильтр</span>
               </div>
               <div class="topic-skill-filter-action-box">
                 <i class="fa fa-times dashboard-cross-icon" ng-click="$ctrl.toggleFilterBox()"></i>
                 <div class="topic-skill-filter-action-reset">
-                  <span ng-click="$ctrl.resetFilters()">Reset</span>
+                  <span ng-click="$ctrl.resetFilters()">Сброс</span>
                 </div>
               </div>
             </div>
             <div class="topic-skill-filter-row">
               <div class="topic-skill-filter-key">
-                <span>Status</span>
+                <span>Статус</span>
               </div>
               <div class="topic-skill-filter-value">
                 <div ng-if="$ctrl.select2DropdownIsShown && $ctrl.activeTab === $ctrl.TAB_NAME_TOPICS">
                   <select2-dropdown class="protractor-test-select-status-dropdown"
                                     choices="$ctrl.statusOptions"
                                     item="$ctrl.filterObject.status"
-                                    placeholder="Status options"
+                                    placeholder="Варианты статуса"
                                     width="100%"
                                     on-selection-change="$ctrl.applyFilters()">
                   </select2-dropdown>
@@ -188,7 +188,7 @@
                   <select2-dropdown class="protractor-test-select-skill-status-dropdown"
                                     choices="$ctrl.skillStatusOptions"
                                     item="$ctrl.filterObject.status"
-                                    placeholder="Status options"
+                                    placeholder="Варианты статуса"
                                     width="100%"
                                     on-selection-change="$ctrl.applyFilters()">
                   </select2-dropdown>
@@ -197,14 +197,14 @@
             </div>
             <div class="topic-skill-filter-row">
               <div class="topic-skill-filter-key">
-                <span>Classroom</span>
+                <span>Класс</span>
               </div>
               <div class="topic-skill-filter-value">
                 <div ng-if="$ctrl.select2DropdownIsShown && $ctrl.activeTab === $ctrl.TAB_NAME_TOPICS">
                   <select2-dropdown item="$ctrl.filterObject.classroom"
                                     class="classroom-dropdown protractor-test-select-classroom-dropdown"
                                     choices="$ctrl.classrooms"
-                                    placeholder="Classrooms"
+                                    placeholder="Класс"
                                     width="100%"
                                     on-selection-change="$ctrl.applyFilters()">
                   </select2-dropdown>
@@ -213,7 +213,7 @@
                   <select2-dropdown item="$ctrl.filterObject.classroom"
                                     class="classroom-dropdown protractor-test-select-classroom-dropdown"
                                     choices="$ctrl.skillClassrooms"
-                                    placeholder="Classrooms"
+                                    placeholder="Класс"
                                     width="100%"
                                     on-selection-change="$ctrl.applyFilters()">
                   </select2-dropdown>
@@ -222,14 +222,14 @@
             </div>
             <div class="topic-skill-filter-row">
               <div class="topic-skill-filter-key">
-                <span>Sort</span>
+                <span>Сортировать</span>
               </div>
               <div class="topic-skill-filter-value">
                 <div ng-if="$ctrl.select2DropdownIsShown">
                   <select2-dropdown class="protractor-test-select-sort-dropdown"
                                     choices="$ctrl.sortOptions"
                                     item="$ctrl.filterObject.sort"
-                                    placeholder="Status Options"
+                                    placeholder="Варианты статуса"
                                     width="100%"
                                     on-selection-change="$ctrl.applyFilters()">
                   </select2-dropdown>
@@ -238,7 +238,7 @@
             </div>
             <div class="topic-skill-filter-row">
               <div class="topic-skill-filter-key">
-                <span>Keywords</span>
+                <span>Ключевые слова</span>
               </div>
               <div class="topic-skill-filter-value">
                 <div ng-if="$ctrl.select2DropdownIsShown">
@@ -247,7 +247,7 @@
                                     choices="$ctrl.filterObject.keywords"
                                     allow-multiple-choices="true"
                                     new-choice-regex="<[::$ctrl.TAG_REGEX_STRING]>"
-                                    placeholder="Multiple allowed"
+                                    placeholder="Допускается несколько"
                                     width="100%"
                                     on-selection-change="$ctrl.applyFilters()">
                   </select2-dropdown>
@@ -263,17 +263,17 @@
   <div class="col-sm-8 intro-card-wrapper" ng-if="($ctrl.totalTopicSummaries.length === 0 && $ctrl.untriagedSkillSummaries.length === 0)">
     <blockquote class="intro-card">
       <p class="intro-card-message">
-        No topics or skills have been created yet.
+        Темы или навыки не созданы.
       </p>
       <button class="btn oppia-dashboard-intro-button oppia-transition-200 oppia-create-button-text protractor-test-create-topic-button"
               ng-click="$ctrl.createTopic()"
               ng-if="$ctrl.userCanCreateTopic">
-        Create Topic
+       Создать тему
       </button>
       <button class="btn oppia-dashboard-intro-button oppia-transition-200 oppia-create-button-text protractor-test-create-skill-button"
               ng-click="$ctrl.createSkill()"
               ng-if="$ctrl.userCanCreateSkill">
-        Create Skill
+        Создать навык
       </button>
     </blockquote>
   </div>
@@ -292,12 +292,14 @@
   }
   .oppia-topics-and-skills-dashboard .dashboard-content-primary {
     background-color: #ffffff;
-    border: 2px solid #aaaac1;
+    
     border-radius: 8px;
     display: inline-block;
     margin-bottom: 50px;
     overflow: auto;
     width: 70%;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
+
   }
   .oppia-topics-and-skills-dashboard .dashboard-content-secondary {
     display: inline-block;
@@ -318,12 +320,13 @@
   .oppia-topics-and-skills-dashboard .topic-skill-count {
     align-items: center;
     background-color: #ffffff;
-    border: 2px solid #aaaac1;
+    
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     height: 100px;
     justify-content: center;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
   .oppia-topics-and-skills-dashboard .topic-skill-count .topic-count,
   .oppia-topics-and-skills-dashboard .topic-skill-count .skill-count,
@@ -335,15 +338,17 @@
   }
   .oppia-topics-and-skills-dashboard .topic-skill-filter {
     background-color: #ffffff;
-    border: 2px solid #aaaac1;
+    
     border-radius: 8px;
     margin-top: 40px;
     padding-bottom: 20px;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
   .oppia-topics-and-skills-dashboard .topic-count-value, .skill-count-value {
     display: block;
     font-size: 34px;
     height: 40px;
+    color: #000;
   }
   .oppia-topics-and-skills-dashboard .create-topic-skill {
     align-content: center;
@@ -357,12 +362,12 @@
     display: none;
   }
   .oppia-topics-and-skills-dashboard .create-topic-skill i {
-    color: #00645C;
+    color: #007EFF;
     font-size: 30px;
     width: 100%;
   }
   .oppia-topics-and-skills-dashboard .create-topic-skill span {
-    color: #00645C;
+    color: #007EFF;
     display: inline-block;
     font-size: 16px;
     line-height: 17px;
@@ -392,15 +397,15 @@
   }
   .oppia-topics-and-skills-dashboard .topic-skill-filter-reset {
     bottom: 0;
-    color: #00645C;
+    color: #007EFF;
     cursor: pointer;
     position: absolute;
     right: 0;
   }
   .oppia-topics-and-skills-dashboard .navigation-button {
     background-color: transparent;
-    border: 2px solid #009688;
-    color: #009688;
+    border: 2px solid #007EFF;
+    color: #007EFF;
   }
   .oppia-topics-and-skills-dashboard .topic-skill-filter-row {
     display: flex;
@@ -435,9 +440,8 @@
     padding: 0 4px;
   }
   .oppia-topics-and-skills-dashboard .dashboard-list-pagination-active {
-    background-color: #00645C;
+    background-color: #007EFF;
     border-radius: 50%;
-    box-shadow: 0 3px 3px #707070;
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
@@ -472,7 +476,7 @@
     width: 50%;
   }
   .oppia-topics-and-skills-dashboard .dashboard-title {
-    color: #01645c;
+    color: #007EFF;
     font-family: Capriola, Roboto, Arial, sans-serif;
     font-size: 3em;
     margin-bottom: 25px;
@@ -518,8 +522,8 @@
     text-align: center;
   }
   .oppia-topics-and-skills-dashboard .dashboard-tabs .dashboard-tabs-text {
-    border-bottom: 2px solid #aaaac1;
-    color: #009688;
+    background-color: #E5F2FF;
+    color: #000;
     font-size: 16px;
     padding: 10px;
     text-decoration: none;
@@ -528,13 +532,13 @@
   }
   .oppia-topics-and-skills-dashboard .dashboard-tabs-active .dashboard-tabs-text,
   .oppia-topics-and-skills-dashboard .dashboard-tabs-active .dashboard-tabs-text:hover {
-    background-color: #d8f4f2;
-    border-bottom: 4px solid #009688;
+    background-color: #fff;
+    border-bottom: 4px solid ##3398FF;
     border-radius: 0;
-    color: #009688;
+    color: #3398FF;
   }
   .oppia-topics-and-skills-dashboard .dashboard-tabs .dashboard-tabs-text:hover {
-    color: #009688;
+    color: #3398FF;
     font-size: 16px;
     padding: 10px;
     text-decoration: none;
@@ -589,12 +593,12 @@
       box-shadow: 0 0 5px #333;
     }
     .oppia-topics-and-skills-dashboard .dashboard-tabs li {
-      background-color: #00645C;
+      background-color: #007EFF;
       width: 50%;
     }
     .oppia-topics-and-skills-dashboard .dashboard-tabs-active .dashboard-tabs-text,
     .oppia-topics-and-skills-dashboard .dashboard-tabs-active .dashboard-tabs-text:hover {
-      background-color: #00645C;
+      background-color: #3398FF;
       border-bottom: 2px solid #FFF;
       border-radius: 0;
       color: #FFFFFF;
@@ -626,7 +630,7 @@
       text-align: center;
     }
     .oppia-topics-and-skills-dashboard .filter-mobile-box button {
-      border: 1px solid #0844aa;
+      border: 1px solid #007EFF;
       margin-top: 10px;
       width: 70%;
     }
@@ -642,7 +646,7 @@
       width: 100%;
     }
     .oppia-topics-and-skills-dashboard .create-button-mobile {
-      color: #0844aa;
+      color: #007EFF;
       display: block;
     }
     .oppia-topics-and-skills-dashboard .create-button-mobile i {
@@ -670,7 +674,7 @@
       text-align: center;
     }
     .oppia-topics-and-skills-dashboard .topic-skill-filter-action-box span {
-      color: #00645C;
+      color: #007EFF;
       font-size: 15px;
     }
     .oppia-topics-and-skills-dashboard .topic-skill-filter-action-reset {

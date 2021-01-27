@@ -25,13 +25,13 @@ export const QuestionPlayerConstants = {
 
   COLORS_FOR_PASS_FAIL_MODE: {
     // Color orange.
-    FAILED_COLOR: 'rgb(217, 92, 12)',
+    FAILED_COLOR: '#E93C3C',
     // Color shallow orange.
-    FAILED_COLOR_OUTER: 'rgb(244, 206, 186)',
+    FAILED_COLOR_OUTER: '#FF6262',
     // Color green.
-    PASSED_COLOR: 'rgb(0, 150, 136)',
+    PASSED_COLOR: '#1AB759',
     // Color shallow green.
-    PASSED_COLOR_OUTER: 'rgb(143, 217, 209)'
+    PASSED_COLOR_OUTER: '#40DD7F'
   },
 
   QUESTION_PLAYER_MODE: {

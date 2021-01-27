@@ -32,17 +32,17 @@
         </i>
       </div>
 
-      <strong>Oppia tells the learner...</strong>
+      <strong>Oqustudy рассказывает ученику ...</strong>
       <div class="position-relative">
         <span ng-if="$ctrl.isSelfLoopWithNoFeedback($ctrl.outcome) && !$ctrl.areWarningsSuppressed()">
           <span class="oppia-confusing-outcome-warning-text">
             <i class="material-icons">&#xE002;</i>
-            Please give Oppia something useful to say here.
+            Пожалуйста, дайте Oqustudy сказать что-нибудь полезное.
           </span>
         </span>
         <span ng-if="(!$ctrl.isSelfLoopWithNoFeedback($ctrl.outcome) && !$ctrl.outcome.hasNonemptyFeedback()) || ($ctrl.isSelfLoopWithNoFeedback($ctrl.outcome) && $ctrl.areWarningsSuppressed())"
               class="oppia-nothing-text">
-          <em>Nothing</em>
+          <em>Ничего</em>
         </span>
         <span ng-if="$ctrl.outcome.hasNonemptyFeedback()" class="oppia-non-empty-feedback-text">
           <angular-html-bind class="oppia-rte-editor" html-data="$ctrl.outcome.feedback.getHtml()">
@@ -68,13 +68,13 @@
       <button type="button"
               class="btn btn-secondary"
               ng-click="$ctrl.cancelThisFeedbackEdit()">
-        Cancel
+        Отмена
       </button>
       <button type="button"
               class="btn btn-success protractor-test-save-outcome-feedback"
               ng-disabled="$ctrl.invalidStateAfterFeedbackSave() || $ctrl.editOutcomeForm.editFeedbackForm.$invalid"
               ng-click="$ctrl.saveThisFeedback(true)">
-        Save Feedback
+        Сохранить
       </button>
     </div>
 
@@ -98,20 +98,19 @@
       </div>
 
       <div ng-if="$ctrl.outcome.dest !== $ctrl.getActiveStateName()">
-        <strong ng-if="$ctrl.displayFeedback">And afterwards, directs the learner
-        to...</strong>
-        <strong ng-if="!$ctrl.displayFeedback">Oppia directs the learner to...</strong>
+        <strong ng-if="$ctrl.displayFeedback">Далее направляет ученика на шаг ...</strong>
+        <strong ng-if="!$ctrl.displayFeedback">Oqustudy направляет ученика на шаг...</strong>
         <span ng-if="!$ctrl.isSelfLoop($ctrl.outcome)" class="position-relative">
           <[$ctrl.outcome.dest]>
         </span>
         <span ng-if="$ctrl.isSelfLoop($ctrl.outcome)" class="position-relative">
-          <span ng-if="!$ctrl.outcome.refresherExplorationId">(try again)</span>
+          <span ng-if="!$ctrl.outcome.refresherExplorationId">|Заново|</span>
           <span ng-if="$ctrl.outcome.refresherExplorationId">
-            (try again, with refresher exploration "<[outcome.refresherExplorationId]>")
+            (попробуйте еще раз, с повторным занятием "<[outcome.refresherExplorationId]>")
           </span>
         </span>
         <div class="oppia-prerequisite-skill-text" ng-if="$ctrl.outcome.missingPrerequisiteSkillId && $ctrl.canAddPrerequisiteSkill">
-          <strong> Attached prerequisite skill for the current state: </strong>
+          <strong> Прикреплен необходимый навык для текущего состояния: </strong>
           <[outcome.missingPrerequisiteSkillId]>
         </div>
       </div>
@@ -135,17 +134,17 @@
       <button type="button"
               class="btn btn-secondary protractor-test-cancel-outcome-dest"
               ng-click="$ctrl.cancelThisDestinationEdit()">
-        Cancel
+        Отмена
       </button>
       <button type="button"
               class="btn btn-success protractor-test-save-outcome-dest"
               ng-disabled="$ctrl.invalidStateAfterDestinationSave() || $ctrl.editOutcomeForm.editDestForm.$invalid"
               ng-click="$ctrl.saveThisDestination()">
-        Save Destination
+        Сохранить
       </button>
     </div>
 
-    <div class="oppia-clear""></div>
+    <div class="oppia-clear"></div>
   </div>
 </div>
 
@@ -164,12 +163,12 @@
           </i>
         </div>
 
-        <strong>The answers falling under this group are
+        <strong>Ответы, попадающие в эту группу
           <span ng-if="$ctrl.outcome.labelledAsCorrect" class="oppia-correct-text">
-            correct
+            корректны
           </span>
           <span ng-if="!$ctrl.outcome.labelledAsCorrect" class="oppia-incorrect-text">
-            incorrect
+            не корректны
           </span>
         </strong>
       </div>
@@ -177,7 +176,7 @@
   </div>
 
   <div ng-if="$ctrl.isEditable()">
-    <strong>The answers in this group are correct</strong>
+    <strong>Ответы в этой группе правильные</strong>
     <input class="protractor-test-editor-correctness-toggle" type="checkbox" ng-model="$ctrl.outcome.labelledAsCorrect" ng-change="$ctrl.onChangeCorrectnessLabel()">
   </div>
 </div>

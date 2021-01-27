@@ -12,7 +12,7 @@
       </span>
     </div>
     <ul uib-dropdown-menu class="uib-dropdown-menu oppia-editor-warnings-box">
-      <span class="oppia-editor-warnings-header">Warnings</span>
+      <span class="oppia-editor-warnings-header">Внимание</span>
       <li class="oppia-editor-warnings-text"
           ng-repeat="issue in $ctrl.validationIssues track by $index">
         <hr class="oppia-editor-warnings-separator">
@@ -48,7 +48,7 @@
              alt="Save Collection">
             &#xE161;
           </i>
-          <span class="oppia-save-publish-button-label float-left">Save Draft</span>
+          <span class="oppia-save-publish-button-label float-left">Сохранить черновик</span>
           <span class="d-none d-md-block float-left oppia-change-count"
                 ng-if="$ctrl.getChangeListCount() > 0">
             (<[$ctrl.getChangeListCount()]>)
@@ -59,13 +59,13 @@
              alt="Publish Changes">
             &#xE2C3;
           </i>
-          <span class="oppia-save-publish-button-label">Publish Changes</span>
+          <span class="oppia-save-publish-button-label">Опубликовать</span>
         </span>
       </span>
 
       <span ng-if="$ctrl.isSaveInProgress()" class="protractor-test-save-in-progress-label">
-        <span ng-if="$ctrl.collectionRights.isPrivate()" class="oppia-save-publish-button-label">Saving</span>
-        <span ng-if="$ctrl.collectionRights.isPublic()" class="oppia-save-publish-button-label">Publishing</span>
+        <span ng-if="$ctrl.collectionRights.isPrivate()" class="oppia-save-publish-button-label">Сохранение</span>
+        <span ng-if="$ctrl.collectionRights.isPublic()" class="oppia-save-publish-button-label">Публикация</span>
         <loading-dots></loading-dots>
       </span>
     </button>
@@ -79,13 +79,13 @@
          alt="Publish to Oppia Library">
         &#xE2C3;
       </i>
-      <span class="oppia-save-publish-button-label">Publish</span>
+      <span class="oppia-save-publish-button-label">Опубликовать</span>
     </button>
 
     <button type="button" ng-click="$ctrl.unpublishCollection()"
             ng-if="$ctrl.collectionRights.isPublic() && $ctrl.collectionRights.canUnpublish()"
             class="btn btn-secondary">
-      Unpublish (as moderator)
+      Отменить публикацию (как модератор)
     </button>
   </li>
 </ul>

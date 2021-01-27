@@ -1,6 +1,6 @@
 <div class="oppia-skill-mastery-viewer" *ngIf="!loadingMessage">
   <div class="skill-mastery-degree">
-    <b> Mastery Degree: </b>
+    <b> Степень магистра: </b>
     <div class="oppia-mastery-percentage-container">
       {{ getSkillMasteryPercentage() }}%
       <span class="oppia-mastery-percentage-increment" *ngIf="masteryChange >= 0"> ({{ getMasteryChangePercentage() }}%) </span>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="learning-tips">
-    <b> Learning Tips: </b>
+    <b> Советы по обучению: </b>
     <div> {{ getLearningTips() }} </div>
   </div>
 </div>

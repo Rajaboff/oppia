@@ -1,18 +1,18 @@
 <div class="oppia-edit-thumbnail-container">
   <div class="modal-header">
-    <h3>Upload Thumbnail</h3>
+    <h3>Загрузить эскиз</h3>
   </div>
 
   <div class="modal-body oppia-thumbnail-uploader-container">
     <div class="oppia-thumbnail-uploader">
       <div ng-hide="uploadedImage">
-        <strong>Please upload an SVG image.</strong>
+        <strong>Загрузите изображение SVG.</strong>
         <div class="alert alert-warning">
-          <span>Here are some guidelines to follow:</span>
+          <span>Вот несколько рекомендаций, которым нужно следовать:</span>
           <ul>
-            <li>Uploaded image should have an aspect ratio of <[aspectRatio]>.</li>
-            <li>Uploaded image should have a transparent background.</li>
-            <li>Please ensure that the uploaded image is less than 100 KB.</li>
+            <li>Загруженное изображение должно иметь соотношение сторон <[aspectRatio]>.</li>
+            <li>Загруженное изображение должно иметь прозрачный фон.</li>
+            <li>Убедитесь, что загруженное изображение меньше 100 КБ.</li>
           </ul>
         </div>
         <image-uploader on-file-changed="onFileChanged"
@@ -23,14 +23,14 @@
         Please upload a valid SVG image.
       </div>
       <div class="oppia-form-error" ng-if="invalidTagsAndAttributes.tags.length">
-        Unsupported SVG tags found: <[invalidTagsAndAttributes.tags]>
+        Обнаружены неподдерживаемые теги SVG: <[invalidTagsAndAttributes.tags]>
       </div>
       <div class="oppia-form-error" ng-if="invalidTagsAndAttributes.attrs.length">
-        Unsupported SVG attributes found: <[invalidTagsAndAttributes.attrs]>
+        Обнаружены неподдерживаемые атрибуты SVG: <[invalidTagsAndAttributes.attrs]>
       </div>
       <div ng-show="uploadedImage">
         <div ng-show="allowedBgColors">
-          <div ng-show="allowedBgColors.length > 1">Choose background color:</div>
+          <div ng-show="allowedBgColors.length > 1">Выберите цвет фона:</div>
           <div ng-show="allowedBgColors.length > 1" class="oppia-thumbnail-colour-select">
             <div ng-repeat="color in allowedBgColors"
                  ng-style="{background: color}"
@@ -39,9 +39,9 @@
           </div>
           <div ng-show="allowedBgColors.length === 1" class="alert alert-warning">
             <span>
-              Please check that the thumbnail below has the following background color:
+              Убедитесь, что изображение ниже имеет следующий цвет фона:
               <i class="fa fa-square" ng-style="{color: allowedBgColors[0]}"></i>.
-              If not, please ensure that you are uploading an image with transparent background. Thanks!
+              Если нет, убедитесь, что вы загружаете изображение с прозрачным фоном. Спасибо!
             </span>
           </div>
         </div>
@@ -71,7 +71,7 @@
     <button class="btn btn-success protractor-test-photo-upload-submit"
             ng-click="confirm()"
             ng-disabled="!uploadedImage">
-      Add Thumbnail
+      Добавить эскиз
     </button>
   </div>
 </div>

@@ -55,8 +55,8 @@ angular.module('oppia').component('oppiaInteractiveRatioExpressionInput', {
               ctrl.expectedNumberOfTerms) && (ctrl.expectedNumberOfTerms !== 0)
           ) {
             throw new Error(
-              'The creator has specified the number of terms in' +
-              ' the answer to be ' + ctrl.expectedNumberOfTerms + '.');
+              'Создатель указал количество терминов в' +
+              ' ответе ' + ctrl.expectedNumberOfTerms + '.');
           }
           errorMessage = '';
           ctrl.RatioExpressionInputForm.answer.$setValidity(

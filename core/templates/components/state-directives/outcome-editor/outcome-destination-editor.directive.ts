@@ -99,7 +99,7 @@ angular.module('oppia').directive('outcomeDestinationEditor', [
               // new state.
               ctrl.destChoices = [{
                 id: (questionModeEnabled ? null : currentStateName),
-                text: '(try again)'
+                text: '|Заново|'
               }];
 
               // Arrange the remaining states based on their order in the state
@@ -160,7 +160,7 @@ angular.module('oppia').directive('outcomeDestinationEditor', [
               if (!questionModeEnabled) {
                 ctrl.destChoices.push({
                   id: PLACEHOLDER_OUTCOME_DEST,
-                  text: 'A New Card Called...'
+                  text: '|+Создать новую карту|'
                 });
               }
             }, true);

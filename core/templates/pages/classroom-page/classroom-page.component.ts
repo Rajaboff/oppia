@@ -56,7 +56,7 @@ angular.module('oppia').component('classroomPage', {
         ctrl.bannerImageFileUrl = UrlInterpolationService.getStaticImageUrl(
           '/splash/books.svg');
 
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         ctrl.classroomBackendApiService.fetchClassroomDataAsync(
           ctrl.classroomUrlFragment).then(function(classroomData) {
           ctrl.classroomData = classroomData;

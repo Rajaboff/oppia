@@ -8,8 +8,8 @@
     <p ng-if="objective">
       <[objective | truncateAndCapitalize: 95]>
     </p>
-    <p ng-if="!objective" translate="I18N_PLAYER_NO_OBJECTIVE">No objective specified.</p>
-    <p ng-if="explorationIsPrivate" class="private-card-info" translate="I18N_PLAYER_IS_PRIVATE">This exploration is private.</p>
+    <p ng-if="!objective" translate="I18N_PLAYER_NO_OBJECTIVE">Цель не указана.</p>
+    <p ng-if="explorationIsPrivate" class="private-card-info" translate="I18N_PLAYER_IS_PRIVATE">Это приватное занятие.</p>
 
     <ul ng-if="!explorationIsPrivate" layout="row" class="card-metrics" layout-align="space-between center">
       <li class="protractor-test-info-card-rating">
@@ -93,7 +93,7 @@
   </div>
   <button type="button" class="oppia-close-popover-button" ng-click="cancel()">
     <i class="material-icons md-18 text-white">&#xE5CD;</i>
-    <span class="oppia-icon-accessibility-label">Close</span>
+    <span class="oppia-icon-accessibility-label">Закрыть</span>
   </button>
 </md-card>
 

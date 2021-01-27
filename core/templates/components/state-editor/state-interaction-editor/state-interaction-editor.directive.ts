@@ -104,7 +104,7 @@ angular.module('oppia').directive('stateInteractionEditor', [
           var ctrl = this;
           ctrl.directiveSubscriptions = new Subscription();
           var DEFAULT_TERMINAL_STATE_CONTENT =
-            'Congratulations, you have finished!';
+            'Поздравляю, вы закончили!';
 
           // Declare dummy submitAnswer() and adjustPageHeight() methods for the
           // interaction preview.

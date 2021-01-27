@@ -2,12 +2,12 @@
   <label for="explorationTitle" ng-style="<[::$ctrl.formStyle]>"><[::$ctrl.labelText]></label>
   <input id="explorationTitle" type="text" class="form-control protractor-test-exploration-title-input"
          ng-model="explorationTitleService.displayed" ng-blur="$ctrl.onInputFieldBlur()"
-         placeholder="Choose a title for your exploration." focus-on="<[::$ctrl.focusLabel]>"
+         placeholder="Выберите название для вашего занятия" focus-on="<[::$ctrl.focusLabel]>"
          maxlength="40" ng-trim="false">
   <span class="form-text oppia-form-text">
-    <em>Please use at most 40 characters, so that this fits in the summary card.</em>
+    <em>Пожалуйста, используйте не более 40 символов, чтобы это поместилось в сводной карточке.</em>
     <span ng-if="explorationTitleService.displayed.length > 0">
-      <em>Characters used: <[explorationTitleService.displayed.length]>/40</em>
+      <em>Количество символов: <[explorationTitleService.displayed.length]>/40</em>
     </span>
   </span>
 </p>

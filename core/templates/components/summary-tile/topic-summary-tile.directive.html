@@ -2,18 +2,19 @@
 
 <div class="topic-card"  ng-style="{background: $ctrl.getTopicSummary().getThumbnailBgColor()}">
   <a ng-href="<[$ctrl.getTopicPageUrl()]>">
-    <div class="topic-thumbnail">
-      <picture>
-        <img ng-src="<[$ctrl.thumbnailUrl]>" alt="" class="img-thumbnail" ng-style="{background: $ctrl.getTopicSummary().getThumbnailBgColor()}">
-      </picture>
-    </div>
-    <div class="topic-details" ng-style="{background: $ctrl.getDarkerThumbnailBgColor()}">
+    
+    <div class="topic-details" ng-style="{background: $ctrl.getThumbnailBgColor()}">
       <span class="topic-name"> <[$ctrl.getTopicSummary().getName()]> </span>
       <span class="topic-story-count">
         <[$ctrl.getTopicSummary().getCanonicalStoryCount()]>
         <span ng-if="$ctrl.getTopicSummary().getCanonicalStoryCount() === 1" translate="I18N_TOPIC_VIEWER_STORY"></span>
         <span ng-if="$ctrl.getTopicSummary().getCanonicalStoryCount() !== 1" translate="I18N_TOPIC_VIEWER_STORIES"></span>
       </span>
+    </div>
+    <div class="topic-thumbnail">
+      <picture>
+        <img ng-src="<[$ctrl.thumbnailUrl]>" alt="" class="img-thumbnail" ng-style="{background: $ctrl.getTopicSummary().getThumbnailBgColor()}">
+      </picture>
     </div>
   </a>
 </div>
@@ -40,7 +41,7 @@
   }
 
   .topic-card .topic-thumbnail {
-    height: 120px;
+    height: 150px;
     text-align: center;
     vertical-align: middle;
     width: 100%;
@@ -55,10 +56,10 @@
 
   .topic-card .topic-details {
     border-radius: 0 0 1.5em 1.5em;
-    color: #ffffff;
+    color: #353535;
     font-family: Roboto, Arial, sans-serif;
     font-size: 0.9em;
-    height: 100px;
+    height: 70px;
     letter-spacing: 0.5px;
     padding: 10px 5px 5px 15px;
   }

@@ -77,7 +77,7 @@ describe('Collection Creation service', () => {
       tick(150);
 
       expect(loaderService.showLoadingScreen)
-        .toHaveBeenCalledWith('Creating collection');
+        .toHaveBeenCalledWith('Создание курса');
       expect(analyticsService.registerCreateNewCollectionEvent)
         .toHaveBeenCalledWith(SAMPLE_COLLECTION_ID);
 

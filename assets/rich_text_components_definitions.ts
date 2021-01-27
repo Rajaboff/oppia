@@ -1,3 +1,4 @@
+
 /* eslint-disable */
 /* Don't modify anything outside the {} brackets.
  * The contents of the {} brackets should be formatted as a JSON object.
@@ -16,7 +17,7 @@ export = {
   "Collapsible": {
     "backend_id": "Collapsible",
     "category": "Basic Input",
-    "description": "A collapsible block of HTML.",
+    "description": "Разборный блок HTML.",
     "frontend_id": "collapsible",
     "tooltip": "Insert collapsible block",
     "icon_data_url": "/rich_text_components/Collapsible/Collapsible.png",
@@ -26,27 +27,27 @@ export = {
     "is_block_element": true,
     "customization_arg_specs": [{
       "name": "heading",
-      "description": "The heading for the collapsible block",
+      "description": "Заголовок для блока акардиона",
       "schema": {
         "type": "unicode"
       },
-      "default_value": "Sample Header"
+      "default_value": "Образец заголовка"
     }, {
       "name": "content",
-      "description": "The content of the collapsible block",
+      "description": "Содержимое блока акардиона",
       "schema": {
         "type": "html",
         "ui_config": {
           "hide_complex_extensions": true
         }
       },
-      "default_value": "You have opened the collapsible block."
+      "default_value": "Вы открыли блок акардион."
     }]
   },
   "Image": {
     "backend_id": "Image",
     "category": "Basic Input",
-    "description": "An image.",
+    "description": "Картинка.",
     "frontend_id": "image",
     "tooltip": "Insert image",
     "icon_data_url": "/rich_text_components/Image/Image.png",
@@ -56,7 +57,7 @@ export = {
     "is_block_element": true,
     "customization_arg_specs": [{
       "name": "filepath",
-      "description": "The image (Allowed extensions: gif, jpeg, jpg, png, svg)",
+      "description": "Изображение (Разрешенные расширения: gif, jpeg, jpg, png, svg)",
       "schema": {
         "type": "custom",
         "obj_type": "Filepath"
@@ -64,21 +65,21 @@ export = {
       "default_value": ""
     }, {
       "name": "caption",
-      "description": "Caption for image (optional)",
+      "description": "Подпись к изображению (необязательно)",
       "schema": {
         "type": "unicode"
       },
       "default_value": ""
     }, {
       "name": "alt",
-      "description": "Briefly explain this image to a visually impaired learner",
+      "description": "Кратко объяснение этого изображения",
       "schema": {
         "type": "unicode",
         "validators": [{
           "id": "is_nonempty"
         }],
         "ui_config": {
-          "placeholder": "Description of Image (Example : George Handel, 18th century baroque composer)"
+          "placeholder": "Подробное описание изображения"
         }
       },
       "default_value": ""
@@ -87,7 +88,7 @@ export = {
   "Link": {
     "backend_id": "Link",
     "category": "Basic Input",
-    "description": "A link to a URL.",
+    "description": "Ссылка на URL-адрес.",
     "frontend_id": "link",
     "tooltip": "Insert link",
     "icon_data_url": "/rich_text_components/Link/Link.png",
@@ -97,7 +98,7 @@ export = {
     "is_block_element": false,
     "customization_arg_specs": [{
       "name": "url",
-      "description": "The link URL. If no protocol is specified, HTTPS will be used.",
+      "description": "URL ссылки. Если протокол не указан, будет использоваться HTTPS.",
       "schema": {
         "type": "custom",
         "obj_type": "SanitizedUrl"
@@ -105,7 +106,7 @@ export = {
       "default_value": ""
     }, {
       "name": "text",
-      "description": "The link text. If left blank, the link URL will be used.",
+      "description": "Текст ссылки. Если оставить поле пустым, будет использоваться URL-адрес ссылки.",
       "schema": {
         "type": "unicode"
       },
@@ -115,7 +116,7 @@ export = {
   "Math": {
     "backend_id": "Math",
     "category": "Basic Input",
-    "description": "A math formula.",
+    "description": "Математическая формула.",
     "frontend_id": "math",
     "tooltip": "Insert mathematical formula",
     "icon_data_url": "/rich_text_components/Math/Math.png",
@@ -125,7 +126,7 @@ export = {
     "is_block_element": false,
     "customization_arg_specs": [{
       "name": "math_content",
-      "description": "The Math Expression to be displayed.",
+      "description": "Отображаемое математическое выражение.",
       "schema": {
         "type": "custom",
         "obj_type": "MathExpressionContent"
@@ -139,7 +140,7 @@ export = {
   "Skillreview": {
     "backend_id": "skillreview",
     "category": "Basic Input",
-    "description": "A link to the concept card of the linked skill.",
+    "description": "Ссылка на концептуальную карту связанного навыка.",
     "frontend_id": "skillreview",
     "tooltip": "Insert Concept Card Link",
     "icon_data_url": "/rich_text_components/Skillreview/Skillreview.png",
@@ -149,14 +150,14 @@ export = {
     "is_block_element": false,
     "customization_arg_specs": [{
       "name": "text",
-      "description": "The text to be displayed",
+      "description": "Текст для отображения",
       "schema": {
         "type": "unicode"
       },
-      "default_value": "concept card"
+      "default_value": "концептуальная карта"
     }, {
       "name": "skill_id",
-      "description": "The skill that this link refers to",
+      "description": "Навык, к которому относится эта ссылка",
       "schema": {
         "type": "custom",
         "obj_type": "SkillSelector"
@@ -167,7 +168,7 @@ export = {
   "Svgdiagram": {
     "backend_id": "svgdiagram",
     "category": "Basic Input",
-    "description": "A custom SVG diagram.",
+    "description": "Пользовательская диаграмма SVG.",
     "frontend_id": "svgdiagram",
     "tooltip": "Insert diagram",
     "icon_data_url": "/rich_text_components/Svgdiagram/Svgdiagram.png",
@@ -177,7 +178,7 @@ export = {
     "is_block_element": true,
     "customization_arg_specs": [{
       "name": "svg_filename",
-      "description": "The SVG Diagram Editor",
+      "description": "Редактор диаграмм SVG",
       "schema": {
         "type": "custom",
         "obj_type": "SvgFilename"
@@ -185,14 +186,14 @@ export = {
       "default_value": ""
     }, {
       "name": "alt",
-      "description": "Briefly explain this diagram to a visually impaired learner",
+      "description": "Кратко объясните эту диаграмму.",
       "schema": {
         "type": "unicode",
         "validators": [{
           "id": "is_nonempty"
         }],
         "ui_config": {
-          "placeholder": "Description of the diagram"
+          "placeholder": "Описание схемы"
         }
       },
       "default_value": ""
@@ -201,7 +202,7 @@ export = {
   "Tabs": {
     "backend_id": "Tabs",
     "category": "Basic Input",
-    "description": "A series of tabs.",
+    "description": "Набор вкладок.",
     "frontend_id": "tabs",
     "tooltip": "Insert tabs (e.g. for hints)",
     "icon_data_url": "/rich_text_components/Tabs/Tabs.png",
@@ -211,24 +212,24 @@ export = {
     "is_block_element": true,
     "customization_arg_specs": [{
       "name": "tab_contents",
-      "description": "The tab titles and contents.",
+      "description": "Заголовки и содержание вкладок.",
       "schema": {
         "type": "custom",
         "obj_type": "ListOfTabs"
       },
       "default_value": [{
-        "title": "Hint introduction",
-        "content": "This set of tabs shows some hints. Click on the other tabs to display the relevant hints."
+        "title": "Заголовок подсказки",
+        "content": "Этот набор вкладок показывает некоторые подсказки. Щелкните другие вкладки, чтобы отобразить соответствующие подсказки."
       }, {
-        "title": "Hint 1",
-        "content": "This is a first hint."
+        "title": "Подсказка №1",
+        "content": "Это первая подсказка."
       }]
     }]
   },
   "Video": {
     "backend_id": "Video",
     "category": "Basic Input",
-    "description": "A YouTube video.",
+    "description": "Видео на YouTube",
     "frontend_id": "video",
     "tooltip": "Insert video",
     "icon_data_url": "/rich_text_components/Video/Video.png",
@@ -238,14 +239,14 @@ export = {
     "is_block_element": true,
     "customization_arg_specs": [{
       "name": "video_id",
-      "description": "The Youtube URL or the YouTube id for this video. (The Youtube id is the 11-character string after \"v=\" in the video URL.)",
+      "description": "URL-адрес Youtube с ID видео.. (ID - это строка из 11 символов после \"v=\" в URL-адресе видео.)",
       "schema": {
         "type": "unicode"
       },
       "default_value": ""
     }, {
       "name": "start",
-      "description": "Video start time in seconds: (leave at 0 to start at the beginning.)",
+      "description": "Время начала видео в секундах: (на какой момент начать видео.)",
       "schema": {
         "type": "int",
         "validators": [{
@@ -256,7 +257,7 @@ export = {
       "default_value": 0
     }, {
       "name": "end",
-      "description": "Video end time in seconds: (leave at 0 to play until the end.)",
+      "description": "Время окончания видео в секундах: (на какой момент закончить видео.)",
       "schema": {
         "type": "int",
           "validators": [{
@@ -267,7 +268,7 @@ export = {
       "default_value": 0
     }, {
       "name": "autoplay",
-      "description": "Autoplay this video once the question has loaded?",
+      "description": "Автовоспроизвести это видео после загрузки вопроса?",
       "schema": {
         "type": "bool"
       },

@@ -108,8 +108,8 @@ describe('NumericExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by an \'IsEquivalentTo\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'IsEquivalentTo\' правило с подходящим входом.'
     }]);
 
 
@@ -133,8 +133,8 @@ describe('NumericExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by an \'IsEquivalentTo\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'IsEquivalentTo\' правило с подходящим входом.'
     }]);
 
 
@@ -158,8 +158,8 @@ describe('NumericExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because it' +
-      ' is preceded by a \'MatchesExactlyWith\' rule with a matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что оно' +
+      ' предшествует \'MatchesExactlyWith\' правило с подходящим входом.'
     }]);
   });
 

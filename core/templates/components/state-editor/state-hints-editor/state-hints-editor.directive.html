@@ -4,7 +4,7 @@
       <div class="oppia-editor-card-body">
         <div class="state-hints-header-container oppia-mobile-collapsible-card-header" ng-click="toggleHintCard()">
           <div class="state-hints-header" ng-if="EditabilityService.isEditableOutsideTutorialMode()">
-            <h3 class="oppia-exp-hints-card-header">Hints</h3>
+            <h3 class="oppia-exp-hints-card-header">Подсказки</h3>
             <i class="fa fa-caret-down"
                ng-if="!hintCardIsShown"
                aria-hidden="true">
@@ -79,19 +79,21 @@
 <style>
   state-hints-editor .state-hints-header-container {
     padding: 0 30px;
+    background-color: #B3D8FF;
   }
   state-hints-editor .state-hints-header {
     align-content: center;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 30px 0 0;
+    padding: 20px 0px 20px;
   }
   state-hints-editor .oppia-exp-hints-card-header {
     font-size: 18px;
   }
   state-hints-editor .state-hints-content-container {
     padding: 15px 30px;
+
   }
   state-hints-editor .oppia-add-hint-button-container {
     margin: 10px 0;

@@ -1,11 +1,11 @@
 <div class="oppia-interaction-header-container">
   <div class="modal-header oppia-modal-header" ng-class="{'modal-header-blue': StateInteractionIdService.displayed && (customizationModalReopened || hasCustomizationArgs)}">
     <h3 ng-if="!StateInteractionIdService.displayed">
-      Choose Interaction
+      Выберите интерактив
     </h3>
 
     <h3 ng-if="StateInteractionIdService.displayed && (customizationModalReopened || hasCustomizationArgs)">
-      Customize Interaction (<[INTERACTION_SPECS[StateInteractionIdService.displayed].name]>)
+      Настроить интерактив (<[INTERACTION_SPECS[StateInteractionIdService.displayed].name]>)
     </h3>
     <i class="fa fa-times" ng-click="cancel()"></i>
   </div>
@@ -46,16 +46,16 @@
   </form>
 
   <form ng-if="StateInteractionIdService.displayed && !hasCustomizationArgs && customizationModalReopened">
-    This interaction cannot be modified. To delete it, close this popup and click the 'x' button in the top-right corner.
+    Это интерактив нельзя изменить. Чтобы удалить его, закройте это всплывающее окно и нажмите кнопку «x» в правом верхнем углу.
   </form>
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary" ng-click="cancel()" ng-if="!hasCustomizationArgs">Cancel</button>
+  <button class="btn btn-secondary" ng-click="cancel()" ng-if="!hasCustomizationArgs">Отмена</button>
   <!-- Do not show this button if an interaction is already selected. -->
-  <button class="btn btn-secondary float-left" ng-click="returnToInteractionSelector()" ng-if="StateInteractionIdService.displayed && !StateInteractionIdService.savedMemento && hasCustomizationArgs">Change Interaction</button>
+  <button class="btn btn-secondary float-left" ng-click="returnToInteractionSelector()" ng-if="StateInteractionIdService.displayed && !StateInteractionIdService.savedMemento && hasCustomizationArgs">Изменить интерактив</button>
 
-  <button class="btn btn-secondary" ng-click="cancel()" ng-if="hasCustomizationArgs">Cancel</button>
+  <button class="btn btn-secondary" ng-click="cancel()" ng-if="hasCustomizationArgs">Отмена</button>
   <div class="btn-group"
        ng-if="hasCustomizationArgs"
        popover-append-to-body
@@ -65,13 +65,13 @@
     <button class="btn btn-success protractor-test-save-interaction"
             ng-click="save()"
             ng-disabled="!isSaveInteractionButtonEnabled()">
-      Save Interaction
+      Сохранить интерактив
     </button>
   </div>
   <button class="btn btn-success protractor-test-close-no-customization-modal"
           ng-click="confirm('okay')"
           ng-if="!hasCustomizationArgs && customizationModalReopened">
-    Okay
+    ОК
   </button>
 </div>
 <style>
@@ -80,12 +80,13 @@
     margin-right: 4px;
   }
   .customize-interaction-body-container .oppia-interaction-tile img {
-    border: 1px solid #aaa;
+   
     border-bottom: none;
-    border-radius: 5px 5px 0 0;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0px 12px 40px rgba(37, 40, 43, 0.32);
   }
   .customize-interaction-body-container ul .active {
-    border-bottom: 2px solid #00609C;
+    border-bottom: 2px solid #007EFF;
   }
    .customize-interaction-modal .modal-dialog {
      margin: 30px auto;
@@ -116,7 +117,7 @@
       width: 100vw;
     }
     .customize-interaction-modal .modal-header-blue {
-      background-color: #00609C;
+      background-color: #007EFF;
     }
     .customize-interaction-modal .modal-header-blue i {
       color: #FFF;

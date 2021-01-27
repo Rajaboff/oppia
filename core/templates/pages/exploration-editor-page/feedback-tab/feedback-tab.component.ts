@@ -215,7 +215,7 @@ angular.module('oppia').component('feedbackTab', {
         ctrl.activeThread = null;
         ctrl.userIsLoggedIn = null;
         ctrl.threadIsStale = false;
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
 
         // Initial load of the thread list on page load.
         ctrl.tmpMessage = {

@@ -4,7 +4,7 @@
           ng-if="allSkillSummaries.length > 0"
           ng-change="reinitializeQuestionsList(selectedSkillId)"
           ng-options="summary.getId() as summary.getDescription() for summary in allSkillSummaries">
-    <option value="" hidden selected> Select a skill to view question list or create a new question </option>
+    <option value="" hidden selected> Выберите навык, для просмотра списка вопросов </option>
   </select>
 </div>
 <div class="question-list-container">

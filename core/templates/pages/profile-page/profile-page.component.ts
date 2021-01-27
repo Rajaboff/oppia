@@ -65,17 +65,17 @@ angular.module('oppia').component('profilePage', {
           ctrl.usernameIsLong = data.usernameOfViewedProfile.length > 16;
           ctrl.userBio = data.userBio;
           ctrl.userDisplayedStatistics = [{
-            title: 'Impact',
+            title: 'Повлиял',
             value: data.userImpactScore,
             helpText: (
-              'A rough measure of the impact of explorations created by ' +
-              'this user. Better ratings and more playthroughs improve ' +
-              'this score.')
+              'Грубая мера воздействия на занятия, созданных ' +
+              'этим пользователем. Рейтинг будет расти если будет увеличиваться ' + 
+              ' количество учеников и частота ')
           }, {
-            title: 'Created',
+            title: 'Создал',
             value: data.createdExpSummaries.length
           }, {
-            title: 'Edited',
+            title: 'Изменял',
             value: data.editedExpSummaries.length
           }];
 

@@ -1,21 +1,21 @@
 <div class="oppia-create-new-subtopic-container">
   <div class="modal-header">
     <h3>
-      Create New Subtopic
+      Создать подтему
     </h3>
   </div>
   <div>
     <div class="modal-body new-subtopic-editor protractor-test-new-subtopic-editor">
       <div class="create-new-subtopic-input-field">
         <div>
-          <strong>Title*</strong>
+          <strong>Название</strong>
         </div>
         <input class="form-control oppia-new-subtopic-editable-field protractor-test-new-subtopic-title-field required"
-               placeholder="Enter a brief description for the subtopic that students can easily understand, e.g. 'Adding Fractions'"
+               placeholder="Введите краткое описание подтемы, которое ученики могут легко понять, например 'Добавление дробей'"
                ng-model="$ctrl.subtopicTitle" ng-change="$ctrl.resetErrorMsg()" maxlength="<[$ctrl.MAX_CHARS_IN_SUBTOPIC_TITLE]>" autofocus>
         <span class="oppia-input-box-subtitle">
           <em>
-            Subtopic title should be at most <[$ctrl.MAX_CHARS_IN_SUBTOPIC_TITLE]> characters.
+            Название подтемы должно быть не более <[$ctrl.MAX_CHARS_IN_SUBTOPIC_TITLE]> символов.
           </em>
         </span>
         <span class="form-text error-msg" ng-if="$ctrl.errorMsg">
@@ -23,26 +23,26 @@
         </span>
       </div>
       <div>
-        <strong>Enter the url fragment for the subtopic*</strong>
+        <strong>Введите фрагмент URL для подтемы</strong>
       </div>
       <input class="form-control oppia-new-subtopic-editable-field protractor-test-new-subtopic-url-fragment-field"
              ng-class="{'is-invalid': $ctrl.editableUrlFragment && (!$ctrl.isUrlFragmentValid() || $ctrl.subtopicUrlFragmentExists)}"
-             placeholder="Enter a url fragment for the subtopic."
+             placeholder="Введите фрагмент URL для подтемы."
              ng-model="$ctrl.editableUrlFragment" ng-change="$ctrl.checkSubtopicExistence()" maxlength="<[$ctrl.MAX_CHARS_IN_SUBTOPIC_URL_FRAGMENT]>">
       <span class="oppia-input-box-subtitle">
         <em>
-          The subtopic URL fragment is used to uniquely access the subtopic viewer page. It should consist of one or more hyphen-separated words, all in lowercase, with at most <[$ctrl.MAX_CHARS_IN_SUBTOPIC_URL_FRAGMENT]> characters in total and must be unique across the topic. Please use meaningful keywords, and avoid using words like "and", "of", or "the".
-          This subtopic can be accessed at the following URL:<br>
+          Фрагмент URL-адреса подтемы используется для однозначного доступа к странице просмотра подтемы. Он должен состоять из одного или нескольких слов, разделенных дефисом, в нижнем регистре, не более <[$ctrl.MAX_CHARS_IN_SUBTOPIC_URL_FRAGMENT]> всего символов и должны быть уникальными по теме. Используйте значимые ключевые слова и избегайте таких слов, как "and", "of", или "the".
+          Доступ к этой подтеме можно получить по следующему URL-адресу:<br>
           <[$ctrl.hostname]>/learn/<[$ctrl.classroomUrlFragment]>/<[$ctrl.topic.getUrlFragment()]>/revision/<[$ctrl.editableUrlFragment]>
         </em>
       </span>
       <div class="oppia-input-box-subtitle text-danger" ng-if="$ctrl.editableUrlFragment && $ctrl.subtopicUrlFragmentExists">
-        <em>The subtopic url fragment is not unique.</em>
+        <em>Фрагмент URL подтемы не уникален.</em>
       </div>
 
       <div class="create-new-subtopic-input-field create-new-subtopic-content">
         <div>
-          <strong>Explanation of the subtopic*</strong>
+          <strong>Разъяснение подтемы</strong>
         </div>
         <div class="description-editor" ng-if="$ctrl.schemaEditorIsShown">
           <div class="oppia-editor-card-body" >
@@ -55,14 +55,14 @@
 
         <div ng-if="!$ctrl.schemaEditorIsShown" ng-click="$ctrl.showSchemaEditor()" class="protractor-test-show-schema-editor">
           <span class="oppia-placeholder">
-              Give a description or explanation of the subtopic.
+              Дайте описание или объяснение подтемы.
             <i class="fa fa-pen"></i>
           </span>
         </div>
       </div>
 
       <div class="thumbnail-editor create-new-subtopic-input-field">
-        <strong>Thubmnail Image*</strong>
+        <strong>Обложка*</strong>
         <thumbnail-uploader filename="$ctrl.editableThumbnailFilename"
                             update-filename="$ctrl.updateSubtopicThumbnailFilename"
                             bg-color="$ctrl.editableThumbnailBgColor"
@@ -78,10 +78,10 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-secondary" ng-click="$ctrl.cancel()" type="button">Cancel</button>
+    <button class="btn btn-secondary" ng-click="$ctrl.cancel()" type="button">Отмена</button>
     <button class="btn btn-success protractor-test-confirm-subtopic-creation-button"
             type="submit" ng-disabled="!$ctrl.isSubtopicValid() || $ctrl.subtopicUrlFragmentExists" ng-click="$ctrl.save()">
-      Create Subtopic
+      Создать подтему
     </button>
   </div>
 </div>
@@ -123,7 +123,7 @@
     }
     .create-new-subtopic .modal-header {
       align-items: center;
-      background-color: #00609C;
+      background-color: #007EFF;
       display: flex;
     }
     .create-new-subtopic .modal-header h3 {

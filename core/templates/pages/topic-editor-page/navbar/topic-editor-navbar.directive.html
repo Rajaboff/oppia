@@ -11,7 +11,7 @@
              alt="Save Topic">
             &#xE161;
           </i>
-          <span class="oppia-save-publish-button-label float-left">Save Changes</span>
+          <span class="oppia-save-publish-button-label float-left">Сохранить черновик</span>
           <span class="d-none d-md-block float-left oppia-change-count"
                 ng-if="getChangeListLength() > 0">
             (<[getChangeListLength()]>)
@@ -19,7 +19,7 @@
         </span>
 
         <span ng-if="isSaveInProgress()">
-          <span class="oppia-save-publish-button-label">Saving</span>
+          <span class="oppia-save-publish-button-label">Сохранение</span>
           <loading-dots></loading-dots>
         </span>
       </button>
@@ -27,7 +27,7 @@
               ng-disabled="!getChangeListLength()" aria-label="Dropdown toggle" uib-dropdown-toggle>
       </button>
       <ul uib-dropdown-menu role="menu" class="oppia-dropdown-menu" ng-style="{ width: getChangeListLength() && topicRights.isPublished() ? '150px' : '120px' }">
-        <li title="Discard all pending changes"><a ng-click="discardChanges()" ng-class="{'oppia-disabled-link': !getChangeListLength()}" class="dropdown-item">Discard Draft</a></li>
+        <li title="Discard all pending changes"><a ng-click="discardChanges()" ng-class="{'oppia-disabled-link': !getChangeListLength()}" class="dropdown-item">Отменить изменение</a></li>
       </ul>
     </div>
   </li>
@@ -41,13 +41,13 @@
          alt="Publish to Oppia Library">
         &#xE2C3;
       </i>
-      <span class="oppia-save-publish-button-label">Publish Topic</span>
+      <span class="oppia-save-publish-button-label">Опубликовать</span>
     </button>
     <button type="button" ng-click="unpublishTopic()"
             ng-if="topicRights.isPublished() && topicRights.canPublishTopic()"
             class="btn btn-light"
             ng-disabled="isTopicSaveable()">
-      Unpublish Topic
+      Не публиковать
     </button>
   </li>
 </ul>
@@ -56,18 +56,18 @@
     <div class="topic-nav-dropdown-container">
       <div class="topic-nav-topic-nav-dropdown-options" ng-if="showNavigationOptions">
         <div class="topic-nav-dropdown-option" ng-click="selectMainTab()">
-          <i class="material-icons">&#xE254;</i><span>Editor</span>
+          <i class="material-icons">&#xE254;</i><span>Редактор</span>
         </div>
         <div class="topic-nav-dropdown-option" ng-click="selectQuestionsTab()">
-          <i class="material-icons">&#xE254;</i><span>Questions</span>
+          <i class="material-icons">&#xE254;</i><span>Вопросы</span>
         </div>
         <div class="topic-nav-dropdown-option" ng-click="openTopicViewer()">
-          <i class="material-icons">&#xE037;</i><span>Preview</span>
+          <i class="material-icons">&#xE037;</i><span>Предпросмотр</span>
         </div>
       </div>
       <div>
         <div ng-if="warningsAreShown" class="warning-box">
-          <span>Warnings</span>
+          <span>Внимание</span>
           <div ng-repeat="issue in validationIssues track by $index">
             <hr class="oppia-editor-warnings-separator">
             <[issue]>
@@ -93,30 +93,30 @@
       <div class="topic-nav-topic-nav-dropdown-options" ng-if="showTopicEditOptions">
         <div class="topic-nav-dropdown-option" ng-click="discardChanges()">
           <i class="material-icons">&#xE254;</i>
-          <span>Discard Changes</span>
+          <span>Отменить изменение</span>
         </div>
         <div class="topic-nav-dropdown-option">
           <div ng-if="!topicRights.isPublished()"
                ng-click="publishTopic()"
                ng-disabled="isTopicSaveable() || getWarningsCount() > 0 || prepublishValidationIssues.length > 0">
             <i class="material-icons">&#xE254;</i>
-            <span>Publish Topic</span>
+            <span>Опубликовать</span>
           </div>
           <div ng-click="unpublishTopic()"
                ng-if="topicRights.isPublished() && topicRights.canPublishTopic()"
                ng-disabled="isTopicSaveable()">
             <i class="material-icons">&#xE254;</i>
-            <span>Unpublish Topic</span>
+            <span>Не публиковать</span>
           </div>
         </div>
       </div>
       <div class="topic-nav-dropdown-content right-container">
         <div class="topic-nav-dropdown-text" ng-click="saveChanges()">
           <span ng-if="isSaveInProgress()">
-            <span>Saving</span>
+            <span>Сохранение</span>
           </span>
           <span ng-if="!isSaveInProgress()">
-            Save Changes
+            Сохранить черновик
           </span>
           <span ng-if="getChangeListLength() > 0">
             (<[getChangeListLength()]>)

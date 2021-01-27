@@ -1,6 +1,6 @@
 <div class="modal-header create-new-chapter-modal-header">
   <h3>
-    New Chapter
+    Создать главу
   </h3>
   <i class="fa fa-times modal-close-button" ng-click="cancel()"></i>
 </div>
@@ -8,19 +8,19 @@
   <div class="modal-body create-new-chapter">
     <div class="chapter-input">
       <div class="chapter-input-header">
-        <span>Title*</span>
+        <span>Название</span>
         <div class="oppia-input-box-subtitle">
           <i>
-            This will be shown to the learner. It overrides the title of the exploration.
+            Это будет показано учащемуся. Оно отменяет название занятия.
           </i>
         </div>
       </div>
       <input class="form-control protractor-test-new-chapter-title-field oppia-new-chapter-title-field"
-             placeholder="Enter the title for this chapter to be displayed to learners in the story viewer page (can be edited later)"
+             placeholder="Введите название этой главы, которое будет показано учащимся на странице программы просмотра историй (можно отредактировать позже)"
              ng-model="title" ng-change="resetErrorMsg()" maxlength="<[MAX_CHARS_IN_CHAPTER_TITLE]>" autofocus>
       <span class="oppia-input-box-subtitle">
         <i>
-          Chapter title should be at most <[MAX_CHARS_IN_CHAPTER_TITLE]> characters.
+          Название главы должно быть не более <[MAX_CHARS_IN_CHAPTER_TITLE]> символов.
         </i>
       </span>
       <span class="new-chapter-error-msg" ng-if="errorMsg">
@@ -30,7 +30,7 @@
 
     <div class="chapter-input story-input-description">
       <div class="chapter-input-header">
-        <span>Exploration ID*</span>
+        <span> ID занятия</span>
       </div>
       <input ng-change="resetErrorMsg()" ng-model="explorationId" class="form-control protractor-test-chapter-exploration-input">
       <span class="new-chapter-error-msg protractor-test-invalid-exp-id" ng-if="invalidExpId">
@@ -39,7 +39,7 @@
     </div>
     <div class="chapter-input chapter-input-thumbnail">
       <div class="chapter-input-header">
-        <span>Thumbnail Image*</span>
+        <span>Обложка</span>
       </div>
       <thumbnail-uploader filename="editableThumbnailFilename"
                           update-filename="updateThumbnailFilename"
@@ -55,9 +55,9 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-secondary protractor-test-cancel-chapter-creation-button" ng-click="cancel()" type="button">Cancel</button>
+    <button class="btn btn-secondary protractor-test-cancel-chapter-creation-button" ng-click="cancel()" type="button">Отмена</button>
     <button class="btn btn-success protractor-test-confirm-chapter-creation-button" type="submit" ng-disabled="!isValid()">
-      <span>Create Chapter</span>
+      <span>Создать главу</span>
     </button>
   </div>
 </form>
@@ -98,7 +98,7 @@
     }
     .create-new-chapter .modal-header {
       align-items: center;
-      background-color: #00609C;
+      background-color: #007EFF;
       display: flex;
     }
     .create-new-chapter .modal-header h3 {

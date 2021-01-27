@@ -37,19 +37,19 @@
   }
 </style>
 <div class="modal-header">
-  <h3>Training Data</h3>
+  <h3>Данные обучения</h3>
 </div>
 
 <div class="modal-body training-data-editor">
   <div>
     <div class="add-new-answer">
-      <p class="training-data-answer-label"> Add New Answer </p>
+      <p class="training-data-answer-label"> Добавить новый ответ </p>
       <test-interaction-panel input-template="inputTemplate"
                               state-name="stateName">
       </test-interaction-panel>
       <div ng-show="newAnswerIsAlreadyResolved">
         <div>
-          <span><strong>If Oppia encounters the answer:</strong></span>
+          <span><strong>Если Oqustudy получит ответ:</strong></span>
         </div>
 
         <div>
@@ -61,7 +61,7 @@
         <br>
 
         <div>
-          <span><strong>it will reply with:</strong></span>
+          <span><strong>он ответит:</strong></span>
         </div>
 
         <div>
@@ -69,14 +69,14 @@
             <angular-html-bind html-data="newAnswerFeedback.getHtml()"></angular-html-bind>
           </span>
           <span ng-if="newAnswerFeedback.isEmpty()">
-            <em>Nothing</em>
+            <em>Ничего</em>
           </span>
         </div>
 
         <br>
 
         <div>
-          <span><strong>and then direct the learner to: </strong></span>
+          <span><strong>а затем направьте учащегося к: </strong></span>
           <span>
             <angular-html-bind html-data="newAnswerOutcomeDest"></angular-html-bind>
           </span>
@@ -85,14 +85,14 @@
         <br>
 
         <div>
-          <span><strong>This is due to a specific rule and therefore cannot be trained. If you do not think this is right, you should change the rule directly referring to this answer.</strong></span>
+          <span><strong>Это связано с определенным правилом и поэтому не может быть обучено. Если вы считаете, что это неправильно, вам следует изменить правило, прямо ссылаясь на этот ответ.</strong></span>
         </div>
       </div>
     </div>
     <div class="training-data-answers-list">
-      <p class="training-data-answer-label"> Training Data Answers </p>
+      <p class="training-data-answer-label"> Ответы на данные обучения</p>
       <div ng-show="trainingData.length === 0">
-        Try adding answers to training data to see them here.
+        Попробуйте добавить ответы к обучающим данным, чтобы увидеть их здесь.
       </div>
       <div ng-show="!answerGroupHasNonEmptyRules && (trainingData.length === 1)">
         <div class="training-data-answer">
@@ -116,5 +116,5 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary" ng-click="exit()">Exit</button>
+  <button class="btn btn-secondary" ng-click="exit()">Выход</button>
 </div>

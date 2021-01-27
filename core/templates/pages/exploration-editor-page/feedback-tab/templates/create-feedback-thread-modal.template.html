@@ -1,15 +1,15 @@
 <div class="modal-header">
-  <h3>Start New Feedback Thread</h3>
+  <h3>Начать новую ветку отзывов</h3>
 </div>
 
 <div class="modal-body">
-  <p>Thread subject: <input class="oppia-feedback-modal-input" type="text" ng-model="newThreadSubject"></p>
-  <p>Message text <textarea class="oppia-feedback-modal-textarea" ng-model="newThreadText" rows="6"></textarea></p>
+  <p>Ветка тем: <input class="oppia-feedback-modal-input" type="text" ng-model="newThreadSubject"></p>
+  <p>Текстовое сообщение <textarea class="oppia-feedback-modal-textarea" ng-model="newThreadText" rows="6"></textarea></p>
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary" ng-click="cancel()">Cancel</button>
-  <button class="btn btn-success" ng-click="create(newThreadSubject, newThreadText)" ng-disabled="!newThreadSubject || !newThreadText">Create Thread</button>
+  <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
+  <button class="btn btn-success" ng-click="create(newThreadSubject, newThreadText)" ng-disabled="!newThreadSubject || !newThreadText">Создать ветку</button>
 </div>
 
 <style>

@@ -2,14 +2,14 @@
   <textarea disabled="true">
     <[$ctrl.localValue.label]>
   </textarea>
-  (<a href="#" onclick="return false;" ng-click="$ctrl.openEditor()">Edit</a>)
+  (<a href="#" onclick="return false;" ng-click="$ctrl.openEditor()">Редактировать</a>)
 </div>
 
 <div ng-if="$ctrl.active || $ctrl.alwaysEditable">
   <div>
     <textarea ng-model="$ctrl.localValue.label" placeholder="\frac{x}{y}"></textarea>
   </div>
-  Preview:
+  Предпросмотр:
   <span>
     <mathjax-bind ng-if="$ctrl.localValue.label" mathjax-data="$ctrl.localValue.label">
     </mathjax-bind>
@@ -19,6 +19,6 @@
     </mathjax-bind>
   </span>
   <button type="button" class="btn btn-secondary"  ng-if="!$ctrl.alwaysEditable" ng-click="$ctrl.replaceValue($ctrl.localValue.label)">
-    Close
+    Закрыть
   </button>
 </div>

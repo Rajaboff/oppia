@@ -53,7 +53,7 @@ export class DragAndDropSortInputValidationService {
     if (numChoices < 2) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please enter at least two choices.'
+        message: 'Пожалуйста, введите как минимум два варианта.'
       });
     }
 
@@ -71,14 +71,14 @@ export class DragAndDropSortInputValidationService {
     if (areAnyChoicesEmpty) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure that the choices are nonempty.'
+        message: 'Убедитесь, что варианты не пусты.'
       });
     }
 
     if (areAnyChoicesDuplicated) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure that the choices are unique.'
+        message: 'Убедитесь, что варианты выбора уникальны.'
       });
     }
 
@@ -130,7 +130,7 @@ export class DragAndDropSortInputValidationService {
             if (xInputs[k].length > 1) {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
-                message: 'Multiple items in a single position are not allowed.'
+                message: 'Несколько элементов в одной позиции не допускаются.'
               });
               break;
             }
@@ -152,17 +152,17 @@ export class DragAndDropSortInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${(j + 1)} from answer group ${(i + 1)} ` +
-                  'contains a choice that does not match any of ' +
-                  'the choices in the customization arguments.')
+                  `Правило ${(j + 1)} из группы ответов ${(i + 1)} ` +
+                  'содержит вариант, который не соответствует ни одному из' +
+                  'выбор в аргументах настройки.')
               });
             }
             if (inputs.y > customizationArgs.choices.value.length) {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${(j + 1)} from answer group ${(i + 1)} ` +
-                  'refers to an invalid choice position.')
+                  `Правило ${(j + 1)}из группы ответов ${(i + 1)} ` +
+                  'относится к позиции неверного выбора.')
               });
             }
             break;
@@ -171,9 +171,9 @@ export class DragAndDropSortInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${(j + 1)} from answer group ${(i + 1)} ` +
-                  'will never be matched because both the selected ' +
-                  'elements are same.')
+                  `Правило ${(j + 1)} из группы ответов ${(i + 1)} ` +
+                  'никогда не будет совпадать, потому что оба выбранных ' +
+                  'элемента такие же.')
               });
             }
             if (
@@ -182,9 +182,9 @@ export class DragAndDropSortInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${(j + 1)} from answer group ${(i + 1)} ` +
-                  'contains choices that do not match any of ' +
-                  'the choices in the customization arguments.')
+                  `Правило ${(j + 1)} из группы ответов ${(i + 1)} ` +
+                  'содержит варианты, не соответствующие ни одному из' +
+                  'вариантов в аргументах настройки.')
               });
             }
             break;
@@ -212,14 +212,14 @@ export class DragAndDropSortInputValidationService {
               var message = areAnyItemsEmpty ? 'the items are' : 'the list is';
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
-                message: `Please ensure ${message} nonempty.`
+                message: `Пожалуйста убедитесь ${message} не пустое.`
               });
             }
 
             if (areAnyItemsDuplicated) {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
-                message: 'Please ensure the items are unique.'
+                message: 'Убедитесь, что предметы уникальны.'
               });
             }
 
@@ -229,10 +229,10 @@ export class DragAndDropSortInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  'Rule ' + (j + 1) + ' from answer group ' +
-                  (i + 1) + ' will never be matched because there will be ' +
-                  'at least 2 elements at incorrect positions if multiple ' +
-                  'elements cannot occupy the same position.')
+                  'Правило ' + (j + 1) + ' из группы ответов ' +
+                  (i + 1) + ' никогда не будет совпадать, потому что будет ' +
+                  'минимум 2 элемента в неправильных позициях, если несколько ' +
+                  'элементы не могут занимать одну и ту же позицию.')
               });
             }
             var sortedCustomArgsChoices = choiceValues.sort();
@@ -244,8 +244,8 @@ export class DragAndDropSortInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${(j + 1)} from answer group ${(i + 1)} ` +
-                  'options do not match customization argument choices.')
+                  `Правило ${(j + 1)} из группы ответов ${(i + 1)} ` +
+                  'параметры не соответствуют выбору аргументов настройки.')
               });
             }
             break;
@@ -262,9 +262,9 @@ export class DragAndDropSortInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${(j + 1)} from answer group ${(i + 1)} ` +
-                  'will never be matched because it is made redundant by ' +
-                  `rule ${ranges[k].ruleIndex + 1} from answer group ` +
+                  `Правило ${(j + 1)} из группы ответов ${(i + 1)} ` +
+                  'никогда не будет сопоставлен, потому что он стал избыточным ' +
+                  `правило ${ranges[k].ruleIndex + 1} из группы ответов ` +
                   `${ranges[k].answerGroupIndex + 1}.`)
               });
             }

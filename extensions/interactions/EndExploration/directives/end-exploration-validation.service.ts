@@ -50,14 +50,14 @@ export class EndExplorationValidationService {
     if (!Array.isArray(recommendedExplorationIds)) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Set of recommended exploration IDs must be list.'
+        message: 'Необходимо указать набор рекомендуемых ID интерактивов.'
       });
     }
     for (var i = 0; i < recommendedExplorationIds.length; i++) {
       if (!(typeof recommendedExplorationIds[i] === 'string')) {
         warningsList.push({
           type: AppConstants.WARNING_TYPES.ERROR,
-          message: 'Recommended exploration ID must be a string.'
+          message: 'Рекомендуемый ID интерактива должен быть строкой..'
         });
       }
     }
@@ -75,15 +75,15 @@ export class EndExplorationValidationService {
     if (answerGroups.length !== 0) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Please make sure end exploration interactions do not ' +
-          'have any answer groups.'
+        message: 'Пожалуйста, убедитесь, что конечные интерактивы не ' +
+          'имеют группу ответов.'
       });
     }
     if (defaultOutcome) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Please make sure end exploration interactions do not ' +
-        'have a default outcome.'
+        message: 'Пожалуйста, убедитесь, что конечные интерактивы не ' +
+        'имеют результат по умолчанию.'
       });
     }
 

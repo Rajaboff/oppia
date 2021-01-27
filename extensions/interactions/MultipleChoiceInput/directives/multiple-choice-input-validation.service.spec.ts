@@ -134,7 +134,7 @@ describe('MultipleChoiceInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure the choices are nonempty.'
+      message: 'Убедитесь, что варианты не пусты.'
     }]);
 
     customizationArguments.choices.value[0].setHtml('Option 2');
@@ -143,11 +143,11 @@ describe('MultipleChoiceInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure the choices are unique.'
+      message: 'Убедитесь, что выбор уникален.'
     }]);
   });
 
-  it('should validate answer group rules refer to valid choices only once',
+  it('следует проверять правила группы ответов ссылаться на допустимые варианты только один раз',
     () => {
       goodAnswerGroups[0].rules[0].inputs.x = 2;
       var warnings = validatorService.getAllWarnings(
@@ -155,7 +155,7 @@ describe('MultipleChoiceInputValidationService', () => {
         goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.CRITICAL,
-        message: 'Please ensure rule 1 in group 1 refers to a valid choice.'
+        message: 'Убедитесь, что правило 1 в группе 1 относится к допустимому выбору.'
       }]);
 
       goodAnswerGroups[0].rules[0].inputs.x = 1;
@@ -167,14 +167,14 @@ describe('MultipleChoiceInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.CRITICAL,
         message: (
-          'Please ensure rule 2 in group 1 is not equaling the same ' +
-          'multiple choice option as another rule.')
+          'Убедитесь, что правило 2 в группе 1 не совпадает с тем же ' +
+          'вариант с множественным выбором как другое правило.')
       }]);
     });
 
   it(
-    'should expect a non-confusing and non-null default outcome only when ' +
-    'not all choices are covered by rules',
+    'следует ожидать не сбивающего с толку и ненулевого результата по умолчанию только тогда, когда ' +
+    'не все варианты регулируются правилами',
     () => {
       var warnings = validatorService.getAllWarnings(
         currentState, customizationArguments, goodAnswerGroups, badOutcome);
@@ -190,16 +190,16 @@ describe('MultipleChoiceInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Please add something for Oppia to say in the ' +
-          '\"All other answers\" response.')
+          'Добавьте что-нибудь для ответа Oqustudy в' +
+          '\"All other answers\" .')
       }]);
       warnings = validatorService.getAllWarnings(
         currentState, customizationArguments, goodAnswerGroups, badOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Please add something for Oppia to say in the ' +
-          '\"All other answers\" response.')
+          'Добавьте что-нибудь для ответа Oqustudy в' +
+          '\"All other answers\" .')
       }]);
     });
 });

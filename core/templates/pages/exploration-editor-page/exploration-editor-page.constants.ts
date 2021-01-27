@@ -42,10 +42,10 @@ export const ExplorationEditorPageConstants = {
   DEFAULT_AUDIO_LANGUAGE: 'en',
 
   INFO_MESSAGE_SOLUTION_IS_VALID:
-    'The solution is now valid!',
+    'Решение теперь действительно!',
 
   INFO_MESSAGE_SOLUTION_IS_INVALID_FOR_CURRENT_RULE:
-    'The current solution is no longer valid.',
+    'Текущее решение больше не действует.',
 
   ACTION_ACCEPT_SUGGESTION: 'accept',
   ACTION_REJECT_SUGGESTION: 'reject',

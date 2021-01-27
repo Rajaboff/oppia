@@ -74,7 +74,7 @@ angular.module('oppia').component('moderatorPage', {
       };
 
       ctrl.$onInit = function() {
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         ctrl.allCommits = [];
         ctrl.allFeedbackMessages = [];
         // Map of exploration ids to objects containing a single key: title.

@@ -1,6 +1,6 @@
 <div class="list-group" ng-model="$ctrl.value" apply-validation validators="$ctrl.validators">
   <md-card layout="row" class="list-view-item protractor-test-skill-select-header">
-    Search By Skill
+    Поиск по навыкам
     <input type="text" class="form-control protractor-test-skill-name-input" placeholder="Enter a skill name" ng-model="skillFilterText" autofocus>
   </md-card>
   <div class="skill-selector-item-container">
@@ -10,19 +10,19 @@
          ng-class="{'list-group-item-success': (skill.id === $ctrl.value)}">
       <label class="list-group-item-heading"><[skill.description]></label>
       <div ng-if="skill.id === $ctrl.value" class="oppia-skill-summary-text">
-        <strong> Explanation </strong>
+        <strong> Объяснение </strong>
         <div class="skill-explanation-container">
           <angular-html-bind html-data="skill.skill_contents.explanation.html">
           </angular-html-bind>
         </div>
-        <strong> Worked Examples </strong>
+        <strong> Рабочий пример </strong>
         <ul>
           <li ng-repeat="example in skill.skill_contents.worked_examples" class="worked-example-container">
-            <b> Question: </b>
+            <b> Вопрос: </b>
             <angular-html-bind html-data="example.question.html">
             </angular-html-bind>
             <div class="worked-example-explanation-section">
-              <b> Explanation: </b>
+              <b> Объяснение: </b>
               <angular-html-bind html-data="example.explanation.html">
               </angular-html-bind>
             </div>

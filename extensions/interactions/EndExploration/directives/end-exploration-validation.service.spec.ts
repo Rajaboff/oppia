@@ -100,13 +100,13 @@ describe('EndExplorationValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Please make sure end exploration interactions do not ' +
-          'have any answer groups.')
+          'Пожалуйста, убедитесь, что конечные интерактивы не' +
+          'имеют групп ответов.')
       }, {
         type: WARNING_TYPES.ERROR,
         message: (
-          'Please make sure end exploration interactions do not ' +
-          'have a default outcome.')
+          'Пожалуйста, убедитесь, что конечные интерактив не ' +
+          'имеет результат по умолчанию.')
       }]);
     });
 
@@ -149,7 +149,7 @@ describe('EndExplorationValidationService', () => {
         currentState, customizationArguments, [], null);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Recommended exploration ID must be a string.'
+        message: 'Рекомендуемый ID интерактива должен быть строкой..'
       }]);
     });
 
@@ -164,7 +164,7 @@ describe('EndExplorationValidationService', () => {
         currentState, customizationArguments, [], null);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Set of recommended exploration IDs must be list.'
+        message: 'Необходимо указать набор рекомендуемых ID интерактивов.'
       }]);
     });
 });

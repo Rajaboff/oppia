@@ -193,10 +193,10 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Multiple items in a single position are not allowed.'
+      message: 'Несколько элементов в одной позиции не допускаются.'
     }, {
       type: WARNING_TYPES.ERROR,
-      message: 'Multiple items in a single position are not allowed.'
+      message: 'Несколько элементов в одной позиции не допускаются.'
     }]);
     customizationArgs.allowMultipleItemsInSamePosition.value = true;
   });
@@ -209,11 +209,11 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Please ensure the items are nonempty.'
+      message: 'Убедитесь, что элементы не пусты.'
     }, {
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 1 options do not match ' +
-        'customization argument choices.'
+      message: 'Правило 1 из группы ответов 1 не соответствует' +
+        'выбор аргументов настройки.'
     }]);
   });
 
@@ -225,11 +225,11 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Please ensure the items are unique.'
+      message: 'Убедитесь, что предметы уникальны.'
     }, {
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 1 options do not match ' +
-        'customization argument choices.'
+      message: 'Правило 1 из группы ответов 1 не соответствует' +
+        'выбор аргументов настройки.'
     }]);
   });
 
@@ -242,7 +242,7 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, [], goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please enter at least two choices.'
+      message: 'Пожалуйста, введите как минимум два варианта.'
     }]);
   });
 
@@ -254,7 +254,7 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, [], goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure that the choices are nonempty.'
+      message: 'Убедитесь, что варианты не пусты.'
     }]);
   });
 
@@ -266,7 +266,7 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, [], goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure that the choices are unique.'
+      message: 'Убедитесь, что варианты выбора уникальны.'
     }]);
   });
 
@@ -278,8 +278,8 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched ' +
-          'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено' +
+          'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -290,8 +290,8 @@ describe('DragAndDropSortInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 1 will never be matched ' +
-          'because both the selected elements are same.'
+      message: 'Правило 1 из группы ответов 1 никогда не будет выполнено ' +
+          'потому что оба выбранных элемента одинаковы.'
     }]);
   });
 
@@ -304,8 +304,8 @@ describe('DragAndDropSortInputValidationService', () => {
         currentState, customizationArgs, answerGroups, goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Rule 1 from answer group 1 contains choices that do ' +
-          'not match any of the choices in the customization arguments.'
+        message: 'Правило 1 из группы ответов 1 содержит варианты, которые ' +
+          'не соответствует ни одному из вариантов в аргументах настройки.'
       }]);
     });
 
@@ -318,12 +318,12 @@ describe('DragAndDropSortInputValidationService', () => {
         currentState, customizationArgs, answerGroups, goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Rule 1 from answer group 1 contains a choice that does ' +
-          'not match any of the choices in the customization arguments.'
+        message: 'Правило 1 из группы ответов 1 содержит вариант, который ' +
+          'не соответствует ни одному из вариантов в аргументах настройки.'
       }, {
         type: WARNING_TYPES.ERROR,
-        message: 'Rule 1 from answer group 1 refers to an invalid choice ' +
-          'position.'
+        message: 'Правило 1 из группы ответов 1 относится к неверному выбору.' +
+          'позиции.'
       }]);
     });
 
@@ -338,9 +338,9 @@ describe('DragAndDropSortInputValidationService', () => {
         currentState, customizationArgs, answerGroups, goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Rule 1 from answer group 1 will never be matched because ' +
-          'there will be at least 2 elements at incorrect positions if ' +
-          'multiple elements cannot occupy the same position.'
+        message: 'Правило 1 из группы ответов 1 никогда не будет выполнено, потому что' +
+          'будет как минимум 2 элемента в неправильных позициях, если' +
+          'несколько элементов не могут занимать одну и ту же позицию.'
       }]);
       customizationArgs.allowMultipleItemsInSamePosition.value = true;
     });

@@ -51,7 +51,7 @@ export class MathEquationInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
         message: (
-          'The number of custom letters cannot be more than ' +
+          'Количество нестандартных букв не может быть более ' +
           allowedLettersLimit + '.')
       });
     }
@@ -121,9 +121,9 @@ export class MathEquationInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                'Rule ' + (j + 1) + ' from answer group ' + (i + 1) +
-                ' will never be matched because it is preceded ' +
-                'by an \'IsEquivalentTo\' rule with a matching input.')
+                'Правило ' + (j + 1) + ' из группы ответов ' + (i + 1) +
+                ' никогда не будет совпадать, потому что ему предшествует ' +
+                'по \'IsEquivalentTo\' правило с подходящим входом.')
             });
           } else if (currentRuleType === 'MatchesExactlyWith' && (
             meirs.MatchesExactlyWith(
@@ -133,9 +133,9 @@ export class MathEquationInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                'Rule ' + (j + 1) + ' from answer group ' + (i + 1) +
-                ' will never be matched because it is preceded ' +
-                'by a \'MatchesExactlyWith\' rule with a matching input.')
+                'Правило ' + (j + 1) + ' из группы ответов ' + (i + 1) +
+                ' никогда не будет совпадать, потому что ему предшествует ' +
+                'по \'MatchesExactlyWith\' правило с подходящим входом.')
             });
           }
         }
@@ -164,8 +164,8 @@ export class MathEquationInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
         message: (
-          'The following variables are present in some of the answer groups ' +
-          'but are missing from the custom letters list: ' + missingVariables)
+          'В некоторых группах ответов присутствуют следующие переменные. ' +
+          'но отсутствуют в списке пользовательских букв: ' + missingVariables)
       });
     }
 

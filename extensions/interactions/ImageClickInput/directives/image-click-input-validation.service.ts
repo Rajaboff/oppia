@@ -49,7 +49,7 @@ export class ImageClickInputValidationService {
     if (!imgAndRegionArgValue.imagePath) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please add an image for the learner to click on.'
+        message: 'Добавьте изображение, чтобы учащийся щелкнул по.'
       });
       // If there is no image specified, further warnings don't really
       // apply.
@@ -63,7 +63,7 @@ export class ImageClickInputValidationService {
     if (imgAndRegionArgValue.labeledRegions.length === 0) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Please specify at least one region in the image.'
+        message: 'Укажите хотя бы один регион на изображении.'
       });
     }
 
@@ -86,20 +86,20 @@ export class ImageClickInputValidationService {
     if (areAnyRegionStringsEmpty) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure the region labels are nonempty.'
+        message: 'Убедитесь, что метки региона не пусты.'
       });
     }
     if (areAnyRegionStringsNonAlphaNumeric) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'The region labels should consist of alphanumeric characters.')
+          'Метки регионов должны состоять из буквенно-цифровых символов.')
       });
     }
     if (areAnyRegionStringsDuplicated) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
-        message: 'Please ensure the region labels are unique.'
+        message: 'Убедитесь, что метки региона уникальны.'
       });
     }
     return warningsList;
@@ -133,9 +133,9 @@ export class ImageClickInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.CRITICAL,
               message: (
-                'The region label \'' + label + '\' in rule ' +
-                String(j + 1) + ' in group ' + String(i + 1) +
-                ' is invalid.')
+                'Метка региона \'' + метка + '\' в правиле ' +
+                String(j + 1) + ' в группе ' + String(i + 1) +
+                ' не валидна.')
             });
           }
         }
@@ -146,8 +146,8 @@ export class ImageClickInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
         message: (
-          'Please add a rule to cover what should happen if none of the ' +
-          'given regions are clicked.')
+          'Добавьте правило, описывающее, что должно произойти, если ни одно из' +
+          'данные регионы нажаты.')
       });
     }
 

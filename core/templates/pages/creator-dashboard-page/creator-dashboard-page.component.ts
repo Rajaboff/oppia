@@ -80,7 +80,7 @@ angular.module('oppia').component('creatorDashboardPage', {
       var ctrl = this;
       var EXP_PUBLISH_TEXTS = {
         defaultText: (
-          'This exploration is private. Publish it to receive statistics.'),
+          'Это приватное занятие. Опубликуйте его, чтобы получать статистику.'),
         smText: 'Publish the exploration to receive statistics.'
       };
 
@@ -253,7 +253,7 @@ angular.module('oppia').component('creatorDashboardPage', {
           DEFAULT_TWITTER_SHARE_MESSAGE_EDITOR);
 
         ctrl.canCreateCollections = null;
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка занятий');
         var userInfoPromise = UserService.getUserInfoAsync();
         userInfoPromise.then(function(userInfo) {
           ctrl.canCreateCollections = userInfo.canCreateCollections();

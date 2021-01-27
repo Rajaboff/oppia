@@ -7,27 +7,27 @@
     </div>
   </div>
   <div class="concept-card-worked-examples" ng-if="$ctrl.numberOfWorkedExamplesShown > 0">
-    <strong> Worked Examples </strong>
+    <strong>Рабочий пример </strong>
     <div class="oppia-worked-examples-container"
          ng-repeat="example in $ctrl.currentConceptCard.getWorkedExamples()"
          ng-if="$index < $ctrl.numberOfWorkedExamplesShown">
-      <strong> Question: </strong>
+      <strong> Вопрос: </strong>
       <angular-html-bind class="example-content" html-data="example.getQuestion().getHtml()"></angular-html-bind>
 
       <button class="btn btn-secondary show-example-explanation-button"
               ng-if="!$ctrl.explanationIsShown && $index == $ctrl.numberOfWorkedExamplesShown - 1"
               ng-click="$ctrl.explanationIsShown = true;">
-        Show Explanation
+        Показать объяснение
       </button>
       <div ng-if="$ctrl.explanationIsShown || $index < $ctrl.numberOfWorkedExamplesShown - 1">
-        <strong> Explanation: </strong>
+        <strong> Объяснение: </strong>
         <angular-html-bind class="example-content" html-data="example.getExplanation().getHtml()"></angular-html-bind>
       </div>
     </div>
     <button class="btn btn-secondary show-more-worked-examples-button"
             ng-if="!$ctrl.isLastWorkedExample()"
             ng-click="$ctrl.showMoreWorkedExamples()">
-      + Worked Examples
+      + Рабочий пример
     </button>
   </div>
 </div>
@@ -49,7 +49,7 @@
   }
 
   .oppia-concept-card-viewer .show-example-explanation-button {
-    background-color: #009688;
+    background-color: #007EFF;
     color: white;
     margin-top: 1vh;
   }

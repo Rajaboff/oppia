@@ -4,7 +4,7 @@
     <angular-html-bind html-data="skillExplanation"></angular-html-bind>
   </div>
   <div ng-if="skillWorkedExamples.length">
-    <h3>Worked Examples: </h3>
+    <h3>Рабочий пример: </h3>
     <div ng-repeat="example in skillWorkedExamples" class="skill-preview-examples">
       <angular-html-bind class="worked-example-question" html-data="example.getQuestion().getHtml()"></angular-html-bind>
       <angular-html-bind html-data="example.getExplanation().getHtml()"></angular-html-bind>
@@ -14,7 +14,7 @@
 
 <style>
   .skill-preview-modal {
-    background-color: #F0FFFF;
+    background-color: #E5F2FF;
     padding: 30px 35px;
   }
   .skill-preview-modal .skill-preview-modal-title {

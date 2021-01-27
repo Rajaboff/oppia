@@ -13,7 +13,7 @@
           </i>
         </div>
 
-        <strong>Hint #<[$ctrl.getIndexPlusOne()]> is...</strong>
+        <strong>Подсказка #<[$ctrl.getIndexPlusOne()]> is...</strong>
         <span>
           <angular-html-bind class="oppia-rte-editor" html-data="$ctrl.hint.hintContent.getHtml()">
           </angular-html-bind>
@@ -28,7 +28,7 @@
           name="$ctrl.editHintForm"
           ng-submit="$ctrl.saveThisHint()">
       <div class="oppia-rule-details-header">
-        <strong>Hint #<[$ctrl.getIndexPlusOne()]> is...</strong>
+        <strong>Подсказка #<[$ctrl.getIndexPlusOne()]> is...</strong>
         <!-- TODO(sll): Find a way to do this without resorting to private properties like _html -->
         <schema-based-editor schema="$ctrl.HINT_FORM_SCHEMA"
                              local-value="$ctrl.hint.hintContent._html">
@@ -41,13 +41,13 @@
         <button type="button"
                 class="btn btn-secondary protractor-test-cancel-hint-edit"
                 ng-click="$ctrl.cancelThisHintEdit()">
-          Cancel
+          Отмена
         </button>
         <button type="button"
                 class="btn btn-success protractor-test-save-hint-edit"
                 ng-disabled="!$ctrl.hint.hintContent.getHtml() || $ctrl.editHintForm.$invalid"
                 ng-click="$ctrl.saveThisHint()">
-          Save
+          Сохранить
         </button>
       </div>
 

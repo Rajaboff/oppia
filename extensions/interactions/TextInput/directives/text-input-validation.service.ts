@@ -62,7 +62,7 @@ export class TextInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
         message: (
-          'Placeholder text must be a string.')
+          'Текст-заполнитель должен быть строкой.')
       });
     }
 
@@ -81,7 +81,7 @@ export class TextInputValidationService {
         warningsList.push({
           type: AppConstants.WARNING_TYPES.ERROR,
           message: (
-            'Number of rows must be between ' + minRows + ' and ' +
+            'Количество строк должно быть между ' + minRows + ' и ' +
             maxRows + '.')
         });
       }
@@ -89,7 +89,7 @@ export class TextInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
         message: (
-          'Number of rows must be integral.')
+          'Числа должны быть целыми.')
       });
     }
     return warningsList;
@@ -123,9 +123,9 @@ export class TextInputValidationService {
             seenStringsStartsWith.includes('')) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
-              message: `Rule ${ruleIndex + 1} from answer group ` +
-                `${answerGroupIndex + 1} will never be matched because it ` +
-                'is preceded by a \'Contains\' rule with a matching input.'
+              message: `Правило ${ruleIndex + 1} из групп ответов ` +
+                `${answerGroupIndex + 1} никогда не будет совпадать, потому что это ` +
+                'предшествует \'Contains\' правило с подходящим входом.'
             });
           }
           seenStringsContains.push(currentString);
@@ -136,9 +136,9 @@ export class TextInputValidationService {
             (seenString) => currentString.indexOf(seenString) === 0)) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
-              message: `Rule ${ruleIndex + 1} from answer group ` +
-                `${answerGroupIndex + 1} will never be matched because it ` +
-                'is preceded by a \'StartsWith\' rule with a matching prefix.'
+              message: `Правило ${ruleIndex + 1} из группы ответов ` +
+                `${answerGroupIndex + 1} никогда не будет совпадать, потому что это ` +
+                'предшествует \'StartsWith\' правило с подходящим префиксом.'
             });
           }
           seenStringsStartsWith.push(currentString);
@@ -148,18 +148,18 @@ export class TextInputValidationService {
               currentString, {x: seenString}))) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
-              message: `Rule ${ruleIndex + 1} from answer group ` +
-                `${answerGroupIndex + 1} will never be matched because it ` +
-                'is preceded by a \'Equals\' rule with a matching input.'
+              message: `Правило ${ruleIndex + 1} из группы ответов ` +
+                `${answerGroupIndex + 1} никогда не будет совпадать, потому что это ` +
+                'предшествует \'Equals\' правило с подходящим входом.'
             });
           } else if (seenStringsFuzzyEquals.some(
             (seenString) => textInputRulesService.FuzzyEquals(
               currentString, {x: seenString}))) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
-              message: `Rule ${ruleIndex + 1} from answer group ` +
-                `${answerGroupIndex + 1} will never be matched because it ` +
-                'is preceded by a \'FuzzyEquals\' rule with a matching input.'
+              message: `Правило ${ruleIndex + 1} из группы ответов ` +
+                `${answerGroupIndex + 1} никогда не будет совпадать, потому что это ` +
+                'предшествует \'FuzzyEquals\' правило с подходящим входом.'
             });
           }
           seenStringsEquals.push(currentString);
@@ -169,9 +169,9 @@ export class TextInputValidationService {
               currentString, {x: seenString}))) {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
-              message: `Rule ${ruleIndex + 1} from answer group ` +
-                `${answerGroupIndex + 1} will never be matched because it ` +
-                'is preceded by a \'FuzzyEquals\' rule with a matching input.'
+              message: `Правило ${ruleIndex + 1} из группы ответов ` +
+                `${answerGroupIndex + 1} никогда не будет совпадать, потому что это ` +
+                'предшествует \'FuzzyEquals\' правило с подходящим входом.'
             });
           }
           seenStringsFuzzyEquals.push(currentString);

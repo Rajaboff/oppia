@@ -38,21 +38,22 @@
 <style>
   .conversation-skin-help-card {
     background: #fff;
-    border-radius: 2px;
     /* We move the help card lower so that it does not block
        the terminal output in the CodeRepl interaction.
     */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.24), 0 1px 3px rgba(0,0,0,0.12);
+    box-shadow: 0px 12px 40px rgba(37, 40, 43, 0.32);
     min-height: 50px;
     opacity: 1;
     padding: 12px;
     right: 12px;
     text-align: left;
     transition: all 350ms;
+
     /* The z-index value of leaflet map attribution is 1000, to make it go lower
        in stack we have used 1001.
     */
     z-index: 1001;
+    border-radius: 8px
   }
 
   .conversation-skin-help-card.ng-enter,
@@ -68,8 +69,8 @@
   }
 
   .conversation-skin-help-card .conversation-skin-oppia-avatar {
-    left: -15px;
-    top: 12px;
+    left: -32px;
+    top: 0px;
   }
 
   .conversation-skin-help-card-content {

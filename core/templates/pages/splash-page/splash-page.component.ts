@@ -65,7 +65,7 @@ angular.module('oppia').component('splashPage', {
       };
       ctrl.$onInit = function() {
         ctrl.userIsLoggedIn = null;
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         UserService.getUserInfoAsync().then(function(userInfo) {
           ctrl.userIsLoggedIn = userInfo.isLoggedIn();
           LoaderService.hideLoadingScreen();

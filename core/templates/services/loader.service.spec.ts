@@ -1,3 +1,4 @@
+
 // Copyright 2020 The Oppia Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +36,8 @@ describe('Loader Service', () => {
   });
 
   it('should set the loading message', () => {
-    loaderService.showLoadingScreen('Loading');
-    expect(loadingMessage).toBe('Loading');
+    loaderService.showLoadingScreen('Загрузка');
+    expect(loadingMessage).toBe('Загрузка');
   });
 
   it('should set the loading message to empty quotes when unset', () => {

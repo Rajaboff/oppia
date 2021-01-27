@@ -6,9 +6,9 @@
         <div ui-codemirror="{onLoad: $ctrl.initCodeEditor, readOnly: !$ctrl.interactionIsActive}">
         </div>
       </div>
-      <md-button type="button" class="md-raised" ng-disabled="!$ctrl.interactionIsActive || !$ctrl.hasLoaded" ng-click="$ctrl.runCode($ctrl.code)">Test Run</md-button>
+      <md-button type="button" class="md-raised" ng-disabled="!$ctrl.interactionIsActive || !$ctrl.hasLoaded" ng-click="$ctrl.runCode($ctrl.code)">Запуск кода</md-button>
       <span class="code-repl-language">
-        <em>Language: <[$ctrl.language]></em>
+        <em>Язык: <[$ctrl.language]></em>
       </span>
     </form>
   </div>

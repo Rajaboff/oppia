@@ -1,7 +1,7 @@
 <div>
   <div class="modal-header">
     <h3>
-      Subtopics & Skills
+      Подтемы и навыки
     </h3>
   </div>
   <div class="modal-body subtopics">
@@ -12,10 +12,10 @@
                  ng-class="{'skills-valid': !$ctrl.uncategorizedSkillSummaries.length, 'skills-invalid': $ctrl.uncategorizedSkillSummaries.length}"
                  dnd-list="$ctrl.uncategorizedSkillSummaries"
                  dnd-drop="$ctrl.onMoveSkillEnd(null)">
-          <strong>Uncategorized Skills</strong>
+          <strong>Навыки без категорий</strong>
           <div class="number-skills-container">
-            <span ng-if="$ctrl.uncategorizedSkillSummaries.length === 1" class="number-skills-text"><[$ctrl.uncategorizedSkillSummaries.length]> Skill</span>
-            <span ng-if="!($ctrl.uncategorizedSkillSummaries.length === 1)" class="number-skills-text"><[$ctrl.uncategorizedSkillSummaries.length]> Skills</span>
+            <span ng-if="$ctrl.uncategorizedSkillSummaries.length === 1" class="number-skills-text"><[$ctrl.uncategorizedSkillSummaries.length]> Навык</span>
+            <span ng-if="!($ctrl.uncategorizedSkillSummaries.length === 1)" class="number-skills-text"><[$ctrl.uncategorizedSkillSummaries.length]> Навыки</span>
           </div>
           <div class="uncategorized-skills-container">
             <md-card class="skill-id"
@@ -32,7 +32,7 @@
               </div>
             </md-card>
             <p class="intro-card-message protractor-test-no-uncategorized-skills" ng-if="$ctrl.uncategorizedSkillSummaries.length === 0">
-              There are no unassigned skills left in the topic.
+              В теме не осталось нераспределенных навыков.
             </p>
           </div>
         </md-card>
@@ -52,8 +52,8 @@
           </div>
           <div ng-if="subtopic.getId() === $ctrl.selectedSubtopicId">
             <input type="text" ng-model="$ctrl.editableName">
-            <button class="btn btn-secondary" ng-click="$ctrl.editNameOfSubtopicWithId(null)">Cancel</button>
-            <button class="btn btn-primary" ng-click="$ctrl.updateSubtopicTitle(subtopic.getId())">Save</button>
+            <button class="btn btn-secondary" ng-click="$ctrl.editNameOfSubtopicWithId(null)">Отмена</button>
+            <button class="btn btn-primary" ng-click="$ctrl.updateSubtopicTitle(subtopic.getId())">Сохранить</button>
           </div>
           <div class="subtopic-container">
             <md-card class="skill-id"
@@ -73,8 +73,8 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-secondary" ng-click="cancel()">Cancel</button>
-    <button class="btn btn-success protractor-save-rearrange-skills" ng-click="confirm()">Save</button>
+    <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
+    <button class="btn btn-success protractor-save-rearrange-skills" ng-click="confirm()">Сохранить</button>
   </div>
 </div>
 <style>
@@ -87,7 +87,7 @@
     padding: 40px 0 0 0;
   }
   .rearrange-skills-modal a {
-    color: #666;
+    color: #007EFF;
   }
   .rearrange-skills-modal .subtopic-container {
     max-height: 60vh;
@@ -98,11 +98,12 @@
     overflow-y: auto;
   }
   .rearrange-skills-modal .item-container {
-    background-color: #eee;
+    background-color: #CCE5FF;
     border-radius: 4px;
     max-height: 95%;
     padding: 5px 10px;
     width: 15vw;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
   .rearrange-skills-modal .rearrange-skills-modal {
     display: flex;
@@ -150,12 +151,11 @@
     display: none;
   }
   .rearrange-skills-modal .skills-valid {
-    background-color: #009C8A33;
-    border: 2px solid #009C8A;
+    background-color: #2ac76952;
   }
   .rearrange-skills-modal .skills-invalid {
-    background-color: #C55F4533;
-    border: 2px solid #C55F45;
+    background-color: #E8E8E8;
+    box-shadow: 0px 4px 8px rgba(37, 40, 43, 0.14);
   }
   .rearrange-skills-modal .dndDragover .subtopic {
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);

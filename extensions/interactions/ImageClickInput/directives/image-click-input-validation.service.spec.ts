@@ -137,12 +137,12 @@ describe('ImageClickInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please add an image for the learner to click on.'
+      message: 'Добавьте изображение, чтобы учащийся щелкнул по.'
     }]);
   });
 
-  it('should expect labeled regions with non-empty, unique, and ' +
-    'alphanumeric labels',
+  it('следует ожидать помеченные регионы с непустыми, уникальными и ' +
+    'буквенно-цифровые метки',
   () => {
     var regions = customizationArguments.imageAndRegions.value.labeledRegions;
     regions[0].label = '';
@@ -151,7 +151,7 @@ describe('ImageClickInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure the region labels are nonempty.'
+      message: 'Убедитесь, что метки региона не пусты.'
     }]);
 
     regions[0].label = 'SecondLabel';
@@ -160,7 +160,7 @@ describe('ImageClickInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'Please ensure the region labels are unique.'
+      message: 'Убедитесь, что метки региона уникальны.'
     }]);
 
     regions[0].label = '@';
@@ -169,7 +169,7 @@ describe('ImageClickInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'The region labels should consist of alphanumeric characters.'
+      message: 'Метки регионов должны состоять из буквенно-цифровых символов.'
     }]);
 
     customizationArguments.imageAndRegions.value.labeledRegions = [];
@@ -179,7 +179,7 @@ describe('ImageClickInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Please specify at least one region in the image.'
+      message: 'Укажите хотя бы один регион на изображении.'
     }]);
   });
 
@@ -190,8 +190,8 @@ describe('ImageClickInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.CRITICAL,
-      message: 'The region label \'FakeLabel\' in rule 1 in group 1 is ' +
-        'invalid.'
+      message: 'Метка региона \'FakeLabel\' в правиле 1 в группе 1 ' +
+        'не валидная.'
     }]);
   });
 
@@ -201,15 +201,15 @@ describe('ImageClickInputValidationService', () => {
         currentState, customizationArguments, goodAnswerGroups, null);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Please add a rule to cover what should happen if none of ' +
-          'the given regions are clicked.'
+        message: 'Добавьте правило, описывающее, что должно произойти, если ни одно из ' +
+          'данные регионы нажаты.'
       }]);
       warnings = validatorService.getAllWarnings(
         currentState, customizationArguments, goodAnswerGroups, badOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Please add a rule to cover what should happen if none of ' +
-          'the given regions are clicked.'
+        message: 'Добавьте правило, описывающее, что должно произойти, если ни одно из ' +
+          'данные регионы нажаты.'
       }]);
     });
 });

@@ -46,7 +46,7 @@ angular.module('oppia').factory('ExplorationCreationService', [
 
         explorationCreationInProgress = true;
         AlertsService.clearWarnings();
-        LoaderService.showLoadingScreen('Creating exploration');
+        LoaderService.showLoadingScreen('Создание занятия');
 
         $http.post('/contributehandler/create_new', {
         }).then(function(response) {

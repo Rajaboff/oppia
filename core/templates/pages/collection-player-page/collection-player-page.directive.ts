@@ -242,7 +242,7 @@ angular.module('oppia').directive('collectionPlayerPage', [
                 ctrl.generatePathParameters();
               }
             }, true);
-            LoaderService.showLoadingScreen('Loading');
+            LoaderService.showLoadingScreen('Загрузка');
             ctrl.collection = null;
             ctrl.collectionPlaythrough = null;
             ctrl.collectionId = UrlService.getCollectionIdFromUrl();

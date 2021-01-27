@@ -4,7 +4,7 @@
   </schema-based-editor>
 </div>
 <div class="position-relative" ng-if="$ctrl.value.imagePath !== ''">
-  <div>Add new regions by clicking on the image and dragging:</div>
+  <div>Добавьте новые области, щелкнув по изображение и перетащить:</div>
   <svg class="oppia-image-with-regions-editor-svg"
        width="100%"
        ng-attr-style="cursor: <[$ctrl.getCursorStyle()]>;"
@@ -65,7 +65,7 @@
          ng-model-options="{getterSetter: true}">
 
   <div class="text-danger oppia-error-text"><[$ctrl.errorText]></div>
-  <button type="button" class="btn btn-danger" ng-click="$ctrl.resetEditor()">Clear Image and Regions</button>
+  <button type="button" class="btn btn-danger" ng-click="$ctrl.resetEditor()">Очистить</button>
 </div>
 <style>
   input.oppia-image-with-regions-region-label-editor {

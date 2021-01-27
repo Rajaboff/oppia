@@ -60,15 +60,15 @@ export const AppConstants = {
   },
 
   STATE_ERROR_MESSAGES: {
-    ADD_INTERACTION: 'Please add an interaction to this card.',
-    STATE_UNREACHABLE: 'This card is unreachable.',
+    ADD_INTERACTION: 'Пожалуйста, добавьте интерактив к этой карточке.',
+    STATE_UNREACHABLE: 'Эта карта недоступна.',
     UNABLE_TO_END_EXPLORATION:
-      "There's no way to complete the exploration starting from this card. " +
-      'To fix this, make sure that the last card in the chain starting from' +
-      " this one has an 'End Exploration' question type.",
-    INCORRECT_SOLUTION: 'The current solution does not lead to another card.',
+      "Невозможно завершить занятие, начиная с этой карты. " +
+      'Чтобы исправить это, убедитесь, что последняя карта в цепочке, начиная с' +
+      " у этого есть вопрос типа «Конец занятия.",
+    INCORRECT_SOLUTION: 'Текущее решение не приводит к другой карте.',
     UNRESOLVED_ANSWER:
-      'There is an answer among the top 10 which has no explicit feedback.',
+      'Среди 10 лучших есть ответ, на который нет явной обратной связи..',
   },
 
   EXPLORATION_SUMMARY_DATA_URL_TEMPLATE: '/explorationsummarieshandler/data',
@@ -85,7 +85,7 @@ export const AppConstants = {
   ENABLE_ML_CLASSIFIERS: false,
   // Feature still in development.
   INFO_MESSAGE_SOLUTION_IS_INVALID_FOR_EXPLORATION: (
-    'The current solution does not lead to another card.'),
+    'Текущее решение не приводит к другой карте.'),
   PARAMETER_TYPES: {
     REAL: 'Real',
     UNICODE_STRING: 'UnicodeString',
@@ -132,7 +132,7 @@ export const AppConstants = {
   // all related actions are shown together, regardless of how many there are.)
   MAX_UNRELATED_ACTIONS_PER_BLOCK: 4,
 
-  SITE_NAME: 'Oppia.org',
+  SITE_NAME: 'oqustudy.kz',
 
   DEFAULT_PROFILE_IMAGE_PATH: '/avatar/user_blue_72px.webp',
 

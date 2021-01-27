@@ -2,7 +2,7 @@
 <div ng-if="currentMode === 'MODE_SELECT_SKILL'">
   <div class="modal-header">
     <h3 ng-if="skillSummaries.length == 0">
-      No skills linked to topic
+     Нет навыков, связанных с темой
     </h3>
     <h3 ng-if="skillSummaries.length > 0">
       <[instructionMessage]>
@@ -10,12 +10,11 @@
   </div>
   <div class="modal-body select-skill-modal protractor-test-skill-select-modal">
     <div ng-if="skillSummaries.length == 0">
-      You can only create questions for topics that have atleast one skill
-      attached to it. Please link a skill to this topic before adding questions.
+      Вы можете создавать вопросы только для тем, к которым привязан хотя бы один навык. Пожалуйста, свяжите навык с этой темой, прежде чем добавлять вопросы.
     </div>
     <div class="list-group">
       <md-card layout="row" class="list-view-item">
-        Search By Skill
+        Поиск по навыкам
         <input type="text" class="form-control" placeholder="Enter a skill name" ng-model="skillFilterText" autofocus>
       </md-card>
       <div class="skill-summary-container">
@@ -37,14 +36,14 @@
   </div>
   <div class="modal-footer" ng-switch="skillSummaries.length > 0">
     <div ng-switch-when="true">
-      <button class="btn btn-secondary" ng-click="cancel()"> Cancel </button>
+      <button class="btn btn-secondary" ng-click="cancel()"> Отмена </button>
       <button class="btn btn-success protractor-test-confirm-skill-button"
               ng-disabled="selectedSkillIds.length === 0"
-              ng-click="goToNextStep()"> Next
+              ng-click="goToNextStep()"> Следующий
       </button>
     </div>
     <div ng-switch-when="false">
-      <button class="btn btn-secondary" ng-click="cancel()"> Ok </button>
+      <button class="btn btn-secondary" ng-click="cancel()"> Ок </button>
     </div>
   </div>
 </div>
@@ -52,15 +51,15 @@
 <div ng-if="currentMode === 'MODE_SELECT_DIFFICULTY'">
   <div class="modal-header">
     <h3 ng-if="linkedSkillsWithDifficulty.length == 0">
-      Select skills you would like to link to the question.
+      Выберите навыки, которые вы хотите связать с вопросом.
     </h3>
     <h3 ng-if="linkedSkillsWithDifficulty.length > 0">
-      Select the difficulty per skill (rubrics for each difficulty mentioned alongside):
+      Выберите сложность для каждого навыка (рядом с указанием рубрики для каждой сложности):
     </h3>
   </div>
   <div class="modal-body select-skill-modal">
     <div ng-if="linkedSkillsWithDifficulty.length == 0">
-      You can only set difficulty after selecting skills linked to the question. Please go back and link skill(s) to this question.
+      Вы можете установить сложность только после выбора навыков, связанных с вопросом. Вернитесь и свяжите навык (-а) с этим вопросом.
     </div>
     <div class="list-group">
       <div class="list-group-item"  ng-repeat="skillWithDifficulty in linkedSkillsWithDifficulty track by $index">
@@ -73,14 +72,14 @@
   </div>
   <div class="modal-footer" ng-switch="linkedSkillsWithDifficulty.length > 0">
     <div ng-switch-when="true">
-      <button class="btn btn-secondary" ng-click="cancel()"> Cancel </button>
+      <button class="btn btn-secondary" ng-click="cancel()"> Отмена </button>
       <button class="btn btn-success protractor-test-confirm-skill-difficulty-button"
               ng-disabled="linkedSkillsWithDifficulty.length === 0"
-              ng-click="startQuestionCreation()"> Done
+              ng-click="startQuestionCreation()"> Сделано
       </button>
     </div>
     <div ng-switch-when="false">
-      <button class="btn btn-secondary" ng-click="goToSelectSkillView()"> Back </button>
+      <button class="btn btn-secondary" ng-click="goToSelectSkillView()"> Назад </button>
     </div>
   </div>
 </div>

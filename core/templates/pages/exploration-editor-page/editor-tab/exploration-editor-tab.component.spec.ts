@@ -320,9 +320,9 @@ describe('Exploration editor tab component', function() {
     explorationInitStateNameService.init('First State');
 
     expect(ctrl.getStateContentPlaceholder()).toBe(
-      'This is the first card of your exploration. Use this space ' +
-      'to introduce your topic and engage the learner, then ask ' +
-      'them a question.');
+      'Это первая карта вашего занятия. Используйте это пространство ' +
+      'представить свою тему, заинтересовать учащегося, а затем спросить ' +
+      'ответы.');
   });
 
   it('should get state content placeholder text when init state name is' +
@@ -335,7 +335,7 @@ describe('Exploration editor tab component', function() {
   });
 
   it('should get state content save button placeholder', function() {
-    expect(ctrl.getStateContentSaveButtonPlaceholder()).toBe('Save Content');
+    expect(ctrl.getStateContentSaveButtonPlaceholder()).toBe('Сохранить контент');
   });
 
   it('should add state in exploration states', function() {

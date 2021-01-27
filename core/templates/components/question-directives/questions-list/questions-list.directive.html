@@ -2,7 +2,7 @@
   <div ng-if="$ctrl.editorIsOpen" class="question-editor-parent">
     <md-card class="oppia-page-card oppia-mobile-collapsible-card">
       <div class="difficulty-card-header oppia-mobile-collapsible-card-header" ng-click="$ctrl.toggleDifficultyCard()">
-        <h3>Difficulty</h3>
+        <h3>Сложность</h3>
         <i class="fa fa-caret-down"
            ng-if="!$ctrl.difficultyCardIsShown"
            aria-hidden="true">
@@ -14,7 +14,7 @@
       </div>
       <div class="oppia-mobile-collapsible-card-content" ng-if="$ctrl.difficultyCardIsShown">
         <div class="list-group">
-          <h4>Select Difficulty</h4>
+          <h4>Выбрать сложность</h4>
           <div ng-repeat="skillWithDifficulty in $ctrl.linkedSkillsWithDifficulty track by $index" ng-click="$ctrl.changeLinkedSkillDifficulty()">
             <label class="list-group-item-heading"><[skillWithDifficulty.getDescription()]></label>
             <question-difficulty-selector skill-id-to-rubrics-object="$ctrl.skillIdToRubricsObject"
@@ -25,7 +25,7 @@
       </div>
     </md-card>
     <div ng-if="!$ctrl.newQuestionIsBeingCreated" class="linked-skills-container">
-      <h4> <strong> Linked Skills </strong> </h4>
+      <h4> <strong> Связанные навыки </strong> </h4>
       <md-card class="question-skill-id" ng-repeat="skill in $ctrl.associatedSkillSummaries">
         <div class="skill-description-card">
           <span ng-click="$ctrl.removeSkill(skill.getId())" aria-hidden="true">
@@ -36,7 +36,7 @@
           </a>
         </div>
       </md-card>
-      <button class="btn btn-success btn-sm" ng-click="$ctrl.addSkill()">Link Another Skill</button>
+      <button class="btn btn-success btn-sm" ng-click="$ctrl.addSkill()"> + Связать еще навык</button>
     </div>
     <question-editor question-id="$ctrl.questionId"
                      misconceptions-by-skill="$ctrl.misconceptionsBySkill"
@@ -52,11 +52,11 @@
   <md-card class="question-data-container" ng-if="!$ctrl.editorIsOpen">
     <div class="question-list-container">
       <div class="list-header">
-        <h3>Question List</h3>
+        <h3>Список вопросов</h3>
       </div>
       <div ng-if="$ctrl.getQuestionSummariesForOneSkill().length === 0">
         <span>
-          There are no questions in this skill.
+          По этому навыку нет вопросов.
         </span>
       </div>
       <div ng-repeat="questionSummaryForOneSkill in $ctrl.getQuestionSummariesForOneSkill() track by $index" class="question-list-item protractor-test-question-list-item" ng-if="$ctrl.getQuestionSummariesForOneSkill().length > 0">
@@ -78,7 +78,7 @@
         <i class="material-icons md-18"
            ng-if="$ctrl.getCurrentPageNumber() !== 0"
            ng-click="$ctrl.goToPreviousPage()">&#xE5C4;
-        </i> Page <[$ctrl.getCurrentPageNumber() + 1]>
+        </i> Страница <[$ctrl.getCurrentPageNumber() + 1]>
         <i class="material-icons md-18" ng-if="!$ctrl.isLastPage()" ng-click="$ctrl.goToNextPage()">&#xE5C8;</i>
       </div>
     </div>
@@ -87,46 +87,46 @@
     <div class="save-question-container">
       <div>
         <div class="list-header">
-          <h3>New Question</h3>
+          <h3>Новый вопрос</h3>
         </div>
         <div class="checklist-item">
           <div class="checklist-item-number" ng-class="{'checklist-item-number-active': $ctrl.linkedSkillsWithDifficulty.length}"><span>1</span></div>
-          <div class="checklist-item-text">Difficulty</div>
+          <div class="checklist-item-text">Сложность</div>
         </div>
         <div class="checklist-item-separator"></div>
         <div class="checklist-item">
           <div class="checklist-item-number" ng-class="{'checklist-item-number-active': $ctrl.question.getStateData().content.getHtml().length}">2</div>
-          <div class="checklist-item-text">Problem</div>
+          <div class="checklist-item-text">Проблема</div>
         </div>
         <div class="checklist-item-separator"></div>
         <div class="checklist-item">
           <div class="checklist-item-number" ng-class="{'checklist-item-number-active': $ctrl.question.getStateData().interaction.id}">3</div>
-          <div class="checklist-item-text">Interaction</div>
+          <div class="checklist-item-text">Интерактив</div>
         </div>
         <div class="checklist-item-separator"></div>
         <div class="checklist-item">
           <div class="checklist-item-number" ng-class="{'checklist-item-number-active': $ctrl.question.getStateData().interaction.answerGroups.length}">4</div>
-          <div class="checklist-item-text">Answers and Responses</div>
+          <div class="checklist-item-text">Вопросы и ответы</div>
         </div>
         <div class="checklist-item-separator"></div>
         <div class="checklist-item">
           <div class="checklist-item-number" ng-class="{'checklist-item-number-active': $ctrl.question.getStateData().interaction.hints.length}">5</div>
-          <div class="checklist-item-text">Hints</div>
+          <div class="checklist-item-text">Подсказки</div>
         </div>
         <div class="checklist-item-separator" ng-if="$ctrl.showSolutionCheckpoint()"></div>
         <div class="checklist-item" ng-if="$ctrl.showSolutionCheckpoint()">
           <div class="checklist-item-number" ng-class="{'checklist-item-number-active': $ctrl.question.getStateData().interaction.solution}">6</div>
-          <div class="checklist-item-text">Solution</div>
+          <div class="checklist-item-text">Решение</div>
         </div>
       </div>
     </div>
     <div class="save-question-button-container">
-      <button class="btn question-edit-cancel-button" ng-click="$ctrl.cancel()">CANCEL</button>
+      <button class="btn question-edit-cancel-button" ng-click="$ctrl.cancel()">Отмена</button>
       <button title="To Save please add: interaction, hint, solution and address all misconceptions"
               class="btn add-question-btn question-edit-save-button protractor-test-save-question-button"
               ng-click="$ctrl.saveQuestion()"
               ng-disabled="!$ctrl.isQuestionValid()">
-        SAVE
+        Сохранить
       </button>
     </div>
   </md-card>
@@ -134,12 +134,12 @@
     <md-card class="oppia-page-card">
       <div>
         <div class="list-header create-question-header">
-          <h3>Create a new question</h3>
+          <h3>Создать новый вопрос</h3>
         </div>
         <button class="btn add-question-btn protractor-test-create-question-button"
                 ng-disabled="$ctrl.selectSkillModalIsShown() && !$ctrl.getSelectedSkillId()"
                 ng-click="$ctrl.createQuestion()">
-          + ADD QUESTION
+          + Добавить вопрос
         </button>
       </div>
     </md-card>
@@ -180,7 +180,7 @@
     width: 35%;
   }
   questions-list .list-header {
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid #000;
     display: flex;
     justify-content: space-between;
     margin: 25px 0;
@@ -194,6 +194,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    color: #E93C3C;
   }
   questions-list .create-question-header {
     border-bottom: none;
@@ -201,14 +202,15 @@
   }
   questions-list .question-text {
     width: 90%;
+    color: #007EFF;
   }
   questions-list .page-navigation-arrows {
     float: right;
   }
   questions-list .add-question-btn {
-    background-color: #008098;
+    background-color: #007EFF;
     color: #FFFFFF;
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
   }
   questions-list .add-question-btn .btn.disabled, .btn:disabled {
@@ -228,9 +230,9 @@
   questions-list .checklist-item-number {
     align-items: center;
     background-color: #FFF;
-    border: 1.5px solid #419889;
+    border: 1.5px solid #3398FF;
     border-radius: 50%;
-    color: #419889;
+    color: #3398FF;
     display: flex;
     font-size: 12px;
     height: 22px;
@@ -239,11 +241,11 @@
     width: 22px;
   }
   questions-list .checklist-item-number-active {
-    background-color: #419889;
+    background-color: #3398FF;
     color: #FFF;
   }
   questions-list .checklist-item-separator {
-    background-color: #419889;
+    background-color: #3398FF;
     height: 20px;
     margin: 2px 10px;
     width: 2px;
@@ -270,7 +272,7 @@
     margin-left: 5px;
   }
   questions-list .btn-success[disabled] {
-    background-color: #008098;
+    background-color: #007EFF;
   }
   questions-list .save-question-button-container {
     border-top: 1px solid #000;

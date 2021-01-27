@@ -39,7 +39,7 @@ def validate_image_and_filename(raw_image, filename):
         ValidationError. Image or filename supplied fails one of the
             validation checks.
     """
-    hundred_kb_in_bytes = 100 * 1024
+    hundred_kb_in_bytes = 1024 * 1024
 
     if not raw_image:
         raise utils.ValidationError('No image supplied')

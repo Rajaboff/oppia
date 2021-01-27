@@ -104,8 +104,8 @@ describe('NumericInputValidationService', () => {
       currentState, {}, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -115,8 +115,8 @@ describe('NumericInputValidationService', () => {
       currentState, {}, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -128,8 +128,8 @@ describe('NumericInputValidationService', () => {
       currentState, {}, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 2 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 1 из группы ответов 2 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -140,8 +140,8 @@ describe('NumericInputValidationService', () => {
         currentState, {}, answerGroups, goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Rule 2 from answer group 1 will never be matched ' +
-          'because it is made redundant by rule 1 from answer group 1.'
+        message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+          'потому что это делается избыточным правилом 1 из группы ответов 1.'
       }]);
     });
 

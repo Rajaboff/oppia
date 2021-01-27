@@ -1,30 +1,30 @@
 <div class="modal-header create-new-topic-modal-header">
   <h3>
-    New Topic
+    Создать тему
   </h3>
   <i class="fa fa-times modal-close-button" ng-click="cancel()"></i>
 </div>
 <form ng-submit="save()">
   <div class="modal-body create-new-topic-form">
     <div class="create-new-topic-input-field">
-      <div><span class="create-new-topic-input-label">Name*</span></div>
+      <div><span class="create-new-topic-input-label">Название</span></div>
       <input class="protractor-test-new-topic-name-field required"
              ng-model="newlyCreatedTopic.name"
              maxlength="<[MAX_CHARS_IN_TOPIC_NAME]>"
              ng-change="onTopicNameChange()" autofocus>
       <div class="oppia-input-box-subtitle">
         <em>
-          Topic name should be at most <[MAX_CHARS_IN_TOPIC_NAME]> characters.
+          Название темы должно быть не более <[MAX_CHARS_IN_TOPIC_NAME]> символов.
         </em>
       </div>
       <div ng-if="topicNameExists" class="oppia-input-box-subtitle text-danger">
         <em>
-          A topic with this name already exists.
+          Тема с таким названием уже существует.
         </em>
       </div>
     </div>
     <div class="create-new-topic-input-field">
-      <div><span class="create-new-topic-input-label">Topic URL Fragment*</span></div>
+      <div><span class="create-new-topic-input-label">Фрагмент URL темы</span></div>
       <input class="protractor-test-new-topic-url-fragment-field required"
              ng-model="newlyCreatedTopic.urlFragment"
              maxlength="<[MAX_CHARS_IN_TOPIC_URL_FRAGMENT]>"
@@ -33,33 +33,33 @@
       <div>
         <span class="oppia-input-box-subtitle">
           <em>
-            The topic URL fragment is used to uniquely access the topic viewer page. It should consist of one or more hyphen-separated words, all in lowercase, with at most <[MAX_CHARS_IN_TOPIC_URL_FRAGMENT]> characters in total. Please use meaningful keywords, and avoid using words like "and", "of", or "the".
+            Фрагмент URL-адреса темы используется для однозначного доступа к странице просмотра темы. Он должен состоять из одного или нескольких слов, разделенных дефисом, в нижнем регистре., максимум с <[MAX_CHARS_IN_TOPIC_URL_FRAGMENT]> символов. Пожалуйста, используйте ключевые слова, и избегайте таких слов, как "and", "of", или "the".
             This topic can be accessed at the following URL:<br>
             <[hostname]>/learn/staging/<[newlyCreatedTopic.urlFragment]>
           </em>
         </span>
         <div ng-if="topicUrlFragmentExists" class="oppia-input-box-subtitle text-danger">
           <em>
-            This topic URL fragment already exists.
+            Фрагмент URL этой темы уже существует.
           </em>
         </div>
       </div>
     </div>
     <div class="create-new-topic-input-field">
-      <div><span class="create-new-topic-input-label">Description*</span></div>
+      <div><span class="create-new-topic-input-label">Описание</span></div>
       <textarea class="protractor-test-new-topic-description-field required"
-                rows="4" cols="50" placeholder="Enter description"
+                rows="4" cols="50" placeholder="Введите описание"
                 maxlength="<[MAX_CHARS_IN_TOPIC_DESCRIPTION]>"
                 ng-model="newlyCreatedTopic.description">
       </textarea>
       <div class="oppia-input-box-subtitle">
         <em>
-          Topic description should be at most <[MAX_CHARS_IN_TOPIC_DESCRIPTION]> characters.
+          Описание темы должно быть не более <[MAX_CHARS_IN_TOPIC_DESCRIPTION]> символов.
         </em>
       </div>
     </div>
     <div class="create-new-topic-input-field">
-      <label class="create-new-topic-input-label">Topic Thumbnail*</label>
+      <label class="create-new-topic-input-label">Обложка темы*</label>
       <thumbnail-uploader preview-title="newlyCreatedTopic.name"
                           aspect-ratio="'4:3'"
                           disabled="false"
@@ -71,9 +71,9 @@
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-secondary" ng-click="cancel()" type="button">Cancel</button>
+    <button class="btn btn-secondary" ng-click="cancel()" type="button">Отмена</button>
     <button class="btn btn-success protractor-test-confirm-topic-creation-button" type="submit" ng-disabled="!isValid()">
-      <span>Create Topic</span>
+      <span>Создать тему</span>
     </button>
   </div>
 </form>
@@ -112,7 +112,7 @@
     }
     .create-new-topic .modal-header {
       align-items: center;
-      background-color: #00609C;
+      background-color: #007EFF;
       display: flex;
     }
     .create-new-topic .modal-header h3 {

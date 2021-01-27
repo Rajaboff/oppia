@@ -36,9 +36,9 @@ angular.module('oppia').directive('oppiaResponseImageClickInput', [
           var ctrl = this;
           ctrl.$onInit = function() {
             var _answer = HtmlEscaperService.escapedJsonToObj($attrs.answer);
-            ctrl.clickRegionLabel = '(Clicks on ' + (
+            ctrl.clickRegionLabel = '(Кликнули на ' + (
               _answer.clickedRegions.length > 0 ?
-                '\'' + _answer.clickedRegions[0] + '\'' : 'image') + ')';
+                '\'' + _answer.clickedRegions[0] + '\'' : 'область изображения') + ')';
           };
         }
       ]

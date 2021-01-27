@@ -1,19 +1,19 @@
 <div class="modal-header">
-  <h3>Unpublish exploration (as moderator)</h3>
+  <h3>Отменить публикацию исследования (в качестве модератора)</h3>
 </div>
 
 <div class="modal-body">
   <p>
-    You are about to unpublish this exploration.
+    Вы собираетесь отменить публикацию этого занятия.
   </p>
 
   <div ng-if="willEmailBeSent">
     <br>
     <p>
-      Doing so will send the following email to all exploration owners;
-      please edit it as needed. (NB: do not include a salutation or a
-      signoff -- the text "Hi [username]" and "Thanks! [your username] (Oppia moderator)" will
-      be auto-added.)
+      Всем владельцам геологоразведочных работ будет отправлено следующее электронное письмо;
+      пожалуйста, отредактируйте его по мере необходимости. (Примечание: не включайте приветствие или
+      signoff - текст «Привет, [имя пользователя]» и «Спасибо! [ваше имя пользователя] (модератор Oppia)» будут
+      добавляться автоматически.)
     </p>
 
     <schema-based-editor schema="EMAIL_BODY_SCHEMA" local-value="emailBody">
@@ -22,8 +22,8 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
   <button class="btn btn-success" ng-click="confirm(emailBody)">
-    <span>Unpublish Exploration</span>
+    <span>Отменить публикацию</span>
   </button>
 </div>

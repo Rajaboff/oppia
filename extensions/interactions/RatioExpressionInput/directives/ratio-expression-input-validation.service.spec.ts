@@ -103,13 +103,13 @@ describe('RatioExpressionInputValidationService', () => {
     answerGroups = [agof.createNew([], goodDefaultOutcome, null, null)];
   });
 
-  it('should be able to perform basic validation', () => {
+  it('должен иметь возможность выполнять базовую проверку', () => {
     warnings = validatorService.getAllWarnings(
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([]);
   });
 
-  it('should catch redundancy of rules with matching inputs', () => {
+  it('должен уловить избыточность правил с соответствующими входами', () => {
     // The third rule will never get matched.
     answerGroups[0].rules = [equals, isEquivalent];
 
@@ -117,9 +117,9 @@ describe('RatioExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because' +
-      ' it is preceded by a \'Equals\' rule with a matching' +
-      ' input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому чтоe' +
+      ' ему предшествует \'Equals\' правило с соответствием' +
+      ' входом.'
     }]);
     let isEquivalentNonSimplified = rof.createFromBackendDict({
       rule_type: 'IsEquivalent',
@@ -135,13 +135,13 @@ describe('RatioExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because' +
-      ' provided input is not in its simplest form.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что' +
+      ' предоставленный ввод не в простейшей форме.'
     }, {
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because' +
-      ' it is preceded by a \'IsEquivalent\' rule with a matching' +
-      ' input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что' +
+      ' ему предшествует \'IsEquivalent\' правило с подходящим ' +
+      ' входом.'
     }
     ]);
 
@@ -159,13 +159,13 @@ describe('RatioExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because ' +
-      'the \'HasNumberOfTermsEqualTo\' rule is preceded by a rule with a ' +
-      'matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что ' +
+      ' \'HasNumberOfTermsEqualTo\' правилу предшествует правило с ' +
+      'соответствующий ввод.'
     }, {
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 3 from answer group 1 will never be matched because' +
-      ' it has differing number of terms than required.'
+      message: 'Правило 3 из группы ответов 1 никогда не будет выполнено, потому что' +
+      ' количество терминов отличается от требуемого.'
     }]);
 
     // The second rule will never get matched.
@@ -175,9 +175,9 @@ describe('RatioExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched because ' +
-      'it is preceded by a \'HasNumberOfTermsEqualTo\' rule with a ' +
-      'matching input.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено, потому что ' +
+      'ему предшествует \'HasNumberOfTermsEqualTo\' правило с ' +
+      'соответствующим вводом.'
     }]);
 
     let equalsTwoTerms = rof.createFromBackendDict({
@@ -200,16 +200,16 @@ describe('RatioExpressionInputValidationService', () => {
       currentState, customizationArgs, answerGroups, goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 1 will never be matched because' +
-      ' it has differing number of terms than required.'
+      message: 'Правило 1 из группы ответов 1 никогда не будет выполнено, потому что' +
+      ' количество терминов отличается от требуемого.'
     }, {
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 3 from answer group 1 will never be matched because' +
-      ' it has differing number of terms than required.'
+      message: 'Правило 3 из группы ответов 1 никогда не будет выполнено, потому что' +
+      ' количество терминов отличается от требуемого.'
     }]);
   });
 
-  it('should catch non-integer value for # terms', () => {
+  it('должен улавливать нецелое значение для # терминов', () => {
     customizationArgs.numberOfTerms.value = 1.5;
     var warnings = validatorService.getAllWarnings(
       currentState, customizationArgs, answerGroups,
@@ -217,11 +217,11 @@ describe('RatioExpressionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'The number of terms should be a non-negative integer other than 1.')
+        'Количество терминов должно быть неотрицательным целым числом, отличным от 1.')
     }]);
   });
 
-  it('should catch undefined value for # terms', () => {
+  it('должен поймать неопределенное значение для # терминов', () => {
     customizationArgs.numberOfTerms.value = undefined;
     var warnings = validatorService.getAllWarnings(
       currentState, customizationArgs, answerGroups,
@@ -229,11 +229,11 @@ describe('RatioExpressionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'The number of terms should be a non-negative integer other than 1.')
+        'Количество терминов должно быть неотрицательным целым числом, отличным от 1..')
     }]);
   });
 
-  it('should catch negative value for # terms', () => {
+  it('должно быть отрицательное значение для # условий', () => {
     customizationArgs.numberOfTerms.value = -1;
     var warnings = validatorService.getAllWarnings(
       currentState, customizationArgs, answerGroups,
@@ -241,18 +241,18 @@ describe('RatioExpressionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'The number of terms should be a non-negative integer other than 1.')
+        'Количество терминов должно быть неотрицательным целым числом, отличным от 1.')
     }]);
   });
 
-  it('should catch integral value 1 for # terms', () => {
+  it('должен поймать целое значение 1 для # терминов', () => {
     customizationArgs.numberOfTerms.value = 1;
     var warnings = validatorService.getAllWarnings(
       currentState, customizationArgs, answerGroups,
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: ('The number of terms in a ratio should be greater than 1.')
+      message: ('Количество членов в соотношении должно быть больше 1.')
     }]);
   });
 });

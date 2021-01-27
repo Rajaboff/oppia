@@ -1,4 +1,4 @@
-Selected Misconception: <[$ctrl.selectedMisconception && $ctrl.selectedMisconception.getName()]>
+Избранное заблуждение: <[$ctrl.selectedMisconception && $ctrl.selectedMisconception.getName()]>
 <div ng-repeat="(skillId, misconceptions) in $ctrl.misconceptionsBySkill">
   <div ng-repeat="misconception in misconceptions">
     <button class="btn btn-secondary misconception-button" ng-click="$ctrl.selectMisconception(misconception, skillId)">
@@ -7,10 +7,10 @@ Selected Misconception: <[$ctrl.selectedMisconception && $ctrl.selectedMisconcep
       </angular-html-bind>
     </button>
     <div ng-if="$ctrl.selectedMisconceptionSkillId === skillId && $ctrl.selectedMisconception.getId() === misconception.getId()">
-      <label class="misconception-label"> Note to creators: </label>
+      <label class="misconception-label"> Примечание для создателей: </label>
       <angular-html-bind html-data="misconception.getNotes()">
       </angular-html-bind>
-      <label class="misconception-label"> Misconception Feedback: </label>
+      <label class="misconception-label"> Обратная связь по заблуждению: </label>
       <angular-html-bind html-data="misconception.getFeedback()">
       </angular-html-bind>
     </div>
@@ -19,7 +19,7 @@ Selected Misconception: <[$ctrl.selectedMisconception && $ctrl.selectedMisconcep
 <span ng-click="$ctrl.toggleMisconceptionFeedbackUsage()" aria-hidden="true">
   <i ng-if="!$ctrl.misconceptionFeedbackIsUsed" class="material-icons md-18 misconception-feedback-usage-checkbox">&#xE835;</i>
   <i ng-if="$ctrl.misconceptionFeedbackIsUsed" class="material-icons md-18 misconception-feedback-usage-checkbox">&#xE834;</i>
-  Use misconception feedback as answer group feedback.
+  Используйте ложную обратную связь в качестве обратной связи группы ответов.
 </span>
 <style>
   question-misconception-selector .misconception-button {

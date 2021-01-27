@@ -52,7 +52,7 @@ export class CodeReplValidationService {
     if (!(typeof language === 'string')) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Programming language name must be a string.'
+        message: 'Название языка программирования должно быть строкой.'
       });
     }
 
@@ -60,7 +60,7 @@ export class CodeReplValidationService {
     if (!(typeof placeholder === 'string')) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'Placeholder text must be a string.'
+        message: 'Текст-заполнитель должен быть строкой.'
       });
     }
 
@@ -68,7 +68,7 @@ export class CodeReplValidationService {
     if (!(typeof preCode === 'string')) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'The pre-code text must be a string.'
+        message: 'Текст предварительного кода должен быть строкой.'
       });
     }
 
@@ -76,7 +76,7 @@ export class CodeReplValidationService {
     if (!(typeof postCode === 'string')) {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.ERROR,
-        message: 'The post-code text must be a string.'
+        message: 'Текст последующего кода должен быть строкой.'
       });
     }
     return warningsList;

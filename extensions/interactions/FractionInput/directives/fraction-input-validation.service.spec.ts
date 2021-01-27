@@ -238,8 +238,8 @@ describe('FractionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -265,8 +265,8 @@ describe('FractionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
 
     answerGroups[0].rules = [equivalentToOneAndSimplestFormRule, equalsOneRule];
@@ -275,8 +275,8 @@ describe('FractionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 2 from answer group 1 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -289,8 +289,8 @@ describe('FractionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 2 will never be matched ' +
-        'because it is made redundant by rule 1 from answer group 1.'
+      message: 'Правило 1 из группы ответов 2 никогда не будет выполнено ' +
+        'потому что это делается избыточным правилом 1 из группы ответов 1.'
     }]);
   });
 
@@ -302,8 +302,8 @@ describe('FractionInputValidationService', () => {
         goodDefaultOutcome);
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
-        message: 'Rule 2 from answer group 1 will never be matched ' +
-          'because it is made redundant by rule 1 from answer group 1.'
+        message: 'Правило 2 из группы ответов 1 никогда не будет выполнено ' +
+          'потому что это делается избыточным правилом 1 из группы ответов 1.'
       }]);
     });
 
@@ -314,8 +314,8 @@ describe('FractionInputValidationService', () => {
       goodDefaultOutcome);
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
-      message: 'Rule 1 from answer group 1 will never be matched ' +
-        'because it is not in simplest form.'
+      message: 'Правило 1 из группы ответов 1 никогда не будет выполнено ' +
+        'потому что это не в простейшей форме.'
     }]);
   });
 
@@ -327,8 +327,8 @@ describe('FractionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'Rule ' + 1 + ' from answer group ' +
-        1 + ' is invalid: input should be an ' +
+        'Правило ' + 1 + ' из группы ответов ' +
+        1 + ' недействителен: ввод должен быть ' +
         'integer.')
     }]);
   });
@@ -342,8 +342,8 @@ describe('FractionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'Rule ' + 1 + ' from answer group ' +
-        1 + ' is invalid: input should be an ' +
+        'Правило ' + 1 + ' из группы ответов ' +
+        1 + ' недействителен: ввод должен быть ' +
         'integer.')
     }]);
   });
@@ -357,8 +357,8 @@ describe('FractionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'Rule ' + 1 + ' from answer group ' +
-        1 + ' is invalid: input should be an ' +
+        'Правило ' + 1 + ' из группы ответов ' +
+        1 + ' недействителен: ввод должен быть ' +
         'integer.')
     }]);
   });
@@ -371,9 +371,9 @@ describe('FractionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'Rule ' + 1 + ' from answer group ' +
-        1 + ' is invalid: denominator should be ' +
-        'greater than zero.')
+        'Правило ' + 1 + ' из группы ответов ' +
+        1 + ' неверно: знаменатель должен быть ' +
+        'больше нуля.')
     }]);
   });
 
@@ -387,9 +387,9 @@ describe('FractionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Rule ' + 1 + ' from answer group ' +
-          1 + ' will never be matched because it is an ' +
-          'improper fraction')
+          'Правило ' + 1 + ' из группы ответов ' +
+          1 + ' никогда не будет сопоставлен, потому что это ' +
+          'неделимая дробь')
       }]);
     });
 
@@ -403,9 +403,9 @@ describe('FractionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Rule ' + 1 + ' from answer group ' +
-          1 + ' will never be matched because it has a ' +
-          'non zero integer part')
+          'Правило ' + 1 + ' из группы ответов ' +
+          1 + ' никогда не будет сопоставлен, потому что у него есть ' +
+          'ненулевая целая часть')
       }]);
     });
 
@@ -419,9 +419,9 @@ describe('FractionInputValidationService', () => {
     expect(warnings).toEqual([{
       type: WARNING_TYPES.ERROR,
       message: (
-        'Rule ' + 1 + ' from answer group ' +
-        1 + ' will never be matched because integer part ' +
-        'has to be zero')
+        'Правило ' + 1 + ' из группы ответов ' +
+        1 + ' никогда не будет совпадать, потому что целая часть ' +
+        'должна быть нулевым')
     }]);
   });
 
@@ -469,8 +469,8 @@ describe('FractionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Rule 1 from answer group 1 is invalid as ' +
-          'integer part should be zero')
+          'Правило 1 из группы ответов 1 недействительно, поскольку ' +
+          'целая часть должна быть равна нулю')
       }]);
 
       customizationArgs.allowImproperFraction = false;
@@ -481,8 +481,8 @@ describe('FractionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Rule 1 from answer group 1 is invalid as ' +
-          'improper fractions are not allowed')
+          'Правило 1 из группы ответов 1 недействительно, поскольку ' +
+          'неправильные дроби не допускаются')
       }]);
 
       answerGroups[0].rules = [HasFractionalPartExactlyEqualToNegativeValue];
@@ -492,8 +492,8 @@ describe('FractionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Rule 1 from answer group 1 is invalid as ' +
-          'sign should be positive')
+          'Правило 1 из группы ответов 1 недействительно, поскольку ' +
+          'знак должен быть положительным')
       }]);
 
       customizationArgs.allowImproperFraction = true;
@@ -512,8 +512,8 @@ describe('FractionInputValidationService', () => {
       expect(warnings).toEqual([{
         type: WARNING_TYPES.ERROR,
         message: (
-          'Rule 1 from answer group 2 will never be matched because it ' +
-          'is made redundant by rule 1 from answer group 1.')
+          'Правило 1 из группы ответов 2 никогда не будет выполнено, потому что оно ' +
+          'заменяется правилом 1 из группы ответов 1.')
       }]);
     });
 });

@@ -29,7 +29,7 @@
       <a ng-href="<[$ctrl.getStoryLink()]>" ng-class="{'disabled-link': !$ctrl.classroomUrlFragment}"><[$ctrl.storySummary.getTitle()]> </a>
     </strong>
     <span class="oppia-chapters-count">
-       <[$ctrl.nodeCount]> <span translate="I18N_TOPIC_VIEWER_CHAPTER"></span><[($ctrl.nodeCount > 1) ? 's' : '']>
+       <[$ctrl.nodeCount]> <span translate="I18N_TOPIC_VIEWER_CHAPTER"></span><[($ctrl.nodeCount > 1) ? '(ы)' : '']>
     </span>
   </div>
   <div class="story-details">
@@ -45,7 +45,7 @@
            class="chapter-title"
            ng-repeat="title in $ctrl.storySummary.getNodeTitles()">
         <div ng-if="$ctrl.storySummary.isNodeCompleted(title)" class="material-icons completed-icon">
-          done
+          сделано
         </div>
         <div ng-class="{'border-bottom': $index < $ctrl.chaptersDisplayed, 'incomplete-chapter': !$ctrl.storySummary.isNodeCompleted(title), 'complete-chapter': $ctrl.storySummary.isNodeCompleted(title)}"
              ng-if="$index < $ctrl.chaptersDisplayed">
@@ -94,7 +94,7 @@
   }
 
   story-summary-tile .completed-circle {
-    stroke: #be563c;
+    stroke: #4DA5FF;
   }
 
   story-summary-tile .oppia-story-title {
@@ -106,7 +106,7 @@
   }
 
   story-summary-tile .completed-icon {
-    color: #00645C;
+    color: #007EFF;
     float: left;
     margin-right: 6px;
   }
@@ -116,7 +116,7 @@
   }
 
   story-summary-tile .view-button {
-    color: #00645C;
+    color: #007EFF;
     cursor: pointer;
     font-weight: bold;
     margin-top: 1.5vh;
@@ -144,12 +144,13 @@
   }
 
   story-summary-tile .chapter-details {
-    border: 1px solid #7B7B7B;
-    border-radius: 0.25rem;
+    background-color: #fff;
+    border-radius: 8px;
     display: inline-block;
     margin-left: 0.8vw;
     padding: 1.5vh 1.75vw 1vh 1vw;
     width: 65%;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
 
   story-summary-tile .story-details {
@@ -157,8 +158,8 @@
   }
 
   story-summary-tile .story-summary-tile {
-    margin-left: 3vw;
-    padding-bottom: 7vh;
+    
+    
   }
 
   story-summary-tile .title-text {
@@ -187,15 +188,16 @@
     text-align: center;
     vertical-align: middle;
     width: 225px;
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
   }
 
   story-summary-tile a {
-    color: #000000;
+    color: #007bff;
     cursor: pointer;
   }
 
   story-summary-tile a:hover {
-    text-decoration: none;
+    
   }
 
   story-summary-tile .oppia-chapters-count {

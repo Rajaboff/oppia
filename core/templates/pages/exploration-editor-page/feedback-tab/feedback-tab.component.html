@@ -1,7 +1,7 @@
 <md-card class="oppia-editor-card oppia-feedback-card">
   <div ng-if="!$ctrl.activeThread">
     <div ng-if="$ctrl.threadData.suggestionThreads.length > 0">
-      <h2>Suggestions from Learners</h2>
+      <h2>Предложения от учащихся</h2>
       <thread-table threads="$ctrl.threadData.suggestionThreads"
                     on-click-row="$ctrl.setActiveThread">
       </thread-table>
@@ -10,23 +10,23 @@
 
     <div class="float-right">
       <button ng-if="$ctrl.userIsLoggedIn" class="btn btn-success float-right" ng-click="$ctrl.showCreateThreadModal()">
-        Start new thread
+        Начать новую ветку
       </button>
     </div>
 
-    <h2>Exploration Feedback</h2>
+    <h2>Отзыв о занятии</h2>
 
     <div class="oppia-clear"></div>
 
     <div ng-if="$ctrl.threadData.feedbackThreads.length === 0">
-      <em>No feedback has been given for this exploration yet.</em>
+      <em>Отзывов об этом занятии пока не поступало.</em>
     </div>
 
     <thread-table threads="$ctrl.threadData.feedbackThreads"
                   on-click-row="$ctrl.setActiveThread">
     </thread-table>
 
-    <em ng-if="!$ctrl.userIsLoggedIn">To create a new feedback thread, please log in.</em>
+    <em ng-if="!$ctrl.userIsLoggedIn">Чтобы создать новую ветку обратной связи, войдите в систему.</em>
   </div>
 
   <div ng-if="$ctrl.activeThread">
@@ -37,14 +37,14 @@
             <i class="material-icons oppia-vcenter" title="Return to list of feedback threads">&#xE5CB;</i>
           </button>
         </span>
-        <span class="oppia-thread-text" ng-show="!$ctrl.activeThread.isSuggestionThread()">Feedback Thread: <[$ctrl.activeThread.subject]></span>
-        <span class="oppia-thread-text" ng-show="$ctrl.activeThread.isSuggestionThread()">Suggestion Thread: <[$ctrl.activeThread.subject]></span>
+        <span class="oppia-thread-text" ng-show="!$ctrl.activeThread.isSuggestionThread()">Ветка отзывов: <[$ctrl.activeThread.subject]></span>
+        <span class="oppia-thread-text" ng-show="$ctrl.activeThread.isSuggestionThread()">Ветка решений: <[$ctrl.activeThread.subject]></span>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-4 float-right">
         <div class="float-right">
           <span ng-if="$ctrl.activeThread.stateName" class="badge badge-info">
-            state: <[$ctrl.activeThread.stateName]>
+            состояние: <[$ctrl.activeThread.stateName]>
           </span>
           <span ng-class="$ctrl.getLabelClass($ctrl.activeThread.status)" class="protractor-test-oppia-feedback-status-name">
             <[$ctrl.getHumanReadableStatus($ctrl.activeThread.status)]>
@@ -68,10 +68,10 @@
                 <div class="col-lg-4 col-md-4 col-sm-4">
                   <span ng-if="m.messageId !== 0">
                     <span ng-if="m.updatedStatus">
-                      <em>Status changed to '<[$ctrl.getHumanReadableStatus(m.updatedStatus)]>'</em>
+                      <em>Статус изменен на '<[$ctrl.getHumanReadableStatus(m.updatedStatus)]>'</em>
                     </span>
                     <span ng-if="m.updatedSubject">
-                      <em>Subject changed to '<[m.updatedSubject]>'</em>
+                      <em>Тема изменена на '<[m.updatedSubject]>'</em>
                     </span>
                   </span>
                 </div>
@@ -86,7 +86,7 @@
                   <div class="oppia-view-suggestion-button-container protractor-test-exploration-feedback"><[m.text]></div>
                   <div ng-if="$ctrl.activeThread.isSuggestionThread() && $index == 0">
                     <button class="btn btn-<[$ctrl.getSuggestionButtonType()]> protractor-test-view-suggestion-btn oppia-view-suggestion-btn" ng-click="$ctrl.showSuggestionModal()">
-                      View Suggestion
+                      Посмотреть предложение
                     </button>
                   </div>
                 </div>
@@ -104,8 +104,8 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div>
           <label for="tmpMessageText">
-            Add new message
-            <span ng-if="$ctrl.isExplorationEditable() && !$ctrl.activeThread.isSuggestionThread()">(and/or change status)</span>
+            Добавить сообщение
+            <span ng-if="$ctrl.isExplorationEditable() && !$ctrl.activeThread.isSuggestionThread()">(и / или изменить статус)</span>
           </label>
           <textarea class="form-control protractor-test-feedback-response-textarea" ng-model="$ctrl.tmpMessage.text"
                     id="$ctrl.tmpMessageText" rows="6"
@@ -115,14 +115,14 @@
 
         <div>
           <span ng-show="$ctrl.isExplorationEditable() && !$ctrl.activeThread.isSuggestionThread()">
-            Change status (optional):
+            Изменить статус (необязательно):
             <select class="protractor-test-oppia-feedback-status-menu" ng-model="$ctrl.tmpMessage.status"
                     ng-options="choice.id as choice.text for choice in $ctrl.STATUS_CHOICES"
                     ng-disabled="$ctrl.messageSendingInProgress">
             </select>
             <div class="oppia-icon-container" ng-if="!$ctrl.tmpMessage.text && ($ctrl.tmpMessage.status === 'ignored' || $ctrl.tmpMessage.status === 'not_actionable')">
               <i class="material-icons">&#xE88F;</i>
-              <span>Please specify a reason for setting the status to <[$ctrl.getHumanReadableStatus($ctrl.tmpMessage.status)]>.</span>
+              <span>Укажите причину установки статуса на <[$ctrl.getHumanReadableStatus($ctrl.tmpMessage.status)]>.</span>
             </div>
           </span>
         </div>
@@ -131,13 +131,13 @@
           <button class="btn btn-success protractor-test-oppia-feedback-response-send-btn oppia-feedback-response-send-btn"
                   ng-click="$ctrl.addNewMessage($ctrl.activeThread.threadId, $ctrl.tmpMessage.text, $ctrl.tmpMessage.status)"
                   ng-disabled="$ctrl.messageSendingInProgress || (!$ctrl.tmpMessage.text && $ctrl.activeThread.status === $ctrl.tmpMessage.status) || (!$ctrl.tmpMessage.text && ($ctrl.tmpMessage.status === 'ignored' || $ctrl.tmpMessage.status === 'not_actionable'))">
-            <span ng-if="$ctrl.messageSendingInProgress">Sending...</span>
-            <span ng-if="!$ctrl.messageSendingInProgress">Send</span>
+            <span ng-if="$ctrl.messageSendingInProgress">Отправка...</span>
+            <span ng-if="!$ctrl.messageSendingInProgress">Отправить</span>
           </button>
         </div>
       </div>
     </div>
-    <em ng-if="!$ctrl.userIsLoggedIn">To respond to a feedback thread, please log in.</em>
+    <em ng-if="!$ctrl.userIsLoggedIn">Чтобы ответить на обратную связь, войдите в систему.</em>
   </div>
 </md-card>
 

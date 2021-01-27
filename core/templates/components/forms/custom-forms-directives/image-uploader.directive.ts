@@ -50,7 +50,7 @@ angular.module('oppia').directive('imageUploader', [
 
         var validateUploadedFile = function(file, filename) {
           if (!file || !file.size || !file.type.match('image.*')) {
-            return 'This file is not recognized as an image.';
+            return 'Этот файл не распознается как изображение.';
           }
 
           var imageTypeMapping = {
@@ -80,27 +80,27 @@ angular.module('oppia').directive('imageUploader', [
             var imageType = scope.getAllowedImageFormats()[i];
             if (!imageTypeMapping.hasOwnProperty(imageType)) {
               return (
-                imageType + ' is not in the list of allowed image formats.');
+                imageType + ' нет в списке разрешенных форматов изображений.');
             }
             if (file.type.match(imageTypeMapping[imageType].format)) {
               imageHasInvalidFormat = false;
               if (
                 !file.name.match(imageTypeMapping[imageType].fileExtension)) {
                 return (
-                  'This image format does not match the filename extension.');
+                  'Этот формат изображения не соответствует расширению.');
               }
             }
           }
 
           if (imageHasInvalidFormat) {
-            return 'This image format is not supported.';
+            return 'Этот формат изображения не поддерживается.';
           }
 
-          const HUNDRED_KB_IN_BYTES = 100 * 1024;
+          const HUNDRED_KB_IN_BYTES = 1024 * 1024;
           if (file.size > HUNDRED_KB_IN_BYTES) {
             var currentSizeInKb = (
               (file.size * 100 / HUNDRED_KB_IN_BYTES).toFixed(1) + '  KB');
-            return 'The maximum allowed file size is 100 KB' +
+            return 'Максимально размер файла100 KB' +
               ' (' + currentSizeInKb + ' given).';
           }
 

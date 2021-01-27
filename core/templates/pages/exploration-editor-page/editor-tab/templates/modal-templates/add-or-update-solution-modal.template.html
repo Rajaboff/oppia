@@ -8,8 +8,8 @@
     <div class="oppia-rule-details-header">
       <select class="protractor-test-answer-is-exclusive-select"
               ng-model="data.answerIsExclusive"
-              ng-options="(item ? 'The only' : 'One') for item in [true, false]">
-      </select> <strong>solution is...</strong>
+              ng-options="(item ? 'Единственый' : 'Один') for item in [true, false]">
+      </select> <strong>решение ...</strong>
       <br>
       <br>
       <div>
@@ -22,11 +22,11 @@
                  ng-click="onSubmitFromSubmitButton()"
                  ng-if="data.correctAnswer === null && shouldAdditionalSubmitButtonBeShown()"
                  ng-disabled="isSubmitButtonDisabled()">
-        Submit
+        Отправить
       </md-button>
       <br>
       <div ng-show="data.correctAnswer !== null">
-        <strong>Explanation:</strong>
+        <strong>Объяснение:</strong>
         <schema-based-editor class="protractor-test-explanation-textarea"
                              schema="EXPLANATION_FORM_SCHEMA"
                              local-value="data.explanationHtml">
@@ -37,10 +37,10 @@
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-secondary" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
   <button class="btn btn-success protractor-test-submit-solution-button"
           ng-click="saveSolution()"
           ng-disabled="data.correctAnswer === null || !data.explanationHtml || isSubmitButtonDisabled()">
-    Check and Save Solution
+    Проверить и сохранить
   </button>
 </div>

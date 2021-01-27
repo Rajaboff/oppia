@@ -64,11 +64,11 @@ angular.module('oppia').directive('questionEditor', [
           var ctrl = this;
           ctrl.directiveSubscriptions = new Subscription();
           ctrl.getStateContentPlaceholder = function() {
-            return 'Type your question here.';
+            return 'Введите свой вопрос здесь.';
           };
 
           ctrl.getStateContentSaveButtonPlaceholder = function() {
-            return 'Save Question';
+            return 'Сохранить вопрос';
           };
 
           ctrl.navigateToState = function() {

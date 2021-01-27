@@ -56,7 +56,7 @@ export class RatioExpressionInputValidationService {
         {
           type: AppConstants.WARNING_TYPES.ERROR,
           message: (
-            'The number of terms should be a non-negative integer other than 1.'
+            'Количество терминов должно быть неотрицательным целым числом, отличным от 1.'
           )
         }
       ];
@@ -65,7 +65,7 @@ export class RatioExpressionInputValidationService {
         {
           type: AppConstants.WARNING_TYPES.ERROR,
           message: (
-            'The number of terms in a ratio should be greater than 1.')
+            'Количество членов в соотношении должно быть больше 1.')
         }
       ];
     } else {
@@ -144,9 +144,9 @@ export class RatioExpressionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${j + 1} from answer group ${i + 1} will never be` +
-                  ' matched because it has differing number of terms than ' +
-                  'required.'
+                  `Правило ${j + 1} из группы ответов ${i + 1} никогда не будет` +
+                  ' соответствует, потому что в нем другое количество терминов, чем ' +
+                  'требуется.'
                 )
               });
             }
@@ -156,9 +156,9 @@ export class RatioExpressionInputValidationService {
               warningsList.push({
                 type: AppConstants.WARNING_TYPES.ERROR,
                 message: (
-                  `Rule ${j + 1} from answer group ${i + 1} will never be` +
-                  ' matched because it has differing number of terms than ' +
-                  'required.'
+                  `Правило ${j + 1} из группы ответов ${i + 1} никогда не будет` +
+                  ' соответствует, потому что в нем другое количество терминов, чем ' +
+                  'требуется.'
                 )
               });
             }
@@ -169,8 +169,8 @@ export class RatioExpressionInputValidationService {
           warningsList.push({
             type: AppConstants.WARNING_TYPES.ERROR,
             message: (
-              `Rule ${j + 1} from answer group ${i + 1} will never be` +
-              ' matched because provided input is not in its simplest form.')
+              `Правило ${j + 1} из группы ответов ${i + 1} никогда не будет` +
+              'совпадает, потому что предоставленный ввод не в простейшей форме.')
           });
         }
         for (let seenRule of seenRules) {
@@ -187,7 +187,7 @@ export class RatioExpressionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                `Rule ${j + 1} from answer group ${i + 1} will never` +
+                `Правило ${j + 1} из группы ответов ${i + 1} никогда` +
                 ' be matched because it is preceded by a \'Equals\' rule with' +
                 ' a matching input.')
             });
@@ -201,9 +201,9 @@ export class RatioExpressionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                `Rule ${j + 1} from answer group ${i + 1} will never` +
-                ' be matched because it is preceded by a \'IsEquivalent\'' +
-                ' rule with a matching input.')
+                `Правило ${j + 1} из группы ответов ${i + 1} никогда` +
+                ' быть сопоставленным, потому что ему предшествует \'IsEquivalent\'' +
+                ' правило с подходящим входом.')
             });
           } else if (
             seenRuleType === 'HasNumberOfTermsEqualTo' &&
@@ -216,9 +216,9 @@ export class RatioExpressionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                `Rule ${j + 1} from answer group ${i + 1} will never` +
-                ' be matched because the \'HasNumberOfTermsEqualTo\' ' +
-                'rule is preceded by a rule with a matching input.')
+                `Правило ${j + 1} из группы ответов ${i + 1} никогда` +
+                ' быть сопоставленным, потому что \'HasNumberOfTermsEqualTo\' ' +
+                'правилу предшествует правило с подходящим входом.')
             });
           } else if (
             currentRuleType === 'HasNumberOfTermsEqualTo' &&
@@ -227,9 +227,9 @@ export class RatioExpressionInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.ERROR,
               message: (
-                `Rule ${j + 1} from answer group ${i + 1} will never` +
-                ' be matched because it is preceded by a ' +
-                '\'HasNumberOfTermsEqualTo\' rule with a matching input.')
+                `Правило ${j + 1} из группы ответов ${i + 1} никогда` +
+                ' быть сопоставленным, потому что ему предшествует ' +
+                '\'HasNumberOfTermsEqualTo\' правило с подходящим входом.')
             });
           }
         }

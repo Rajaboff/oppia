@@ -25,9 +25,9 @@ export enum ETopicSortOptions {
 }
 
 export enum ETopicPublishedOptions {
-  All = 'All',
-  Published = 'Published',
-  NotPublished = 'Not Published'
+  All = 'Все',
+  Published = 'Опубликовано',
+  NotPublished = 'Не опубликовано'
 }
 
 export const TopicsAndSkillsDashboardPageConstants = {

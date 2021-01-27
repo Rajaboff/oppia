@@ -9,16 +9,16 @@
 <div class="modal-footer">
   <button class="btn btn-default"
           ng-click="cancel()">
-    Close
+    Закрыть
   </button>
   <button class="btn btn-success"
           ng-if="isInTestMode && !isLastConceptCard()"
           ng-click="goToNextConceptCard()">
-    Next
+    Следующий
   </button>
   <button class="btn btn-success"
           ng-if="isInTestMode && isLastConceptCard()"
           ng-click="retryTest()">
-    Retry Test
+    Повторить тест
   </button>
 </div>

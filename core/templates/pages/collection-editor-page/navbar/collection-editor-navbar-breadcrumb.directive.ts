@@ -46,12 +46,12 @@ angular.module('oppia').directive('collectionEditorNavbarBreadcrumb', [
             RouterService, COLLECTION_TITLE_INPUT_FOCUS_LABEL) {
           var ctrl = this;
           var _TAB_NAMES_TO_HUMAN_READABLE_NAMES = {
-            main: 'Edit',
-            preview: 'Preview',
-            settings: 'Settings',
-            stats: 'Statistics',
-            improvements: 'Improvements',
-            history: 'History',
+            main: 'Редактирование',
+            preview: 'Просмотр',
+            settings: 'Настройки',
+            stats: 'Статистика',
+            improvements: 'Улучшения',
+            history: 'История',
           };
           ctrl.getCurrentTabName = function() {
             return _TAB_NAMES_TO_HUMAN_READABLE_NAMES[

@@ -16,7 +16,7 @@
 }
 
 md-checkbox.item-selection-input-checkbox.md-default-theme .md-icon {
-  border-color: #0d48a1;
+  border-color: #007EFF;
   top: 2px;
 }
 md-checkbox.item-selection-input-checkbox.md-default-theme.md-checked .md-icon {
@@ -32,7 +32,7 @@ md-checkbox.item-selection-input-checkbox .md-label {
 .item-selection-input-item {
   background: none;
   border: none;
-  color: #0d48a1;
+  color: #007EFF;
   margin: 0;
   padding-left: 0;
   text-align: left;
@@ -59,7 +59,7 @@ md-checkbox.item-selection-input-checkbox .md-label {
 .multiple-choice-option {
   background: none;
   border: none;
-  color: #0D48A1;
+  color: #007EFF;
   text-align: left;
   /* This is needed so that images stay bounded by the container in Firefox. */
   width: 100%;
@@ -71,7 +71,7 @@ md-checkbox.item-selection-input-checkbox .md-label {
 }
 
 .multiple-choice-option.selected .multiple-choice-inner-radio-button {
-  background-color: #115FD4;
+  background-color: #007EFF;
   border-radius: 50%;
   display: block;
   height: 8px;
@@ -80,7 +80,7 @@ md-checkbox.item-selection-input-checkbox .md-label {
 }
 
 .multiple-choice-option:focus .multiple-choice-outer-radio-button {
-  border-color: #115FD4;
+  border-color: #007EFF;
 }
 
 /* Hover pseudo-class should only be used in desktops because it
@@ -88,11 +88,11 @@ md-checkbox.item-selection-input-checkbox .md-label {
  */
 @media screen and (min-width: 800px) {
   .multiple-choice-option:hover {
-    color: #115FD4;
+    color: #007EFF;
   }
 
   .multiple-choice-option:hover .multiple-choice-inner-radio-button {
-    background-color: #115FD4;
+    background-color: #007EFF;
     border-radius: 50%;
     display: block;
     height: 8px;
@@ -101,6 +101,6 @@ md-checkbox.item-selection-input-checkbox .md-label {
   }
 
   .multiple-choice-option:hover .multiple-choice-outer-radio-button {
-    border-color: #115FD4;
+    border-color: #007EFF;
   }
 }

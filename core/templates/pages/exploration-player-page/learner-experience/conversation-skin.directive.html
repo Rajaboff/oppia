@@ -63,7 +63,7 @@
       </div>
       <div ng-if="recommendedExplorationSummaries.length > 0 && (inStoryMode  || (collectionSummary && isOnTerminalCard() && isCurrentCardAtEndOfTranscript()))" class="conversation-skin-next-lesson-wrapper">
         <div class="oppia-conversation-skin-next-lession-text-container">
-          <span class="conversation-skin-next-lesson-text">Next Lesson</span>
+          <span class="conversation-skin-next-lesson-text">Следующий урок</span>
           <span><[recommendedExplorationSummaries[0].title]></span>
         </div>
         <div>
@@ -157,7 +157,7 @@ otherwise they will interfere with the iframed conversation skin directive.
     mode.
   */
   html, body {
-    background: #e8e7e3 no-repeat center center fixed;
+    background: #F9F9FA no-repeat center center fixed;
     background-size: cover;
     color: rgba(0,0,0,0.87);
     font-family: 'Roboto', Arial, sans-serif;
@@ -186,7 +186,7 @@ otherwise they will interfere with the iframed conversation skin directive.
     vertical-align: middle;
   }
   .conversation-skin-next-lesson-text {
-    color: #0D48A1;
+    color: #007EFF;
     display: block;
     font-size: 14px;
     font-weight: 800;
@@ -200,7 +200,7 @@ otherwise they will interfere with the iframed conversation skin directive.
   }
 
   .conversation-skin-back-to-collection {
-    color: #064b46;
+    color: #007EFF;
     text-decoration: underline;
   }
 
@@ -208,12 +208,12 @@ otherwise they will interfere with the iframed conversation skin directive.
     height: 36px;
     position: absolute;
     top: 0;
-    width: 36px;
+    width: 46px;
     z-index: 1;
   }
   .conversation-skin-oppia-feedback-container .conversation-skin-oppia-avatar {
-    height: 100px;
-    left: -87px;
+    height: 111px;
+    left: -84px;
     top: -20px;
     width: 100px;
   }
@@ -256,9 +256,10 @@ otherwise they will interfere with the iframed conversation skin directive.
   }
 
   .conversation-skin-supplemental-card-container {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24), 0 1px 3px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);;
     flex-shrink: 1;
-    margin-left: 12px;
+    margin-left: 30px;
+    margin-top: 30px;
     position: relative;
     width: 650px;
     z-index: 2;
@@ -268,7 +269,7 @@ otherwise they will interfere with the iframed conversation skin directive.
   .conversation-skin-learner-answer-content {
     margin-bottom: 12px;
     overflow: auto;
-    padding: 8px 12px;
+    padding: 12px 12px;
     word-wrap: break-word;
   }
 
@@ -279,19 +280,22 @@ otherwise they will interfere with the iframed conversation skin directive.
 
   .conversation-skin-oppia-feedback-content,
   .conversation-skin-help-card-content {
-    background-color: rgba(224,242,241,1);
-    border-top-left-radius: 0;
+    background-color: #fff;
+    border-radius: 10px;
   }
 
   .conversation-skin-learner-answer-content {
-    background-color: rgba(236,239,241,1);
-    border-bottom-right-radius: 0;
+    background-color: #E8E8E8;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
   }
 
 
   /*
       This CSS block is for ensuring that only a response from a multi-line text input preserves newlines.
-      Leveraging the parent class ".conversation-skin-learner-answer-content" will render newlines in the
+      Leveraging the parent class "
+      " will render newlines in the
       other interactions (ie; Multiple Choice, Item Selection) which is not necessary.
   */
   oppia-response-text-input {
@@ -345,11 +349,11 @@ otherwise they will interfere with the iframed conversation skin directive.
     width: 38%;
   }
   .conversation-skin-final-ratings-header {
-    color: #064b46;
+    color: #007EFF;
     margin: 20px 0 0;
   }
   .conversation-skin-final-ratings-display {
-    color: #064b46;
+    color: #007EFF;
     letter-spacing: 10px;
   }
 
@@ -358,7 +362,7 @@ otherwise they will interfere with the iframed conversation skin directive.
     text-align: center;
   }
   .conversation-skin-final-recommendations-header {
-    color: #064b46;
+    color: #007EFF;
     font-size: 150%;
   }
 
@@ -398,7 +402,7 @@ otherwise they will interfere with the iframed conversation skin directive.
   }
 
   conversation-skin .oppia-conversation-skin-animate-cards-container {
-    margin: 0 auto;
+    margin: -30px auto;
   }
 
   conversation-skin .oppia-conversation-skin-next-lession-text-container {
@@ -406,7 +410,7 @@ otherwise they will interfere with the iframed conversation skin directive.
   }
 
   conversation-skin .oppia-button-raised.md-raised {
-    background-color: #0D48A1
+    background-color: #007EFF
   }
 
   conversation-skin .oppia-button-icon {
@@ -420,7 +424,7 @@ otherwise they will interfere with the iframed conversation skin directive.
   @media screen and (max-width: 959px) {
     .conversation-skin-cards-container {
       display: block;
-      padding: 66px 0;
+      padding: 0px 0;
       position: relative;
       width: 100%;
     }

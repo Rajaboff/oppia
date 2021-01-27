@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="oppia" itemscope itemtype="http://schema.org/Organization">
   <head>
-    @load('base-components/header.template.html', {"title": "Oppia"})
+    @load('base-components/header.template.html', {"title": "Oqustudy"})
 
     <style>
       html, body {
-        background: #eeeeee no-repeat center center fixed;
+        background: #F9F9FA no-repeat center center fixed;
         background-size: cover;
       }
 
       .oppia-story-player-tiles-container {
-        background-color: #ffffff;
+        
         border-radius: 4px;
-        box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.05);
+        
         height: 100%;
         margin-bottom: 120px;
         margin-left: auto;
@@ -28,7 +28,7 @@
       }
 
       .oppia-story-viewer-container .oppia-story-title {
-        color: #01645c;
+        color: #000;
         font-family: Capriola, Roboto, Arial, sans-serif;
         font-size: 3em;
         margin-bottom: 25px;
@@ -86,7 +86,7 @@
       }
 
       .oppia-lesson-icon-completed {
-        background-color: #296E5F;
+        background-color: #007EFF;
         border-radius: 50%;
         height: 40px;
         left: 50%;
@@ -98,8 +98,8 @@
       }
 
       .oppia-lesson-icon-uncompleted {
-        background-color: #ffffff;
-        border: #296E5F 3px solid;
+        background-color: #007EFF;
+        border: #007EFF 3px solid;
         border-radius: 50%;
         height: 40px;
         left: 50%;
@@ -114,7 +114,7 @@
       }
 
       .oppia-story-viewer-title {
-        color: #00645C;
+        color: #000;
         font-family: Capriola, Roboto, Arial, sans-serif;
         font-size: 2.4em;
         font-weight: 500;
@@ -128,7 +128,7 @@
 
       .oppia-story-viewer-description {
         font-family: Roboto, Arial, sans-serif;
-        font-size: 1.2em;
+        font-size: 0.9em;
         padding-bottom: 4vh;
         padding-left: 60px;
         text-align: left;
@@ -156,11 +156,12 @@
       }
 
       .oppia-story-viewer-card-description-box {
-        border-radius: 4px;
-        box-shadow: 0px 0px 4px #00000029;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 8px 20px rgba(37, 40, 43, 0.08);
         display: flex;
         flex: 1;
-        max-height: 180px;
+        max-height: 150px;
         min-width: 120px;
         padding: 20px;
       }
@@ -184,16 +185,17 @@
 
       .oppia-chapter-title {
         font-family: Roboto, Arial, sans-serif;
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 600;
         letter-spacing: 0.43px;
         margin-left: 14px;
         padding-top: 3px;
+        color: #000;
       }
 
       @media (max-width: 640px) {
         .oppia-story-viewer-title {
-          margin-top: 20px;
+          margin-top: 18px;
           padding-left: 40px;
           padding-top: 0px;
         }
@@ -278,7 +280,7 @@
           </navbar-breadcrumb>
 
           <content>
-            <background-banner></background-banner>
+            
             <story-viewer-page></story-viewer-page>
           </content>
 

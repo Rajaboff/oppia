@@ -1,3 +1,4 @@
+
 // We are using eslint disable here for multilines because we have used quotes
 // around properties at a lot of places so it is not possible to use
 // "eslint disable next line" for each of them.
@@ -44,14 +45,14 @@ export = {
   "LIBRARY_TILE_WIDTH_PX": 208,
   "DASHBOARD_TYPE_CREATOR": "creator",
   "DASHBOARD_TYPE_LEARNER": "learner",
-  "DEFAULT_COLOR": "#a33f40",
+  "DEFAULT_COLOR": "#fff",
   "DEFAULT_THUMBNAIL_ICON": "Lightbulb",
   "DEFAULT_CATEGORY_ICON": "Lightbulb",
 
   "SKILL_STATUS_OPTIONS": {
-    "ALL": "All",
-    "ASSIGNED": "Assigned",
-    "UNASSIGNED": "Unassigned"
+    "ALL": "Все",
+    "ASSIGNED": "Назначено",
+    "UNASSIGNED": "Не назначено"
   },
   "TOPIC_SKILL_DASHBOARD_SORT_OPTIONS": {
     "IncreasingCreatedOn": "Newly Created",
@@ -67,13 +68,13 @@ export = {
     "Reading", "Statistics"],
 
   // The default language code for an exploration.
-  "DEFAULT_LANGUAGE_CODE": "en",
+  "DEFAULT_LANGUAGE_CODE": "ru",
 
   "ALLOWED_THUMBNAIL_BG_COLORS": {
-    "chapter": ["#F8BF74", "#D68F78", "#8EBBB6", "#B3D8F1"],
-    "topic": ["#C6DCDA"],
+    "chapter": ["#FFD6AF", "#FFFCAF", "#BAFFAF", "#AFD9FF"],
+    "topic": ["#AFFFFA"],
     "subtopic": ["#FFFFFF"],
-    "story": ["#F8BF74", "#D68F78", "#8EBBB6", "#B3D8F1"]
+    "story": ["#FFD6AF", "#FFFCAF", "#BAFFAF", "#AFD9FF"]
   },
 
   "ALLOWED_IMAGE_FORMATS": ["svg", "png", "jpeg", "jpg", "gif"],
@@ -4683,413 +4684,89 @@ export = {
   // color associated with it. Each category also has a thumbnail icon whose
   // filename is '{{CategoryName}}.svg'.
   "CATEGORIES_TO_COLORS": {
-    "Mathematics": "#cd672b",
-    "Algebra": "#cd672b",
-    "Arithmetic": "#d68453",
-    "Calculus": "#b86330",
-    "Logic": "#d68453",
-    "Combinatorics": "#cf5935",
-    "Graph Theory": "#cf5935",
-    "Probability": "#cf5935",
-    "Statistics": "#cd672b",
-    "Geometry": "#d46949",
-    "Trigonometry": "#d46949",
+    "Mathematics": "#abf59f",
+    "Algebra": "#abf59f",
+    "Arithmetic": "#abf59f",
+    "Calculus": "#abf59f",
+    "Logic": "#faf47f",
+    "Combinatorics": "#faf47f",
+    "Graph Theory": "#faf47f",
+    "Probability": "#abf59f",
+    "Statistics": "#abf59f",
+    "Geometry": "#abf59f",
+    "Trigonometry": "#abf59f",
 
-    "Algorithms": "#d0982a",
-    "Computing": "#bb8b2f",
-    "Programming": "#d9aa53",
+    "Algorithms": "#faf47f",
+    "Computing": "#faf47f",
+    "Programming": "#faf47f",
 
-    "Astronomy": "#879d6c",
-    "Biology": "#97a766",
-    "Chemistry": "#aab883",
-    "Engineering": "#8b9862",
-    "Environment": "#aba86d",
-    "Medicine": "#97a766",
-    "Physics": "#879d6c",
+    "Astronomy": "#FFD6AF",
+    "Biology": "#FFD6AF",
+    "Chemistry": "#FFD6AF",
+    "Engineering": "#FFD6AF",
+    "Environment": "#FFD6AF",
+    "Medicine": "#FFD6AF",
+    "Physics": "#FFD6AF",
 
-    "Architecture": "#6e3466",
-    "Art": "#895a83",
-    "Music": "#6a3862",
-    "Philosophy": "#613968",
-    "Poetry": "#7f507f",
+    "Architecture": "#d7beff",
+    "Art": "#d7beff",
+    "Music": "#d7beff",
+    "Philosophy": "#d7beff",
+    "Poetry": "#d7beff",
 
-    "English": "#193a69",
-    "Languages": "#1b4174",
-    "Latin": "#3d5a89",
-    "Reading": "#193a69",
-    "Spanish": "#405185",
-    "Gaulish": "#1b4174",
+    "English": "#9AF1EC",
+    "Languages": "#9AF1EC",
+    "Latin": "#9AF1EC",
+    "Reading": "#9AF1EC",
+    "Spanish": "#9AF1EC",
+    "Gaulish": "#9AF1EC",
 
-    "Business": "#387163",
-    "Economics": "#5d8b7f",
-    "Geography": "#3c6d62",
-    "Government": "#538270",
-    "History": "#3d6b52",
-    "Law": "#538270",
+    "Business": "#AFD9FF",
+    "Economics": "#AFD9FF",
+    "Geography": "#AFD9FF",
+    "Government": "#AFD9FF",
+    "History": "#AFD9FF",
+    "Law": "#AFD9FF",
 
-    "Education": "#942e20",
-    "Puzzles": "#a8554a",
-    "Sport": "#893327",
-    "Welcome": "#992a2b"
+    "Education": "#FFAFF2",
+    "Puzzles": "#FFAFF2",
+    "Sport": "#FFAFF2",
+    "Welcome": "#FFAFF2"
   },
 
   // List of supported content languages in which we can create explorations or
   // other entities. Each description has a parenthetical part that may be
   // stripped out to give a shorter description.
-  "SUPPORTED_CONTENT_LANGUAGES": [{
+  "SUPPORTED_CONTENT_LANGUAGES": [
+  {
+    "code": "ru",
+    "description": "Русский"
+  }, {
     "code": "en",
     "description": "English"
-  }, {
-    "code": "ar",
-    "description": "العربية (Arabic)"
-  }, {
-    "code": "sq",
-    "description": "shqip (Albanian)"
-  }, {
-    "code": "bg",
-    "description": "български (Bulgarian)"
-  }, {
-    "code": "bn",
-    "description": "বাংলা (Bangla)"
-  }, {
-    "code": "ca",
-    "description": "català (Catalan)"
-  }, {
-    "code": "zh",
-    "description": "中文 (Chinese)"
-  }, {
-    "code": "hr",
-    "description": "hrvatski (Croatian)"
-  }, {
-    "code": "cs",
-    "description": "čeština (Czech)"
-  }, {
-    "code": "da",
-    "description": "dansk (Danish)"
-  }, {
-    "code": "nl",
-    "description": "Nederlands (Dutch)"
-  }, {
-    "code": "tl",
-    "description": "Filipino (Filipino)"
-  }, {
-    "code": "fi",
-    "description": "suomi (Finnish)"
-  }, {
-    "code": "fr",
-    "description": "français (French)"
-  }, {
-    "code": "de",
-    "description": "Deutsch (German)"
-  }, {
-    "code": "el",
-    "description": "ελληνικά (Greek)"
-  }, {
-    "code": "he",
-    "description": "עברית (Hebrew)"
-  }, {
-    "code": "hi",
-    "description": "हिन्दी (Hindi)"
-  }, {
-    "code": "hu",
-    "description": "magyar (Hungarian)"
-  }, {
-    "code": "id",
-    "description": "Bahasa Indonesia (Indonesian)"
-  }, {
-    "code": "it",
-    "description": "italiano (Italian)"
-  }, {
-    "code": "ja",
-    "description": "日本語 (Japanese)"
-  }, {
-    "code": "kab",
-    "description": "Taqbaylit (Kabyle)"
-  }, {
-    "code": "ko",
-    "description": "한국어 (Korean)"
-  }, {
-    "code": "lv",
-    "description": "latviešu (Latvian)"
-  }, {
-    "code": "lt",
-    "description": "lietuvių (Lithuanian)"
-  }, {
-    "code": "no",
-    "description": "Norsk (Norwegian)"
-  }, {
-    "code": "fa",
-    "description": "فارسی (Persian)"
-  }, {
-    "code": "pl",
-    "description": "polszczyzna (Polish)"
-  }, {
-    "code": "pt",
-    "description": "português (Portuguese)"
-  }, {
-    "code": "ro",
-    "description": "română (Romanian)"
-  }, {
-    "code": "ru",
-    "description": "pусский (Russian)"
-  }, {
-    "code": "sr",
-    "description": "cрпски (Serbian)"
-  }, {
-    "code": "sk",
-    "description": "slovenčina (Slovak)"
-  }, {
-    "code": "sl",
-    "description": "slovenščina (Slovenian)"
-  }, {
-    "code": "es",
-    "description": "español (Spanish)"
-  }, {
-    "code": "sv",
-    "description": "svenska (Swedish)"
-  }, {
-    "code": "th",
-    "description": "ภาษาไทย (Thai)"
-  }, {
-    "code": "tr",
-    "description": "Türkçe (Turkish)"
-  }, {
-    "code": "uk",
-    "description": "yкраїнська (Ukrainian)"
-  }, {
-    "code": "vi",
-    "description": "Tiếng Việt (Vietnamese)"
   }],
 
   // NOTE TO DEVELOPERS: While adding another language, please ensure that the
   // languages are in alphabetical order.
   // List of supported site languages in which the platform is offered.
   "SUPPORTED_SITE_LANGUAGES": [{
-    "id": "id",
-    "text": "Bahasa Indonesia"
-  }, {
     "id": "en",
     "text": "English"
-  }, {
-    "id": "es",
-    "text": "Español"
-  }, {
-    "id": "fr",
-    "text": "français (French)"
-  }, {
-    "id": "pt-br",
-    "text": "Português (Brasil)"
-  }, {
-    "id": "ar",
-    "text": "العربية"
-  }, {
-    "id": "kab",
-    "text": "Taqbaylit"
-  }, {
-    "id": "vi",
-    "text": "Tiếng Việt"
-  }, {
-    "id": "hi",
-    "text": "हिन्दी"
-  }, {
-    "id": "bn",
-    "text": "বাংলা"
-  }, {
-    "id": "zh-hans",
-    "text": "中文(简体)"
-  }, {
-    "id": "zh-hant",
-    "text": "中文(繁體)"
   }],
 
   // List of supported audio languages in which we have audio and translations
   // for explorations or other entities.
   // Related languages are used to prioritize an exploration's language when
   // setting the default audio language.
-  "SUPPORTED_AUDIO_LANGUAGES": [{
-    "id": "en",
-    "description": "English",
-    "relatedLanguages": ["en"]
-  }, {
-    "id": "ak",
-    "description": "Akan",
-    "relatedLanguages": ["ak"]
-  }, {
-    "id": "sq",
-    "description": "Albanian",
-    "relatedLanguages": ["sq"]
-  }, {
-    "id": "ar",
-    "description": "Arabic",
-    "relatedLanguages": ["ar"]
-  }, {
-    "id": "bg",
-    "description": "Bulgarian",
-    "relatedLanguages": ["bg"]
-  }, {
-    "id": "bn",
-    "description": "Bangla",
-    "relatedLanguages": ["bn"]
-  }, {
-    "id": "ms",
-    "description": "Bahasa Melayu",
-    "relatedLanguages": ["ms"]
-  }, {
-    "id": "ca",
-    "description": "Catalan",
-    "relatedLanguages": ["ca"]
-  }, {
-    "id": "zh",
-    "description": "Chinese",
-    "relatedLanguages": ["zh"]
-  }, {
-    "id": "hr",
-    "description": "Croatian",
-    "relatedLanguages": ["hr"]
-  }, {
-    "id": "cs",
-    "description": "Czech",
-    "relatedLanguages": ["cs"]
-  }, {
-    "id": "da",
-    "description": "Danish",
-    "relatedLanguages": ["da"]
-  }, {
-    "id": "nl",
-    "description": "Dutch",
-    "relatedLanguages": ["nl"]
-  }, {
-    "id": "ee",
-    "description": "Ewe",
-    "relatedLanguages": ["ee"]
-  }, {
-    "id": "tl",
-    "description": "Filipino",
-    "relatedLanguages": ["tl"]
-  }, {
-    "id": "fi",
-    "description": "Finnish",
-    "relatedLanguages": ["fi"]
-  }, {
-    "id": "fr",
-    "description": "French",
-    "relatedLanguages": ["fr"]
-  }, {
-    "id": "de",
-    "description": "German",
-    "relatedLanguages": ["de"]
-  }, {
-    "id": "el",
-    "description": "Greek",
-    "relatedLanguages": ["el"]
-  }, {
-    "id": "gaa",
-    "description": "Ga",
-    "relatedLanguages": ["gaa"]
-  }, {
-    "id": "he",
-    "description": "Hebrew",
-    "relatedLanguages": ["he"]
-  }, {
-    "id": "hi",
-    "description": "Hindi",
-    "relatedLanguages": ["hi"]
-  }, {
-    "id": "hi-en",
-    "description": "Hinglish",
-    "relatedLanguages": ["hi", "en"]
-  }, {
-    "id": "hu",
-    "description": "Hungarian",
-    "relatedLanguages": ["hu"]
-  }, {
-    "id": "id",
-    "description": "Indonesian",
-    "relatedLanguages": ["id"]
-  }, {
-    "id": "it",
-    "description": "Italian",
-    "relatedLanguages": ["it"]
-  }, {
-    "id": "ja",
-    "description": "Japanese",
-    "relatedLanguages": ["ja"]
-  }, {
-    "id": "kab",
-    "description": "Kabyle",
-    "relatedLanguages": ["kab"]
-  }, {
-    "id": "ko",
-    "description": "Korean",
-    "relatedLanguages": ["ko"]
-  }, {
-    "id": "lv",
-    "description": "Latvian",
-    "relatedLanguages": ["lv"]
-  }, {
-    "id": "lt",
-    "description": "Lithuanian",
-    "relatedLanguages": ["lt"]
-  }, {
-    "id": "no",
-    "description": "Norwegian",
-    "relatedLanguages": ["no"]
-  }, {
-    "id": "fa",
-    "description": "Persian",
-    "relatedLanguages": ["fa"]
-  }, {
-    "id": "pl",
-    "description": "Polish",
-    "relatedLanguages": ["pl"]
-  }, {
-    "id": "pt",
-    "description": "Portuguese",
-    "relatedLanguages": ["pt"]
-  }, {
-    "id": "ro",
-    "description": "Romanian",
-    "relatedLanguages": ["ro"]
-  }, {
+  "SUPPORTED_AUDIO_LANGUAGES": [
+   {
     "id": "ru",
     "description": "Russian",
     "relatedLanguages": ["ru"]
   }, {
-    "id": "sr",
-    "description": "Serbian",
-    "relatedLanguages": ["sr"]
-  }, {
-    "id": "sk",
-    "description": "Slovak",
-    "relatedLanguages": ["sk"]
-  }, {
-    "id": "sl",
-    "description": "Slovenian",
-    "relatedLanguages": ["sl"]
-  }, {
-    "id": "es",
-    "description": "Spanish",
-    "relatedLanguages": ["es"]
-  }, {
-    "id": "sv",
-    "description": "Swedish",
-    "relatedLanguages": ["sw"]
-  }, {
-    "id": "th",
-    "description": "Thai",
-    "relatedLanguages": ["th"]
-  }, {
-    "id": "tr",
-    "description": "Turkish",
-    "relatedLanguages": ["tr"]
-  }, {
-    "id": "uk",
-    "description": "Ukrainian",
-    "relatedLanguages": ["uk"]
-  }, {
-    "id": "vi",
-    "description": "Vietnamese",
-    "relatedLanguages": ["vi"]
+    "id": "en",
+    "description": "English",
+    "relatedLanguages": ["en"]
   }],
 
   "AUTOGENERATED_AUDIO_LANGUAGES": [{
@@ -5107,7 +4784,7 @@ export = {
   },
 
   "ALLOWED_QUESTION_INTERACTION_CATEGORIES": [{
-    "name": "General",
+    "name": "Общие",
     "interaction_ids": [
       "ImageClickInput",
       "ItemSelectionInput",
@@ -5116,7 +4793,7 @@ export = {
       "DragAndDropSortInput"
     ]
   }, {
-    "name": "Math",
+    "name": "Математика",
     "interaction_ids": [
       "FractionInput",
       "NumberWithUnits",
@@ -5127,24 +4804,24 @@ export = {
   // These categories and interactions are displayed in the order in which they
   // appear in the interaction selector.
   "ALLOWED_INTERACTION_CATEGORIES": [{
-    "name": "General",
+    "name": "Общие",
     "interaction_ids": [
       "Continue",
       "EndExploration",
       "ImageClickInput",
       "ItemSelectionInput",
       "MultipleChoiceInput",
+      "SetInput",
       "TextInput",
       "DragAndDropSortInput"
     ]
   }, {
-    "name": "Math",
+    "name": "Математика",
     "interaction_ids": [
       "FractionInput",
       "GraphInput",
       "LogicProof",
       "NumericInput",
-      "SetInput",
       "NumericExpressionInput",
       "AlgebraicExpressionInput",
       "MathEquationInput",
@@ -5152,18 +4829,18 @@ export = {
       "RatioExpressionInput"
     ]
   }, {
-    "name": "Programming",
+    "name": "Dev",
     "interaction_ids": [
       "CodeRepl",
       "PencilCodeEditor"
     ]
   }, {
-    "name": "Music",
+    "name": "Музыка",
     "interaction_ids": [
       "MusicNotesInput"
     ]
   }, {
-    "name": "Geography",
+    "name": "Карта",
     "interaction_ids": [
       "InteractiveMap"
     ]
@@ -5224,7 +4901,7 @@ export = {
     "Hard": 0.9
   },
 
-  "ENABLE_PREREQUISITE_SKILLS": false,
+  "ENABLE_PREREQUISITE_SKILLS": true,
 
   "ENABLE_NEW_STRUCTURE_VIEWER_UPDATES": true,
 
@@ -5404,30 +5081,30 @@ export = {
   // Name to human readable form mapping of the position of terms object.
   "POSITION_OF_TERMS_MAPPING": [{
     "name": "lhs",
-    "humanReadableName": "on Left Hand Side"
+    "humanReadableName": "на левой стороне"
   }, {
     "name": "rhs",
-    "humanReadableName": "on Right Hand Side"
+    "humanReadableName": "на правой стороне"
   }, {
     "name": "both",
-    "humanReadableName": "on both sides"
+    "humanReadableName": "с обеих сторон"
   }, {
     "name": "irrelevant",
-    "humanReadableName": "with reordering allowed around ="
+    "humanReadableName": "с возможностью изменения порядка ="
   }],
 
   // Placeholder texts for the math interactions.
   "MATH_INTERACTION_PLACEHOLDERS": {
-    "AlgebraicExpressionInput": "Type an expression here.",
-    "NumericExpressionInput": "Type an expression here, using only numbers.",
-    "MathEquationInput": "Type an equation here."
+    "AlgebraicExpressionInput": "Введите здесь выражение.",
+    "NumericExpressionInput": "Введите здесь выражение, используя только числа.",
+    "MathEquationInput": "Введите здесь уравнение."
   },
 
   // Unfinished features.
   "SHOW_TRAINABLE_UNRESOLVED_ANSWERS": false,
 
   // eslint-disable-next-line max-len
-  "DEFAULT_TWITTER_SHARE_MESSAGE_EDITOR": "Check out this interactive lesson I created on Oppia - a free platform for teaching and learning!",
+  "DEFAULT_TWITTER_SHARE_MESSAGE_EDITOR": "Посмотрите этот интерактивный урок, который я создал на Oqustudy - на платформе для преподавания и обучения!",
 
   "OPPORTUNITY_TYPE_SKILL": "skill",
   "OPPORTUNITY_TYPE_TRANSLATION": "translation",
@@ -5435,7 +5112,7 @@ export = {
 
   // The bucket name is set to None-resources to enable it to be used
   // in prod mode when the resource bucket name is not allowed to be null.
-  "GCS_RESOURCE_BUCKET_NAME": "None-resources",
+  "GCS_RESOURCE_BUCKET_NAME": "app_default_bucket",
 
   "ENABLE_EXP_FEEDBACK_FOR_LOGGED_OUT_USERS": true,
 
