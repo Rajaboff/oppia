@@ -1,0 +1,32 @@
+# vim: tabstop=2:softtabstop=2:shiftwidth=2:expandtab
+
+stages:
+  - deploy
+  - waiting_up
+
+deploy:
+  when: manual
+  stage: deploy
+  variables:
+    SCREEN_NAME: "server"
+    FROM_FOLDER: .
+    TO_FOLDER: "/home/gitlab-runner/oppia"
+  script:
+    - pwd
+    - ls -a
+    - sudo screen -ls || echo "No screen"
+    - sudo screen -S ${SCREEN_NAME} -X quit || echo "No screen"
+    - sudo mkdir -p ${TO_FOLDER}
+    - sudo rsync --copy-links -avc --delete ${FROM_FOLDER}/ ${TO_FOLDER} > /dev/null 2>&1
+    - cd ${TO_FOLDER}
+    - mkdir -p .git/hooks/pre-commit
+    - sudo screen -A -m -d -S ${SCREEN_NAME} python -m scripts.start --no_browser --disable_host_checking --prod_env --save_datastore
+
+wait:
+  stage: waiting_up
+  script:
+    - bash waiting_up.sh
+  dependencies:
+    - deploy
+  needs:
+    - deploy
