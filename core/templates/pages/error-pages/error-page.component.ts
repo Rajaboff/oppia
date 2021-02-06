@@ -35,7 +35,7 @@ export class ErrorPageComponent implements OnInit {
     private pageTitleService: PageTitleService) {}
 
   ngOnInit(): void {
-    this.pageTitleService.setPageTitle('Error ' + this.statusCode + ' - Oppia');
+    this.pageTitleService.setPageTitle('Error ' + this.statusCode + ' - Oqustudy.kz');
   }
 
   getStaticImageUrl(imagePath: string): string {
