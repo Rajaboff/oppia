@@ -121,7 +121,7 @@ def ensure_system_python_libraries_are_installed(package, version):
     install_backend_python_libs.pip_install_to_system(package, version)
 
 
-def main():
+def main(is_docker=False):
     """Install third-party libraries for Oppia."""
     setup.main(args=[])
     setup_gae.main(args=[])
@@ -184,7 +184,11 @@ def main():
 
     # Download and install required JS and zip files.
     python_utils.PRINT('Installing third-party JS libraries and zip files.')
-    install_third_party.main(args=[])
+    if is_docker:
+        third_party_args = ["is_docker"]
+    else:
+        third_party_args = []
+    install_third_party.main(args=third_party_args)
 
     # The following steps solves the problem of multiple google paths confusing
     # the python interpreter. Namely, there are two modules named google/, one
