@@ -26,17 +26,17 @@
 # Note that the root folder MUST be named 'oppia'.
 
 sudo apt-get update
-sudo apt-get install curl
-sudo apt-get install git
-sudo apt-get install openjdk-8-jre
-sudo apt-get install python-setuptools
-sudo apt-get install python-dev
-sudo apt-get install python-pip
-sudo apt-get install unzip
-sudo apt-get install python-yaml
+# sudo apt-get install -y curl
+# sudo apt-get install -y git
+	sudo apt-get install -y openjdk-8-jre
+# sudo apt-get install -y python-setuptools
+sudo apt-get install -y python-dev
+# sudo apt-get install -y python-pip
+sudo apt-get install -y unzip
+sudo apt-get install -y python-yaml
 # This is only done to address an
 #     "ImportError: No module named functools_lru_cache"
 # error. See the Troubleshooting page for details:
 #    https://github.com/oppia/oppia/wiki/Troubleshooting
-sudo apt-get install python-matplotlib
-sudo pip install --upgrade pip
+sudo apt-get install -y python-matplotlib
+# sudo pip install -y --upgrade pip

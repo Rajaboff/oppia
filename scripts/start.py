@@ -26,11 +26,11 @@ import os
 import re
 import subprocess
 import time
+import sys
 
 from . import install_third_party_libs
 # This installs third party libraries before importing other files or importing
 # libraries that use the builtins python module (e.g. build, python_utils).
-install_third_party_libs.main()
 
 from . import build # isort:skip  pylint: disable=wrong-import-position, wrong-import-order
 from . import common # isort:skip  pylint: disable=wrong-import-position, wrong-import-order
@@ -83,6 +83,12 @@ _PARSER.add_argument(
     help=(
         'optional; if specified, build webpack with source maps.'),
     action='store_true')
+_PARSER.add_argument(
+    '--docker',
+    help=(
+        'optional; setup without run applications.'),
+    action='store_true')
+
 
 PORT_NUMBER_FOR_GAE_SERVER = 80
 
@@ -103,9 +109,13 @@ def cleanup():
 def main(args=None):
     """Starts up a development server running Oppia."""
     parsed_args = _PARSER.parse_args(args=args)
+    install_third_party_libs.main(is_docker=parsed_args.docker)
 
     # Runs cleanup function on exit.
     atexit.register(cleanup)
+
+    if parsed_args.docker:
+        sys.exit()
 
     # Check that there isn't a server already running.
     if common.is_port_open(PORT_NUMBER_FOR_GAE_SERVER):
