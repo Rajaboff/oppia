@@ -78,10 +78,12 @@ RUN pip install \
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
 	yes | apt install ./google-chrome-stable_current_amd64.deb
 
-RUN git clone https://AkhanBakhitov:EASt4lzRQJ@gitlab.com/AkhanBakhitov/oppia.git  # FIXME: use COPY in gitlab-ci
+COPY . /oppia
 
-RUN cd oppia && bash scripts/install_prerequisites.sh;
+RUN cd /oppia && bash scripts/install_prerequisites.sh;
+RUN mkdir -p /oppia/.git/hooks/ && cd /oppia/.git/hooks/ && ln -s /oppia/scripts/pre_commit_hook.py pre-commit
 
-RUN cd /oppia && git pull && git branch && git checkout docker && git pull && python2 -m scripts.start --no_browser --disable_host_checking --prod_env --docker
+RUN cd /oppia && ls && python2 -m scripts.start --no_browser --disable_host_checking --prod_env --docker
+RUN rm -rf /oppia
 
-CMD pip --version && dpkg -l | grep python && cd oppia && git pull && git branch && git checkout docker && git pull && python2 -m scripts.start --no_browser --disable_host_checking --prod_env
+CMD pip --version && dpkg -l | grep python && cd /oppia && python2 -m scripts.start --no_browser --disable_host_checking --prod_env
