@@ -50,7 +50,7 @@ def _task_handler(url, payload, queue_name, task_name=None):
     # handlers in DEV_mode.
     headers['X-AppEngine-Fake-Is-Admin'] = '1'
     headers['method'] = 'POST'
-    complete_url = 'http://oqustudy.kz:%s%s' % (GOOGLE_APP_ENGINE_PORT, url)
+    complete_url = 'http://0.0.0.0:%s%s' % (GOOGLE_APP_ENGINE_PORT, url)
     requests.post(
         complete_url,
         json=payload,
