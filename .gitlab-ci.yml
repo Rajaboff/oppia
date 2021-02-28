@@ -1,8 +1,22 @@
 # vim: tabstop=2:softtabstop=2:shiftwidth=2:expandtab
 
 stages:
+  - build
   - deploy
   - waiting_up
+
+build_base_image:
+  stage: build
+  when: manual
+  only:
+    - master
+  script:
+    - docker login --username akhanbakhitov777 --password ${DOCKER_HUB_TOKEN}
+    - ls
+    - docker build -t akhanbakhitov777/oqustudy .
+    # - docker tag oqustudy:latest akhanbakhitov777/oqustudy:latest
+    - docker push akhanbakhitov777/oqustudy:latest
+    - docker system prune -f
 
 deploy:
   when: manual
