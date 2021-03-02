@@ -3,7 +3,6 @@
 stages:
   - build
   - deploy
-  - waiting_up
 
 build_base_image:
   stage: build
@@ -13,8 +12,7 @@ build_base_image:
   script:
     - docker login --username akhanbakhitov777 --password ${DOCKER_HUB_TOKEN}
     - ls
-    - docker build -t akhanbakhitov777/oqustudy .
-    # - docker tag oqustudy:latest akhanbakhitov777/oqustudy:latest
+    - docker build -t akhanbakhitov777/oqustudy -f oqustudy.Dockerfile .
     - docker push akhanbakhitov777/oqustudy:latest
     - docker system prune -f
 
@@ -26,21 +24,11 @@ deploy:
     FROM_FOLDER: .
     TO_FOLDER: "/home/gitlab-runner/oppia"
   script:
-    - pwd
-    - ls -a
-    - sudo screen -ls || echo "No screen"
-    - sudo screen -S ${SCREEN_NAME} -X quit || echo "No screen"
-    - sudo mkdir -p ${TO_FOLDER}
-    - sudo rsync --copy-links -avc --delete ${FROM_FOLDER}/ ${TO_FOLDER} > /dev/null 2>&1
-    - cd ${TO_FOLDER}
-    - mkdir -p .git/hooks/pre-commit
-    - sudo screen -A -m -d -S ${SCREEN_NAME} python -m scripts.start --no_browser --disable_host_checking --prod_env --save_datastore
-
-wait:
-  stage: waiting_up
-  script:
+    - docker login --username akhanbakhitov777 --password ${DOCKER_HUB_TOKEN}
+    - docker pull akhanbakhitov777/oqustudy:latest
+    - docker stop oqustudy || echo "oqustudy container is not running"
+    - docker rm oqustudy || echo "oqustudy container is not exist"
+    - docker run -d --name oqustudy -p 80:80 -v "/root/appengine.None.root/:/tmp" -v "${PWD}/../oppia:/oppia" akhanbakhitov777/oqustudy
+    - docker system prune -f
+    - docker volume prune -f
     - bash waiting_up.sh
-  dependencies:
-    - deploy
-  needs:
-    - deploy

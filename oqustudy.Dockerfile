@@ -81,9 +81,10 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 COPY . /oppia
 
 RUN cd /oppia && bash scripts/install_prerequisites.sh;
-RUN mkdir -p /oppia/.git/hooks/ && cd /oppia/.git/hooks/ && ln -s /oppia/scripts/pre_commit_hook.py pre-commit
+RUN mkdir -p /oppia/.git/hooks/ && cd /oppia/.git/hooks/ && if [ ! -L pre-commit ]; then ln -s /oppia/scripts/pre_commit_hook.py pre-commit; fi
 
 RUN cd /oppia && ls && python2 -m scripts.start --no_browser --disable_host_checking --prod_env --docker
 RUN rm -rf /oppia
 
-CMD pip --version && dpkg -l | grep python && cd /oppia && python2 -m scripts.start --no_browser --disable_host_checking --prod_env
+ENTRYPOINT ["/oppia/entrypoint.sh"]
+CMD ["python2", "-m", "scripts.start", "--no_browser", "--disable_host_checking", "--prod_env", "--save_datastore"]
