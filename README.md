@@ -1,6 +1,8 @@
 # Fork oppia release-3.0.4
 https://github.com/oppia/oppia
 
+[[_TOC_]]
+
 ## Что изменилось?
 
 Платформа была разработана для использования в среде **Google App Engine**(GAE). Вход в платформу осуществлялся с 
