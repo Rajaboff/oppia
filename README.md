@@ -85,3 +85,74 @@ sudo systemctl stop nginx
 sudo cat nginx.conf > /etc/nginx/nginx.conf
 sudo systemctl start nginx
 ```
+
+## Описание CI/CD
+
+- Для каждого push'a в репозиторий можно запустить джобу `deploy` - она предназначена для развертывания на prod-сервере версии с вашими измененими, так что думайте прежде чем ее запускать.
+
+- На `master` можно запускать джобу `build` - она пересобирет базовый образ для поднятия проекта из версии, которая сейчас развернута на prod-сервере и перезальет образ в https://hub.docker.com/repository/docker/akhanbakhitov777/oqustudy.
+
+## Как поднять проект в докере на своей машине
+
+На примере Ubuntu:
+
+1. Клонируем себе текущий проект 
+
+```bash
+https://gitlab.com/AkhanBakhitov/oppia.git
+```
+
+2. Переходим в дирректорию проекта
+
+```bash
+cd oppia
+```
+
+3. Устанавливаем docker. Вот [официальная дока](https://docs.docker.com/engine/install/)
+4. Регаемся в https://hub.docker.com/
+5. Запрашиваем у @AkhanBakhitov доступ к https://hub.docker.com/repository/docker/akhanbakhitov777/oqustudy
+6. Логинимся используя docker:
+
+```bash
+docker login --username <your_username> --password <your_password>
+```
+
+7. Скачиваем образ для запуска проекта
+
+```bash
+docker pull akhanbakhitov777/oqustudy:latest
+```
+
+8. Создаем в домашнем каталоге директорию для хранения контента проекта(что-то типо базы):
+
+```bash
+mkdir -p ~/appengine.None.root
+```
+
+9. Создаем и запускаем контейнер с проектом
+
+```bash
+docker run -d --name oqustudy -p 80:80 -v "~/appengine.None.root/:/tmp" -v "${PWD}/../oppia:/oppia" akhanbakhitov777/oqustudy
+```
+
+где:
+- `-p 80:80` - прокидываем порт из докера на localhost
+- `-v "~/appengine.None.root/:/tmp"` - прокидываем локальную базу в докер, все изменения останутся в ней даже если остановить и удалить контейнер с приложением
+- `-v "${PWD}/../oppia:/oppia"` - прокидываем локальную директорию с проектом в контейнер с приложением. Т.е. все изменения сделанные локально - автоматически попадают в контейнер, как будто приложение и не в докере вовсе.
+
+Лог контейнера можно смотреть так:
+
+```bash
+docker logs -f oqustudy
+```
+
+После запуска приложение будет доступно на: 127.0.0.1
+
+## Docker cheat sheets
+
+- docker run ... - создает контейнер из образа и запускает его
+- docker rm <container_name> - удаляет контейнер
+- docker stop <container_name> - останавливает контейнер
+- docker start <container_name> - запускает ранее созданный контейнер
+
+После перезагрузки системы достаточно выполнить `docker start oqustudy` и приложение снова запустится
