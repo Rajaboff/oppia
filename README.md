@@ -1,7 +1,7 @@
+[[_TOC_]]
+
 # Fork oppia release-3.0.4
 https://github.com/oppia/oppia
-
-[[_TOC_]]
 
 ## Что изменилось?
 
