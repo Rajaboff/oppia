@@ -24,7 +24,7 @@ RUN sudo apt-get install -y build-essential && \
     make
 
 # Install pip
-RUN curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py --output get-pip.py && python2 get-pip.py 'pip < 21.0'
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py --output get-pip.py && python2 get-pip.py 'pip < 21.0'
 
 RUN pip install \
     backports.functools-lru-cache==1.6.1 \

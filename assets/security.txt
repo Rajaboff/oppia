@@ -1,4 +1,4 @@
-Contact: admin@oppia.org
+Contact: info_support@oqustudy.kz
 Preferred-Languages: en
-Canonical: https://www.oppia.org/security.txt
-Acknowledgements: https://www.oppia.org/about#credits
+Canonical: http://oqustudy.kz/security.txt
+Acknowledgements: http://oqustudy.kz/about#credits
