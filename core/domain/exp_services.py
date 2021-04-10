@@ -156,14 +156,17 @@ def get_exploration_ids_matching_query(query_string, user, cursor=None):
 
         invalid_exp_ids = []
         for ind, model in enumerate(exp_models.ExpSummaryModel.get_multi(exp_ids)):
+            exp_id = exp_ids[ind]
             if model is not None:
                 if rights_manager.does_user_has_access_to_exploration(
-                    exploration_id=exp_ids[ind],
+                    exploration_id=exp_id,
                     user=user,
                 ):
-                    returned_exploration_ids.append(exp_ids[ind])
+                    returned_exploration_ids.append(exp_id)
+                else:
+                    invalid_exp_ids.append(exp_id)
             else:
-                invalid_exp_ids.append(exp_ids[ind])
+                invalid_exp_ids.append(exp_id)
 
         if (len(returned_exploration_ids) == feconf.SEARCH_RESULTS_PAGE_SIZE
                 or search_cursor is None):

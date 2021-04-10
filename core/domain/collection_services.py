@@ -577,13 +577,16 @@ def get_collection_ids_matching_query(query_string, user, cursor=None):
         # through query and there cannot be a collection id for which there is
         # no collection.
         for ind, _ in enumerate(
-                collection_models.CollectionSummaryModel.get_multi(
-                    collection_ids)):
+            collection_models.CollectionSummaryModel.get_multi(collection_ids)
+        ):
 
-            if not rights_manager.does_user_has_access_to_collection(collection_ids[ind], user):
-                continue
+            coll_id = collection_ids[ind]
 
-            returned_collection_ids.append(collection_ids[ind])
+            if rights_manager.does_user_has_access_to_collection(
+                collection_id=coll_id,
+                user=user,
+            ):
+                returned_collection_ids.append(coll_id)
 
         # The number of collections in a page is always lesser or equal to
         # feconf.SEARCH_RESULTS_PAGE_SIZE.
