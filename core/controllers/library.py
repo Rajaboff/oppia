@@ -26,6 +26,7 @@ from core.controllers import acl_decorators
 from core.controllers import base
 from core.domain import collection_services
 from core.domain import exp_services
+from core.domain import rights_manager
 from core.domain import summary_services
 from core.domain import user_services
 from core.platform import models
@@ -38,9 +39,11 @@ import utils
 current_user_services = models.Registry.import_current_user_services()
 
 
-def get_matching_activity_dicts(query_string, search_cursor):
+def get_matching_activity_dicts(query_string, search_cursor, user):
     """Given a query string and a search cursor, returns a list of activity
     dicts that satisfy the search query.
+
+    Filter the activities depends on user.
     """
     # We only populate collections in the initial load, since the current
     # frontend search infrastructure is set up to only deal with one search
@@ -50,11 +53,17 @@ def get_matching_activity_dicts(query_string, search_cursor):
     if not search_cursor:
         collection_ids, _ = (
             collection_services.get_collection_ids_matching_query(
-                query_string))
+                query_string,
+                user=user,
+            )
+        )
 
     exp_ids, new_search_cursor = (
         exp_services.get_exploration_ids_matching_query(
-            query_string, cursor=search_cursor))
+            query_string, user=user, cursor=search_cursor
+        )
+    )
+
     activity_list = []
     activity_list = (
         summary_services.get_displayable_collection_summary_dicts_matching_ids(
@@ -100,15 +109,24 @@ class LibraryIndexHandler(base.BaseHandler):
     def get(self):
         """Handles GET requests."""
         # TODO(sll): Support index pages for other language codes.
-        summary_dicts_by_category = summary_services.get_library_groups([
-            constants.DEFAULT_LANGUAGE_CODE])
+        summary_dicts_by_category = summary_services.get_library_groups(
+            [constants.DEFAULT_LANGUAGE_CODE],
+            self.user,
+        )
+
         top_rated_activity_summary_dicts = (
             summary_services.get_top_rated_exploration_summary_dicts(
                 [constants.DEFAULT_LANGUAGE_CODE],
-                feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FOR_LIBRARY_PAGE))
+                feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FOR_LIBRARY_PAGE,
+                self.user,
+            )
+        )
         featured_activity_summary_dicts = (
             summary_services.get_featured_activity_summary_dicts(
-                [constants.DEFAULT_LANGUAGE_CODE]))
+                [constants.DEFAULT_LANGUAGE_CODE],
+                self.user,
+            )
+        )
 
         preferred_language_codes = [constants.DEFAULT_LANGUAGE_CODE]
         if self.user_id:
@@ -172,7 +190,10 @@ class LibraryGroupIndexHandler(base.BaseHandler):
         if group_name == feconf.LIBRARY_GROUP_RECENTLY_PUBLISHED:
             recently_published_summary_dicts = (
                 summary_services.get_recently_published_exp_summary_dicts(
-                    feconf.RECENTLY_PUBLISHED_QUERY_LIMIT_FULL_PAGE))
+                    feconf.RECENTLY_PUBLISHED_QUERY_LIMIT_FULL_PAGE,
+                    self.user,
+                )
+            )
             if recently_published_summary_dicts:
                 activity_list = recently_published_summary_dicts
                 header_i18n_id = feconf.LIBRARY_CATEGORY_RECENTLY_PUBLISHED
@@ -181,7 +202,10 @@ class LibraryGroupIndexHandler(base.BaseHandler):
             top_rated_activity_summary_dicts = (
                 summary_services.get_top_rated_exploration_summary_dicts(
                     [constants.DEFAULT_LANGUAGE_CODE],
-                    feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FULL_PAGE))
+                    feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FULL_PAGE,
+                    self.user,
+                )
+            )
             if top_rated_activity_summary_dicts:
                 activity_list = top_rated_activity_summary_dicts
                 header_i18n_id = feconf.LIBRARY_CATEGORY_TOP_RATED_EXPLORATIONS
@@ -228,7 +252,8 @@ class SearchHandler(base.BaseHandler):
         search_cursor = self.request.get('cursor', None)
 
         activity_list, new_search_cursor = get_matching_activity_dicts(
-            query_string, search_cursor)
+            query_string, search_cursor, self.user
+        )
 
         self.values.update({
             'activity_list': activity_list,
@@ -281,9 +306,14 @@ class ExplorationSummariesHandler(base.BaseHandler):
                 summary_services.get_displayable_exp_summary_dicts_matching_ids(
                     exp_ids, user=self.user))
         else:
-            summaries = (
-                summary_services.get_displayable_exp_summary_dicts_matching_ids(
-                    exp_ids))
+            summaries = [
+                summary for summary in summary_services.get_displayable_exp_summary_dicts_matching_ids(
+                    exp_ids
+                ) if rights_manager.does_user_has_access_to_exploration(
+                    exploration_id=summary["id"],
+                    user=self.user,
+                )
+        ]
         self.values.update({
             'summaries': summaries
         })
@@ -303,9 +333,15 @@ class CollectionSummariesHandler(base.BaseHandler):
                 self.request.get('stringified_collection_ids'))
         except Exception:
             raise self.PageNotFoundException
-        summaries = (
-            summary_services.get_displayable_collection_summary_dicts_matching_ids( # pylint: disable=line-too-long
-                collection_ids))
+
+        summaries = [
+            summary for summary in summary_services.get_displayable_collection_summary_dicts_matching_ids( # pylint: disable=line-too-long
+                collection_ids,
+            ) if rights_manager.does_user_has_access_to_collection(
+                collection_id=summary["id"],
+                user=self.user,
+            )
+        ]
         self.values.update({
             'summaries': summaries
         })

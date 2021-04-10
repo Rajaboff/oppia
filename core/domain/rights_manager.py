@@ -1242,3 +1242,37 @@ def unpublish_collection(committer, collection_id):
     """
     _unpublish_activity(
         committer, collection_id, constants.ACTIVITY_TYPE_COLLECTION)
+
+
+def does_user_has_access_to_collection(collection_id, user):
+    """Проверка - имеет ли пользователь доступ к коллекции
+
+    Args:
+        collection_id: str. Collection ID ID
+        user: UserActionsInfo. Object having user_id, role and actions for given user
+
+    Returns:
+        bool. Does the user has access to the collection.
+    """
+    # Get the collection rights
+    collection_rights = get_collection_rights(collection_id, strict=False)
+
+    # If user has not access - return False
+    return check_can_access_activity(user, collection_rights)
+
+
+def does_user_has_access_to_exploration(exploration_id, user):
+    """Проверка - имеет ли пользователь доступ к уроку
+
+    Args:
+        exploration_id: str. Exploration ID
+        user: UserActionsInfo. Object having user_id, role and actions for given user
+
+    Returns:
+        bool. Does the user has access to the exploration.
+    """
+    # Get the eploration rights
+    exploration_rights = get_exploration_rights(exploration_id, strict=False)
+
+    # If user has not access - return False
+    return check_can_access_activity(user, exploration_rights)

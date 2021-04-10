@@ -228,7 +228,7 @@ def get_exp_metadata_dicts_matching_query(query_string, search_cursor, user):
     """
     exp_ids, new_search_cursor = (
         exp_services.get_exploration_ids_matching_query(
-            query_string, cursor=search_cursor))
+            query_string, user=user, cursor=search_cursor))
 
     exploration_list = get_exploration_metadata_dicts(
         exp_ids, user)
@@ -464,13 +464,14 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
     return displayable_collection_summaries
 
 
-def get_library_groups(language_codes):
+def get_library_groups(language_codes, user):
     """Returns a list of groups for the library index page. Each group has a
     header and a list of dicts representing activity summaries.
 
     Args:
         language_codes: list(str). A list of language codes. Only explorations
             with these languages will be returned.
+        user: UserActionsInfo. Object having user_id, role and actions for given user
 
     Returns:
         list(dict). A list of groups for the library index page. Each group is
@@ -485,6 +486,9 @@ def get_library_groups(language_codes):
             - full_results_url: str. The URL to the corresponding "full results"
                 page.
     """
+    _exp_filter = lambda exp_id: rights_manager.does_user_has_access_to_exploration(exp_id, user)
+    _coll_filter = lambda coll_id: rights_manager.does_user_has_access_to_collection(coll_id, user)
+
     language_codes_suffix = ''
     if language_codes:
         language_codes_suffix = ' language_code=("%s")' % (
@@ -552,12 +556,14 @@ def get_library_groups(language_codes):
         summary_dicts = [
             collection_summary_dicts[collection_id]
             for collection_id in collection_ids_to_display
-            if collection_id in collection_summary_dicts]
+            if collection_id in collection_summary_dicts and _coll_filter(collection_id)
+        ]
 
         exp_ids_to_display = header_to_exp_ids[group['header_i18n_id']]
         summary_dicts += [
             exp_summary_dicts[exp_id] for exp_id in exp_ids_to_display
-            if exp_id in exp_summary_dicts]
+            if exp_id in exp_summary_dicts and _exp_filter(exp_id)
+        ]
 
         if not summary_dicts:
             continue
@@ -611,14 +617,14 @@ def require_activities_to_be_public(activity_references):
                     'Cannot feature private %s with id %s' %
                     (activities_info['type'], activities_info['ids'][index]))
 
-
-def get_featured_activity_summary_dicts(language_codes):
+def get_featured_activity_summary_dicts(language_codes, user):
     """Returns a list of featured activities with the given language codes.
     The return value is sorted according to the list stored in the datastore.
 
     Args:
         language_codes: list(str). A list of language codes. Only explorations
             with these languages will be returned.
+        user: UserActionsInfo. Object having user_id, role and actions for given user
 
     Returns:
         list(dict). Each dict in this list represents a featured activity.
@@ -640,6 +646,9 @@ def get_featured_activity_summary_dicts(language_codes):
             'objective': 'An objective',
         }, ]
     """
+    _exp_filter = lambda exp_id: rights_manager.does_user_has_access_to_exploration(exp_id, user)
+    _coll_filter = lambda coll_id: rights_manager.does_user_has_access_to_collection(coll_id, user)
+
     activity_references = activity_services.get_featured_activity_references()
     exploration_ids, collection_ids = activity_services.split_by_type(
         activity_references)
@@ -653,10 +662,12 @@ def get_featured_activity_summary_dicts(language_codes):
         constants.ACTIVITY_TYPE_EXPLORATION: {
             summary_dict['id']: summary_dict
             for summary_dict in exp_summary_dicts
+            if _exp_filter(summary_dict['id'])
         },
         constants.ACTIVITY_TYPE_COLLECTION: {
             summary_dict['id']: summary_dict
             for summary_dict in col_summary_dicts
+            if _coll_filter(summary_dict['id'])
         },
     }
 
@@ -669,7 +680,7 @@ def get_featured_activity_summary_dicts(language_codes):
     return featured_summary_dicts
 
 
-def get_top_rated_exploration_summary_dicts(language_codes, limit):
+def get_top_rated_exploration_summary_dicts(language_codes, limit, user):
     """Returns a list of top rated explorations with the given language codes.
     The return value is sorted in decreasing order of average rating.
 
@@ -677,6 +688,7 @@ def get_top_rated_exploration_summary_dicts(language_codes, limit):
         language_codes: list(str). A list of language codes. Only explorations
             with these languages will be returned.
         limit: int. The maximum number of explorations to return.
+        user: UserActionsInfo. Object having user_id, role and actions for given user
 
     Returns:
         list(dict). Each dict in this list represents a exploration summary in
@@ -698,11 +710,20 @@ def get_top_rated_exploration_summary_dicts(language_codes, limit):
             'title': u'Exploration 2 Albert title',
         }, ]
     """
+    def _filter(exp_summary):
+        return (
+            rights_manager.does_user_has_access_to_exploration(
+                exploration_id=exp_summary.id, user=user,
+            )
+            and exp_summary.language_code in language_codes
+            and sum(exp_summary.ratings.values()) > 0
+        )
+
     filtered_exp_summaries = [
         exp_summary for exp_summary in
         exp_services.get_top_rated_exploration_summaries(limit).values()
-        if exp_summary.language_code in language_codes and
-        sum(exp_summary.ratings.values()) > 0]
+        if _filter(exp_summary)
+    ]
 
     sorted_exp_summaries = sorted(
         filtered_exp_summaries,
@@ -712,11 +733,12 @@ def get_top_rated_exploration_summary_dicts(language_codes, limit):
     return get_displayable_exp_summary_dicts(sorted_exp_summaries)
 
 
-def get_recently_published_exp_summary_dicts(limit):
+def get_recently_published_exp_summary_dicts(limit, user):
     """Returns a list of recently published explorations.
 
     Args:
         limit: int. The maximum number of explorations to return.
+        user: UserActionsInfo. Object having user_id, role and actions for given user
 
     Returns:
         list(dict). Each dict in this list represents a featured activity in
@@ -737,9 +759,15 @@ def get_recently_published_exp_summary_dicts(limit):
             'title': u'Exploration 2 Albert title',
         }, ]
     """
+    _filter = lambda exp_summary: (
+        rights_manager.does_user_has_access_to_exploration(exp_summary.id, user)
+    )
+
     recently_published_exploration_summaries = [
         exp_summary for exp_summary in
-        exp_services.get_recently_published_exp_summaries(limit).values()]
+        exp_services.get_recently_published_exp_summaries(limit).values()
+        if _filter(exp_summary)
+    ]
 
     # Arranging recently published exploration summaries with respect to time.
     # sorted() is used to sort the random list of recently published summaries.
