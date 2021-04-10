@@ -126,7 +126,7 @@ def get_exploration_titles_and_categories(exp_ids):
     return result
 
 
-def get_exploration_ids_matching_query(query_string, cursor=None):
+def get_exploration_ids_matching_query(query_string, user, cursor=None):
     """Returns a list with all exploration ids matching the given search query
     string, as well as a search cursor for future fetches.
 
@@ -155,10 +155,13 @@ def get_exploration_ids_matching_query(query_string, cursor=None):
             query_string, remaining_to_fetch, cursor=search_cursor)
 
         invalid_exp_ids = []
-        for ind, model in enumerate(
-                exp_models.ExpSummaryModel.get_multi(exp_ids)):
+        for ind, model in enumerate(exp_models.ExpSummaryModel.get_multi(exp_ids)):
             if model is not None:
-                returned_exploration_ids.append(exp_ids[ind])
+                if rights_manager.does_user_has_access_to_exploration(
+                    exploration_id=exp_ids[ind],
+                    user=user,
+                ):
+                    returned_exploration_ids.append(exp_ids[ind])
             else:
                 invalid_exp_ids.append(exp_ids[ind])
 

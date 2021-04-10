@@ -228,7 +228,7 @@ def get_exp_metadata_dicts_matching_query(query_string, search_cursor, user):
     """
     exp_ids, new_search_cursor = (
         exp_services.get_exploration_ids_matching_query(
-            query_string, cursor=search_cursor))
+            query_string, user=user, cursor=search_cursor))
 
     exploration_list = get_exploration_metadata_dicts(
         exp_ids, user)
@@ -486,8 +486,8 @@ def get_library_groups(language_codes, user):
             - full_results_url: str. The URL to the corresponding "full results"
                 page.
     """
-    _exp_filter = lambda exp_id: _does_user_has_access_to_exploration(exp_id, user)
-    _coll_filter = lambda coll_id: _does_user_has_access_to_collection(coll_id, user)
+    _exp_filter = lambda exp_id: rights_manager.does_user_has_access_to_exploration(exp_id, user)
+    _coll_filter = lambda coll_id: rights_manager.does_user_has_access_to_collection(coll_id, user)
 
     language_codes_suffix = ''
     if language_codes:
@@ -617,41 +617,6 @@ def require_activities_to_be_public(activity_references):
                     'Cannot feature private %s with id %s' %
                     (activities_info['type'], activities_info['ids'][index]))
 
-
-def _does_user_has_access_to_collection(collection_id, user):
-    """Проверка - имеет ли пользователь доступ к коллекции
-
-    Args:
-        collection_id: str. Collection ID ID
-        user: UserActionsInfo. Object having user_id, role and actions for given user
-
-    Returns:
-        bool. Does the user has access to the exploration.
-    """
-    # Get the collection rights
-    exploration_rights = rights_manager.get_collection_rights(collection_id, strict=False)
-
-    # If user has not access - return False
-    return rights_manager.check_can_access_activity(user, exploration_rights)
-
-
-def _does_user_has_access_to_exploration(exploration_id, user):
-    """Проверка - имеет ли пользователь доступ к уроку
-
-    Args:
-        exploration_id: str. Exploration ID
-        user: UserActionsInfo. Object having user_id, role and actions for given user
-
-    Returns:
-        bool. Does the user has access to the exploration.
-    """
-    # Get the eploration rights
-    exploration_rights = rights_manager.get_exploration_rights(exploration_id, strict=False)
-
-    # If user has not access - return False
-    return rights_manager.check_can_access_activity(user, exploration_rights)
-
-
 def get_featured_activity_summary_dicts(language_codes, user):
     """Returns a list of featured activities with the given language codes.
     The return value is sorted according to the list stored in the datastore.
@@ -681,8 +646,8 @@ def get_featured_activity_summary_dicts(language_codes, user):
             'objective': 'An objective',
         }, ]
     """
-    _exp_filter = lambda exp_id: _does_user_has_access_to_exploration(exp_id, user)
-    _coll_filter = lambda coll_id: _does_user_has_access_to_collection(coll_id, user)
+    _exp_filter = lambda exp_id: rights_manager.does_user_has_access_to_exploration(exp_id, user)
+    _coll_filter = lambda coll_id: rights_manager.does_user_has_access_to_collection(coll_id, user)
 
     activity_references = activity_services.get_featured_activity_references()
     exploration_ids, collection_ids = activity_services.split_by_type(
@@ -747,7 +712,9 @@ def get_top_rated_exploration_summary_dicts(language_codes, limit, user):
     """
     def _filter(exp_summary):
         return (
-            _does_user_has_access_to_exploration(exploration_id=exp_summary.id, user=user)
+            rights_manager.does_user_has_access_to_exploration(
+                exploration_id=exp_summary.id, user=user,
+            )
             and exp_summary.language_code in language_codes
             and sum(exp_summary.ratings.values()) > 0
         )
@@ -792,7 +759,9 @@ def get_recently_published_exp_summary_dicts(limit, user):
             'title': u'Exploration 2 Albert title',
         }, ]
     """
-    _filter = lambda exp_summary: _does_user_has_access_to_exploration(exp_summary.id, user)
+    _filter = lambda exp_summary: (
+        rights_manager.does_user_has_access_to_exploration(exp_summary.id, user)
+    )
 
     recently_published_exploration_summaries = [
         exp_summary for exp_summary in

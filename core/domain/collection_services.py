@@ -543,12 +543,13 @@ def get_collection_summaries_subscribed_to(user_id):
 # TODO(bhenning): Update this function to support also matching the query to
 # explorations contained within this collection. Introduce tests to verify this
 # behavior.
-def get_collection_ids_matching_query(query_string, cursor=None):
+def get_collection_ids_matching_query(query_string, user, cursor=None):
     """Returns a list with all collection ids matching the given search query
     string, as well as a search cursor for future fetches.
 
     Args:
         query_string: str. The search query string.
+        user: UserActionsInfo. Object having user_id, role and actions for given user
         cursor: str or None. Cursor indicating where, in the list of
             collections, to start the search from.
 
@@ -578,6 +579,10 @@ def get_collection_ids_matching_query(query_string, cursor=None):
         for ind, _ in enumerate(
                 collection_models.CollectionSummaryModel.get_multi(
                     collection_ids)):
+
+            if not rights_manager.does_user_has_access_to_collection(collection_ids[ind], user):
+                continue
+
             returned_collection_ids.append(collection_ids[ind])
 
         # The number of collections in a page is always lesser or equal to

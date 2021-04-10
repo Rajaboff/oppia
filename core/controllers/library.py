@@ -38,9 +38,11 @@ import utils
 current_user_services = models.Registry.import_current_user_services()
 
 
-def get_matching_activity_dicts(query_string, search_cursor):
+def get_matching_activity_dicts(query_string, search_cursor, user):
     """Given a query string and a search cursor, returns a list of activity
     dicts that satisfy the search query.
+
+    Filter the activities depends on user.
     """
     # We only populate collections in the initial load, since the current
     # frontend search infrastructure is set up to only deal with one search
@@ -50,11 +52,17 @@ def get_matching_activity_dicts(query_string, search_cursor):
     if not search_cursor:
         collection_ids, _ = (
             collection_services.get_collection_ids_matching_query(
-                query_string))
+                query_string,
+                user=user,
+            )
+        )
 
     exp_ids, new_search_cursor = (
         exp_services.get_exploration_ids_matching_query(
-            query_string, cursor=search_cursor))
+            query_string, user=user, cursor=search_cursor
+        )
+    )
+
     activity_list = []
     activity_list = (
         summary_services.get_displayable_collection_summary_dicts_matching_ids(
@@ -243,7 +251,8 @@ class SearchHandler(base.BaseHandler):
         search_cursor = self.request.get('cursor', None)
 
         activity_list, new_search_cursor = get_matching_activity_dicts(
-            query_string, search_cursor)
+            query_string, search_cursor, self.user
+        )
 
         self.values.update({
             'activity_list': activity_list,
