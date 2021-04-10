@@ -26,6 +26,7 @@ from core.controllers import acl_decorators
 from core.controllers import base
 from core.domain import collection_services
 from core.domain import exp_services
+from core.domain import rights_manager
 from core.domain import summary_services
 from core.domain import user_services
 from core.platform import models
@@ -305,9 +306,14 @@ class ExplorationSummariesHandler(base.BaseHandler):
                 summary_services.get_displayable_exp_summary_dicts_matching_ids(
                     exp_ids, user=self.user))
         else:
-            summaries = (
-                summary_services.get_displayable_exp_summary_dicts_matching_ids(
-                    exp_ids))
+            summaries = [
+                summary for summary in summary_services.get_displayable_exp_summary_dicts_matching_ids(
+                    exp_ids
+                ) if rights_manager.does_user_has_access_to_exploration(
+                    exploration_id=summary["id"],
+                    user=self.user,
+                )
+        ]
         self.values.update({
             'summaries': summaries
         })
@@ -327,9 +333,15 @@ class CollectionSummariesHandler(base.BaseHandler):
                 self.request.get('stringified_collection_ids'))
         except Exception:
             raise self.PageNotFoundException
-        summaries = (
-            summary_services.get_displayable_collection_summary_dicts_matching_ids( # pylint: disable=line-too-long
-                collection_ids))
+
+        summaries = [
+            summary for summary in summary_services.get_displayable_collection_summary_dicts_matching_ids( # pylint: disable=line-too-long
+                collection_ids,
+            ) if rights_manager.does_user_has_access_to_collection(
+                collection_id=summary["id"],
+                user=self.user,
+            )
+        ]
         self.values.update({
             'summaries': summaries
         })
