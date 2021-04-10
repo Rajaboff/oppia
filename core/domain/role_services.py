@@ -201,7 +201,8 @@ ROLE_ACTIONS = {
         ACTION_SUBMIT_VOICEOVER_APPLICATION,
     ],
     feconf.ROLE_ID_GUEST: [
-        ACTION_PLAY_ANY_PUBLIC_ACTIVITY,
+        # Guest could not do nothing
+        # ACTION_PLAY_ANY_PUBLIC_ACTIVITY,
     ],
     feconf.ROLE_ID_LEARNER: [
         ACTION_FLAG_EXPLORATION,

@@ -100,15 +100,24 @@ class LibraryIndexHandler(base.BaseHandler):
     def get(self):
         """Handles GET requests."""
         # TODO(sll): Support index pages for other language codes.
-        summary_dicts_by_category = summary_services.get_library_groups([
-            constants.DEFAULT_LANGUAGE_CODE])
+        summary_dicts_by_category = summary_services.get_library_groups(
+            [constants.DEFAULT_LANGUAGE_CODE],
+            self.user,
+        )
+
         top_rated_activity_summary_dicts = (
             summary_services.get_top_rated_exploration_summary_dicts(
                 [constants.DEFAULT_LANGUAGE_CODE],
-                feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FOR_LIBRARY_PAGE))
+                feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FOR_LIBRARY_PAGE,
+                self.user,
+            )
+        )
         featured_activity_summary_dicts = (
             summary_services.get_featured_activity_summary_dicts(
-                [constants.DEFAULT_LANGUAGE_CODE]))
+                [constants.DEFAULT_LANGUAGE_CODE],
+                self.user,
+            )
+        )
 
         preferred_language_codes = [constants.DEFAULT_LANGUAGE_CODE]
         if self.user_id:
@@ -172,7 +181,10 @@ class LibraryGroupIndexHandler(base.BaseHandler):
         if group_name == feconf.LIBRARY_GROUP_RECENTLY_PUBLISHED:
             recently_published_summary_dicts = (
                 summary_services.get_recently_published_exp_summary_dicts(
-                    feconf.RECENTLY_PUBLISHED_QUERY_LIMIT_FULL_PAGE))
+                    feconf.RECENTLY_PUBLISHED_QUERY_LIMIT_FULL_PAGE,
+                    self.user,
+                )
+            )
             if recently_published_summary_dicts:
                 activity_list = recently_published_summary_dicts
                 header_i18n_id = feconf.LIBRARY_CATEGORY_RECENTLY_PUBLISHED
@@ -181,7 +193,10 @@ class LibraryGroupIndexHandler(base.BaseHandler):
             top_rated_activity_summary_dicts = (
                 summary_services.get_top_rated_exploration_summary_dicts(
                     [constants.DEFAULT_LANGUAGE_CODE],
-                    feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FULL_PAGE))
+                    feconf.NUMBER_OF_TOP_RATED_EXPLORATIONS_FULL_PAGE,
+                    self.user,
+                )
+            )
             if top_rated_activity_summary_dicts:
                 activity_list = top_rated_activity_summary_dicts
                 header_i18n_id = feconf.LIBRARY_CATEGORY_TOP_RATED_EXPLORATIONS
