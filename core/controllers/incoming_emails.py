@@ -27,7 +27,7 @@ from google.appengine.api import mail
 class IncomingReplyEmailHandler(base.BaseHandler):
     """Handler for receiving incoming reply emails."""
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def post(self, reply_to_id):
         incoming_mail = mail.InboundEmailMessage(self.request.body)
         feedback_thread_reply_info = (

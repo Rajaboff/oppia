@@ -100,7 +100,7 @@ class TrainedClassifierHandler(base.BaseHandler):
 
     REQUIRE_PAYLOAD_CSRF_CHECK = False
 
-    @acl_decorators.open_access
+    @acl_decorators.can_access_learner_dashboard
     def post(self):
         """Handles POST requests."""
         signature = self.payload.get('signature')
@@ -152,7 +152,7 @@ class NextJobHandler(base.BaseHandler):
 
     REQUIRE_PAYLOAD_CSRF_CHECK = False
 
-    @acl_decorators.open_access
+    @acl_decorators.can_access_learner_dashboard
     def post(self):
         """Handles POST requests."""
         signature = self.payload.get('signature')

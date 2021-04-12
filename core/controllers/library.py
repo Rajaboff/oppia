@@ -105,7 +105,7 @@ class LibraryIndexHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET requests."""
         # TODO(sll): Support index pages for other language codes.
@@ -179,7 +179,7 @@ class LibraryGroupIndexHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET requests for group pages."""
         # TODO(sll): Support index pages for other language codes.
@@ -231,7 +231,7 @@ class SearchHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET requests."""
         query_string = utils.unescape_encoded_uri_component(
@@ -279,7 +279,7 @@ class ExplorationSummariesHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET requests."""
         try:
@@ -325,7 +325,7 @@ class CollectionSummariesHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET requests."""
         try:

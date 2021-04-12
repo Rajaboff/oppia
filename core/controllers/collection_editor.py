@@ -212,7 +212,7 @@ class ExplorationMetadataSearchHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.can_access_learner_dashboard
     def get(self):
         """Handles GET requests."""
         query_string = base64.b64decode(self.request.get('q'))

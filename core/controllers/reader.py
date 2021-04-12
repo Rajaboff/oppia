@@ -822,7 +822,7 @@ class QuestionPlayerHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET request."""
         # Skill ids are given as a comma separated list because this is

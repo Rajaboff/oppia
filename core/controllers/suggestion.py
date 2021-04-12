@@ -327,7 +327,7 @@ class SuggestionListHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         # The query_fields_and_values variable is a list of tuples. The first
         # element in each tuple is the field being queried and the second
