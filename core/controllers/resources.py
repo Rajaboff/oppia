@@ -61,7 +61,7 @@ class AssetDevHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.can_access_learner_dashboard
+    @acl_decorators.should_be_logged_in
     def get(self, page_context, page_identifier, asset_type, encoded_filename):
         """Returns an asset file.
 
