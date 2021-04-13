@@ -1829,10 +1829,6 @@ def update_user_role(user_id, role):
     if role not in role_services.PARENT_ROLES:
         raise Exception('Role %s does not exist.' % role)
     user_settings = get_user_settings(user_id, strict=True)
-    if user_settings.role == feconf.ROLE_ID_LEARNER:
-        raise Exception('The role of a Learner cannot be changed.')
-    if role == feconf.ROLE_ID_LEARNER:
-        raise Exception('Updating to a Learner role is not allowed.')
     user_settings.role = role
     _save_user_settings(user_settings)
 

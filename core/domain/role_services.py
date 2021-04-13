@@ -95,7 +95,8 @@ UPDATABLE_ROLES = [
     feconf.ROLE_ID_COLLECTION_EDITOR,
     feconf.ROLE_ID_EXPLORATION_EDITOR,
     feconf.ROLE_ID_MODERATOR,
-    feconf.ROLE_ID_TOPIC_MANAGER
+    feconf.ROLE_ID_TOPIC_MANAGER,
+    feconf.ROLE_ID_LEARNER
 ]
 
 # Users can be viewed by following list of role IDs via admin interface.
@@ -107,7 +108,8 @@ VIEWABLE_ROLES = [
     feconf.ROLE_ID_BANNED_USER,
     feconf.ROLE_ID_COLLECTION_EDITOR,
     feconf.ROLE_ID_MODERATOR,
-    feconf.ROLE_ID_TOPIC_MANAGER
+    feconf.ROLE_ID_TOPIC_MANAGER,
+    feconf.ROLE_ID_LEARNER
 ]
 
 # The string corresponding to role IDs that should be visible to admin.
@@ -206,6 +208,7 @@ ROLE_ACTIONS = {
     feconf.ROLE_ID_LEARNER: [
         ACTION_FLAG_EXPLORATION,
         ACTION_ACCESS_LEARNER_DASHBOARD,
+        ACTION_MANAGE_ACCOUNT,
     ],
     feconf.ROLE_ID_MODERATOR: [
         ACTION_ACCESS_MODERATOR_PAGE,
