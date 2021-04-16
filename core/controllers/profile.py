@@ -22,6 +22,8 @@ import json
 import re
 import zipfile
 
+import requests
+
 from constants import constants
 from core.controllers import acl_decorators
 from core.controllers import base
@@ -270,8 +272,21 @@ class SignupPage(base.BaseHandler):
         if user_services.has_fully_registered_account(self.user_id):
             self.redirect(return_url)
             return
-
         self.render_template('signup-page.mainpage.html')
+
+
+class EmailConfirmPageHandler(base.BaseHandler):
+    """The page for view user email confirmation on frontend"""
+    def get(self):
+        """Handles GET requests on frontend"""
+        token = self.request.get('token')
+        if token:
+            url = 'http://0.0.0.0/token/' + token + '/email_confirm'
+            confirmation_response = requests.post(url, timeout=30)
+            if confirmation_response.status_code == 200:
+                self.render_template('email-confirm-page.mainpage.html')
+            else:
+                self.render_template('error-page-404.mainpage.html')
 
 
 class SignupHandler(base.BaseHandler):

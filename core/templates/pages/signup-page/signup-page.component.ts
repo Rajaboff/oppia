@@ -46,6 +46,10 @@ angular.module('oppia').component('signupPage', {
       var ctrl = this;
       var _SIGNUP_DATA_URL = '/signuphandler/data';
       ctrl.MAX_USERNAME_LENGTH = MAX_USERNAME_LENGTH;
+      ctrl.CREATEABLE_ROLES = {
+        "LEARNER": "learner",
+        "EXPLORATION_EDITOR": "exploration editor",
+      };
       ctrl.isFormValid = function() {
         return (
           ctrl.hasAgreedToLatestTerms &&
@@ -138,12 +142,24 @@ angular.module('oppia').component('signupPage', {
           agreed_to_terms: agreedToTerms,
           can_receive_email_updates: null,
           default_dashboard: defaultDashboard,
-          username: null
+          username: null,
+          email: null,
+          password: null,
+          role: "EXPLORATION_EDITOR"
         };
 
         if (!ctrl.hasUsername) {
           requestParams.username = username;
         }
+
+        if (ctrl.email) {
+          requestParams.email = ctrl.email
+        }
+
+        if (ctrl.password) {
+          requestParams.password = ctrl.password
+        }
+
 
         if (ctrl.showEmailPreferencesForm && !ctrl.hasUsername) {
           if (canReceiveEmailUpdates === null) {
@@ -163,18 +179,22 @@ angular.module('oppia').component('signupPage', {
         }
 
         SiteAnalyticsService.registerNewSignupEvent();
-
         ctrl.submissionInProcess = true;
         $http.post(_SIGNUP_DATA_URL, requestParams).then(function() {
-          $window.location.href = decodeURIComponent(
-            UrlService.getUrlParams().return_url);
+          // $window.location.href = decodeURIComponent(
+          //   UrlService.getUrlParams().return_url);
+          $window.location.href = '/logout'
         }, function(rejection) {
           if (
             rejection.data && rejection.data.status_code === 401) {
             ctrl.showRegistrationSessionExpiredModal();
           }
           ctrl.submissionInProcess = false;
+          $window.alert("Email confirm url was sent on " + ctrl.email)
         });
+
+        // Don't skip user until email wasn't  confirmed
+        // ctrl.navigate('/logout');
       };
 
       ctrl.showRegistrationSessionExpiredModal = function() {
@@ -191,6 +211,14 @@ angular.module('oppia').component('signupPage', {
           // No further action is needed.
         });
       };
+      const getMethods = (obj) => {
+        let properties = new Set()
+        let currentObj = obj
+        do {
+          Object.getOwnPropertyNames(currentObj).map(item => properties.add(item))
+        } while ((currentObj = Object.getPrototypeOf(currentObj)))
+        return [...properties.keys()].filter(item => typeof obj[item] === 'function')
+      }
       ctrl.$onInit = function() {
         LoaderService.showLoadingScreen('I18N_SIGNUP_LOADING');
         ctrl.warningI18nCode = '';

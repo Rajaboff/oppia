@@ -66,6 +66,7 @@ from core.platform.email.mailgun_email_services import send_email_to_recipients
 from core.platform import models
 import feconf
 
+
 from mapreduce import main as mapreduce_main
 from mapreduce import parameters as mapreduce_parameters
 import webapp2
@@ -99,7 +100,16 @@ class WarmupPage(base.BaseHandler):
         pass
 
 
+class LoginHandler(base.BaseHandler):
+    @acl_decorators.open_access
+    def get(self):
+        self.render_template('custom-auth-page.mainpage.html')
+
+
 class CustomAuthHandler(base.BaseHandler):
+    # @acl_decorators.open_access
+    # def get(self):
+    #     self.render_template('custom-auth-page.mainpage.html')
 
     @acl_decorators.open_access
     def post(self):
@@ -118,7 +128,7 @@ class CustomAuthHandler(base.BaseHandler):
             if path_params:
                 path_params += "&"
             path_params += item[0] + "=" + item[1]
-        url = "http://localhost:8181/_ah/login?" + path_params
+        url = "http://localhost/_ah/login?" + path_params
 
         response = requests.get(url, allow_redirects=True)
 
@@ -170,13 +180,17 @@ class HomePageRedirectPage(base.BaseHandler):
     def get(self):
         if self.user_id and user_services.has_fully_registered_account(
                 self.user_id):
+            # Pass the user to personal page only if email confirmed
             user_settings = user_services.get_user_settings(
                 self.user_id)
-            default_dashboard = user_settings.default_dashboard
-            if default_dashboard == constants.DASHBOARD_TYPE_CREATOR:
-                self.redirect(feconf.CREATOR_DASHBOARD_URL)
+            if user_settings.email_confirmed:
+                default_dashboard = user_settings.default_dashboard
+                if default_dashboard == constants.DASHBOARD_TYPE_CREATOR:
+                    self.redirect(feconf.CREATOR_DASHBOARD_URL)
+                else:
+                    self.redirect(feconf.LEARNER_DASHBOARD_URL)
             else:
-                self.redirect(feconf.LEARNER_DASHBOARD_URL)
+                self.render_template('splash-page.mainpage.html')
         else:
             self.render_template('splash-page.mainpage.html')
 
@@ -265,10 +279,12 @@ mapreduce_parameters.config.BASE_PATH = '/mapreduce/worker'
 
 # Register the URLs with the classes responsible for handling them.
 URLS = MAPREDUCE_HANDLERS + [
+    get_redirect_route(r'/login', LoginHandler),
     get_redirect_route(r'/custom_auth', CustomAuthHandler),
     get_redirect_route(r'/_ah/login_proxy', AhLoginProxyHandler),
     get_redirect_route(r'/password_recovery_token', profile.PasswordRecoveryTokenHandler),
     get_redirect_route(r'/email_confirm_token', profile.EmailConfirmTokenHandler),
+    get_redirect_route(r'/email_confirm', profile.EmailConfirmPageHandler),
     get_redirect_route(r'/token/<token>/password_recovery', profile.PasswordRecoveryHandler),
     get_redirect_route(r'/token/<token>/email_confirm', profile.EmailConfirmHandler),
     get_redirect_route(r'/_ah/warmup', WarmupPage),
