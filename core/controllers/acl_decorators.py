@@ -1157,6 +1157,57 @@ def can_save_exploration(handler):
     return test_can_save
 
 
+def can_change_paid_status_exploration(handler):
+    """Decorator to check whether user can save exploration.
+
+    Args:
+        handler: function. The function to be decorated.
+
+    Returns:
+        function. The newly decorated function that checks if
+        a user has permission to save a given exploration.
+    """
+
+    def test(self, exploration_id, **kwargs):
+        """Checks if the user can save the exploration.
+
+        Args:
+            exploration_id: str. The exploration id.
+            **kwargs: dict(str: *). Keyword arguments.
+
+        Returns:
+            *. The return value of the decorated function.
+
+        Raises:
+            NotLoggedInException. The user is not logged in.
+            PageNotFoundException. The page is not found.
+            UnauthorizedUserException. The user does not have credentials to
+                save changes to this exploration.
+        """
+
+        if not self.user_id:
+            raise base.UserFacingExceptions.NotLoggedInException
+
+        exploration_rights = rights_manager.get_exploration_rights(
+            exploration_id, strict=False
+        )
+        if not exploration_rights:
+            raise base.UserFacingExceptions.PageNotFoundException
+
+        if not rights_manager.check_can_change_paid_status(
+            self.user, exploration_rights
+        ):
+            raise base.UserFacingExceptions.UnauthorizedUserException(
+                'You do not have permissions to change paid status for this exploration.'
+            )
+
+        return handler(self, exploration_id, **kwargs)
+
+    test.__wrapped__ = True
+
+    return test
+
+
 def can_delete_exploration(handler):
     """Decorator to check whether user can delete exploration.
 

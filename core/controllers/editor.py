@@ -296,6 +296,25 @@ class ExplorationStatusHandler(EditorHandler):
         })
 
 
+class ExplorationPaidStatusHandler(EditorHandler):
+    """Handles opening access to the exploration."""
+
+    @acl_decorators.can_change_paid_status_exploration
+    def put(self, exploration_id):
+        paid_status = self.payload.get('paid_status')
+
+        if paid_status:
+            rights_manager.change_exploration_paid_status(
+                self.user,
+                exploration_id,
+                paid_status,
+            )
+
+        self.render_json({
+            'rights': rights_manager.get_exploration_rights(
+                exploration_id).to_dict()
+        })
+
 class ExplorationModeratorRightsHandler(EditorHandler):
     """Handles management of exploration rights by moderators."""
 

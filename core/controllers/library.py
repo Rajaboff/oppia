@@ -60,7 +60,9 @@ def get_matching_activity_dicts(query_string, search_cursor, user):
 
     exp_ids, new_search_cursor = (
         exp_services.get_exploration_ids_matching_query(
-            query_string, user=user, cursor=search_cursor
+            query_string,
+            user=user,
+            cursor=search_cursor,
         )
     )
 

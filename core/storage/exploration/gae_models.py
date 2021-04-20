@@ -322,6 +322,16 @@ class ExplorationRightsModel(base_models.VersionedModel):
             constants.ACTIVITY_STATUS_PUBLIC
         ]
     )
+
+    # Поле, которое отвечает, платный ли курс
+    paid_status = datastore_services.StringProperty(
+        default=constants.ACTIVITY_PAID_STATUS_NEED_PAID, indexed=True,
+        choices=[
+            constants.ACTIVITY_PAID_STATUS_NEED_PAID,
+            constants.ACTIVITY_PAID_STATUS_FREE,
+        ]
+    )
+
     # DEPRECATED in v2.8.3. Do not use.
     translator_ids = (
         datastore_services.StringProperty(indexed=True, repeated=True))
@@ -346,6 +356,7 @@ class ExplorationRightsModel(base_models.VersionedModel):
             'viewable_if_private': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'first_published_msec': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'paid_status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'translator_ids': base_models.EXPORT_POLICY.NOT_APPLICABLE
         })
 

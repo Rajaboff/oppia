@@ -19,16 +19,19 @@
 from __future__ import absolute_import  # pylint: disable=import-only-modules
 from __future__ import unicode_literals  # pylint: disable=import-only-modules
 
+from constants import constants
 from core import jobs
 from core.domain import collection_services
 from core.domain import exp_fetchers
 from core.domain import exp_services
 from core.domain import rights_domain
+from core.domain import rights_manager
 from core.domain import search_services
 from core.domain import topic_domain
 from core.domain import user_services
 from core.platform import models
 import python_utils
+import feconf
 
 (
     collection_models, exp_models, question_models,
@@ -617,3 +620,41 @@ class ValidateSnapshotMetadataModelsJob(jobs.BaseMapReduceOneOffJobManager):
             yield (key, values)
         else:
             yield (key, len(values))
+
+
+class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
+    """One-off job that sets up the paid status for activities rights."""
+
+    @classmethod
+    def entity_classes_to_map_over(cls):
+        return [collection_models.CollectionRightsModel, exp_models.ExplorationRightsModel]
+
+    @staticmethod
+    def map(model):
+        if model.deleted:
+            return
+
+        cmd = (
+            feconf.CMD_CHANGE_EXPLORATION_PAID_STATUS
+            if isinstance(model, exp_models.ExplorationRightsModel)
+            else feconf.CMD_CHANGE_COLLECTION_PAID_STATUS
+        )
+        new_paid_status = constants.ACTIVITY_PAID_STATUS_NEED_PAID
+
+        commit_cmds = [{
+            'cmd': cmd,
+            'old_status': model.paid_status,
+            'new_status': new_paid_status,
+        }]
+        model.paid_status = new_paid_status
+        model.commit(
+            feconf.SYSTEM_COMMITTER_ID,
+            'set paid first access',
+            commit_cmds,
+        )
+
+        yield ('SUCCESS', model.id)
+
+    @staticmethod
+    def reduce(key, values):
+        yield (key, len(values))
