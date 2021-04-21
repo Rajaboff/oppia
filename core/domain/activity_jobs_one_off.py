@@ -624,6 +624,9 @@ class ValidateSnapshotMetadataModelsJob(jobs.BaseMapReduceOneOffJobManager):
 
 class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
     """One-off job that sets up the paid status for activities rights."""
+    COMMITER = user_services.UserActionsInfo(feconf.SYSTEM_COMMITTER_ID)
+    # DEFAULT_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_NEED_PAID
+    DEFAULT_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
 
     @classmethod
     def entity_classes_to_map_over(cls):
@@ -634,24 +637,18 @@ class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
         if model.deleted:
             return
 
-        cmd = (
-            feconf.CMD_CHANGE_EXPLORATION_PAID_STATUS
-            if isinstance(model, exp_models.ExplorationRightsModel)
-            else feconf.CMD_CHANGE_COLLECTION_PAID_STATUS
-        )
-        new_paid_status = constants.ACTIVITY_PAID_STATUS_NEED_PAID
-
-        commit_cmds = [{
-            'cmd': cmd,
-            'old_status': model.paid_status,
-            'new_status': new_paid_status,
-        }]
-        model.paid_status = new_paid_status
-        model.commit(
-            feconf.SYSTEM_COMMITTER_ID,
-            'set paid first access',
-            commit_cmds,
-        )
+        if isinstance(model, exp_models.ExplorationRightsModel):
+            rights_manager.change_exploration_paid_status(
+                SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
+                model.id,
+                SetPaidStatus4ActivityRightsOneOffJob.DEFAULT_PAID_STATUS,
+            )
+        elif isinstance(model, collection_models.CollectionRightsModel):
+            rights_manager.change_collection_paid_status(
+                SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
+                model.id,
+                SetPaidStatus4ActivityRightsOneOffJob.DEFAULT_PAID_STATUS,
+            )
 
         yield ('SUCCESS', model.id)
 

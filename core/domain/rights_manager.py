@@ -1080,6 +1080,25 @@ def change_exploration_paid_status(committer, exploration_id, paid_status):
     )
 
 
+def change_collection_paid_status(committer, collection_id, paid_status):
+    """Publishes the given activity.
+
+    Args:
+        committer: UserActionsInfo. UserActionsInfo object for the committer.
+        exploration_id: str. ID of the exploration.
+
+    Raises:
+        Exception. The committer does not have rights to publish the
+            activity.
+    """
+    return _set_paid_status_activity(
+        committer,
+        collection_id,
+        constants.ACTIVITY_TYPE_COLLECTION,
+        paid_status,
+    )
+
+
 def _unpublish_activity(committer, activity_id, activity_type):
     """Unpublishes the given activity.
 
