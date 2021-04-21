@@ -92,6 +92,39 @@ def open_access(handler):
     return test_can_access
 
 
+def should_be_logged_in(handler):
+    """Decorator to give access to logged in users.
+
+    Args:
+        handler: function. The function to be decorated.
+
+    Returns:
+        function. The newly decorated function that now also checks if
+        one can access the learner dashboard.
+    """
+
+    def test_can_access(self, **kwargs):
+        """Checks if the user can access the learner dashboard.
+
+        Args:
+            **kwargs: *. Keyword arguments.
+
+        Returns:
+            *. The return value of the decorated function.
+
+        Raises:
+            NotLoggedInException. The user is not logged in.
+        """
+        if not self.user_id:
+            raise self.NotLoggedInException
+
+        return handler(self, **kwargs)
+
+    test_can_access.__wrapped__ = True
+
+    return test_can_access
+
+
 def does_classroom_exist(handler):
     """Decorator to check whether classroom exists.
 

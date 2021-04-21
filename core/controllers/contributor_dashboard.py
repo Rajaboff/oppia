@@ -46,7 +46,7 @@ class ContributionOpportunitiesHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self, opportunity_type):
         """Handles GET requests."""
         if not config_domain.CONTRIBUTOR_DASHBOARD_IS_ENABLED.value:
@@ -182,7 +182,7 @@ class TranslatableTextHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Handles GET requests."""
         language_code = self.request.get('language_code')
