@@ -325,7 +325,7 @@ class ExplorationRightsModel(base_models.VersionedModel):
 
     # Поле, которое отвечает, платный ли курс
     paid_status = datastore_services.StringProperty(
-        default=constants.ACTIVITY_PAID_STATUS_NEED_PAID, indexed=True,
+        default=feconf.DEFAULT_EXPLORATION_PAID_STATUS, indexed=True,
         choices=[
             constants.ACTIVITY_PAID_STATUS_NEED_PAID,
             constants.ACTIVITY_PAID_STATUS_FREE,

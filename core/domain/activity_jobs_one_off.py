@@ -625,8 +625,6 @@ class ValidateSnapshotMetadataModelsJob(jobs.BaseMapReduceOneOffJobManager):
 class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
     """One-off job that sets up the paid status for activities rights."""
     COMMITER = user_services.UserActionsInfo(feconf.SYSTEM_COMMITTER_ID)
-    DEFAULT_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_NEED_PAID
-    # DEFAULT_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
 
     @classmethod
     def entity_classes_to_map_over(cls):
@@ -641,13 +639,13 @@ class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
             rights_manager.change_exploration_paid_status(
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
                 model.id,
-                SetPaidStatus4ActivityRightsOneOffJob.DEFAULT_PAID_STATUS,
+                feconf.DEFAULT_EXPLORATION_PAID_STATUS,
             )
         elif isinstance(model, collection_models.CollectionRightsModel):
             rights_manager.change_collection_paid_status(
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
                 model.id,
-                SetPaidStatus4ActivityRightsOneOffJob.DEFAULT_PAID_STATUS,
+                feconf.DEFAULT_EXPLORATION_PAID_STATUS,
             )
 
         yield ('SUCCESS', model.id)

@@ -32,6 +32,7 @@ from core.domain import stats_services
 from core.domain import user_services
 import python_utils
 import utils
+import feconf
 
 _LIBRARY_INDEX_GROUPS = [{
     'header_i18n_id': 'I18N_LIBRARY_GROUPS_MATHEMATICS_&_STATISTICS',
@@ -407,7 +408,7 @@ def get_displayable_exp_summary_dicts(exploration_summaries):
                         exploration_summary.contributors_summary)
                 ),
                 'status': exploration_summary.status,
-                'paid_status': rights.paid_status if rights else "",
+                'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
                 'ratings': exploration_summary.ratings,
                 'community_owned': exploration_summary.community_owned,
                 'tags': exploration_summary.tags,
@@ -468,7 +469,7 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
                 'objective': collection_summary.objective,
                 'language_code': collection_summary.language_code,
                 'tags': collection_summary.tags,
-                'paid_status': rights.paid_status if rights else "",
+                'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
                 'node_count': collection_summary.node_count,
                 'last_updated_msec': utils.get_time_in_millisecs(
                     collection_summary.collection_model_last_updated),
