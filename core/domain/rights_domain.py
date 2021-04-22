@@ -64,7 +64,7 @@ class ActivityRights(python_utils.OBJECT):
     def __init__(
             self, exploration_id, owner_ids, editor_ids, voice_artist_ids,
             viewer_ids, community_owned=False, cloned_from=None,
-            paid_status=ACTIVITY_PAID_STATUS_NEED_PAID,
+            paid_status=feconf.DEFAULT_EXPLORATION_PAID_STATUS,
             status=ACTIVITY_STATUS_PRIVATE, viewable_if_private=False,
             first_published_msec=None):
         self.id = exploration_id
