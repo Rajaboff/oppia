@@ -535,9 +535,10 @@ class UrlHandler(base.BaseHandler):
         else:
             if self.request and self.request.get('current_url'):
                 target_url = self.request.get('current_url')
-                login_url = (
-                    current_user_services.create_login_url(target_url))
-                self.render_json({'login_url': login_url})
+                # login_url = (
+                #     current_user_services.create_login_url(target_url))
+                # self.render_json({'login_url': login_url})
+                self.render_json({'login_url': '/login'})
             else:
                 raise self.InvalidInputException(
                     'Incomplete or empty GET parameters passed'
