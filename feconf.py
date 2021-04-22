@@ -26,12 +26,12 @@ import os
 from constants import constants
 
 # NEED_SET
-SENDER_EMAIL = "admin@example.com"
-SMTP_SERVER_LOGIN = "admin@example.com"
+SENDER_EMAIL = "info_support@oqustudy.kz"
+SMTP_SERVER_LOGIN = "info_support@oqustudy.kz"
 
-SMTP_SERVER_HOST = "smtp.example.com"
+SMTP_SERVER_HOST = "smtp.yandex.ru"
 SMTP_SERVER_PORT = 465
-SMTP_SERVER_PASSWORD = "PASS_WORD"
+SMTP_SERVER_PASSWORD = "eqrkemyuutechxfr"
 
 # The datastore model ID for the list of featured activity references. This
 # value should not be changed.
