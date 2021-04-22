@@ -115,7 +115,7 @@ class EditableSkillDataHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self, skill_id):
         """Populates the data on the individual skill page."""
         try:
@@ -224,7 +224,7 @@ class SkillDataHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self, comma_separated_skill_ids):
         """Populates the data on skill pages of the skill ids."""
 
@@ -253,7 +253,7 @@ class FetchSkillsHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self):
         """Returns all skill IDs linked to some topic."""
 

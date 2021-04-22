@@ -44,7 +44,7 @@ class QuestionsListHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self, comma_separated_skill_ids):
         """Handles GET requests."""
         start_cursor = self.request.get('cursor')
@@ -109,7 +109,7 @@ class QuestionCountDataHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.open_access
+    @acl_decorators.should_be_logged_in
     def get(self, comma_separated_skill_ids):
         """Handles GET requests."""
         skill_ids = comma_separated_skill_ids.split(',')
