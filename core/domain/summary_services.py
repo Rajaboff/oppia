@@ -384,7 +384,7 @@ def get_displayable_exp_summary_dicts(exploration_summaries):
 
     for ind, exploration_summary in enumerate(exploration_summaries):
         if exploration_summary:
-            # TODO(anyone): оптимизировать, отправлять один запрос
+            # TODO(m.lapardin): optimise, send one request for all collections
             rights = rights_manager.get_exploration_rights(
                 exploration_id=exploration_summary.id,
                 strict=False,
@@ -455,9 +455,9 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
         if collection_summary and collection_summary.status != (
             rights_domain.ACTIVITY_STATUS_PRIVATE
         ):
-            # TODO(anyone): оптимизировать, отправлять один запрос
+            # TODO(m.lapardin): optimise, send one request for all collections
             rights = rights_manager.get_collection_rights(
-                exploration_id=collection_summary.id,
+                collection_id=collection_summary.id,
                 strict=False,
             )
             displayable_collection_summaries.append({

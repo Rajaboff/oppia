@@ -748,6 +748,7 @@ EXPLORATION_LEARNER_ANSWER_DETAILS = (
 EXPLORATION_METADATA_SEARCH_URL = '/exploration/metadata_search'
 EXPLORATION_PRETESTS_URL_PREFIX = '/pretest_handler'
 EXPLORATION_RIGHTS_PREFIX = '/createhandler/rights'
+EXPLORATION_PAID_STATUS_PREFIX = '/createhandler/paid_status'
 EXPLORATION_STATE_ANSWER_STATS_PREFIX = '/createhandler/state_answer_stats'
 EXPLORATION_STATUS_PREFIX = '/createhandler/status'
 EXPLORATION_SUMMARIES_DATA_URL = '/explorationsummarieshandler/data'
@@ -1129,6 +1130,10 @@ ALLOWED_ACTIVITY_ROLES = [
 ALLOWED_ACTIVITY_STATUS = [
     constants.ACTIVITY_STATUS_PRIVATE, constants.ACTIVITY_STATUS_PUBLIC]
 
+ALLOWED_ACTIVITY_PAID_STATUS = [
+    constants.ACTIVITY_PAID_STATUS_NEED_PAID, constants.ACTIVITY_PAID_STATUS_FREE
+]
+
 # Commands allowed in CollectionRightsChange and ExplorationRightsChange.
 COMMON_RIGHTS_ALLOWED_COMMANDS = [{
     'name': CMD_CREATE_NEW,
@@ -1174,7 +1179,7 @@ COMMON_RIGHTS_ALLOWED_COMMANDS = [{
 
 COLLECTION_RIGHTS_CHANGE_ALLOWED_COMMANDS = copy.deepcopy(
     COMMON_RIGHTS_ALLOWED_COMMANDS)
-COLLECTION_RIGHTS_CHANGE_ALLOWED_COMMANDS.append({
+COLLECTION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
     'name': CMD_CHANGE_COLLECTION_STATUS,
     'required_attribute_names': ['old_status', 'new_status'],
     'optional_attribute_names': [],
@@ -1183,11 +1188,21 @@ COLLECTION_RIGHTS_CHANGE_ALLOWED_COMMANDS.append({
         'old_status': ALLOWED_ACTIVITY_STATUS,
         'new_status': ALLOWED_ACTIVITY_STATUS
     }
-})
+},
+{
+    'name': CMD_CHANGE_COLLECTION_PAID_STATUS,
+    'required_attribute_names': ['old_status', 'new_status'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': [],
+    'allowed_values': {
+        'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
+        'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
+    }
+}])
 
 EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS = copy.deepcopy(
     COMMON_RIGHTS_ALLOWED_COMMANDS)
-EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.append({
+EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
     'name': CMD_CHANGE_EXPLORATION_STATUS,
     'required_attribute_names': ['old_status', 'new_status'],
     'optional_attribute_names': [],
@@ -1196,7 +1211,17 @@ EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.append({
         'old_status': ALLOWED_ACTIVITY_STATUS,
         'new_status': ALLOWED_ACTIVITY_STATUS
     }
-})
+},
+{
+    'name': CMD_CHANGE_EXPLORATION_PAID_STATUS,
+    'required_attribute_names': ['old_status', 'new_status'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': [],
+    'allowed_values': {
+        'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
+        'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
+    }
+}])
 
 CMD_REMOVE_MANAGER_ROLE = 'remove_manager_role'
 CMD_PUBLISH_TOPIC = 'publish_topic'

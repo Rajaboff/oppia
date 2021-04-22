@@ -440,7 +440,7 @@ def check_can_access_activity(user, activity_rights):
         if activity_rights.is_owner(user.user_id):
             return True
 
-        # TODO(m.lapardin): приделать права для платного доступа
+        # TODO(m.lapardin): Check if user paid for activity
         return False
 
     if activity_rights.is_private():

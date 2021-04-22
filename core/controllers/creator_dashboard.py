@@ -31,6 +31,7 @@ from core.domain import exp_fetchers
 from core.domain import exp_services
 from core.domain import feedback_services
 from core.domain import role_services
+from core.domain import rights_manager
 from core.domain import subscription_services
 from core.domain import suggestion_services
 from core.domain import summary_services
@@ -201,6 +202,13 @@ class CreatorDashboardHandler(base.BaseHandler):
             for collection_summary in subscribed_collection_summaries:
                 # TODO(sll): Reuse _get_displayable_collection_summary_dicts()
                 # in summary_services, instead of replicating it like this.
+
+                # TODO(m.lapardin): optimise, send one request for all collections
+                rights = rights_manager.get_collection_rights(
+                    collection_id=collection_summary.id,
+                    strict=False,
+                )
+
                 collection_summary_dicts.append({
                     'id': collection_summary.id,
                     'title': collection_summary.title,
@@ -212,6 +220,7 @@ class CreatorDashboardHandler(base.BaseHandler):
                     'created_on': utils.get_time_in_millisecs(
                         collection_summary.collection_model_created_on),
                     'status': collection_summary.status,
+                    'paid_status': rights.paid_status if rights else "",
                     'node_count': collection_summary.node_count,
                     'community_owned': collection_summary.community_owned,
                     'thumbnail_icon_url': (
