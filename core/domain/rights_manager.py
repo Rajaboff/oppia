@@ -431,13 +431,13 @@ def check_can_access_activity(user, activity_rights):
         return False
 
     if activity_rights.is_published():
-        if not bool(role_services.ACTION_PLAY_ANY_PUBLIC_ACTIVITY in user.actions):
+        if role_services.ACTION_PLAY_ANY_PUBLIC_ACTIVITY not in user.actions:
             return False
 
-        if activity_rights.is_free():
+        if activity_rights.is_owner(user.user_id):
             return True
 
-        if activity_rights.is_owner(user.user_id):
+        if activity_rights.is_free():
             return True
 
         # TODO(m.lapardin): Check if user paid for activity
@@ -1406,11 +1406,7 @@ def does_user_has_access_to_collection(collection_id, user):
     Returns:
         bool. Does the user has access to the collection.
     """
-    # Get the collection rights
-    collection_rights = get_collection_rights(collection_id, strict=False)
-
-    # If user has not access - return False
-    return check_can_access_activity(user, collection_rights)
+    return True
 
 
 def does_user_has_access_to_exploration(exploration_id, user):
@@ -1423,8 +1419,4 @@ def does_user_has_access_to_exploration(exploration_id, user):
     Returns:
         bool. Does the user has access to the exploration.
     """
-    # Get the eploration rights
-    exploration_rights = get_exploration_rights(exploration_id, strict=False)
-
-    # If user has not access - return False
-    return check_can_access_activity(user, exploration_rights)
+    return True
