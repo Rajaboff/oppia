@@ -1,0 +1,125 @@
+<div class="oppia-page-cards-container oppia-signup-page-container">
+  <md-card class="oppia-page-card">
+    <h2 class="oppia-signup-page-title" translate="I18N_SIGNUP_AUTHORIZATION"></h2>
+    <form>
+      <div class="form-group row">
+        <label for="email" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_PREFERENCES_EMAIL"></label>
+        <div class="col-lg-9 col-md-9 col-sm-9">
+          <input type="text" required ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+        </div>
+        <br/>
+        <br/>
+        <label for="password" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD"></label>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <input type="password" required  ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+          </div>
+        <br/>
+      </div>
+
+      <div class="center">
+        <button type="submit" class="btn btn-success protractor-test-register-user"
+                ng-click="$ctrl.submitLoginForm()"
+                translate="I18N_SIGNUP_BUTTON_ENTER"
+                id="login-submit">
+        </button>
+      </div>
+    </form>
+  </md-card>
+</div>
+<style>
+  signup-page .oppia-signup-page-container .oppia-long-text > label {
+    font-weight: normal;
+  }
+  signup-page .oppia-username-input {
+    width: 260px;
+  }
+
+
+  .center {
+    margin: 0;
+    left: 50%;
+    position: relative;
+  }
+  signup-page .oppia-username-explanation-text {
+    font-size: 0.8em;
+  }
+  signup-page .oppia-warning-text-container {
+    height: 18px;
+    width: 550px;
+  }
+  signup-page .oppia-warning-text {
+    color: #ff0000;
+    font-size: 0.8em;
+  }
+  signup-page .oppia-form-text-size {
+    font-size: smaller
+  }
+  signup-page .oppia-signup-site-description-text {
+    font-size: 1em;
+  }
+</style>
+<!-- NOTE: This page should not contain any direct anchors to internal links. If the user visits an internal
+link before completing the signup process, they will be logged out.
+-->
+
+<!--<div class="oppia-page-cards-container oppia-signup-page-container">-->
+<!--  <md-card class="oppia-page-card">-->
+<!--    <h2 class="oppia-signup-page-title" translate="I18N_SIGNUP_AUTHORIZATION"></h2>-->
+<!--    <form name="loginForm" ng-controller="LoginController"-->
+<!--      ng-submit="login(credentials)" novalidate>-->
+
+<!--      <div class="form-group row">-->
+<!--        <label for="email" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_PREFERENCES_EMAIL"></label>-->
+<!--        <div class="col-lg-9 col-md-9 col-sm-9">-->
+<!--          <input type="text" required ng-model="credentials.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">-->
+<!--        </div>-->
+<!--        <br/>-->
+<!--        <br/>-->
+<!--        <label for="password" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD"></label>-->
+<!--          <div class="col-lg-9 col-md-9 col-sm-9">-->
+<!--            <input type="password" required  ng-model="credentials.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">-->
+<!--          </div>-->
+<!--        <br/>-->
+<!--      </div>-->
+
+<!--      <div class="center">-->
+<!--        <button type="submit" class="btn btn-success protractor-test-register-user"-->
+<!--                translate="I18N_SIGNUP_BUTTON_ENTER"-->
+<!--                id="login-submit">-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </md-card>-->
+<!--</div>-->
+<!--<style>-->
+<!--  signup-page .oppia-signup-page-container .oppia-long-text > label {-->
+<!--    font-weight: normal;-->
+<!--  }-->
+<!--  signup-page .oppia-username-input {-->
+<!--    width: 260px;-->
+<!--  }-->
+
+
+<!--  .center {-->
+<!--    margin: 0;-->
+<!--    left: 50%;-->
+<!--    position: relative;-->
+<!--  }-->
+<!--  signup-page .oppia-username-explanation-text {-->
+<!--    font-size: 0.8em;-->
+<!--  }-->
+<!--  signup-page .oppia-warning-text-container {-->
+<!--    height: 18px;-->
+<!--    width: 550px;-->
+<!--  }-->
+<!--  signup-page .oppia-warning-text {-->
+<!--    color: #ff0000;-->
+<!--    font-size: 0.8em;-->
+<!--  }-->
+<!--  signup-page .oppia-form-text-size {-->
+<!--    font-size: smaller-->
+<!--  }-->
+<!--  signup-page .oppia-signup-site-description-text {-->
+<!--    font-size: 1em;-->
+<!--  }-->
+<!--</style>-->
