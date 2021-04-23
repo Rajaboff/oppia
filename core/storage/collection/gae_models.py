@@ -243,6 +243,16 @@ class CollectionRightsModel(base_models.VersionedModel):
             constants.ACTIVITY_STATUS_PUBLIC
         ]
     )
+
+    # Поле, которое отвечает, платный ли курс
+    paid_status = datastore_services.StringProperty(
+        default=feconf.DEFAULT_EXPLORATION_PAID_STATUS, indexed=True,
+        choices=[
+            constants.ACTIVITY_PAID_STATUS_NEED_PAID,
+            constants.ACTIVITY_PAID_STATUS_FREE,
+        ]
+    )
+
     # DEPRECATED in v2.8.3. Do not use.
     translator_ids = (
         datastore_services.StringProperty(indexed=True, repeated=True))
@@ -265,6 +275,7 @@ class CollectionRightsModel(base_models.VersionedModel):
             'community_owned': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'viewable_if_private': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'paid_status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'first_published_msec': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             # DEPRECATED in v2.8.3.
             'translator_ids': base_models.EXPORT_POLICY.NOT_APPLICABLE

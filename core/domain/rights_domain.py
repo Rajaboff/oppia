@@ -32,12 +32,17 @@ CMD_CHANGE_ROLE = feconf.CMD_CHANGE_ROLE
 CMD_REMOVE_ROLE = feconf.CMD_REMOVE_ROLE
 CMD_CHANGE_EXPLORATION_STATUS = feconf.CMD_CHANGE_EXPLORATION_STATUS
 CMD_CHANGE_COLLECTION_STATUS = feconf.CMD_CHANGE_COLLECTION_STATUS
+CMD_CHANGE_EXPLORATION_PAID_STATUS = feconf.CMD_CHANGE_EXPLORATION_PAID_STATUS
+CMD_CHANGE_COLLECTION_PAID_STATUS = feconf.CMD_CHANGE_COLLECTION_PAID_STATUS
 CMD_CHANGE_PRIVATE_VIEWABILITY = feconf.CMD_CHANGE_PRIVATE_VIEWABILITY
 CMD_RELEASE_OWNERSHIP = feconf.CMD_RELEASE_OWNERSHIP
 CMD_UPDATE_FIRST_PUBLISHED_MSEC = feconf.CMD_UPDATE_FIRST_PUBLISHED_MSEC
 
 ACTIVITY_STATUS_PRIVATE = constants.ACTIVITY_STATUS_PRIVATE
 ACTIVITY_STATUS_PUBLIC = constants.ACTIVITY_STATUS_PUBLIC
+
+ACTIVITY_PAID_STATUS_NEED_PAID = constants.ACTIVITY_PAID_STATUS_NEED_PAID
+ACTIVITY_PAID_STATUS_FREE = constants.ACTIVITY_PAID_STATUS_FREE
 
 ROLE_OWNER = feconf.ROLE_OWNER
 ROLE_EDITOR = feconf.ROLE_EDITOR
@@ -59,6 +64,7 @@ class ActivityRights(python_utils.OBJECT):
     def __init__(
             self, exploration_id, owner_ids, editor_ids, voice_artist_ids,
             viewer_ids, community_owned=False, cloned_from=None,
+            paid_status=feconf.DEFAULT_EXPLORATION_PAID_STATUS,
             status=ACTIVITY_STATUS_PRIVATE, viewable_if_private=False,
             first_published_msec=None):
         self.id = exploration_id
@@ -69,6 +75,7 @@ class ActivityRights(python_utils.OBJECT):
         self.community_owned = community_owned
         self.cloned_from = cloned_from
         self.status = status
+        self.paid_status = paid_status
         self.viewable_if_private = viewable_if_private
         self.first_published_msec = first_published_msec
 
@@ -137,6 +144,7 @@ class ActivityRights(python_utils.OBJECT):
             return {
                 'cloned_from': self.cloned_from,
                 'status': self.status,
+                'paid_status': self.paid_status,
                 'community_owned': True,
                 'owner_names': [],
                 'editor_names': [],
@@ -148,6 +156,7 @@ class ActivityRights(python_utils.OBJECT):
             return {
                 'cloned_from': self.cloned_from,
                 'status': self.status,
+                'paid_status': self.paid_status,
                 'community_owned': False,
                 'owner_names': user_services.get_human_readable_user_ids(
                     self.owner_ids),
@@ -219,6 +228,22 @@ class ActivityRights(python_utils.OBJECT):
             bool. Whether activity is private.
         """
         return bool(self.status == ACTIVITY_STATUS_PRIVATE)
+
+    def is_free(self):
+        """Checks whether activity is free to use.
+
+        Returns:
+            bool. Whether activity is free to use.
+        """
+        return self.paid_status == ACTIVITY_PAID_STATUS_FREE
+
+    def is_need_paid(self):
+        """Checks whether activity needs to be paid.
+
+        Returns:
+            bool. Whether activity needs to be paid.
+        """
+        return self.paid_status == ACTIVITY_PAID_STATUS_NEED_PAID
 
 
 class ExplorationRightsChange(change_domain.BaseChange):

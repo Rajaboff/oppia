@@ -32,6 +32,7 @@ from core.domain import stats_services
 from core.domain import user_services
 import python_utils
 import utils
+import feconf
 
 _LIBRARY_INDEX_GROUPS = [{
     'header_i18n_id': 'I18N_LIBRARY_GROUPS_MATHEMATICS_&_STATISTICS',
@@ -365,6 +366,7 @@ def get_displayable_exp_summary_dicts(exploration_summaries):
             'num_views': 0,
             'objective': u'An objective',
             'status': 'public',
+            'paid_status': 'need_paid',
             'tags': [],
             'thumbnail_bg_color': '#a33f40',
             'thumbnail_icon_url': self.get_static_asset_url(
@@ -383,6 +385,12 @@ def get_displayable_exp_summary_dicts(exploration_summaries):
 
     for ind, exploration_summary in enumerate(exploration_summaries):
         if exploration_summary:
+            # TODO(m.lapardin): optimise, send one request for all collections
+            rights = rights_manager.get_exploration_rights(
+                exploration_id=exploration_summary.id,
+                strict=False,
+            )
+
             summary_dict = {
                 'id': exploration_summary.id,
                 'title': exploration_summary.title,
@@ -400,6 +408,7 @@ def get_displayable_exp_summary_dicts(exploration_summaries):
                         exploration_summary.contributors_summary)
                 ),
                 'status': exploration_summary.status,
+                'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
                 'ratings': exploration_summary.ratings,
                 'community_owned': exploration_summary.community_owned,
                 'tags': exploration_summary.tags,
@@ -434,6 +443,7 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
             'num_views': 0,
             'objective': u'An objective',
             'status': 'public',
+            'paid_status': 'free',
             'tags': [],
             'thumbnail_bg_color': '#a33f40',
             'thumbnail_icon_url': self.get_static_asset_url(
@@ -444,7 +454,13 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
     displayable_collection_summaries = []
     for collection_summary in collection_summaries:
         if collection_summary and collection_summary.status != (
-                rights_domain.ACTIVITY_STATUS_PRIVATE):
+            rights_domain.ACTIVITY_STATUS_PRIVATE
+        ):
+            # TODO(m.lapardin): optimise, send one request for all collections
+            rights = rights_manager.get_collection_rights(
+                collection_id=collection_summary.id,
+                strict=False,
+            )
             displayable_collection_summaries.append({
                 'id': collection_summary.id,
                 'title': collection_summary.title,
@@ -453,6 +469,7 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
                 'objective': collection_summary.objective,
                 'language_code': collection_summary.language_code,
                 'tags': collection_summary.tags,
+                'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
                 'node_count': collection_summary.node_count,
                 'last_updated_msec': utils.get_time_in_millisecs(
                     collection_summary.collection_model_last_updated),
