@@ -45,7 +45,7 @@ angular.module('oppia').controller('StateStatsModalController', [
       pieSliceTextStyleColor: 'black',
       pieSliceBorderColor: 'black',
       chartAreaWidth: 240,
-      colors: ['#d8d8d8', '#008808', 'blue'],
+      colors: ['#d8d8d8', '#007EFF', 'blue'],
       height: 270,
       legendPosition: 'right',
       title: title,
@@ -61,19 +61,19 @@ angular.module('oppia').controller('StateStatsModalController', [
 
     $scope.answerFeedbackPieChartData = [
       ['Type', 'Number'],
-      ['Default feedback', totalAnswersCount - usefulFeedbackCount],
-      ['Specific feedback', usefulFeedbackCount],
+      ['Отзыв по умолчанию', totalAnswersCount - usefulFeedbackCount],
+      ['Специальный отзыв', usefulFeedbackCount],
     ];
     $scope.answerFeedbackPieChartOptions = (
-      makeCompletionRatePieChartOptions('Answer feedback statistics'));
+      makeCompletionRatePieChartOptions('Статистика обратной связи'));
 
     $scope.solutionUsagePieChartData = [
       ['Type', 'Number'],
-      ['Solutions used to answer', numTimesSolutionViewed],
-      ['Solutions not used', totalAnswersCount - numTimesSolutionViewed]
+      ['Используемое решение', numTimesSolutionViewed],
+      ['Не использумое решение', totalAnswersCount - numTimesSolutionViewed]
     ];
     $scope.solutionUsagePieChartOptions = (
-      makeCompletionRatePieChartOptions('Solution usage statistics'));
+      makeCompletionRatePieChartOptions('Статистика использования'));
 
     $scope.navigateToStateEditor = () => {
       $scope.cancel();

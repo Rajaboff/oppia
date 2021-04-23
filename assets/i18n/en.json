@@ -171,7 +171,7 @@
     "I18N_FOOTER_TEACH": "Преподавать с Oqu",
     "I18N_FOOTER_TEACH_LEARN_ALL_CAPS": "Учить/учиться",
     "I18N_FOOTER_TERMS_OF_SERVICE": "Условия обслуживания",
-    "I18N_FORMS_TYPE_NUMBER": "Тип номера",
+    "I18N_FORMS_TYPE_NUMBER": "Ввод чисел",
     "I18N_FORMS_TYPE_NUMBER_AT_LEAST": "Пожалуйста, введите число не менее <[minValue]>.",
     "I18N_FORMS_TYPE_NUMBER_AT_MOST": "Пожалуйста, введите число не более<[maxValue]>.",
     "I18N_FORMS_TYPE_NUMBER_INVALID_DECIMAL": "Пожалуйста, введите действительное десятичное число.",

@@ -17,11 +17,11 @@
   </ng-form>
 
   <div ng-if="$ctrl.isSelfLoop() && $ctrl.canEditRefresherExplorationId" class="oppia-id-text">
-    <b>Связать с ID навыком:</b>
+    <b>Связать с ID занятия:</b>
     <input type="text" name="refresherExplorationId" ng-model="$ctrl.outcome.refresherExplorationId" class="form-control protractor-test-add-refresher-exploration-id" tabindex="0" aria-invalid="false" ng-pattern="$ctrl.globalIdPattern">
   </div>
   <div class="oppia-id-text" ng-if="$ctrl.canAddPrerequisiteSkill">
-    <b>Связать с ID навыком:&nbsp;</b>
+    <b>Связать с ID занятия:&nbsp;</b>
     <input type="text" name="missingPrerequisiteSkillId" ng-model="$ctrl.outcome.missingPrerequisiteSkillId" class="form-control" tabindex="0" aria-invalid="false" ng-model-options="{allowInvalid: true}" ng-pattern="$ctrl.explorationAndSkillIdPattern">
     <p class="oppia-prerequisite-explanation-text">
       <i> Упомяните о навыке, который требуется в этом состоянии, чтобы учащийся, застрявший в этом состоянии, мог быстро выучить необходимый материал и продолжить занятие.

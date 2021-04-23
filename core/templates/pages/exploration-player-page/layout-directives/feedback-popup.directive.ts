@@ -142,7 +142,7 @@ angular.module('oppia').directive('feedbackPopup', [
             $scope.feedbackPopoverId = (
               'feedbackPopover' + Math.random().toString(36).slice(2));
             $scope.feedbackTitle = (
-              'Feedback when the user was at card "' +
+              'Отзыв пользователь по карте "' +
               PlayerPositionService.getCurrentStateName() + '"');
 
             if (WindowDimensionsService.isWindowNarrow()) {
