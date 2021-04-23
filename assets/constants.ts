@@ -4865,6 +4865,9 @@ export = {
   "ACTIVITY_STATUS_PRIVATE": "private",
   "ACTIVITY_STATUS_PUBLIC": "public",
 
+  "ACTIVITY_PAID_STATUS_NEED_PAID": "need_paid",
+  "ACTIVITY_PAID_STATUS_FREE": "free",
+
   "SITE_FEEDBACK_FORM_URL": "",
 
   "SYSTEM_USER_IDS": ["admin", "OppiaMigrationBot"],

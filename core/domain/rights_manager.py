@@ -62,6 +62,7 @@ def get_activity_rights_from_model(activity_rights_model, activity_type):
             activity_rights_model.cloned_from
             if activity_type == constants.ACTIVITY_TYPE_EXPLORATION else None),
         status=activity_rights_model.status,
+        paid_status=activity_rights_model.paid_status,
         viewable_if_private=activity_rights_model.viewable_if_private,
         first_published_msec=activity_rights_model.first_published_msec
     )
@@ -98,6 +99,7 @@ def _save_activity_rights(
     model.voice_artist_ids = activity_rights.voice_artist_ids
     model.community_owned = activity_rights.community_owned
     model.status = activity_rights.status
+    model.paid_status = activity_rights.paid_status
     model.viewable_if_private = activity_rights.viewable_if_private
     model.first_published_msec = activity_rights.first_published_msec
 
@@ -200,6 +202,7 @@ def create_new_exploration_rights(exploration_id, committer_id):
         viewer_ids=exploration_rights.viewer_ids,
         community_owned=exploration_rights.community_owned,
         status=exploration_rights.status,
+        paid_status=exploration_rights.paid_status,
         viewable_if_private=exploration_rights.viewable_if_private,
         first_published_msec=exploration_rights.first_published_msec,
     ).commit(committer_id, 'Created new exploration', commit_cmds)
@@ -315,6 +318,7 @@ def create_new_collection_rights(collection_id, committer_id):
         viewer_ids=collection_rights.viewer_ids,
         community_owned=collection_rights.community_owned,
         status=collection_rights.status,
+        paid_status=collection_rights.paid_status,
         viewable_if_private=collection_rights.viewable_if_private,
         first_published_msec=collection_rights.first_published_msec
     ).commit(committer_id, 'Created new collection', commit_cmds)
@@ -425,10 +429,21 @@ def check_can_access_activity(user, activity_rights):
     """
     if activity_rights is None:
         return False
-    elif activity_rights.is_published():
-        return bool(
-            role_services.ACTION_PLAY_ANY_PUBLIC_ACTIVITY in user.actions)
-    elif activity_rights.is_private():
+
+    if activity_rights.is_published():
+        if role_services.ACTION_PLAY_ANY_PUBLIC_ACTIVITY not in user.actions:
+            return False
+
+        if activity_rights.is_owner(user.user_id):
+            return True
+
+        if activity_rights.is_free():
+            return True
+
+        # TODO(m.lapardin): Check if user paid for activity
+        return False
+
+    if activity_rights.is_private():
         return bool(
             (role_services.ACTION_PLAY_ANY_PRIVATE_ACTIVITY in user.actions) or
             activity_rights.is_viewer(user.user_id) or
@@ -520,6 +535,30 @@ def check_can_save_activity(user, activity_rights):
 
     return (check_can_edit_activity(user, activity_rights) or (
         check_can_voiceover_activity(user, activity_rights)))
+
+
+def check_can_change_paid_status(user, activity_rights):
+    """Checks whether the user can save given activity.
+
+    Args:
+        user: UserActionsInfo. Object having user_id, role and actions for
+            given user.
+        activity_rights: ActivityRights or None. Rights object for the given
+            activity.
+
+    Returns:
+        bool. Whether the user can save given activity.
+    """
+    if activity_rights is None:
+        return False
+
+    if role_services.ACTION_CHANGE_PAID_STATUS_ANY_ACTIVITY in user.actions:
+        return True
+
+    if activity_rights.is_owner(user.user_id):
+        return True
+
+    return False
 
 
 def check_can_delete_activity(user, activity_rights):
@@ -915,6 +954,48 @@ def _change_activity_status(
     _update_activity_summary(activity_type, activity_rights)
 
 
+def _change_activity_paid_status(
+        committer_id, activity_id, activity_type, new_status, commit_message):
+    """Changes the status of the given activity.
+
+    Args:
+        committer_id: str. ID of the user who is performing the update action.
+        activity_id: str. ID of the activity.
+        activity_type: str. The type of activity. Possible values:
+            constants.ACTIVITY_TYPE_EXPLORATION,
+            constants.ACTIVITY_TYPE_COLLECTION.
+        new_status: str. The new status of the activity.
+        commit_message: str. The human-written commit message for this change.
+    """
+    if new_status not in (
+        constants.ACTIVITY_PAID_STATUS_FREE,
+        constants.ACTIVITY_PAID_STATUS_NEED_PAID,
+    ):
+        raise Exception("Invalid paid status '%s'" % new_status)
+
+    activity_rights = _get_activity_rights(activity_type, activity_id)
+    old_status = activity_rights.paid_status
+    activity_rights.paid_status = new_status
+    if activity_type == constants.ACTIVITY_TYPE_EXPLORATION:
+        cmd_type = rights_domain.CMD_CHANGE_EXPLORATION_PAID_STATUS
+    elif activity_type == constants.ACTIVITY_TYPE_COLLECTION:
+        cmd_type = rights_domain.CMD_CHANGE_COLLECTION_PAID_STATUS
+    commit_cmds = [{
+        'cmd': cmd_type,
+        'old_status': old_status,
+        'new_status': new_status
+    }]
+
+    _save_activity_rights(
+        committer_id,
+        activity_rights,
+        activity_type,
+        commit_message,
+        commit_cmds
+    )
+    # _update_activity_summary(activity_type, activity_rights)
+
+
 def _publish_activity(committer, activity_id, activity_type):
     """Publishes the given activity.
 
@@ -944,6 +1025,77 @@ def _publish_activity(committer, activity_id, activity_type):
         activity_type,
         rights_domain.ACTIVITY_STATUS_PUBLIC,
         '%s published.' % activity_type
+    )
+
+
+def _set_paid_status_activity(committer, activity_id, activity_type, paid_status):
+    """Publishes the given activity.
+
+    Args:
+        committer: UserActionsInfo. UserActionsInfo object for the committer.
+        activity_id: str. ID of the activity.
+        activity_type: str. The type of activity. Possible values:
+            constants.ACTIVITY_TYPE_EXPLORATION,
+            constants.ACTIVITY_TYPE_COLLECTION.
+        paid_status: str. The paid status of activity. Possible values:
+
+    Raises:
+        Exception. The committer does not have rights to publish the
+            activity.
+    """
+    committer_id = committer.user_id
+    activity_rights = _get_activity_rights(activity_type, activity_id)
+
+    if not check_can_change_paid_status(committer, activity_rights):
+        logging.error(
+            'User %s tried to change %s paid status %s but was refused '
+            'permission.' % (committer_id, activity_type, activity_id))
+        raise Exception('User cant change %s paid status.' % activity_type)
+
+    _change_activity_paid_status(
+        committer_id,
+        activity_id,
+        activity_type,
+        paid_status,
+        '%s changed paid status to %s.' % (activity_type, paid_status)
+    )
+
+
+def change_exploration_paid_status(committer, exploration_id, paid_status):
+    """Publishes the given activity.
+
+    Args:
+        committer: UserActionsInfo. UserActionsInfo object for the committer.
+        exploration_id: str. ID of the exploration.
+
+    Raises:
+        Exception. The committer does not have rights to publish the
+            activity.
+    """
+    return _set_paid_status_activity(
+        committer,
+        exploration_id,
+        constants.ACTIVITY_TYPE_EXPLORATION,
+        paid_status,
+    )
+
+
+def change_collection_paid_status(committer, collection_id, paid_status):
+    """Publishes the given activity.
+
+    Args:
+        committer: UserActionsInfo. UserActionsInfo object for the committer.
+        exploration_id: str. ID of the exploration.
+
+    Raises:
+        Exception. The committer does not have rights to publish the
+            activity.
+    """
+    return _set_paid_status_activity(
+        committer,
+        collection_id,
+        constants.ACTIVITY_TYPE_COLLECTION,
+        paid_status,
     )
 
 
@@ -1254,11 +1406,7 @@ def does_user_has_access_to_collection(collection_id, user):
     Returns:
         bool. Does the user has access to the collection.
     """
-    # Get the collection rights
-    collection_rights = get_collection_rights(collection_id, strict=False)
-
-    # If user has not access - return False
-    return check_can_access_activity(user, collection_rights)
+    return True
 
 
 def does_user_has_access_to_exploration(exploration_id, user):
@@ -1271,8 +1419,4 @@ def does_user_has_access_to_exploration(exploration_id, user):
     Returns:
         bool. Does the user has access to the exploration.
     """
-    # Get the eploration rights
-    exploration_rights = get_exploration_rights(exploration_id, strict=False)
-
-    # If user has not access - return False
-    return check_can_access_activity(user, exploration_rights)
+    return True
