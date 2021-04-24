@@ -1,11 +1,13 @@
 [[_TOC_]]
 
 # Fork oppia release-3.0.4
-https://github.com/oppia/oppia
 
+<https://github.com/oppia/oppia>
 
 * [Пользователи и права](docs/rights.md)
 * [Изменения в хендлерах](docs/handlers.md)
+* [Работа с API](docs/api.md)
+* [Задачи (jobs) для фиксации БД](docs/jobs.md)
 
 ## Что изменилось?
 
