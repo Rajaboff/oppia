@@ -72,12 +72,12 @@ angular.module('oppia').component('statisticsTab', {
             expStats.numStarts - expStats.numActualStarts);
           $scope.pieChartData = [
             ['Type', 'Number'],
-            ['Completions', expStats.numCompletions],
-            ['Non-Completions', numNonCompletions]
+            ['Завершенные', expStats.numCompletions],
+            ['Не завершенные', numNonCompletions]
           ];
           $scope.pieChartOptions = {
             chartAreaWidth: 500,
-            colors: ['#008808', '#d8d8d8'],
+            colors: ['#007EFF', '#d8d8d8'],
             height: 300,
             left: 230,
             legendPosition: 'right',

@@ -1,12 +1,12 @@
 <div class="oppia-dashboard-container">
-  <h2 class="oppia-page-heading">Notifications</h2>
+  <h2 class="oppia-page-heading">Уведомления</h2>
   <div class="oppia-page-heading-subtext" ng-if="$ctrl.jobQueuedMsec">
-    Last updated: <[$ctrl.getLocaleAbbreviatedDatetimeString($ctrl.jobQueuedMsec)]>
+    Последнее обновление: <[$ctrl.getLocaleAbbreviatedDatetimeString($ctrl.jobQueuedMsec)]>
   </div>
 
   <div>
     <md-card ng-if="$ctrl.recentNotifications.length === 0" class="oppia-page-card oppia-notifications-dashboard-card">
-      <em>No recent notifications.</em>
+      <em>Нет недавних уведомлений.</em>
     </md-card>
 
     <div ng-if="$ctrl.recentNotifications.length > 0">
@@ -31,14 +31,14 @@
                   <[notification.author_username]>
                 </span>
                 <span ng-if="!notification.author_username">
-                  Anonymous
+                  Аноним
                 </span>
               </strong>
               <span ng-if="notification.type === 'exploration_commit'">
-                made a new commit to
+                предложил новое изменение
               </span>
               <span ng-if="notification.type === 'feedback_thread'">
-                left a comment on
+                оставил комментарий к
               </span>
               <span class="oppia-notification-activity-title">
                 <[notification.activity_title]>
@@ -67,6 +67,7 @@
     margin-bottom: -5px;
     overflow: auto;
     position: relative;
+    padding: 7px;
   }
   .oppia-dashboard-row:hover {
     background: #eee;
@@ -78,9 +79,10 @@
     background: #ffe279;
   }
   .oppia-notification-content {
-    color: black;
+    color: #424242;
     display: inline-block;
     float: left;
+    font-size: 18px;
   }
   .oppia-notification-last-updated {
     float: right;

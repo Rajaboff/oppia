@@ -94,6 +94,10 @@ module.exports = {
       'exploration-player-page.import.ts',
     get_started:
       commonPrefix + '/pages/get-started-page/get-started-page.import.ts',
+    email_confirm:
+      commonPrefix + '/pages/email-confirm-page/email-confirm-page.import.ts',
+    custom_auth:
+      commonPrefix + '/pages/custom-auth-page/custom-auth-page.import.ts',
     landing:
       commonPrefix + '/pages/landing-pages/topic-landing-page/' +
       'topic-landing-page.import.ts',
@@ -395,6 +399,30 @@ module.exports = {
       inject: false
     }),
     new HtmlWebpackPlugin({
+      chunks: ['email_confirm'],
+      filename: 'email-confirm-page.mainpage.html',
+      meta: {
+        name: defaultMeta.name,
+        description: 'Email confirmation.'
+      },
+      template:
+        commonPrefix + '/pages/email-confirm-page/email-confirm-page.mainpage.html',
+      minify: htmlMinifyConfig,
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['custom_auth'],
+      filename: 'custom-auth-page.mainpage.html',
+      meta: {
+        name: defaultMeta.name,
+        description: 'User authorization'
+      },
+      template:
+        commonPrefix + '/pages/custom-auth-page/custom-auth-page.mainpage.html',
+      minify: htmlMinifyConfig,
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
       chunks: ['landing'],
       filename: 'topic-landing-page.mainpage.html',
       meta: defaultMeta,
@@ -524,7 +552,7 @@ module.exports = {
       filename: 'signup-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Зарегистрируйтесь в Oqustudy.kz и начните изучать новую тему.'
+        description: 'Sign up for Oppia and begin exploring a new subject.'
       },
       template: commonPrefix + '/pages/signup-page/signup-page.mainpage.html',
       minify: htmlMinifyConfig,
