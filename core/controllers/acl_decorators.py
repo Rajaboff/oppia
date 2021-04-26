@@ -1158,7 +1158,7 @@ def can_save_exploration(handler):
 
 
 def can_change_paid_status_exploration(handler):
-    """Decorator to check whether user can save exploration.
+    """Decorator to check whether user change exploration paid status.
 
     Args:
         handler: function. The function to be decorated.
@@ -1169,7 +1169,7 @@ def can_change_paid_status_exploration(handler):
     """
 
     def test(self, exploration_id, **kwargs):
-        """Checks if the user can save the exploration.
+        """Checks if the user can change exploration paid status.
 
         Args:
             exploration_id: str. The exploration id.
@@ -1202,6 +1202,56 @@ def can_change_paid_status_exploration(handler):
             )
 
         return handler(self, exploration_id, **kwargs)
+
+    test.__wrapped__ = True
+
+    return test
+
+
+def can_change_paid_status_collection(handler):
+    """Decorator to check whether user change collection paid status.
+
+    Args:
+        handler: function. The function to be decorated.
+
+    Returns:
+        function. The newly decorated function that checks if
+        a user has permission to save a given exploration.
+    """
+
+    def test(self, collection_id, **kwargs):
+        """Checks if the user can change collection paid status.
+
+        Args:
+            collection_id: str. The collection id.
+            **kwargs: dict(str: *). Keyword arguments.
+
+        Returns:
+            *. The return value of the decorated function.
+
+        Raises:
+            NotLoggedInException. The user is not logged in.
+            PageNotFoundException. The page is not found.
+            UnauthorizedUserException. The user does not have credentials to
+                save changes to this exploration.
+        """
+        if not self.user_id:
+            raise base.UserFacingExceptions.NotLoggedInException
+
+        collection_rights = rights_manager.get_collection_rights(
+            collection_id, strict=False
+        )
+        if not collection_rights:
+            raise base.UserFacingExceptions.PageNotFoundException
+
+        if not rights_manager.check_can_change_paid_status(
+            self.user, collection_rights
+        ):
+            raise base.UserFacingExceptions.UnauthorizedUserException(
+                'You do not have permissions to change paid status for this collection.'
+            )
+
+        return handler(self, collection_id, **kwargs)
 
     test.__wrapped__ = True
 

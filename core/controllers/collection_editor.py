@@ -177,6 +177,26 @@ class CollectionPublishHandler(base.BaseHandler):
         })
         self.render_json(self.values)
 
+class CollectionPaidStatusHandler(base.BaseHandler):
+    """Handles opening access to the collection."""
+
+    @acl_decorators.can_change_paid_status_collection
+    def put(self, collection_id):
+        paid_status = self.payload.get('paid_status')
+
+        if paid_status:
+            rights_manager.change_collection_paid_status(
+                self.user,
+                collection_id,
+                paid_status,
+            )
+
+        self.render_json({
+            'rights': rights_manager.get_collection_rights(
+                collection_id
+            ).to_dict()
+        })
+
 
 class CollectionUnpublishHandler(base.BaseHandler):
     """Handles the unpublication of the given collection."""
