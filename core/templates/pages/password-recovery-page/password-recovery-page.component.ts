@@ -28,8 +28,8 @@ require('services/user.service.ts');
 require('services/contextual/url.service.ts');
 require('services/stateful/focus-manager.service.ts');
 
-angular.module('oppia').component('customAuthPage', {
-    template: require('./custom-auth-page.component.html'),
+angular.module('oppia').component('passwordRecoveryPage', {
+    template: require('./password-recovery-page.component.html'),
     controller: [
         '$http', '$uibModal', '$window', 'AlertsService',
         'FocusManagerService', 'LoaderService', 'SiteAnalyticsService',
@@ -43,16 +43,7 @@ angular.module('oppia').component('customAuthPage', {
             DASHBOARD_TYPE_LEARNER, MAX_USERNAME_LENGTH, SITE_NAME) {
             ctrl = this;
 
-            ctrl.submitLoginForm = function () {
-                const getMethods = (obj) => {
-                    let properties = new Set()
-                    let currentObj = obj
-                    do {
-                        Object.getOwnPropertyNames(currentObj).map(item => properties.add(item))
-                    } while ((currentObj = Object.getPrototypeOf(currentObj)))
-                    return [...properties.keys()].filter(item => typeof obj[item] === 'function')
-                }
-
+            ctrl.changePassword = function () {
                 const ERROR_MESSAGES = {
                     "No credentials": "Нет учётных данных",
                     "Invalid credentials": "Неверные учетные данные",
@@ -63,23 +54,20 @@ angular.module('oppia').component('customAuthPage', {
                 headers.append("Content-Type", "application/x-www-form-urlencoded");
                 headers.append("Pragma", "no-cache");
 
-                var authData = {
-                    email: null,
-                    password: null
-                };
-
-                if (ctrl.email) {
-                    authData.email = ctrl.email
+                if (!ctrl.password) {
+                    $window.alert("No new password entered")
+                    return
                 }
 
-                if (ctrl.password) {
-                    authData.password = ctrl.password
+                var newPassword = {
+                    password: ctrl.password,
                 }
 
-                var auth_url = '/custom_auth?email=' + ctrl.email + '&action=Login&continue=http://oqustudy.kz/signup?return_url=/&payload=' + JSON.stringify(authData);
+                var recovery_url = 'token/' + window.location.search.split("?token=")[1] + '/password_recovery?payload=' + JSON.stringify(newPassword);
+
                 var config = {
                     method: 'POST',
-                    url: auth_url,
+                    url: recovery_url,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'Access-Control-Allow-Origin': '*'
@@ -88,8 +76,11 @@ angular.module('oppia').component('customAuthPage', {
                 }
 
                 $http(config).then(function (response) {
+                    $window.alert("Password changed succesfully")
+                    console.log(response)
                     $window.location.href = '/'
                 }).catch(function (error) {
+                    console.log(error)
                     alert(ERROR_MESSAGES[error.data.error]);
                 });
             }
