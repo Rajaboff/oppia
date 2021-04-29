@@ -262,7 +262,7 @@ class SignupPage(base.BaseHandler):
 
     REDIRECT_UNFINISHED_SIGNUPS = False
 
-    @acl_decorators.require_user_id_else_redirect_to_homepage
+    # @acl_decorators.require_user_id_else_redirect_to_homepage
     def get(self):
         """Handles GET requests."""
         return_url = self.request.get('return_url', self.request.uri)
@@ -545,6 +545,12 @@ class UrlHandler(base.BaseHandler):
                 )
 
 
+class ForgotPasswordPageHandler(base.BaseHandler):
+    @acl_decorators.open_access
+    def get(self):
+        return self.render_template('forgot-password-page.mainpage.html')
+
+
 class PasswordRecoveryTokenHandler(base.BaseHandler):
 
     @acl_decorators.open_access
@@ -567,6 +573,19 @@ class PasswordRecoveryTokenHandler(base.BaseHandler):
                                  plaintext_body=link,
                                  html_body=link)
         self.render_json({})
+
+
+class PasswordRecoveryPageHandler(base.BaseHandler):
+
+    @acl_decorators.open_access
+    def get(self):
+        token = self.request.get('token')
+        user_settings = user_services.get_user_settings_from_token(token)
+        if token and user_settings:
+            return self.render_template('password-recovery-page.mainpage.html')
+        else:
+            return self.render_template('error-page-404.mainpage.html')
+
 
 
 class PasswordRecoveryHandler(base.BaseHandler):

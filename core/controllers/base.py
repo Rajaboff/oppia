@@ -283,7 +283,11 @@ class BaseHandler(webapp2.RequestHandler):
                 if 'custom_auth' in self.request.uri:
                     email = self.payload.get('email')
                     user_settings = user_services.get_user_settings_from_email(email)
-                    if not user_settings or user_settings.email_confirmed != "True":
+
+                    if not user_settings:
+                        raise Exception('No credentials')
+
+                    if user_settings.email_confirmed != "True":
                         raise Exception('Email not confirmed')
 
             except Exception as e:

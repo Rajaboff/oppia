@@ -282,6 +282,8 @@ URLS = MAPREDUCE_HANDLERS + [
     get_redirect_route(r'/login', LoginHandler),
     get_redirect_route(r'/custom_auth', CustomAuthHandler),
     get_redirect_route(r'/_ah/login_proxy', AhLoginProxyHandler),
+    get_redirect_route(r'/forgot_password', profile.ForgotPasswordPageHandler),
+    get_redirect_route(r'/password_recovery', profile.PasswordRecoveryPageHandler),
     get_redirect_route(r'/password_recovery_token', profile.PasswordRecoveryTokenHandler),
     get_redirect_route(r'/email_confirm_token', profile.EmailConfirmTokenHandler),
     get_redirect_route(r'/email_confirm', profile.EmailConfirmPageHandler),
