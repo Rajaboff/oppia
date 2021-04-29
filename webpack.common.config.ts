@@ -580,7 +580,7 @@ module.exports = {
       filename: 'signup-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Sign up for Oppia and begin exploring a new subject.'
+        description: 'Зарегистрируйтесь в Oqustudy и начните изучать новую тему.'
       },
       template: commonPrefix + '/pages/signup-page/signup-page.mainpage.html',
       minify: htmlMinifyConfig,

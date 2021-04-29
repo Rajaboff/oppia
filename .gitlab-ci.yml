@@ -28,7 +28,7 @@ deploy:
     - docker pull akhanbakhitov777/oqustudy:latest
     - docker stop oqustudy || echo "oqustudy container is not running"
     - docker rm oqustudy || echo "oqustudy container is not exist"
-    - docker run -d --name oqustudy -p 80:80 -v "/root/appengine.None.root/:/tmp" -v "${PWD}/../oppia:/oppia" akhanbakhitov777/oqustudy
+    - docker run -d --name oqustudy -p 80:80  -р 127.0.0.1:8000:8000 -v "/root/appengine.None.root/:/tmp" -v "${PWD}/../oppia:/oppia" akhanbakhitov777/oqustudy
     - docker system prune -f
     - docker volume prune -f
     - bash waiting_up.sh

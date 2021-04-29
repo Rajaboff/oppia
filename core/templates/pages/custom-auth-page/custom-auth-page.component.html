@@ -1,26 +1,44 @@
 <div class="oppia-page-cards-container oppia-signup-page-container">
   <md-card class="oppia-page-card">
-    <h2 class="oppia-signup-page-title" translate="I18N_SIGNUP_AUTHORIZATION"></h2>
+    <h1 class="oppia-signup-page-title">Привет 👋</h1>
     <form>
       <div class="form-group row">
-        <label for="email" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_PREFERENCES_EMAIL"></label>
+        <label for="email" style="
+    font-family: 'Montserrat';
+    font-weight: 500;
+" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_PREFERENCES_EMAIL"></label>
+
         <div class="col-lg-9 col-md-9 col-sm-9">
           <input type="text" required ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
         </div>
         <br/>
         <br/>
-        <label for="password" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD"></label>
+        <label for="password" style="
+    font-family: 'Montserrat';
+    font-weight: 500;
+" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD"></label>
+
           <div class="col-lg-9 col-md-9 col-sm-9">
             <input type="password" required  ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
           </div>
         <br/>
       </div>
 
+<p style="
+    margin: 35px auto 5px auto;
+    color: #757575;
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
+">Или можно тут
+<a href="http://oqustudy.kz/signup?return_url=/">Зарегистрироваться</a></p>
+
       <div class="center">
-        <button type="submit" class="btn btn-success protractor-test-register-user"
+        <button type="submit" class="btn oppia-navbar-button protractor-test-register-user"
                 ng-click="$ctrl.submitLoginForm()"
                 translate="I18N_SIGNUP_BUTTON_ENTER"
-                id="login-submit">
+                id="login-submit" style=" width: 200px;">
         </button>
       </div>
       <div class="center">
@@ -39,8 +57,8 @@
 
 
   .center {
-    margin: 0;
-    left: 50%;
+    margin: 50px auto 20px auto;
+    text-align: center;
     position: relative;
   }
   signup-page .oppia-username-explanation-text {
