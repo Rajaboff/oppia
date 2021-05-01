@@ -156,6 +156,10 @@ angular.module('oppia').component('signupPage', {
           requestParams.email = ctrl.email
         }
 
+        if (ctrl.role) {
+          requestParams.role = ctrl.role
+        }
+
         if (ctrl.password) {
           requestParams.password = ctrl.password
         }
@@ -180,17 +184,27 @@ angular.module('oppia').component('signupPage', {
 
         SiteAnalyticsService.registerNewSignupEvent();
         ctrl.submissionInProcess = true;
+
+        var dev_app_server_login_config = {
+              method: 'GET',
+              url: "/_ah/login?email=" + ctrl.email + "&action=Login",
+              headers: {
+                  'Access-Control-Allow-Origin': '*'
+              },
+        }
+        $http(dev_app_server_login_config)
+
         $http.post(_SIGNUP_DATA_URL, requestParams).then(function() {
           // $window.location.href = decodeURIComponent(
           //   UrlService.getUrlParams().return_url);
           $window.location.href = '/logout'
+          $window.alert("Email confirm url was sent on " + ctrl.email)
         }, function(rejection) {
           if (
             rejection.data && rejection.data.status_code === 401) {
             ctrl.showRegistrationSessionExpiredModal();
           }
           ctrl.submissionInProcess = false;
-          $window.alert("Email confirm url was sent on " + ctrl.email)
         });
 
         // Don't skip user until email wasn't  confirmed
