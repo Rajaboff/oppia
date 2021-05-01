@@ -561,6 +561,27 @@ def check_can_change_paid_status(user, activity_rights):
     return False
 
 
+def check_can_change_topic_paid_status(user, topic_rights):
+    """Checks whether the user can save given activity.
+
+    Args:
+        user: UserActionsInfo. Object having user_id, role and actions for
+            given user.
+        activity_rights: ActivityRights or None. Rights object for the given
+            activity.
+
+    Returns:
+        bool. Whether the user can save given activity.
+    """
+    if topic_rights is None:
+        return False
+
+    if role_services.ACTION_CHANGE_PAID_STATUS_ANY_ACTIVITY in user.actions:
+        return True
+
+    return False
+
+
 def check_can_delete_activity(user, activity_rights):
     """Checks whether the user can delete given activity.
 

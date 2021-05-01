@@ -1017,6 +1017,37 @@ def unpublish_topic(topic_id, committer_id):
     suggestion_services.auto_reject_translation_suggestions_for_exp_ids(exp_ids)
 
 
+def change_topic_paid_status(topic_id, committer_id, paid_status):
+    """Change topic paid status
+
+    Args:
+        topic_id: str. The id of the given topic.
+        committer_id: str. ID of the committer.
+        paid_status: str. Paid status of the topic
+    """
+    topic_rights = topic_fetchers.get_topic_rights(topic_id, strict=False)
+    if topic_rights is None:
+        raise Exception('The given topic does not exist')
+
+    user = user_services.UserActionsInfo(committer_id)
+    if role_services.ACTION_CHANGE_PAID_STATUS_ANY_ACTIVITY not in user.actions:
+        raise Exception(
+            'The user does not have enough rights to change paid status of the topic.'
+        )
+
+    commit_cmds = [topic_domain.TopicRightsChange({
+        'cmd': topic_domain.CMD_CHANGE_TOPIC_PAID_STATUS,
+        'old_status': topic_rights.paid_status,
+        'new_status': paid_status,
+    })]
+
+    topic_rights.paid_status = paid_status
+
+    save_topic_rights(
+        topic_rights, committer_id, 'Changes paid status of the topic', commit_cmds
+    )
+
+
 def save_topic_rights(topic_rights, committer_id, commit_message, commit_cmds):
     """Saves a TopicRights domain object to the datastore.
 
@@ -1033,6 +1064,7 @@ def save_topic_rights(topic_rights, committer_id, commit_message, commit_cmds):
 
     model.manager_ids = topic_rights.manager_ids
     model.topic_is_published = topic_rights.topic_is_published
+    model.paid_status = topic_rights.paid_status
     commit_cmd_dicts = [commit_cmd.to_dict() for commit_cmd in commit_cmds]
     model.commit(committer_id, commit_message, commit_cmd_dicts)
 
@@ -1044,13 +1076,14 @@ def create_new_topic_rights(topic_id, committer_id):
         topic_id: str. ID of the topic.
         committer_id: str. ID of the committer.
     """
-    topic_rights = topic_domain.TopicRights(topic_id, [], False)
+    topic_rights = topic_domain.TopicRights(topic_id, [], False, feconf.DEFAULT_EXPLORATION_PAID_STATUS)
     commit_cmds = [{'cmd': topic_domain.CMD_CREATE_NEW}]
 
     topic_models.TopicRightsModel(
         id=topic_rights.id,
         manager_ids=topic_rights.manager_ids,
-        topic_is_published=topic_rights.topic_is_published
+        topic_is_published=topic_rights.topic_is_published,
+        paid_status=topic_rights.paid_status,
     ).commit(committer_id, 'Created new topic rights', commit_cmds)
 
 

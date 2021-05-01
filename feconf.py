@@ -844,6 +844,7 @@ TOPIC_NAME_HANDLER = '/topic_name_handler'
 TOPIC_RIGHTS_URL_PREFIX = '/rightshandler/get_topic_rights'
 TOPIC_SEND_MAIL_URL_PREFIX = '/rightshandler/send_topic_publish_mail'
 TOPIC_STATUS_URL_PREFIX = '/rightshandler/change_topic_status'
+TOPIC_PAID_STATUS_PREFIX = '/rightshandler/change_topic_paid_status'
 TOPIC_URL_FRAGMENT_HANDLER = '/topic_url_fragment_handler'
 TOPICS_AND_SKILLS_DASHBOARD_DATA_URL = '/topics_and_skills_dashboard/data'
 UNASSIGN_SKILL_DATA_HANDLER_URL = '/topics_and_skills_dashboard/unassign_skill'
@@ -1228,6 +1229,7 @@ EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
 
 CMD_REMOVE_MANAGER_ROLE = 'remove_manager_role'
 CMD_PUBLISH_TOPIC = 'publish_topic'
+CMD_CHANGE_TOPIC_PAID_STATUS = 'change_topic_paid_status'
 CMD_UNPUBLISH_TOPIC = 'unpublish_topic'
 
 ROLE_MANAGER = 'manager'
@@ -1270,6 +1272,15 @@ TOPIC_RIGHTS_CHANGE_ALLOWED_COMMANDS = [{
     'required_attribute_names': [],
     'optional_attribute_names': [],
     'user_id_attribute_names': []
+}, {
+    'name': CMD_CHANGE_TOPIC_PAID_STATUS,
+    'required_attribute_names': ['old_status', 'new_status'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': [],
+    'allowed_values': {
+        'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
+        'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
+    }
 }]
 
 USER_ID_RANDOM_PART_LENGTH = 32

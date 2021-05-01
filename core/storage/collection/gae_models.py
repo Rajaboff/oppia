@@ -244,7 +244,7 @@ class CollectionRightsModel(base_models.VersionedModel):
         ]
     )
 
-    # Поле, которое отвечает, платный ли курс
+    # Is the collection needs to be paid
     paid_status = datastore_services.StringProperty(
         default=feconf.DEFAULT_EXPLORATION_PAID_STATUS, indexed=True,
         choices=[

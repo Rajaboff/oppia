@@ -1208,6 +1208,56 @@ def can_change_paid_status_exploration(handler):
     return test
 
 
+def can_change_paid_status_topic(handler):
+    """Decorator to check whether user can save topic.
+
+    Args:
+        handler: function. The function to be decorated.
+
+    Returns:
+        function. The newly decorated function that checks if
+        a user has permission to save a given topic.
+    """
+
+    def test(self, topic_id, **kwargs):
+        """Checks if the user can save the topic.
+
+        Args:
+            topic_id: str. The topic id.
+            **kwargs: dict(str: *). Keyword arguments.
+
+        Returns:
+            *. The return value of the decorated function.
+
+        Raises:
+            NotLoggedInException. The user is not logged in.
+            PageNotFoundException. The page is not found.
+            UnauthorizedUserException. The user does not have credentials to
+                save changes to this topic.
+        """
+
+        if not self.user_id:
+            raise base.UserFacingExceptions.NotLoggedInException
+
+        topic_rights = topic_fetchers.get_topic_rights(topic_id, strict=False)
+
+        if not topic_rights:
+            raise base.UserFacingExceptions.PageNotFoundException
+
+        if not rights_manager.check_can_change_topic_paid_status(
+            self.user, topic_rights
+        ):
+            raise base.UserFacingExceptions.UnauthorizedUserException(
+                'You do not have permissions to change paid status for this topic.'
+            )
+
+        return handler(self, topic_id, **kwargs)
+
+    test.__wrapped__ = True
+
+    return test
+
+
 def can_delete_exploration(handler):
     """Decorator to check whether user can delete exploration.
 

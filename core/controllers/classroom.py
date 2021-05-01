@@ -60,6 +60,13 @@ class ClassroomDataHandler(base.BaseHandler):
             if summary is not None and topic_rights[ind].topic_is_published
         ]
 
+        topic_summary_dicts = [
+            # NOTE(anyone): Old python syntax, use `**`
+            dict(summary.to_dict().items() + {"paid_status": topic_right.paid_status}.items())
+            for topic_summary, topic_right in zip(topic_summaries, topic_rights)
+            if topic_summary is not None and topic_right.topic_is_published
+        ]
+
         self.values.update({
             'topic_summary_dicts': topic_summary_dicts,
             'topic_list_intro': classroom.topic_list_intro,
