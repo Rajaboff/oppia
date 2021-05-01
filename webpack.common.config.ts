@@ -96,8 +96,12 @@ module.exports = {
       commonPrefix + '/pages/get-started-page/get-started-page.import.ts',
     email_confirm:
       commonPrefix + '/pages/email-confirm-page/email-confirm-page.import.ts',
+    forgot_password:
+      commonPrefix + '/pages/forgot-password-page/forgot-password-page.import.ts',
     custom_auth:
       commonPrefix + '/pages/custom-auth-page/custom-auth-page.import.ts',
+    password_recovery:
+      commonPrefix + '/pages/password-recovery-page/password-recovery-page.import.ts',
     landing:
       commonPrefix + '/pages/landing-pages/topic-landing-page/' +
       'topic-landing-page.import.ts',
@@ -411,6 +415,30 @@ module.exports = {
       inject: false
     }),
     new HtmlWebpackPlugin({
+      chunks: ['forgot_password'],
+      filename: 'forgot-password-page.mainpage.html',
+      meta: {
+        name: defaultMeta.name,
+        description: 'Forgot password page.'
+      },
+      template:
+        commonPrefix + '/pages/forgot-password-page/forgot-password-page.mainpage.html',
+      minify: htmlMinifyConfig,
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['password_recovery'],
+      filename: 'password-recovery-page.mainpage.html',
+      meta: {
+        name: defaultMeta.name,
+        description: 'Password recovery page.'
+      },
+      template:
+        commonPrefix + '/pages/password-recovery-page/password-recovery-page.mainpage.html',
+      minify: htmlMinifyConfig,
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
       chunks: ['custom_auth'],
       filename: 'custom-auth-page.mainpage.html',
       meta: {
@@ -552,7 +580,7 @@ module.exports = {
       filename: 'signup-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Sign up for Oppia and begin exploring a new subject.'
+        description: 'Зарегистрируйтесь в Oqustudy и начните изучать новую тему.'
       },
       template: commonPrefix + '/pages/signup-page/signup-page.mainpage.html',
       minify: htmlMinifyConfig,
