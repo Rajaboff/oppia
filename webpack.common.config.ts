@@ -395,7 +395,7 @@ module.exports = {
       filename: 'get-started-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Learn how to get started using Oppia.'
+        description: 'Узнайте, как начать использовать Oqustudy.'
       },
       template:
         commonPrefix + '/pages/get-started-page/get-started-page.mainpage.html',
@@ -407,7 +407,7 @@ module.exports = {
       filename: 'email-confirm-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Email confirmation.'
+        description: 'Подтверждение почты.'
       },
       template:
         commonPrefix + '/pages/email-confirm-page/email-confirm-page.mainpage.html',
@@ -419,7 +419,7 @@ module.exports = {
       filename: 'forgot-password-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Forgot password page.'
+        description: 'Забыли пароль, можно восстановить.'
       },
       template:
         commonPrefix + '/pages/forgot-password-page/forgot-password-page.mainpage.html',
@@ -431,7 +431,7 @@ module.exports = {
       filename: 'password-recovery-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Password recovery page.'
+        description: 'Создание нового пароля.'
       },
       template:
         commonPrefix + '/pages/password-recovery-page/password-recovery-page.mainpage.html',
@@ -443,7 +443,7 @@ module.exports = {
       filename: 'custom-auth-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'User authorization'
+        description: 'Авторизация пользователя'
       },
       template:
         commonPrefix + '/pages/custom-auth-page/custom-auth-page.mainpage.html',

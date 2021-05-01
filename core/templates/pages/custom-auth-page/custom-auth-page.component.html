@@ -6,20 +6,22 @@
         <label for="email" style="
     font-family: 'Montserrat';
     font-weight: 500;
-" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_PREFERENCES_EMAIL"></label>
+    color: #757575;
+" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_EMAIL_LOGIN"></label>
 
         <div class="col-lg-9 col-md-9 col-sm-9">
-          <input type="text" required ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+          <input type="email" placeholder="Введите почту или логин" required ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
         </div>
         <br/>
         <br/>
         <label for="password" style="
     font-family: 'Montserrat';
     font-weight: 500;
+    color: #757575;
 " class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD"></label>
 
           <div class="col-lg-9 col-md-9 col-sm-9">
-            <input type="password" required  ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+            <input type="password" placeholder="******" required  ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
           </div>
         <br/>
       </div>
@@ -31,18 +33,31 @@
     font-family: 'Montserrat';
     font-weight: 400;
     font-size: 14px;
-">Или можно тут
-<a href="http://oqustudy.kz/signup?return_url=/">Зарегистрироваться</a></p>
+">Если вы 
+<a href="/forgot_password" onclick="" translate="I18N_FORGOT_PASSWORD">забыли пароль?</a></p>
 
-      <div class="center">
-        <button type="submit" class="btn oppia-navbar-button protractor-test-register-user"
-                ng-click="$ctrl.submitLoginForm()"
-                translate="I18N_SIGNUP_BUTTON_ENTER"
-                id="login-submit" style=" width: 200px;">
-        </button>
+      <div class="center oppia-splash-button-container">
+        <button type="submit" class="btn oppia-navbar-button" ng-click="$ctrl.submitLoginForm()" translate="I18N_SIGNUP_BUTTON_ENTER" id="login-submit" style="width: 250px;height: 40px;border-radius: 25px;">Войти</button>
       </div>
-      <div class="center">
-        <a href="/forgot_password" onclick="" translate="I18N_FORGOT_PASSWORD"></a>
+<div style="
+"><p style="
+    text-align: center;
+    color: #757575;
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14px;
+">или</p></div>
+      <div class=" oppia-splash-button-container" style="
+    text-align: center;
+">
+    <a style="
+    background-color: #fff;
+    color: #007bff;
+    box-shadow: 0px 8px 16px rgb(0 126 255 / 16%);
+    margin: 10px 0px 0px 0px;
+    width: 250px;
+   
+    " href="/signup?return_url=/" class="button">Зарегистрироваться</a>
       </div>
     </form>
   </md-card>
