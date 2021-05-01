@@ -290,6 +290,8 @@ DEFAULT_EXPLORATION_OBJECTIVE = ''
 
 # Default value of paid status
 DEFAULT_EXPLORATION_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
+DEFAULT_COLLECTION_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
+DEFAULT_TOPIC_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
 
 # NOTE TO DEVELOPERS: If any of the 5 constants below are modified, the
 # corresponding field in NEW_STATE_TEMPLATE in constants.js also has to be

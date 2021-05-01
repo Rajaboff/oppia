@@ -1259,7 +1259,7 @@ def can_change_paid_status_collection(handler):
 
 
 def can_change_paid_status_topic(handler):
-    """Decorator to check whether user change exploration paid status.
+    """Decorator to check whether user change topic paid status.
 
     Args:
         handler: function. The function to be decorated.
@@ -1269,11 +1269,11 @@ def can_change_paid_status_topic(handler):
         a user has permission to save a given exploration.
     """
 
-    def test(self, exploration_id, **kwargs):
-        """Checks if the user can change exploration paid status.
+    def test(self, topic_id, **kwargs):
+        """Checks if the user can change topic paid status.
 
         Args:
-            exploration_id: str. The exploration id.
+            topic_id: str. The topic id.
             **kwargs: dict(str: *). Keyword arguments.
 
         Returns:
@@ -1283,7 +1283,7 @@ def can_change_paid_status_topic(handler):
             NotLoggedInException. The user is not logged in.
             PageNotFoundException. The page is not found.
             UnauthorizedUserException. The user does not have credentials to
-                        save changes to this topic.
+                        change topic paid status
         """
 
         if not self.user_id:

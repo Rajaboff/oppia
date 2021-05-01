@@ -220,7 +220,7 @@ class CreatorDashboardHandler(base.BaseHandler):
                     'created_on': utils.get_time_in_millisecs(
                         collection_summary.collection_model_created_on),
                     'status': collection_summary.status,
-                    'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+                    'paid_status': rights.paid_status if rights else feconf.DEFAULT_COLLECTION_PAID_STATUS,
                     'node_count': collection_summary.node_count,
                     'community_owned': collection_summary.community_owned,
                     'thumbnail_icon_url': (

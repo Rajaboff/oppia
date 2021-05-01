@@ -469,7 +469,7 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
                 'objective': collection_summary.objective,
                 'language_code': collection_summary.language_code,
                 'tags': collection_summary.tags,
-                'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+                'paid_status': rights.paid_status if rights else feconf.DEFAULT_COLLECTION_PAID_STATUS,
                 'node_count': collection_summary.node_count,
                 'last_updated_msec': utils.get_time_in_millisecs(
                     collection_summary.collection_model_last_updated),

@@ -1035,6 +1035,9 @@ def change_topic_paid_status(topic_id, committer_id, paid_status):
             'The user does not have enough rights to change paid status of the topic.'
         )
 
+    if topic_rights.paid_status == paid_status:
+        return
+
     commit_cmds = [topic_domain.TopicRightsChange({
         'cmd': topic_domain.CMD_CHANGE_TOPIC_PAID_STATUS,
         'old_status': topic_rights.paid_status,
@@ -1076,7 +1079,7 @@ def create_new_topic_rights(topic_id, committer_id):
         topic_id: str. ID of the topic.
         committer_id: str. ID of the committer.
     """
-    topic_rights = topic_domain.TopicRights(topic_id, [], False, feconf.DEFAULT_EXPLORATION_PAID_STATUS)
+    topic_rights = topic_domain.TopicRights(topic_id, [], False, feconf.DEFAULT_TOPIC_PAID_STATUS)
     commit_cmds = [{'cmd': topic_domain.CMD_CREATE_NEW}]
 
     topic_models.TopicRightsModel(

@@ -55,10 +55,6 @@ class ClassroomDataHandler(base.BaseHandler):
         topic_ids = classroom.topic_ids
         topic_summaries = topic_services.get_multi_topic_summaries(topic_ids)
         topic_rights = topic_services.get_multi_topic_rights(topic_ids)
-        topic_summary_dicts = [
-            summary.to_dict() for ind, summary in enumerate(topic_summaries)
-            if summary is not None and topic_rights[ind].topic_is_published
-        ]
 
         topic_summary_dicts = [
             # NOTE(anyone): Old python syntax, use `**`

@@ -391,7 +391,7 @@ class TopicRightsModel(base_models.VersionedModel):
 
     # Is the topic needs to be paid
     paid_status = datastore_services.StringProperty(
-        default=feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+        default=feconf.DEFAULT_TOPIC_PAID_STATUS,
         indexed=True,
         choices=[
             constants.ACTIVITY_PAID_STATUS_NEED_PAID,
