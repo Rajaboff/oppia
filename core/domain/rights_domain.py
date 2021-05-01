@@ -66,7 +66,7 @@ class ActivityRights(python_utils.OBJECT):
             viewer_ids, community_owned=False, cloned_from=None,
             paid_status=feconf.DEFAULT_EXPLORATION_PAID_STATUS,
             status=ACTIVITY_STATUS_PRIVATE, viewable_if_private=False,
-            first_published_msec=None):
+            first_published_msec=None, activity_type=None):
         self.id = exploration_id
         self.owner_ids = owner_ids
         self.editor_ids = editor_ids
@@ -78,6 +78,7 @@ class ActivityRights(python_utils.OBJECT):
         self.paid_status = paid_status
         self.viewable_if_private = viewable_if_private
         self.first_published_msec = first_published_msec
+        self.activity_type = activity_type
 
     def validate(self):
         """Validates an ActivityRights object.
@@ -244,6 +245,22 @@ class ActivityRights(python_utils.OBJECT):
             bool. Whether activity needs to be paid.
         """
         return self.paid_status == ACTIVITY_PAID_STATUS_NEED_PAID
+
+    def is_exploration(self):
+        """Checks whether activity rights of exploration.
+
+        Returns:
+            bool. Whether activity rights of exploration.
+        """
+        return self.activity_type == constants.ACTIVITY_TYPE_EXPLORATION
+
+    def is_collection(self):
+        """Checks whether activity rights of collection.
+
+        Returns:
+            bool. Whether activity rights of collection.
+        """
+        return self.activity_type == constants.ACTIVITY_TYPE_COLLECTION
 
 
 class ExplorationRightsChange(change_domain.BaseChange):

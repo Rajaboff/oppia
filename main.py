@@ -788,6 +788,10 @@ URLS = MAPREDUCE_HANDLERS + [
         r'%s/<collection_id>' % feconf.COLLECTION_PUBLISH_PREFIX,
         collection_editor.CollectionPublishHandler),
     get_redirect_route(
+        r'%s/<collection_id>' % feconf.COLLECTION_PAID_STATUS_PREFIX,
+        collection_editor.CollectionPaidStatusHandler,
+    ),
+    get_redirect_route(
         r'%s/<collection_id>' % feconf.COLLECTION_UNPUBLISH_PREFIX,
         collection_editor.CollectionUnpublishHandler),
 
