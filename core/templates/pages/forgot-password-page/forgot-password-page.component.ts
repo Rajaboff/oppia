@@ -78,7 +78,7 @@ angular.module('oppia').component('forgotPasswordPage', {
                 }
 
                 $http(config).then(function (response) {
-                    $window.alert("Recovery url was sent on your email")
+                    $window.alert("URL-адрес для восстановления был отправлен на вашу почту")
                     console.log(response)
                     $window.location.href = '/'
                 }).catch(function (error) {
