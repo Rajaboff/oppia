@@ -176,7 +176,16 @@ class CreatorDashboardHandler(base.BaseHandler):
             summary.id for summary in subscribed_exploration_summaries]
 
         exp_summary_dicts = summary_services.get_displayable_exp_summary_dicts(
-            subscribed_exploration_summaries)
+            subscribed_exploration_summaries
+        )
+
+        user_available_explorations = exp_services.get_available_explorations_for_user(
+            self.user_id
+        )
+
+        for exp_summary in exp_summary_dicts:
+            exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
+
         collection_summary_dicts = []
 
         feedback_thread_analytics = (

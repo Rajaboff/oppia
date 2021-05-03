@@ -790,6 +790,10 @@ def delete_explorations(committer_id, exploration_ids, force_deletion=False):
         taskqueue_services.FUNCTION_ID_DELETE_EXPLORATIONS,
         taskqueue_services.QUEUE_NAME_ONE_OFF_JOBS, exploration_ids)
 
+    exp_models.ExplorationUserAccessModel.delete_by_exploration_ids(
+        exploration_ids=exploration_ids
+    )
+
 
 def delete_explorations_from_subscribed_users(exploration_ids):
     """Remove explorations from all subscribers' activity_ids.
@@ -1764,3 +1768,105 @@ def get_interaction_id_for_state(exp_id, state_name):
         return exploration.get_interaction_id_by_state_name(state_name)
     raise Exception(
         'There exist no state in the exploration with the given state name.')
+
+def create_exploration_user_access(exploration_user_access):
+    """Create exploration user access model.
+
+    Args:
+        exploration_user_access (ExplorationUserAccess): The exploration user
+            access domain to be saved
+    """
+    exp_models.ExplorationUserAccessModel(
+        exploration_id=exploration_user_access.exploration_id,
+        user_id=exploration_user_access.user_id,
+    ).put()
+
+def get_exploration_user_access(exploration_id, user_id):
+    """Get exploration user access domain object by provided data.
+
+    Args:
+        exploration_id (str): exploration ID
+        user_id (str): user ID
+
+    Returns:
+        ExplorationUserAccess | None: None, if there is no access
+            for the user to the exploration.
+            ExplorationUserAccess otherwise
+    """
+    res = exp_models.ExplorationUserAccessModel.get_by_exploration_and_user(
+        exploration_id=exploration_id,
+        user_id=user_id,
+    )
+
+    if not res:
+        return None
+
+    return exp_domain.ExplorationUserAccess(
+        exploration_id=res.exploration_id,
+        user_id=res.user_id,
+    )
+
+def get_available_explorations_for_user(user_id):
+    """Get exploration list the user has access to
+
+    Args:
+        user_id (str): user ID
+
+    Returns:
+        dict[str, ExplorationUserAccess]: dict of ExplorationUserAccess
+    """
+    res = {}
+
+    if user_id:
+        for model in exp_models.ExplorationUserAccessModel.get_by_user(user_id=user_id):
+            res[model.exploration_id] = exp_domain.ExplorationUserAccess(
+                exploration_id=model.exploration_id,
+                user_id=model.user_id,
+            )
+
+    return res
+
+def update_exploration_user_access(exploration_user_access):
+    """Update to access model for user to the exploration.
+    If there is no model - it will be created.
+
+    Args:
+        exploration_user_access (ExplorationUserAccess): The exploration user
+            access domain to be updated
+    """
+    model = get_exploration_user_access(
+        exploration_id=exploration_user_access.exploration_id,
+        user_id=exploration_user_access.user_id,
+    )
+    if not model:
+        create_exploration_user_access(exploration_user_access)
+
+def delete_exploration_user_access(exploration_user_access):
+    """Delete exploration user access model.
+
+    Args:
+        exploration_user_access (ExplorationUserAccess): The exploration user
+            access domain to be deleted
+    """
+    exp_models.ExplorationUserAccessModel.delete_by_exploration_and_user(
+        exploration_id=exploration_user_access.exploration_id,
+        user_id=exploration_user_access.user_id,
+    )
+
+def delete_exploration_user_access_by_exploration(exploration_id):
+    """Delete all user access models for the exploration.
+
+    Args:
+        exploration_id (str): exploration ID
+    """
+    exp_models.ExplorationUserAccessModel.delete_by_exploration_id(
+        exploration_id=exploration_id
+    )
+
+def delete_exploration_user_access_by_user(user_id):
+    """Delete all access models for the user.
+
+    Args:
+        user_id (str): user ID
+    """
+    exp_models.ExplorationUserAccessModel.delete_by_user_id(user_id=user_id)

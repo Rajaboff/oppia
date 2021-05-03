@@ -26,6 +26,7 @@ from core.domain import story_fetchers
 from core.domain import story_services
 from core.domain import summary_services
 from core.domain import topic_fetchers
+from core.domain import exp_services
 import feconf
 
 
@@ -69,6 +70,13 @@ class StoryPageDataHandler(base.BaseHandler):
         exp_summary_dicts = (
             summary_services.get_displayable_exp_summary_dicts_matching_ids(
                 exp_ids, user=self.user))
+
+        user_available_explorations = exp_services.get_available_explorations_for_user(
+            self.user_id
+        )
+
+        for exp_summary in exp_summary_dicts:
+            exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
 
         for ind, node in enumerate(ordered_node_dicts):
             node['exp_summary_dict'] = exp_summary_dicts[ind]

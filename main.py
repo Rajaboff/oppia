@@ -673,6 +673,14 @@ URLS = MAPREDUCE_HANDLERS + [
         editor.ExplorationPaidStatusHandler,
     ),
     get_redirect_route(
+        r'%s/<exploration_id>' % feconf.EXPLORATION_USER_ACCESS_ALLOW_PREFIX,
+        editor.ExplorationUserAccessAllowHandler,
+    ),
+    get_redirect_route(
+        r'%s/<exploration_id>' % feconf.EXPLORATION_USER_ACCESS_RESTRICT_PREFIX,
+        editor.ExplorationUserAccessRestrictHandler,
+    ),
+    get_redirect_route(
         r'%s/<exploration_id>' % feconf.USER_PERMISSIONS_URL_PREFIX,
         editor.UserExplorationPermissionsHandler),
     get_redirect_route(

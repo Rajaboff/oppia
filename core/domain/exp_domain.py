@@ -4741,3 +4741,47 @@ class ExplorationSummary(python_utils.OBJECT):
             bool. Whether the exploration is solely owned by the user.
         """
         return user_id in self.owner_ids and len(self.owner_ids) == 1
+
+
+class ExplorationUserAccess(python_utils.OBJECT):
+    """Domain object for an Oppia exploration user access."""
+
+    def __init__(
+            self,
+            exploration_id,
+            user_id,
+        ):
+        """Initializes a ExplorationUserAccess domain object.
+
+        Args:
+            exploration_id: str. The exploration id.
+            user_id: str. The user ID.
+        """
+        self.exploration_id = exploration_id
+        self.user_id = user_id
+
+    def to_dict(self):
+        """
+        Transform to dict.
+
+        Returns:
+            Dict: object as a dict
+        """
+        return self.__dict__
+
+    def validate(self):
+        """Validates properties of the ExplorationUserAccess.
+
+        Raises:
+            ValidationError. One or more attributes of the ExplorationUserAccess
+                are invalid.
+        """
+        if not isinstance(self.exploration_id, python_utils.BASESTRING):
+            raise utils.ValidationError(
+                'Expected exploration_id to be a str, received %s' % self.exploration_id
+            )
+
+        if not isinstance(self.user_id, python_utils.BASESTRING):
+            raise utils.ValidationError(
+                'Expected user_id to be a str, received %s' % self.user_id
+            )
