@@ -48,8 +48,8 @@ angular.module('oppia').component('signupPage', {
             var _SIGNUP_DATA_URL = '/signuphandler/data';
             ctrl.MAX_USERNAME_LENGTH = MAX_USERNAME_LENGTH;
             ctrl.CREATEABLE_ROLES = {
-                "LEARNER": "learner",
-                "EXPLORATION_EDITOR": "exploration editor",
+                "LEARNER": "Ученик",
+                "EXPLORATION_EDITOR": "Учитель",
             };
             ctrl.isFormValid = function () {
                 return (
