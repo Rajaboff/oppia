@@ -3,7 +3,9 @@ link before completing the signup process, they will be logged out.
 -->
 
 <div class="oppia-page-cards-container oppia-signup-page-container">
-  <md-card class="oppia-page-card">
+  <md-card class="oppia-page-card" style="
+    border-radius: 19px;
+">
     <h2 class="oppia-signup-page-title" translate="I18N_SIGNUP_REGISTRATION"></h2>
 
     <form>
@@ -12,7 +14,7 @@ link before completing the signup process, they will be logged out.
           <label for="username" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_SIGNUP_USERNAME" style="font-family: 'Montserrat';
     font-weight: 500; margin-bottom: 5px;" ></label>
           <div class="col-lg-9 col-md-9 col-sm-9">
-            <input type="text" placeholder="Username" ng-model="$ctrl.username" id="username" class="form-control oppia-username-input protractor-test-username-input" ng-blur="$ctrl.onUsernameInputFormBlur($ctrl.username)" ng-change="$ctrl.updateWarningText($ctrl.username)" ng-trim="false" focus-on="usernameInputField" autofocus="true">
+            <input type="text" name="username" required placeholder="Никнейм" ng-model="$ctrl.username" id="username" class="form-control oppia-username-input protractor-test-username-input" ng-blur="$ctrl.onUsernameInputFormBlur($ctrl.username)" ng-change="$ctrl.updateWarningText($ctrl.username)" ng-trim="false" focus-on="usernameInputField" autofocus="true">
             <span class="form-text oppia-username-explanation-text" translate="I18N_SIGNUP_USERNAME_EXPLANATION" style="
     font-style: italic;
     font-family: 'Montserrat';
@@ -33,20 +35,21 @@ link before completing the signup process, they will be logged out.
             <div class="col-lg-9 col-md-9 col-sm-9" style="
     margin-bottom: 20px;
 ">
-              <input type="email" placeholder="example@gmail.com" ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+              <input type="email" name="email" required placeholder="example@gmail.com" ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
             </div>
           <label for="password" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD" style="font-family: 'Montserrat';
     font-weight: 500; margin-bottom: 5px;"></label>
            <div class="col-lg-9 col-md-9 col-sm-9" style="
     margin-bottom: 20px;
 ">
-            <input type="password" placeholder="******" ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+            <input type="password" name="pass" required placeholder="******" ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
             </div>
           <label for="role" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_ROLE" style="font-family: 'Montserrat';
     font-weight: 500; margin-bottom: 5px;"></label>
            <div class="col-lg-9 col-md-9 col-sm-9">
              <select id="role" ng-options="roleName as roleString for (roleName, roleString) in $ctrl.CREATEABLE_ROLES" ng-model="$ctrl.role" class="form-control protractor-update-form-role-select" style="
     width: 260px;
+    height: 35px;
 ">
             </select>
           </div>
