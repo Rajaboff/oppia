@@ -18,7 +18,7 @@ sudo systemctl enable nginx
 2. Перезаписываем файл и перезапускаем nginx
 ```bash
 sudo systemctl stop nginx
-sudo cat nginx.conf > /etc/nginx/nginx.conf
+sudo cat nginx_local.conf > /etc/nginx/nginx.conf
 sudo systemctl start nginx
 ```
 
