@@ -189,7 +189,7 @@ angular.module('oppia').component('signupPage', {
 
                 var dev_app_server_login_config = {
                     method: 'GET',
-                    url: "/_ah/login?email=" + ctrl.email + "&action=Login",
+                    url: "http://127.0.0.1:8181/_ah/login?email=" + ctrl.email + "&action=Login",
                     headers: {
                         'Access-Control-Allow-Origin': '*'
                     },
