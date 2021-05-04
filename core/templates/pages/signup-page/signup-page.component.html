@@ -14,7 +14,7 @@ link before completing the signup process, they will be logged out.
           <label for="username" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_SIGNUP_USERNAME" style="font-family: 'Montserrat';
     font-weight: 500; margin-bottom: 5px;" ></label>
           <div class="col-lg-9 col-md-9 col-sm-9">
-            <input type="text" name="username" required placeholder="Никнейм" ng-model="$ctrl.username" id="username" class="form-control oppia-username-input protractor-test-username-input" ng-blur="$ctrl.onUsernameInputFormBlur($ctrl.username)" ng-change="$ctrl.updateWarningText($ctrl.username)" ng-trim="false" focus-on="usernameInputField" autofocus="true">
+            <input type="text" name="username" required placeholder="Ведите логин" ng-model="$ctrl.username" id="username" class="form-control oppia-username-input protractor-test-username-input" ng-blur="$ctrl.onUsernameInputFormBlur($ctrl.username)" ng-change="$ctrl.updateWarningText($ctrl.username)" ng-trim="false" focus-on="usernameInputField" autofocus="true">
             <span class="form-text oppia-username-explanation-text" translate="I18N_SIGNUP_USERNAME_EXPLANATION" style="
     font-style: italic;
     font-family: 'Montserrat';
@@ -97,7 +97,7 @@ link before completing the signup process, they will be logged out.
     font-style: italic;
     font-family: 'Montserrat';
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
 " translate-value-sitename="<[$ctrl.siteName]>">
           </span>
         </label>
