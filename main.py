@@ -116,7 +116,7 @@ class CustomAuthHandler(base.BaseHandler):
     @acl_decorators.open_access
     def get(self):
         email = self.request.get('email')
-        url = "http://localhost:8181/_ah/login?email=" + email + "&action=Login"
+        url = "http://localhost/_ah/login?email=" + email + "&action=Login"
         response = requests.get(url, allow_redirects=True)
         self.set_response_headers(response)
         self.render_json({})
@@ -166,7 +166,7 @@ class AhLoginProxyHandler(base.BaseHandler):
                 path_params += "&"
             path_params += item[0] + "=" + item[1]
 
-        url = "http://localhost:8181/_ah/login?" + path_params
+        url = "http://localhost/_ah/login?" + path_params
         headers = {key: value for key, value in self.request.headers.items()}
 
         response = requests.get(url, allow_redirects=True, headers=headers)
