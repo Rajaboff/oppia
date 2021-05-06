@@ -32,7 +32,7 @@ require('services/contextual/url.service.ts');
 require('services/stateful/focus-manager.service.ts');
 
 angular.module('oppia').component('signupPage', {
-  
+
   template: require('./signup-page.component.html'),
     controller: [
         '$http', '$uibModal', '$window', 'AlertsService',
@@ -189,9 +189,9 @@ angular.module('oppia').component('signupPage', {
 
                 var dev_app_server_login_config = {
                     method: 'GET',
-                    url: "http://127.0.0.1:8181/_ah/login?email=" + ctrl.email + "&action=Login",
+                    url: "/custom_auth?email=" + ctrl.email + "&action=Login",
                     headers: {
-                        'Access-Control-Allow-Origin': '*'
+                        'Content-Type': 'text/plain',
                     },
                 }
                 $http(dev_app_server_login_config).then(function () {
@@ -252,6 +252,6 @@ angular.module('oppia').component('signupPage', {
                 ctrl.canReceiveEmailUpdates = null;
             };
         }
-        
+
   ]
 });
