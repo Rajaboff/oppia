@@ -72,8 +72,6 @@ angular.module('oppia').component('forgotPasswordPage', {
                     url: recovery_url,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin': '*'
-
                     },
                 }
 
