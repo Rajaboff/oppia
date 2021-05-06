@@ -76,7 +76,7 @@ angular.module('oppia').component('passwordRecoveryPage', {
                 }
 
                 $http(config).then(function (response) {
-                    $window.alert("Password changed succesfully")
+                    $window.alert("Пароль успешно изменен")
                     console.log(response)
                     $window.location.href = '/'
                 }).catch(function (error) {

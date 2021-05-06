@@ -18,10 +18,10 @@
 
 require('base-components/base-content.directive.ts');
 require(
-    'pages/signup-page/modal-templates/license-explanation-modal.controller.ts');
+  'pages/signup-page/modal-templates/license-explanation-modal.controller.ts');
 require(
-    'pages/signup-page/modal-templates/' +
-    'registration-session-expired-modal.controller.ts');
+  'pages/signup-page/modal-templates/' +
+  'registration-session-expired-modal.controller.ts');
 
 require('domain/utilities/url-interpolation.service.ts');
 require('services/alerts.service.ts');
@@ -32,7 +32,8 @@ require('services/contextual/url.service.ts');
 require('services/stateful/focus-manager.service.ts');
 
 angular.module('oppia').component('signupPage', {
-    template: require('./signup-page.component.html'),
+
+  template: require('./signup-page.component.html'),
     controller: [
         '$http', '$uibModal', '$window', 'AlertsService',
         'FocusManagerService', 'LoaderService', 'SiteAnalyticsService',
@@ -47,8 +48,8 @@ angular.module('oppia').component('signupPage', {
             var _SIGNUP_DATA_URL = '/signuphandler/data';
             ctrl.MAX_USERNAME_LENGTH = MAX_USERNAME_LENGTH;
             ctrl.CREATEABLE_ROLES = {
-                "LEARNER": "learner",
-                "EXPLORATION_EDITOR": "exploration editor",
+                "LEARNER": "Ученик",
+                "EXPLORATION_EDITOR": "Учитель",
             };
             ctrl.isFormValid = function () {
                 return (
@@ -188,7 +189,7 @@ angular.module('oppia').component('signupPage', {
 
                 var dev_app_server_login_config = {
                     method: 'GET',
-                    url: "/_ah/login?email=" + ctrl.email + "&action=Login",
+                    url: "http://127.0.0.1:8181/_ah/login?email=" + ctrl.email + "&action=Login",
                     headers: {
                         'Access-Control-Allow-Origin': '*'
                     },
@@ -198,7 +199,7 @@ angular.module('oppia').component('signupPage', {
                         // $window.location.href = decodeURIComponent(
                         //   UrlService.getUrlParams().return_url);
                         $window.location.href = '/logout'
-                        $window.alert("Email confirm url was sent on " + ctrl.email)
+                        $window.alert("Подтверждение почты было отправлено на " + ctrl.email)
                     }, function (rejection) {
                         if (
                             rejection.data && rejection.data.status_code === 401) {
@@ -251,5 +252,6 @@ angular.module('oppia').component('signupPage', {
                 ctrl.canReceiveEmailUpdates = null;
             };
         }
-    ]
+
+  ]
 });
