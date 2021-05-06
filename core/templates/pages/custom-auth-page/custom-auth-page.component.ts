@@ -67,7 +67,7 @@ angular.module('oppia').component('customAuthPage', {
                     authData.password = ctrl.password
                 }
 
-                var auth_url = '/custom_auth?email=' + ctrl.email + '&action=Login&continue=http://oqustudy.kz/signup?return_url=/&payload=' + JSON.stringify(authData);
+                var auth_url = '/custom_auth?email=' + ctrl.email + '&action=Login&payload=' + JSON.stringify(authData);
                 var config = {
                     method: 'POST',
                     url: auth_url,
