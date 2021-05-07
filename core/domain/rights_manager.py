@@ -552,7 +552,7 @@ def check_can_save_activity(user, activity_rights):
 
 
 def check_can_change_paid_status(user, activity_rights):
-    """Checks whether the user can save given activity.
+    """Checks whether the user can change activity paid satus.
 
     Args:
         user: UserActionsInfo. Object having user_id, role and actions for
@@ -561,7 +561,7 @@ def check_can_change_paid_status(user, activity_rights):
             activity.
 
     Returns:
-        bool. Whether the user can save given activity.
+        bool. Whether the user can change activity paid satus.
     """
     if activity_rights is None:
         return False
@@ -570,6 +570,27 @@ def check_can_change_paid_status(user, activity_rights):
         return True
 
     if activity_rights.is_owner(user.user_id):
+        return True
+
+    return False
+
+
+def check_can_change_topic_paid_status(user, topic_rights):
+    """Checks whether the user can change topic paid satus.
+
+    Args:
+        user: UserActionsInfo. Object having user_id, role and actions for
+            given user.
+        topic_rights: TopicRights or None. Rights object for the given
+            otpic.
+
+    Returns:
+        bool. Whether the user can change topic paid satus.
+    """
+    if topic_rights is None:
+        return False
+
+    if role_services.ACTION_CHANGE_PAID_STATUS_ANY_ACTIVITY in user.actions:
         return True
 
     return False

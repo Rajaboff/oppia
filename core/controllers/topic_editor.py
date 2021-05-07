@@ -376,6 +376,27 @@ class TopicRightsHandler(base.BaseHandler):
         self.render_json(self.values)
 
 
+class TopicPaidStatusHandler(base.BaseHandler):
+    """Handles opening access to the topic."""
+
+    @acl_decorators.can_change_paid_status_topic
+    def put(self, topic_id):
+        paid_status = self.payload.get('paid_status')
+
+        if paid_status:
+            topic_services.change_topic_paid_status(
+                topic_id=topic_id,
+                committer_id=self.user_id,
+                paid_status=paid_status,
+            )
+
+        self.render_json({
+            'rights': topic_fetchers.get_topic_rights(
+                topic_id
+            ).to_dict()
+        })
+
+
 class TopicPublishSendMailHandler(base.BaseHandler):
     """A handler for sending mail to admins to review and publish topic."""
 

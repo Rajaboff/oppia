@@ -816,6 +816,10 @@ URLS = MAPREDUCE_HANDLERS + [
     get_redirect_route(
         r'%s/<topic_id>' % feconf.TOPIC_SEND_MAIL_URL_PREFIX,
         topic_editor.TopicPublishSendMailHandler),
+    get_redirect_route(
+        r'%s/<topic_id>' % feconf.TOPIC_PAID_STATUS_PREFIX,
+        topic_editor.TopicPaidStatusHandler,
+    ),
 
     get_redirect_route(
         r'%s/<comma_separated_skill_ids>' % feconf.CONCEPT_CARD_DATA_URL_PREFIX,

@@ -55,9 +55,12 @@ class ClassroomDataHandler(base.BaseHandler):
         topic_ids = classroom.topic_ids
         topic_summaries = topic_services.get_multi_topic_summaries(topic_ids)
         topic_rights = topic_services.get_multi_topic_rights(topic_ids)
+
         topic_summary_dicts = [
-            summary.to_dict() for ind, summary in enumerate(topic_summaries)
-            if summary is not None and topic_rights[ind].topic_is_published
+            # NOTE(anyone): Old python syntax, use `**`
+            dict(topic_summary.to_dict().items() + {"paid_status": topic_right.paid_status}.items())
+            for topic_summary, topic_right in zip(topic_summaries, topic_rights)
+            if topic_summary is not None and topic_right.topic_is_published
         ]
 
         self.values.update({

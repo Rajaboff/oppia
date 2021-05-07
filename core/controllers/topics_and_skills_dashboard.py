@@ -77,6 +77,9 @@ class TopicsAndSkillsDashboardPageDataHandler(base.BaseHandler):
                 if topic_rights:
                     topic_summary['is_published'] = (
                         topic_rights.topic_is_published)
+                    topic_summary['paid_status'] = (
+                        topic_rights.paid_status
+                    )
                     topic_summary['can_edit_topic'] = (
                         topic_services.check_can_edit_topic(
                             self.user, topic_rights)
