@@ -449,12 +449,22 @@ def check_can_access_activity(user, activity_rights):
         if activity_rights.is_free():
             return True
 
-        # people has access to the paid collection.
-        # the real access checking to activiti is in explorations in the collection
-        if activity_rights.is_need_paid() and activity_rights.is_collection():
-            return True
+        if activity_rights.is_need_paid():
+            if activity_rights.is_collection():
+                # people has access to the paid collection.
+                # the real access checking to activiti is in explorations in the collection
+                return True
 
-        # TODO(m.lapardin): Check if user paid for activity
+            if activity_rights.is_exploration():
+                # None if no access
+                from core.domain.exp_services import get_exploration_user_access
+
+                exploration_user_access = get_exploration_user_access(
+                    exploration_id=activity_rights.id,
+                    user_id=user.user_id,
+                )
+                return bool(exploration_user_access)
+
         return False
 
     if activity_rights.is_private():

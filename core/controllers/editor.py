@@ -297,7 +297,7 @@ class ExplorationStatusHandler(EditorHandler):
 
 
 class ExplorationPaidStatusHandler(EditorHandler):
-    """Handles opening access to the exploration."""
+    """Handles changing paid status of the exploration."""
 
     @acl_decorators.can_change_paid_status_exploration
     def put(self, exploration_id):
@@ -314,6 +314,49 @@ class ExplorationPaidStatusHandler(EditorHandler):
             'rights': rights_manager.get_exploration_rights(
                 exploration_id).to_dict()
         })
+
+
+class ExplorationUserAccessAllowHandler(EditorHandler):
+    """Handles opening access to the exploration that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_exploration
+    def put(self, exploration_id):
+        user_id = self.payload.get('user_id')
+
+        user = user_services.get_user_settings(user_id, strict=True)
+
+        exploration_user_access = exp_domain.ExplorationUserAccess(
+            exploration_id=exploration_id,
+            user_id=user_id,
+        )
+        exp_services.update_exploration_user_access(exploration_user_access)
+
+        self.render_json({
+            'exploration_user_access': exploration_user_access.to_dict()
+        })
+
+
+class ExplorationUserAccessRestrictHandler(EditorHandler):
+    """Handles restricting access to the exploration that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_exploration
+    def put(self, exploration_id):
+        user_id = self.payload.get('user_id')
+
+        user = user_services.get_user_settings(user_id, strict=True)
+
+        exploration_user_access = exp_domain.ExplorationUserAccess(
+            exploration_id=exploration_id,
+            user_id=user_id,
+        )
+        exp_services.delete_exploration_user_access(exploration_user_access)
+
+        self.render_json({
+            'exploration_user_access': {}
+        })
+
 
 class ExplorationModeratorRightsHandler(EditorHandler):
     """Handles management of exploration rights by moderators."""
