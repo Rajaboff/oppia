@@ -27,6 +27,8 @@ from core.domain import collection_services
 from core.domain import rights_manager
 from core.domain import search_services
 from core.domain import summary_services
+from core.domain import collection_domain
+from core.domain import user_services
 from core.platform import models
 import feconf
 
@@ -195,6 +197,48 @@ class CollectionPaidStatusHandler(base.BaseHandler):
             'rights': rights_manager.get_collection_rights(
                 collection_id
             ).to_dict()
+        })
+
+
+class CollectionUserAccessAllowHandler(base.BaseHandler):
+    """Handles opening access to the collection that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_collection
+    def put(self, collection_id):
+        user_id = self.payload.get('user_id')
+
+        user = user_services.get_user_settings(user_id, strict=True)
+
+        collection_user_access = collection_domain.CollectionUserAccess(
+            collection_id=collection_id,
+            user_id=user_id,
+        )
+        collection_services.update_collection_user_access(collection_user_access)
+
+        self.render_json({
+            'collection_user_access': collection_user_access.to_dict()
+        })
+
+
+class CollectionUserAccessRestrictHandler(base.BaseHandler):
+    """Handles restricting access to the collection that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_collection
+    def put(self, collection_id):
+        user_id = self.payload.get('user_id')
+
+        user = user_services.get_user_settings(user_id, strict=True)
+
+        collection_user_access = collection_domain.CollectionUserAccess(
+            collection_id=collection_id,
+            user_id=user_id,
+        )
+        collection_services.delete_collection_user_access(collection_user_access)
+
+        self.render_json({
+            'collection_user_access': {}
         })
 
 

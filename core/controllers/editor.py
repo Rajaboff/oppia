@@ -299,8 +299,41 @@ class ExplorationStatusHandler(EditorHandler):
 class ExplorationPaidStatusHandler(EditorHandler):
     """Handles changing paid status of the exploration."""
 
+    def init(self, exploration_id):
+        euas = [
+            exp_domain.ExplorationUserAccess(
+                exploration_id="3FT832Jfpb01",
+                user_id="uid_ffosdegwwbwwzrlbzwmhafsgnegmmwzy",
+            ),
+            exp_domain.ExplorationUserAccess(
+                exploration_id="3FT832Jfpb01",
+                user_id="uid_lxlixyohtzdntiumoyxvgjsbmpldjjwr",
+            ),
+            exp_domain.ExplorationUserAccess(
+                exploration_id="8POhAgyp0ozY",
+                user_id="uid_ffosdegwwbwwzrlbzwmhafsgnegmmwzy",
+            ),
+            exp_domain.ExplorationUserAccess(
+                exploration_id="8POhAgyp0ozY",
+                user_id="uid_lxlixyohtzdntiumoyxvgjsbmpldjjwr",
+            ),
+        ]
+
+        for eua in euas:
+            exp_services.delete_exploration_user_access(eua)
+            exp_services.create_exploration_user_access(eua)
+
+    def test(self, exploration_id):
+        r = exp_services.get_access_exploration_list_for_user(
+            "uid_ffosdegwwbwwzrlbzwmhafsgnegmmwzy"
+        )
+        logging.info("QQQQQQQQQQQQQQQQQQ %d", len(r))
+
     @acl_decorators.can_change_paid_status_exploration
     def put(self, exploration_id):
+        # self.init(exploration_id)
+        # self.test(exploration_id)
+
         paid_status = self.payload.get('paid_status')
 
         if paid_status:

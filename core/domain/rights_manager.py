@@ -456,14 +456,49 @@ def check_can_access_activity(user, activity_rights):
                 return True
 
             if activity_rights.is_exploration():
-                # None if no access
+                # None if no access to exploration
                 from core.domain.exp_services import get_exploration_user_access
 
                 exploration_user_access = get_exploration_user_access(
                     exploration_id=activity_rights.id,
                     user_id=user.user_id,
                 )
-                return bool(exploration_user_access)
+
+                # If access to exploration opened - return true
+                if exploration_user_access:
+                    return True
+
+                # otherwise check access to the collection
+                from core.domain.collection_services import get_available_collections_for_user, get_collection_by_id
+                available_collections = get_available_collections_for_user(
+                    user_id=user.user_id,
+                )
+
+                # loop for available collections and check - is the exploration in collection explorations
+                for collection_id, _ in available_collections.items():
+                    collection = get_collection_by_id(collection_id, strict=False)
+                    if collection and activity_rights.id in collection.exploration_ids:
+                        return True
+
+                # otherwise check access to the topic
+                from core.domain.topic_services import get_available_topics_for_user
+                from core.domain.topic_fetchers import get_topic_by_id
+                from core.domain.story_fetchers import get_stories_by_ids
+                available_topics = get_available_topics_for_user(
+                    user_id=user.user_id,
+                )
+
+                # loop for available topics and check - is the exploration in topic explorations
+                for topic_id, _ in available_topics.items():
+                    topic = get_topic_by_id(topic_id, strict=False)
+                    if topic:
+                        #  and activity_rights.id in topic.exploration_ids:
+                        story_ids = [story.story_id for story in topic.get_all_story_references()]
+                        for story in get_stories_by_ids(story_ids):
+                            if story and story.has_exploration(activity_rights.id):
+                                return True
+
+                return False
 
         return False
 

@@ -397,6 +397,48 @@ class TopicPaidStatusHandler(base.BaseHandler):
         })
 
 
+class TopicUserAccessAllowHandler(base.BaseHandler):
+    """Handles opening access to the topic that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_topic
+    def put(self, topic_id):
+        user_id = self.payload.get('user_id')
+
+        user = user_services.get_user_settings(user_id, strict=True)
+
+        topic_user_access = topic_domain.TopicUserAccess(
+            topic_id=topic_id,
+            user_id=user_id,
+        )
+        topic_services.update_topic_user_access(topic_user_access)
+
+        self.render_json({
+            'topic_user_access': topic_user_access.to_dict()
+        })
+
+
+class TopicUserAccessRestrictHandler(base.BaseHandler):
+    """Handles restricting access to the topic that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_topic
+    def put(self, topic_id):
+        user_id = self.payload.get('user_id')
+
+        user = user_services.get_user_settings(user_id, strict=True)
+
+        topic_user_access = topic_domain.TopicUserAccess(
+            topic_id=topic_id,
+            user_id=user_id,
+        )
+        topic_services.delete_topic_user_access(topic_user_access)
+
+        self.render_json({
+            'topic_user_access': {}
+        })
+
+
 class TopicPublishSendMailHandler(base.BaseHandler):
     """A handler for sending mail to admins to review and publish topic."""
 

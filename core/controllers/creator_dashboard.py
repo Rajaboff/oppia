@@ -239,6 +239,12 @@ class CreatorDashboardHandler(base.BaseHandler):
                         collection_summary.category),
                 })
 
+        user_available_collections = collection_services.get_available_collections_for_user(
+            self.user_id
+        )
+        for collection_summary in collection_summary_dicts:
+            collection_summary["is_access_open"] = collection_summary["id"] in user_available_collections
+
         dashboard_stats = (
             user_jobs_continuous.UserStatsAggregator.get_dashboard_stats(
                 self.user_id))

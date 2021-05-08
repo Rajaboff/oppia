@@ -1268,3 +1268,105 @@ def assign_role(committer, assignee, new_role, topic_id):
     })]
 
     save_topic_rights(topic_rights, committer_id, commit_message, commit_cmds)
+
+def create_topic_user_access(topic_user_access):
+    """Create topic user access model.
+
+    Args:
+        topic_user_access (TopicUserAccess): The topic user
+            access domain to be saved
+    """
+    topic_models.TopicUserAccessModel(
+        topic_id=topic_user_access.topic_id,
+        user_id=topic_user_access.user_id,
+    ).put()
+
+def get_topic_user_access(topic_id, user_id):
+    """Get topic user access domain object by provided data.
+
+    Args:
+        topic_id (str): topic ID
+        user_id (str): user ID
+
+    Returns:
+        TopicUserAccess | None: None, if there is no access
+            for the user to the topic.
+            TopicUserAccess otherwise
+    """
+    res = topic_models.TopicUserAccessModel.get_by_topic_and_user(
+        topic_id=topic_id,
+        user_id=user_id,
+    )
+
+    if not res:
+        return None
+
+    return topic_domain.TopicUserAccess(
+        topic_id=res.topic_id,
+        user_id=res.user_id,
+    )
+
+def get_available_topics_for_user(user_id):
+    """Get topic list the user has access to
+
+    Args:
+        user_id (str): user ID
+
+    Returns:
+        dict[str, TopicUserAccess]: dict of TopicUserAccess
+    """
+    res = {}
+
+    if user_id:
+        for model in topic_models.TopicUserAccessModel.get_by_user(user_id=user_id):
+            res[model.topic_id] = topic_domain.TopicUserAccess(
+                topic_id=model.topic_id,
+                user_id=model.user_id,
+            )
+
+    return res
+
+def update_topic_user_access(topic_user_access):
+    """Update to access model for user to the topic.
+    If there is no model - it will be created.
+
+    Args:
+        topic_user_access (TopicUserAccess): The topic user
+            access domain to be updated
+    """
+    model = get_topic_user_access(
+        topic_id=topic_user_access.topic_id,
+        user_id=topic_user_access.user_id,
+    )
+    if not model:
+        create_topic_user_access(topic_user_access)
+
+def delete_topic_user_access(topic_user_access):
+    """Delete topic user access model.
+
+    Args:
+        topic_user_access (TopicUserAccess): The topic user
+            access domain to be deleted
+    """
+    topic_models.TopicUserAccessModel.delete_by_topic_and_user(
+        topic_id=topic_user_access.topic_id,
+        user_id=topic_user_access.user_id,
+    )
+
+def delete_topic_user_access_by_topic(topic_id):
+    """Delete all user access models for the topic.
+
+    Args:
+        topic_id (str): topic ID
+    """
+    topic_models.TopicUserAccessModel.delete_by_topic_id(
+        topic_id=topic_id
+    )
+
+def delete_topic_user_access_by_user(user_id):
+    """Delete all access models for the user.
+
+    Args:
+        user_id (str): user ID
+    """
+    topic_models.TopicUserAccessModel.delete_by_user_id(user_id=user_id)
