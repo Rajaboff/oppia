@@ -167,11 +167,11 @@ def get_learner_collection_dict_by_id(
     collection_dict['version'] = collection.version
     collection_is_public = rights_manager.is_collection_public(collection_id)
 
-    is_available_for_user = collection_services.get_collection_user_access(
+    is_collection_available_for_user = bool(collection_services.get_collection_user_access(
         collection_id=collection_id,
         user_id=user.user_id,
-    )
-    collection_dict["is_access_open"] = bool(is_available_for_user)
+    ))
+    collection_dict["is_access_open"] = is_collection_available_for_user
 
     collection_rights = rights_manager.get_collection_rights(collection_id)
     collection_dict["paid_status"] = collection_rights.paid_status
@@ -196,7 +196,8 @@ def get_learner_collection_dict_by_id(
                     'collection, exploration ID: %s' % exploration_id)
 
         if summary_dict:
-            summary_dict["is_access_open"] = exploration_id in user_available_explorations
+            summary_dict["is_access_open"] = is_collection_available_for_user or (exploration_id in user_available_explorations)
+
             collection_node['exploration_summary'] = summary_dict
         else:
             collection_node['exploration_summary'] = None
