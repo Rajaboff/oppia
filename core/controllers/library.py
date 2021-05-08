@@ -124,7 +124,7 @@ class LibraryIndexHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.should_be_logged_in
+    @acl_decorators.open_access
     def get(self):
         """Handles GET requests."""
         # TODO(sll): Support index pages for other language codes.
@@ -259,7 +259,7 @@ class SearchHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.should_be_logged_in
+    @acl_decorators.open_access
     def get(self):
         """Handles GET requests."""
         query_string = utils.unescape_encoded_uri_component(
