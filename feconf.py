@@ -290,6 +290,8 @@ DEFAULT_EXPLORATION_OBJECTIVE = ''
 
 # Default value of paid status
 DEFAULT_EXPLORATION_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
+DEFAULT_COLLECTION_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
+DEFAULT_TOPIC_PAID_STATUS = constants.ACTIVITY_PAID_STATUS_FREE
 
 # NOTE TO DEVELOPERS: If any of the 5 constants below are modified, the
 # corresponding field in NEW_STATE_TEMPLATE in constants.js also has to be
@@ -729,6 +731,7 @@ COLLECTION_RIGHTS_PREFIX = '/collection_editor_handler/rights'
 COLLECTION_PUBLISH_PREFIX = '/collection_editor_handler/publish'
 COLLECTION_UNPUBLISH_PREFIX = '/collection_editor_handler/unpublish'
 COLLECTION_EDITOR_URL_PREFIX = '/collection_editor/create'
+COLLECTION_PAID_STATUS_PREFIX = '/collection_editor_handler/paid_status'
 COLLECTION_URL_PREFIX = '/collection'
 CONCEPT_CARD_DATA_URL_PREFIX = '/concept_card_handler'
 CONTRIBUTOR_DASHBOARD_URL = '/contributor-dashboard'
@@ -752,6 +755,8 @@ EXPLORATION_METADATA_SEARCH_URL = '/exploration/metadata_search'
 EXPLORATION_PRETESTS_URL_PREFIX = '/pretest_handler'
 EXPLORATION_RIGHTS_PREFIX = '/createhandler/rights'
 EXPLORATION_PAID_STATUS_PREFIX = '/createhandler/paid_status'
+EXPLORATION_USER_ACCESS_ALLOW_PREFIX = '/createhandler/user_access/allow'
+EXPLORATION_USER_ACCESS_RESTRICT_PREFIX = '/createhandler/user_access/restrict'
 EXPLORATION_STATE_ANSWER_STATS_PREFIX = '/createhandler/state_answer_stats'
 EXPLORATION_STATUS_PREFIX = '/createhandler/status'
 EXPLORATION_SUMMARIES_DATA_URL = '/explorationsummarieshandler/data'
@@ -844,6 +849,7 @@ TOPIC_NAME_HANDLER = '/topic_name_handler'
 TOPIC_RIGHTS_URL_PREFIX = '/rightshandler/get_topic_rights'
 TOPIC_SEND_MAIL_URL_PREFIX = '/rightshandler/send_topic_publish_mail'
 TOPIC_STATUS_URL_PREFIX = '/rightshandler/change_topic_status'
+TOPIC_PAID_STATUS_PREFIX = '/rightshandler/change_topic_paid_status'
 TOPIC_URL_FRAGMENT_HANDLER = '/topic_url_fragment_handler'
 TOPICS_AND_SKILLS_DASHBOARD_DATA_URL = '/topics_and_skills_dashboard/data'
 UNASSIGN_SKILL_DATA_HANDLER_URL = '/topics_and_skills_dashboard/unassign_skill'
@@ -1228,6 +1234,7 @@ EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
 
 CMD_REMOVE_MANAGER_ROLE = 'remove_manager_role'
 CMD_PUBLISH_TOPIC = 'publish_topic'
+CMD_CHANGE_TOPIC_PAID_STATUS = 'change_topic_paid_status'
 CMD_UNPUBLISH_TOPIC = 'unpublish_topic'
 
 ROLE_MANAGER = 'manager'
@@ -1270,6 +1277,15 @@ TOPIC_RIGHTS_CHANGE_ALLOWED_COMMANDS = [{
     'required_attribute_names': [],
     'optional_attribute_names': [],
     'user_id_attribute_names': []
+}, {
+    'name': CMD_CHANGE_TOPIC_PAID_STATUS,
+    'required_attribute_names': ['old_status', 'new_status'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': [],
+    'allowed_values': {
+        'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
+        'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
+    }
 }]
 
 USER_ID_RANDOM_PART_LENGTH = 32

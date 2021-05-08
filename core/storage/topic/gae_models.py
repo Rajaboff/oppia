@@ -389,6 +389,16 @@ class TopicRightsModel(base_models.VersionedModel):
     topic_is_published = datastore_services.BooleanProperty(
         indexed=True, required=True, default=False)
 
+    # Is the topic needs to be paid
+    paid_status = datastore_services.StringProperty(
+        default=feconf.DEFAULT_TOPIC_PAID_STATUS,
+        indexed=True,
+        choices=[
+            constants.ACTIVITY_PAID_STATUS_NEED_PAID,
+            constants.ACTIVITY_PAID_STATUS_FREE,
+        ]
+    )
+
     @staticmethod
     def get_deletion_policy():
         """Topic rights should be kept if associated topic is published."""
@@ -489,7 +499,8 @@ class TopicRightsModel(base_models.VersionedModel):
         """Model contains user data."""
         return dict(super(cls, cls).get_export_policy(), **{
             'manager_ids': base_models.EXPORT_POLICY.EXPORTED,
-            'topic_is_published': base_models.EXPORT_POLICY.NOT_APPLICABLE
+            'topic_is_published': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'paid_status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
         })
 
     @classmethod

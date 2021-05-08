@@ -116,6 +116,10 @@ class LibraryIndexHandler(base.BaseHandler):
             self.user,
         )
 
+        user_available_explorations = exp_services.get_available_explorations_for_user(
+            self.user_id
+        )
+
         top_rated_activity_summary_dicts = (
             summary_services.get_top_rated_exploration_summary_dicts(
                 [constants.DEFAULT_LANGUAGE_CODE],
@@ -123,12 +127,17 @@ class LibraryIndexHandler(base.BaseHandler):
                 self.user,
             )
         )
+        for exp_summary in top_rated_activity_summary_dicts:
+            exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
+
         featured_activity_summary_dicts = (
             summary_services.get_featured_activity_summary_dicts(
                 [constants.DEFAULT_LANGUAGE_CODE],
                 self.user,
             )
         )
+        for exp_summary in featured_activity_summary_dicts:
+            exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
 
         preferred_language_codes = [constants.DEFAULT_LANGUAGE_CODE]
         if self.user_id:

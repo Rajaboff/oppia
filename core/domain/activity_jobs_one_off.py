@@ -27,6 +27,7 @@ from core.domain import exp_services
 from core.domain import rights_domain
 from core.domain import rights_manager
 from core.domain import search_services
+from core.domain import topic_services
 from core.domain import topic_domain
 from core.domain import user_services
 from core.platform import models
@@ -628,7 +629,11 @@ class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
 
     @classmethod
     def entity_classes_to_map_over(cls):
-        return [collection_models.CollectionRightsModel, exp_models.ExplorationRightsModel]
+        return [
+            collection_models.CollectionRightsModel,
+            exp_models.ExplorationRightsModel,
+            topic_models.TopicRightsModel,
+        ]
 
     @staticmethod
     def map(model):
@@ -645,7 +650,13 @@ class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
             rights_manager.change_collection_paid_status(
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
                 model.id,
-                feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+                feconf.DEFAULT_COLLECTION_PAID_STATUS,
+            )
+        elif isinstance(model, topic_models.TopicRightsModel):
+            topic_services.change_topic_paid_status(
+                model.id,
+                SetPaidStatus4ActivityRightsOneOffJob.COMMITER.user_id,
+                feconf.DEFAULT_TOPIC_PAID_STATUS,
             )
 
         yield ('SUCCESS', model.id)

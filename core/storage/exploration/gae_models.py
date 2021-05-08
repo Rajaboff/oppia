@@ -323,7 +323,7 @@ class ExplorationRightsModel(base_models.VersionedModel):
         ]
     )
 
-    # Поле, которое отвечает, платный ли курс
+    # Is the exploration needs to be paid
     paid_status = datastore_services.StringProperty(
         default=feconf.DEFAULT_EXPLORATION_PAID_STATUS, indexed=True,
         choices=[
@@ -901,3 +901,128 @@ class ExpSummaryModel(base_models.BaseModel):
             'contributors_summary': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'version': base_models.EXPORT_POLICY.NOT_APPLICABLE
         })
+
+class ExplorationUserAccessModel(base_models.BaseModel):
+    """Model of user access to exploration that need to be paid."""
+
+    # The ID of the exploration.
+    exploration_id = datastore_services.StringProperty(required=True, indexed=True)
+
+    # The ID of the user.
+    user_id = datastore_services.StringProperty(required=True, indexed=True)
+
+    @staticmethod
+    def get_deletion_policy():
+        """Exploration context should be kept if the story and exploration are
+        published.
+        """
+        return base_models.DELETION_POLICY.DELETE_AT_END
+
+    @staticmethod
+    def get_lowest_supported_role():
+        """The lowest supported role here should be Learner."""
+        return feconf.ROLE_ID_LEARNER
+
+    @classmethod
+    def get_export_policy(cls):
+        """Model does not contain user data."""
+        return dict(super(cls, cls).get_export_policy(), **{
+            'exploration_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'user_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+        })
+
+    @classmethod
+    def has_reference_to_user_id(cls, user_id):
+        """Check whether ExplorationUserAccessModel references user.
+
+        Args:
+            user_id: str. The ID of the user whose data should be checked.
+
+        Returns:
+            bool. Whether any models refer to the given user ID.
+        """
+        return cls.query(cls.user_id == user_id).get(keys_only=True) is not None
+
+    @classmethod
+    def apply_deletion_policy(cls, user_id):
+        """Delete instance of ExplorationUserAccessModel for the user.
+
+        Args:
+            user_id: str. The ID of the user whose data should be deleted.
+        """
+        datastore_services.delete_multi(
+            cls.query(cls.user_id == user_id).fetch(keys_only=True)
+        )
+
+    @classmethod
+    def get_by_exploration_and_user(cls, exploration_id,  user_id):
+        """Gets ExplorationUserAccessModel by exploration and user IDs.
+        Returns `None` if the user does not have an access to the exploration.
+
+        Args:
+            exploration_id: str. The ID of the exploration.
+            user_id: str. The ID of the user.
+
+        Returns:
+            ExplorationUserAccessModel|None. The user access model to the exploration
+            or None if not found.
+        """
+        return cls.query().filter(
+            cls.user_id == user_id,
+            cls.exploration_id == exploration_id,
+        ).get()
+
+    @classmethod
+    def get_by_user(cls, user_id):
+        """Gets ExplorationUserAccessModel by user ID.
+        Returns empty list if the user does not have an access to any explorations.
+
+        Args:
+            user_id: str. The ID of the user.
+
+        Returns:
+            list[ExplorationUserAccessModel]. The user access model to the explorations.
+        """
+        return cls.query().filter(cls.user_id == user_id)
+
+    @classmethod
+    def delete_by_user_id(cls, user_id):
+        """Delete all user access models.
+
+        Args:
+            user_id (str): user ID for access restricting
+        """
+        datastore_services.delete_multi(
+            cls.query(cls.user_id == user_id).iter(keys_only=True)
+        )
+
+    @classmethod
+    def delete_by_exploration_id(cls, exploration_id):
+        """Delete all access models to the exploration.
+
+        Args:
+            exploration_id (str): exploration ID for access restricting
+        """
+        cls.delete_by_exploration_ids([exploration_id])
+
+    @classmethod
+    def delete_by_exploration_ids(cls, exploration_ids):
+        """Delete all access models to explorations.
+
+        Args:
+            exploration_ids (list[str]): list of exploration IDs for access restricting
+        """
+        query = cls.query(cls.exploration_id.IN(exploration_ids))
+        datastore_services.delete_multi(query.iter(keys_only=True))
+
+    @classmethod
+    def delete_by_exploration_and_user(cls, exploration_id, user_id):
+        """Delete access model to the exploration for the specified user.
+
+        Args:
+            user_id (str): user ID for access restricting
+            exploration_id (str): exploration ID for access restricting
+        """
+        model = cls.get_by_exploration_and_user(exploration_id, user_id)
+        if model:
+            model.delete()

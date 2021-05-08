@@ -152,6 +152,10 @@ def get_learner_collection_dict_by_id(
         next_exploration_id = collection.first_exploration_id
         completed_exp_ids = []
 
+    user_available_explorations = exp_services.get_available_explorations_for_user(
+        user.user_id
+    )
+
     collection_dict = collection.to_dict()
     collection_dict['nodes'] = [
         node.to_dict() for node in collection.nodes]
@@ -183,6 +187,7 @@ def get_learner_collection_dict_by_id(
                     'collection, exploration ID: %s' % exploration_id)
 
         if summary_dict:
+            summary_dict["is_access_open"] = exploration_id in user_available_explorations
             collection_node['exploration_summary'] = summary_dict
         else:
             collection_node['exploration_summary'] = None
@@ -469,7 +474,7 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
                 'objective': collection_summary.objective,
                 'language_code': collection_summary.language_code,
                 'tags': collection_summary.tags,
-                'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+                'paid_status': rights.paid_status if rights else feconf.DEFAULT_COLLECTION_PAID_STATUS,
                 'node_count': collection_summary.node_count,
                 'last_updated_msec': utils.get_time_in_millisecs(
                     collection_summary.collection_model_last_updated),
