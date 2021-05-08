@@ -115,7 +115,7 @@ class ExplorationEmbedPage(base.BaseHandler):
 class ExplorationPage(base.BaseHandler):
     """Page describing a single exploration."""
 
-    @acl_decorators.can_edit_exploration
+    @acl_decorators.can_play_exploration
     def get(self, exploration_id):
         """Handles GET requests.
 
