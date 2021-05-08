@@ -1288,3 +1288,46 @@ class CollectionSummary(python_utils.OBJECT):
             bool. Whether the collection is solely owned by the user.
         """
         return user_id in self.owner_ids and len(self.owner_ids) == 1
+
+class CollectionUserAccess(python_utils.OBJECT):
+    """Domain object for an Oppia collection user access."""
+
+    def __init__(
+            self,
+            collection_id,
+            user_id,
+        ):
+        """Initializes a CollectionUserAccess domain object.
+
+        Args:
+            collection_id: str. The collection id.
+            user_id: str. The user ID.
+        """
+        self.collection_id = collection_id
+        self.user_id = user_id
+
+    def to_dict(self):
+        """
+        Transform to dict.
+
+        Returns:
+            Dict: object as a dict
+        """
+        return self.__dict__
+
+    def validate(self):
+        """Validates properties of the CollectionUserAccess.
+
+        Raises:
+            ValidationError. One or more attributes of the CollectionUserAccess
+                are invalid.
+        """
+        if not isinstance(self.collection_id, python_utils.BASESTRING):
+            raise utils.ValidationError(
+                'Expected collection_id to be a str, received %s' % self.collection_id
+            )
+
+        if not isinstance(self.user_id, python_utils.BASESTRING):
+            raise utils.ValidationError(
+                'Expected user_id to be a str, received %s' % self.user_id
+            )

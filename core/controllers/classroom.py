@@ -55,13 +55,16 @@ class ClassroomDataHandler(base.BaseHandler):
         topic_ids = classroom.topic_ids
         topic_summaries = topic_services.get_multi_topic_summaries(topic_ids)
         topic_rights = topic_services.get_multi_topic_rights(topic_ids)
+        user_availbale_topics = topic_services.get_available_topics_for_user(self.user_id)
 
-        topic_summary_dicts = [
-            # NOTE(anyone): Old python syntax, use `**`
-            dict(topic_summary.to_dict().items() + {"paid_status": topic_right.paid_status}.items())
-            for topic_summary, topic_right in zip(topic_summaries, topic_rights)
-            if topic_summary is not None and topic_right.topic_is_published
-        ]
+        topic_summary_dicts = []
+
+        for topic_summary, topic_right in zip(topic_summaries, topic_rights):
+            if topic_summary is not None and topic_right.topic_is_published:
+                topic_dict = topic_summary.to_dict()
+                topic_dict["paid_status"] = topic_right.paid_status
+                topic_dict["is_access_open"] = topic_summary.id in user_availbale_topics
+                topic_summary_dicts.append(topic_dict)
 
         self.values.update({
             'topic_summary_dicts': topic_summary_dicts,

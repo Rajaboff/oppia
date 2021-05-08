@@ -167,6 +167,15 @@ def get_learner_collection_dict_by_id(
     collection_dict['version'] = collection.version
     collection_is_public = rights_manager.is_collection_public(collection_id)
 
+    is_available_for_user = collection_services.get_collection_user_access(
+        collection_id=collection_id,
+        user_id=user.user_id,
+    )
+    collection_dict["is_access_open"] = bool(is_available_for_user)
+
+    collection_rights = rights_manager.get_collection_rights(collection_id)
+    collection_dict["paid_status"] = collection_rights.paid_status
+
     # Insert an 'exploration' dict into each collection node, where the
     # dict includes meta information about the exploration (ID and title).
     for collection_node in collection_dict['nodes']:

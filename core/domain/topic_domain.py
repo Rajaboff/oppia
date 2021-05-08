@@ -1882,3 +1882,46 @@ class TopicRights(python_utils.OBJECT):
             bool. Whether user is a topic manager of this topic.
         """
         return bool(user_id in self.manager_ids)
+
+class TopicUserAccess(python_utils.OBJECT):
+    """Domain object for an Oppia topic user access."""
+
+    def __init__(
+            self,
+            topic_id,
+            user_id,
+        ):
+        """Initializes a TopicUserAccess domain object.
+
+        Args:
+            topic_id: str. The topic id.
+            user_id: str. The user ID.
+        """
+        self.topic_id = topic_id
+        self.user_id = user_id
+
+    def to_dict(self):
+        """
+        Transform to dict.
+
+        Returns:
+            Dict: object as a dict
+        """
+        return self.__dict__
+
+    def validate(self):
+        """Validates properties of the TopicUserAccess.
+
+        Raises:
+            ValidationError. One or more attributes of the TopicUserAccess
+                are invalid.
+        """
+        if not isinstance(self.topic_id, python_utils.BASESTRING):
+            raise utils.ValidationError(
+                'Expected topic_id to be a str, received %s' % self.topic_id
+            )
+
+        if not isinstance(self.user_id, python_utils.BASESTRING):
+            raise utils.ValidationError(
+                'Expected user_id to be a str, received %s' % self.user_id
+            )

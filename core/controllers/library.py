@@ -67,12 +67,29 @@ def get_matching_activity_dicts(query_string, search_cursor, user):
     )
 
     activity_list = []
-    activity_list = (
+    collection_dicts = (
         summary_services.get_displayable_collection_summary_dicts_matching_ids(
-            collection_ids))
-    activity_list += (
+            collection_ids
+        )
+    )
+    user_available_collections = collection_services.get_available_collections_for_user(
+        user.user_id
+    )
+    for collection_summary in collection_dicts:
+        collection_summary["is_access_open"] = collection_summary["id"] in user_available_collections
+
+    exploration_dicts = (
         summary_services.get_displayable_exp_summary_dicts_matching_ids(
-            exp_ids))
+            exp_ids
+        )
+    )
+    user_available_explorations = exp_services.get_available_explorations_for_user(
+        user.user_id
+    )
+    for exp_summary in exploration_dicts:
+        exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
+
+    activity_list = collection_dicts + exploration_dicts
 
     if len(activity_list) == feconf.DEFAULT_QUERY_LIMIT:
         logging.error(

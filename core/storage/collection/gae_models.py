@@ -744,3 +744,128 @@ class CollectionSummaryModel(base_models.BaseModel):
         ).filter(
             CollectionSummaryModel.deleted == False  # pylint: disable=singleton-comparison
         ).fetch(feconf.DEFAULT_QUERY_LIMIT)
+
+class CollectionUserAccessModel(base_models.BaseModel):
+    """Model of user access to collection that need to be paid."""
+
+    # The ID of the collection.
+    collection_id = datastore_services.StringProperty(required=True, indexed=True)
+
+    # The ID of the user.
+    user_id = datastore_services.StringProperty(required=True, indexed=True)
+
+    @staticmethod
+    def get_deletion_policy():
+        """Collection context should be kept if the story and collection are
+        published.
+        """
+        return base_models.DELETION_POLICY.DELETE_AT_END
+
+    @staticmethod
+    def get_lowest_supported_role():
+        """The lowest supported role here should be Learner."""
+        return feconf.ROLE_ID_LEARNER
+
+    @classmethod
+    def get_export_policy(cls):
+        """Model does not contain user data."""
+        return dict(super(cls, cls).get_export_policy(), **{
+            'collection_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'user_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+        })
+
+    @classmethod
+    def has_reference_to_user_id(cls, user_id):
+        """Check whether CollectionUserAccessModel references user.
+
+        Args:
+            user_id: str. The ID of the user whose data should be checked.
+
+        Returns:
+            bool. Whether any models refer to the given user ID.
+        """
+        return cls.query(cls.user_id == user_id).get(keys_only=True) is not None
+
+    @classmethod
+    def apply_deletion_policy(cls, user_id):
+        """Delete instance of CollectionUserAccessModel for the user.
+
+        Args:
+            user_id: str. The ID of the user whose data should be deleted.
+        """
+        datastore_services.delete_multi(
+            cls.query(cls.user_id == user_id).fetch(keys_only=True)
+        )
+
+    @classmethod
+    def get_by_collection_and_user(cls, collection_id,  user_id):
+        """Gets CollectionUserAccessModel by collection and user IDs.
+        Returns `None` if the user does not have an access to the collection.
+
+        Args:
+            collection_id: str. The ID of the collection.
+            user_id: str. The ID of the user.
+
+        Returns:
+            CollectionUserAccessModel|None. The user access model to the collection
+            or None if not found.
+        """
+        return cls.query().filter(
+            cls.user_id == user_id,
+            cls.collection_id == collection_id,
+        ).get()
+
+    @classmethod
+    def get_by_user(cls, user_id):
+        """Gets CollectionUserAccessModel by user ID.
+        Returns empty list if the user does not have an access to any collections.
+
+        Args:
+            user_id: str. The ID of the user.
+
+        Returns:
+            list[CollectionUserAccessModel]. The user access model to the collections.
+        """
+        return cls.query().filter(cls.user_id == user_id)
+
+    @classmethod
+    def delete_by_user_id(cls, user_id):
+        """Delete all user access models.
+
+        Args:
+            user_id (str): user ID for access restricting
+        """
+        datastore_services.delete_multi(
+            cls.query(cls.user_id == user_id).iter(keys_only=True)
+        )
+
+    @classmethod
+    def delete_by_collection_id(cls, collection_id):
+        """Delete all access models to the collection.
+
+        Args:
+            collection_id (str): collection ID for access restricting
+        """
+        cls.delete_by_collection_ids([collection_id])
+
+    @classmethod
+    def delete_by_collection_ids(cls, collection_ids):
+        """Delete all access models to collections.
+
+        Args:
+            collection_ids (list[str]): list of collection IDs for access restricting
+        """
+        query = cls.query(cls.collection_id.IN(collection_ids))
+        datastore_services.delete_multi(query.iter(keys_only=True))
+
+    @classmethod
+    def delete_by_collection_and_user(cls, collection_id, user_id):
+        """Delete access model to the collection for the specified user.
+
+        Args:
+            user_id (str): user ID for access restricting
+            collection_id (str): collection ID for access restricting
+        """
+        model = cls.get_by_collection_and_user(collection_id, user_id)
+        if model:
+            model.delete()

@@ -802,6 +802,14 @@ URLS = MAPREDUCE_HANDLERS + [
         collection_editor.CollectionPaidStatusHandler,
     ),
     get_redirect_route(
+        r'%s/<collection_id>' % feconf.COLLECTION_USER_ACCESS_ALLOW_PREFIX,
+        collection_editor.CollectionUserAccessAllowHandler,
+    ),
+    get_redirect_route(
+        r'%s/<collection_id>' % feconf.COLLECTION_USER_ACCESS_RESTRICT_PREFIX,
+        collection_editor.CollectionUserAccessRestrictHandler,
+    ),
+    get_redirect_route(
         r'%s/<collection_id>' % feconf.COLLECTION_UNPUBLISH_PREFIX,
         collection_editor.CollectionUnpublishHandler),
 
@@ -827,6 +835,14 @@ URLS = MAPREDUCE_HANDLERS + [
     get_redirect_route(
         r'%s/<topic_id>' % feconf.TOPIC_PAID_STATUS_PREFIX,
         topic_editor.TopicPaidStatusHandler,
+    ),
+    get_redirect_route(
+        r'%s/<topic_id>' % feconf.TOPIC_USER_ACCESS_ALLOW_PREFIX,
+        topic_editor.TopicUserAccessAllowHandler,
+    ),
+    get_redirect_route(
+        r'%s/<topic_id>' % feconf.TOPIC_USER_ACCESS_RESTRICT_PREFIX,
+        topic_editor.TopicUserAccessRestrictHandler,
     ),
 
     get_redirect_route(

@@ -521,3 +521,128 @@ class TopicRightsModel(base_models.VersionedModel):
         return {
             'managed_topic_ids': managed_topic_ids
         }
+
+class TopicUserAccessModel(base_models.BaseModel):
+    """Model of user access to topic that need to be paid."""
+
+    # The ID of the topic.
+    topic_id = datastore_services.StringProperty(required=True, indexed=True)
+
+    # The ID of the user.
+    user_id = datastore_services.StringProperty(required=True, indexed=True)
+
+    @staticmethod
+    def get_deletion_policy():
+        """Topic context should be kept if the story and topic are
+        published.
+        """
+        return base_models.DELETION_POLICY.DELETE_AT_END
+
+    @staticmethod
+    def get_lowest_supported_role():
+        """The lowest supported role here should be Learner."""
+        return feconf.ROLE_ID_LEARNER
+
+    @classmethod
+    def get_export_policy(cls):
+        """Model does not contain user data."""
+        return dict(super(cls, cls).get_export_policy(), **{
+            'topic_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'user_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+        })
+
+    @classmethod
+    def has_reference_to_user_id(cls, user_id):
+        """Check whether TopicUserAccessModel references user.
+
+        Args:
+            user_id: str. The ID of the user whose data should be checked.
+
+        Returns:
+            bool. Whether any models refer to the given user ID.
+        """
+        return cls.query(cls.user_id == user_id).get(keys_only=True) is not None
+
+    @classmethod
+    def apply_deletion_policy(cls, user_id):
+        """Delete instance of TopicUserAccessModel for the user.
+
+        Args:
+            user_id: str. The ID of the user whose data should be deleted.
+        """
+        datastore_services.delete_multi(
+            cls.query(cls.user_id == user_id).fetch(keys_only=True)
+        )
+
+    @classmethod
+    def get_by_topic_and_user(cls, topic_id,  user_id):
+        """Gets TopicUserAccessModel by topic and user IDs.
+        Returns `None` if the user does not have an access to the topic.
+
+        Args:
+            topic_id: str. The ID of the topic.
+            user_id: str. The ID of the user.
+
+        Returns:
+            TopicUserAccessModel|None. The user access model to the topic
+            or None if not found.
+        """
+        return cls.query().filter(
+            cls.user_id == user_id,
+            cls.topic_id == topic_id,
+        ).get()
+
+    @classmethod
+    def get_by_user(cls, user_id):
+        """Gets TopicUserAccessModel by user ID.
+        Returns empty list if the user does not have an access to any topics.
+
+        Args:
+            user_id: str. The ID of the user.
+
+        Returns:
+            list[TopicUserAccessModel]. The user access model to the topics.
+        """
+        return cls.query().filter(cls.user_id == user_id)
+
+    @classmethod
+    def delete_by_user_id(cls, user_id):
+        """Delete all user access models.
+
+        Args:
+            user_id (str): user ID for access restricting
+        """
+        datastore_services.delete_multi(
+            cls.query(cls.user_id == user_id).iter(keys_only=True)
+        )
+
+    @classmethod
+    def delete_by_topic_id(cls, topic_id):
+        """Delete all access models to the topic.
+
+        Args:
+            topic_id (str): topic ID for access restricting
+        """
+        cls.delete_by_topic_ids([topic_id])
+
+    @classmethod
+    def delete_by_topic_ids(cls, topic_ids):
+        """Delete all access models to topics.
+
+        Args:
+            topic_ids (list[str]): list of topic IDs for access restricting
+        """
+        query = cls.query(cls.topic_id.IN(topic_ids))
+        datastore_services.delete_multi(query.iter(keys_only=True))
+
+    @classmethod
+    def delete_by_topic_and_user(cls, topic_id, user_id):
+        """Delete access model to the topic for the specified user.
+
+        Args:
+            user_id (str): user ID for access restricting
+            topic_id (str): topic ID for access restricting
+        """
+        model = cls.get_by_topic_and_user(topic_id, user_id)
+        if model:
+            model.delete()

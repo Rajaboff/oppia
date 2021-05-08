@@ -869,6 +869,10 @@ def delete_collections(committer_id, collection_ids, force_deletion=False):
     activity_services.remove_featured_activities(
         constants.ACTIVITY_TYPE_COLLECTION, collection_ids)
 
+    collection_models.CollectionUserAccessModel.delete_by_collection_ids(
+        collection_ids=collection_ids
+    )
+
 
 def get_collection_snapshots_metadata(collection_id):
     """Returns the snapshots for this collection, as dicts.
@@ -1197,3 +1201,105 @@ def index_collections_given_ids(collection_ids):
     search_services.index_collection_summaries([
         collection_summary for collection_summary in collection_summaries
         if collection_summary is not None])
+
+def create_collection_user_access(collection_user_access):
+    """Create collection user access model.
+
+    Args:
+        collection_user_access (CollectionUserAccess): The collection user
+            access domain to be saved
+    """
+    collection_models.CollectionUserAccessModel(
+        collection_id=collection_user_access.collection_id,
+        user_id=collection_user_access.user_id,
+    ).put()
+
+def get_collection_user_access(collection_id, user_id):
+    """Get collection user access domain object by provided data.
+
+    Args:
+        collection_id (str): collection ID
+        user_id (str): user ID
+
+    Returns:
+        CollectionUserAccess | None: None, if there is no access
+            for the user to the collection.
+            CollectionUserAccess otherwise
+    """
+    res = collection_models.CollectionUserAccessModel.get_by_collection_and_user(
+        collection_id=collection_id,
+        user_id=user_id,
+    )
+
+    if not res:
+        return None
+
+    return collection_domain.CollectionUserAccess(
+        collection_id=res.collection_id,
+        user_id=res.user_id,
+    )
+
+def get_available_collections_for_user(user_id):
+    """Get collection list the user has access to
+
+    Args:
+        user_id (str): user ID
+
+    Returns:
+        dict[str, CollectionUserAccess]: dict of CollectionUserAccess
+    """
+    res = {}
+
+    if user_id:
+        for model in collection_models.CollectionUserAccessModel.get_by_user(user_id=user_id):
+            res[model.collection_id] = collection_domain.CollectionUserAccess(
+                collection_id=model.collection_id,
+                user_id=model.user_id,
+            )
+
+    return res
+
+def update_collection_user_access(collection_user_access):
+    """Update to access model for user to the collection.
+    If there is no model - it will be created.
+
+    Args:
+        collection_user_access (CollectionUserAccess): The collection user
+            access domain to be updated
+    """
+    model = get_collection_user_access(
+        collection_id=collection_user_access.collection_id,
+        user_id=collection_user_access.user_id,
+    )
+    if not model:
+        create_collection_user_access(collection_user_access)
+
+def delete_collection_user_access(collection_user_access):
+    """Delete collection user access model.
+
+    Args:
+        collection_user_access (CollectionUserAccess): The collection user
+            access domain to be deleted
+    """
+    collection_models.CollectionUserAccessModel.delete_by_collection_and_user(
+        collection_id=collection_user_access.collection_id,
+        user_id=collection_user_access.user_id,
+    )
+
+def delete_collection_user_access_by_collection(collection_id):
+    """Delete all user access models for the collection.
+
+    Args:
+        collection_id (str): collection ID
+    """
+    collection_models.CollectionUserAccessModel.delete_by_collection_id(
+        collection_id=collection_id
+    )
+
+def delete_collection_user_access_by_user(user_id):
+    """Delete all access models for the user.
+
+    Args:
+        user_id (str): user ID
+    """
+    collection_models.CollectionUserAccessModel.delete_by_user_id(user_id=user_id)

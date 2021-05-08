@@ -25,6 +25,7 @@ from core.domain import email_manager
 from core.domain import skill_services
 from core.domain import story_fetchers
 from core.domain import topic_fetchers
+from core.domain import topic_services
 import feconf
 import utils
 
@@ -121,6 +122,13 @@ class TopicPageDataHandler(base.BaseHandler):
             for skill_id in all_skill_ids:
                 degrees_of_mastery[skill_id] = None
 
+        is_user_access_open = bool(topic_services.get_topic_user_access(
+            topic_id=topic.id,
+            user_id=self.user_id,
+        ))
+        topic_right = topic_services.get_multi_topic_rights([topic.id])
+        topic_right = topic_right[0] if topic_right else None
+
         self.values.update({
             'topic_id': topic.id,
             'topic_name': topic.name,
@@ -129,6 +137,8 @@ class TopicPageDataHandler(base.BaseHandler):
             'additional_story_dicts': additional_story_dicts,
             'uncategorized_skill_ids': uncategorized_skill_ids,
             'subtopics': subtopics,
+            'is_access_open': is_user_access_open,
+            'paid_status': topic_right.paid_status if topic_right else feconf.DEFAULT_TOPIC_PAID_STATUS,
             'degrees_of_mastery': degrees_of_mastery,
             'skill_descriptions': skill_descriptions,
             'practice_tab_is_displayed': topic.practice_tab_is_displayed,

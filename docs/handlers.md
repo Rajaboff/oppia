@@ -133,3 +133,27 @@ payload={"paid_status":"need_paid"}
 ```bash
 payload={"user_id":"uid_some_user_id"}
 ```
+
+## PUT /collection_editor_handler/user_access/allow/{collection_id} и /collection_editor_handler/user_access/restrict/{collection_id}
+
+Открытие или закрытие доступа пользователю до платного курса [MR35](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/35).
+
+Пользователи, которым открыт доступ до курса, могут его запускать любое занятие, которое принадлежит этому курсу.
+
+Открыть доступ до курса может его владелец, либо супер-админ.
+
+```bash
+payload={"user_id":"uid_some_user_id"}
+```
+
+## PUT /rightshandler/topic/user_access/allow/{topic_id} и /rightshandler/topic/user_access/restrict/{topic_id}
+
+Открытие или закрытие доступа пользователю до платной темы [MR35](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/35).
+
+Пользователи, которым открыт доступ до темы, могут его запускать любое занятие, которое есть внутри темы.
+
+Открыть доступ до тему может супер-админ.
+
+```bash
+payload={"user_id":"uid_some_user_id"}
+```

@@ -26,6 +26,7 @@ from core.domain import story_fetchers
 from core.domain import story_services
 from core.domain import summary_services
 from core.domain import topic_fetchers
+from core.domain import topic_services
 from core.domain import exp_services
 import feconf
 
@@ -81,11 +82,20 @@ class StoryPageDataHandler(base.BaseHandler):
         for ind, node in enumerate(ordered_node_dicts):
             node['exp_summary_dict'] = exp_summary_dicts[ind]
 
+        is_user_access_open = bool(topic_services.get_topic_user_access(
+            topic_id=topic_id,
+            user_id=self.user_id,
+        ))
+        topic_right = topic_services.get_multi_topic_rights([topic_id])
+        topic_right = topic_right[0] if topic_right else None
+
         self.values.update({
             'story_id': story.id,
             'story_title': story.title,
             'story_description': story.description,
             'story_nodes': ordered_node_dicts,
+            'is_access_open': is_user_access_open,
+            'paid_status': topic_right.paid_status if topic_right else feconf.DEFAULT_TOPIC_PAID_STATUS,
             'topic_name': topic_name,
             'meta_tag_content': story.meta_tag_content
         })
