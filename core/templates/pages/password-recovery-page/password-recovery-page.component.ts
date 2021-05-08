@@ -70,13 +70,11 @@ angular.module('oppia').component('passwordRecoveryPage', {
                     url: recovery_url,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin': '*'
-
                     },
                 }
 
                 $http(config).then(function (response) {
-                    $window.alert("Password changed succesfully")
+                    $window.alert("Пароль успешно изменен")
                     console.log(response)
                     $window.location.href = '/'
                 }).catch(function (error) {

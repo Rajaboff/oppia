@@ -107,9 +107,19 @@ class LoginHandler(base.BaseHandler):
 
 
 class CustomAuthHandler(base.BaseHandler):
-    # @acl_decorators.open_access
-    # def get(self):
-    #     self.render_template('custom-auth-page.mainpage.html')
+    def set_response_headers(self, response):
+        for name, value in response.headers.items():
+            self.response.headers[python_utils.convert_to_bytes(name)] = python_utils.convert_to_bytes(value)
+        self.response.headers[python_utils.convert_to_bytes('set-cookie')] = \
+            python_utils.convert_to_bytes(response.history[0].headers['set-cookie'])
+
+    @acl_decorators.open_access
+    def get(self):
+        email = self.request.get('email')
+        url = "http://localhost/_ah/login?email=" + email + "&action=Login"
+        response = requests.get(url, allow_redirects=True)
+        self.set_response_headers(response)
+        self.render_json({})
 
     @acl_decorators.open_access
     def post(self):
@@ -132,10 +142,7 @@ class CustomAuthHandler(base.BaseHandler):
 
         response = requests.get(url, allow_redirects=True)
 
-        for name, value in response.headers.items():
-            self.response.headers[python_utils.convert_to_bytes(name)] = python_utils.convert_to_bytes(value)
-        self.response.headers[python_utils.convert_to_bytes('set-cookie')] = \
-            python_utils.convert_to_bytes(response.history[0].headers['set-cookie'])
+        self.set_response_headers(response)
 
         self.render_json({})
 
@@ -159,7 +166,7 @@ class AhLoginProxyHandler(base.BaseHandler):
                 path_params += "&"
             path_params += item[0] + "=" + item[1]
 
-        url = "http://localhost:8181/_ah/login?" + path_params
+        url = "http://localhost/_ah/login?" + path_params
         headers = {key: value for key, value in self.request.headers.items()}
 
         response = requests.get(url, allow_redirects=True, headers=headers)

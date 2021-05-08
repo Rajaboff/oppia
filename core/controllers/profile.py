@@ -296,20 +296,25 @@ class SignupHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.require_user_id_else_redirect_to_homepage
+    # @acl_decorators.require_user_id_else_redirect_to_homepage
     def get(self):
         """Handles GET requests."""
-        user_settings = user_services.get_user_settings(self.user_id)
-
+        # user_settings = user_services.get_user_settings(self.user_id)
+        # self.render_json({
+        #     'can_send_emails': feconf.CAN_SEND_EMAILS,
+        #     'has_agreed_to_latest_terms': bool(
+        #         user_settings.last_agreed_to_terms and
+        #         user_settings.last_agreed_to_terms >=
+        #         feconf.REGISTRATION_PAGE_LAST_UPDATED_UTC),
+        #     'has_ever_registered': bool(
+        #         user_settings.username and user_settings.last_agreed_to_terms),
+        #     'username': user_settings.username,
+        # })
         self.render_json({
             'can_send_emails': feconf.CAN_SEND_EMAILS,
-            'has_agreed_to_latest_terms': bool(
-                user_settings.last_agreed_to_terms and
-                user_settings.last_agreed_to_terms >=
-                feconf.REGISTRATION_PAGE_LAST_UPDATED_UTC),
-            'has_ever_registered': bool(
-                user_settings.username and user_settings.last_agreed_to_terms),
-            'username': user_settings.username,
+            'has_agreed_to_latest_terms': False,
+            'has_ever_registered': False,
+            'username': "",
         })
 
     @acl_decorators.require_user_id_else_redirect_to_homepage
@@ -342,7 +347,9 @@ class SignupHandler(base.BaseHandler):
                                             new_username=username,
                                             role=self.payload.get('role'),
                                             password=python_utils.hash_password(self.payload.get('password')),
-                                            email=self.payload.get('email'))
+                                            email=self.payload.get('email'),
+                                            name=self.payload.get('name', ''),
+                                            surname=self.payload.get('surname', ''))
 
                 user_settings = user_services.get_user_settings(self.user_id)
                 token = uuid.uuid4().hex
@@ -455,7 +462,7 @@ class UsernameCheckHandler(base.BaseHandler):
 
     REDIRECT_UNFINISHED_SIGNUPS = False
 
-    @acl_decorators.require_user_id_else_redirect_to_homepage
+    # @acl_decorators.require_user_id_else_redirect_to_homepage
     def post(self):
         """Handles POST requests."""
         username = self.payload.get('username')

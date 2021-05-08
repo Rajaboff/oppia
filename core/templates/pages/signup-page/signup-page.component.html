@@ -3,31 +3,54 @@ link before completing the signup process, they will be logged out.
 -->
 
 <div class="oppia-page-cards-container oppia-signup-page-container">
-  <md-card class="oppia-page-card">
-    <h2 class="oppia-signup-page-title" translate="I18N_SIGNUP_COMPLETE_REGISTRATION"></h2>
+  <md-card class="oppia-page-card" style="
+    border-radius: 19px;
+">
+    <h2 class="oppia-signup-page-title" translate="I18N_SIGNUP_REGISTRATION"></h2>
 
     <form>
       <div ng-show="!$ctrl.hasUsername" role="form" class="form-horizontal">
         <div class="form-group row">
-          <label for="username" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_SIGNUP_USERNAME"></label>
+          <label for="username" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_SIGNUP_USERNAME" style="font-family: 'Montserrat';
+    font-weight: 500; margin-bottom: 5px;" ></label>
           <div class="col-lg-9 col-md-9 col-sm-9">
-            <input type="text" ng-model="$ctrl.username" id="username" class="form-control oppia-username-input protractor-test-username-input" ng-blur="$ctrl.onUsernameInputFormBlur($ctrl.username)" ng-change="$ctrl.updateWarningText($ctrl.username)" ng-trim="false" focus-on="usernameInputField" autofocus="true">
-            <span class="form-text oppia-username-explanation-text" translate="I18N_SIGNUP_USERNAME_EXPLANATION"></span>
+            <input type="text" name="username" required  ng-model="$ctrl.username" id="username" class="form-control oppia-username-input protractor-test-username-input" ng-blur="$ctrl.onUsernameInputFormBlur($ctrl.username)" ng-change="$ctrl.updateWarningText($ctrl.username)" ng-trim="false" focus-on="usernameInputField" autofocus="true">
+            <span class="form-text oppia-username-explanation-text" translate="I18N_SIGNUP_USERNAME_EXPLANATION" style="
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 12px;
+"></span>
             <div class="oppia-warning-text-container">
-              <p class="oppia-warning-text" aria-live="assertive" ng-show="$ctrl.blurredAtLeastOnce" translate="<[$ctrl.warningI18nCode]>" translate-values="{maxUsernameLength: $ctrl.MAX_USERNAME_LENGTH}"></p>
+              <p class="oppia-warning-text" aria-live="assertive" ng-show="$ctrl.blurredAtLeastOnce" translate="<[$ctrl.warningI18nCode]>" translate-values="{maxUsernameLength: $ctrl.MAX_USERNAME_LENGTH}"style="
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 12px;
+"></p>
             </div>
           </div>
-          <label for="email" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_PREFERENCES_EMAIL"></label>
-            <div class="col-lg-9 col-md-9 col-sm-9">
-              <input type="text" ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+          <label for="email" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_EMAIL"style="font-family: 'Montserrat';
+    font-weight: 500; margin-bottom: 5px;" ></label>
+            <div class="col-lg-9 col-md-9 col-sm-9" style="
+    margin-bottom: 20px;
+">
+              <input type="email" name="email" required  ng-model="$ctrl.email" id="email" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
             </div>
-          <label for="password" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD"></label>
-           <div class="col-lg-9 col-md-9 col-sm-9">
-            <input type="text" ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+          <label for="password" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_PASSWORD" style="font-family: 'Montserrat';
+    font-weight: 500; margin-bottom: 5px;"></label>
+           <div class="col-lg-9 col-md-9 col-sm-9" style="
+    margin-bottom: 20px;
+">
+            <input type="password" name="pass" required  ng-model="$ctrl.password" id="password" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
             </div>
-          <label for="role" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_ROLE"></label>
+          <label for="role" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_ROLE" style="font-family: 'Montserrat';
+    font-weight: 500; margin-bottom: 5px;"></label>
            <div class="col-lg-9 col-md-9 col-sm-9">
-             <select id="role" ng-options="roleName as roleString for (roleName, roleString) in $ctrl.CREATEABLE_ROLES" ng-model="$ctrl.role" class="form-control protractor-update-form-role-select">
+             <select id="role" ng-options="roleName as roleString for (roleName, roleString) in $ctrl.CREATEABLE_ROLES" ng-model="$ctrl.role" class="form-control protractor-update-form-role-select" style="
+    width: 260px;
+    height: 35px;
+">
             </select>
           </div>
         </div>
@@ -53,7 +76,6 @@ link before completing the signup process, they will be logged out.
             </div>
           </div>
         </div>
-        <hr>
       </div>
 
       <div class="oppia-long-text" ng-if="$ctrl.hasEverRegistered">
@@ -63,39 +85,41 @@ link before completing the signup process, they will be logged out.
       </div>
       <div class="oppia-long-text" ng-if="!$ctrl.hasEverRegistered">
         <p class="oppia-signup-site-description-text" translate="I18N_SIGNUP_SITE_DESCRIPTION" translate-values="{sitename: $ctrl.siteName}">
-
         </p>
       </div>
 
-      <div>
-        <strong translate="I18N_SIGNUP_CC_TITLE"></strong>
-        <br>
-        <span translate="I18N_SIGNUP_LICENSE_NOTE" translate-compile></span>
-      </div>
-
-      <hr>
 
       <div class="checkbox oppia-long-text">
         <label>
           <input type="checkbox" ng-model="$ctrl.hasAgreedToLatestTerms"
                  class="protractor-test-agree-to-terms-checkbox" id="terms-checkbox">
-          <span translate="I18N_SIGNUP_AGREE_LICENSE_DESCRIPTION" translate-value-sitename="<[$ctrl.siteName]>">
+          <span translate="I18N_SIGNUP_AGREE_LICENSE_DESCRIPTION" style="
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 12px;
+" translate-value-sitename="<[$ctrl.siteName]>">
           </span>
         </label>
       </div>
 
-      <br>
-
-      <button type="submit" class="btn btn-success protractor-test-register-user"
+<div class="center oppia-splash-button-container">
+      <button type="submit" class="btn oppia-navbar-button"
               ng-disabled="$ctrl.warningI18nCode || !$ctrl.hasAgreedToLatestTerms || $ctrl.submissionInProcess"
               ng-click="$ctrl.submitPrerequisitesForm($ctrl.hasAgreedToLatestTerms, $ctrl.username, $ctrl.canReceiveEmailUpdates)"
               translate="I18N_SIGNUP_BUTTON_SUBMIT"
-              id="signup-submit">
+              id="signup-submit" style="width: 250px;height: 40px;border-radius: 25px;">
       </button>
+    </div>
     </form>
   </md-card>
 </div>
 <style>
+  .center {
+    margin: 50px auto 20px auto;
+    text-align: center;
+    position: relative;
+  }
   signup-page .oppia-signup-page-container .oppia-long-text > label {
     font-weight: normal;
   }

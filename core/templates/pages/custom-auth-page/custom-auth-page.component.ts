@@ -44,15 +44,6 @@ angular.module('oppia').component('customAuthPage', {
             ctrl = this;
 
             ctrl.submitLoginForm = function () {
-                const getMethods = (obj) => {
-                    let properties = new Set()
-                    let currentObj = obj
-                    do {
-                        Object.getOwnPropertyNames(currentObj).map(item => properties.add(item))
-                    } while ((currentObj = Object.getPrototypeOf(currentObj)))
-                    return [...properties.keys()].filter(item => typeof obj[item] === 'function')
-                }
-
                 const ERROR_MESSAGES = {
                     "No credentials": "Нет учётных данных",
                     "Invalid credentials": "Неверные учетные данные",
@@ -76,14 +67,12 @@ angular.module('oppia').component('customAuthPage', {
                     authData.password = ctrl.password
                 }
 
-                var auth_url = '/custom_auth?email=' + ctrl.email + '&action=Login&continue=http://oqustudy.kz/signup?return_url=/&payload=' + JSON.stringify(authData);
+                var auth_url = '/custom_auth?email=' + ctrl.email + '&action=Login&payload=' + JSON.stringify(authData);
                 var config = {
                     method: 'POST',
                     url: auth_url,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin': '*'
-
                     },
                 }
 
