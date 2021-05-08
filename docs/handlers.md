@@ -47,9 +47,8 @@ payload={}
 
 Все параметры обязательны.
 
-## GET /librarygrouphandler и др.
+## GET /explorationsummarieshandler/data и др.
 
-* GET /librarygrouphandler - библиотека курсов и занятий
 * GET /explorationsummarieshandler/data - подробная информация по занятию
 * GET /collectionsummarieshandler/data - подробная информация по курсу
 
@@ -134,7 +133,7 @@ payload={"user_id":"uid_some_user_id"}
 
 ## PUT /collection_editor_handler/user_access/allow/{collection_id} и /collection_editor_handler/user_access/restrict/{collection_id}
 
-Открытие или закрытие доступа пользователю до платного курса [MR35](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/35).
+Открытие или закрытие доступа пользователю до платного курса [MR50](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/50).
 
 Пользователи, которым открыт доступ до курса, могут его запускать любое занятие, которое принадлежит этому курсу.
 
@@ -146,7 +145,7 @@ payload={"user_id":"uid_some_user_id"}
 
 ## PUT /rightshandler/topic/user_access/allow/{topic_id} и /rightshandler/topic/user_access/restrict/{topic_id}
 
-Открытие или закрытие доступа пользователю до платной темы [MR35](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/35).
+Открытие или закрытие доступа пользователю до платной темы [MR50](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/50).
 
 Пользователи, которым открыт доступ до темы, могут его запускать любое занятие, которое есть внутри темы.
 
@@ -155,3 +154,21 @@ payload={"user_id":"uid_some_user_id"}
 ```bash
 payload={"user_id":"uid_some_user_id"}
 ```
+
+## Информация о платных сущностях
+
+Во всем перечисленных ниже хендлерах есть информация о платных сущностях:
+
+* GET /libraryindexhandler
+* GET /librarygrouphandler
+* GET /collection/{collection_id}
+* GET /collectionsummarieshandler/data
+* GET /explorationsummarieshandler/data
+* GET /classroom_data_handler/math
+* GET /topic_data_handler/math
+* GET /story_data_handler/math/{topic_name}/story
+
+Какая информация:
+
+* "paid_status": "need_paid"/"free" - платная или бесплатная сущность
+* "is_access_open": true/false - есть ли у пользователя доступ до данной сущности

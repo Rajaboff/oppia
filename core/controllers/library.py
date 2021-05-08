@@ -207,7 +207,7 @@ class LibraryGroupIndexHandler(base.BaseHandler):
 
     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
 
-    @acl_decorators.should_be_logged_in
+    @acl_decorators.open_access
     def get(self):
         """Handles GET requests for group pages."""
         # TODO(sll): Support index pages for other language codes.
@@ -342,6 +342,13 @@ class ExplorationSummariesHandler(base.BaseHandler):
                     user=self.user,
                 )
         ]
+
+        user_available_explorations = exp_services.get_available_explorations_for_user(
+            self.user_id
+        )
+        for exp_summary in summaries:
+            exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
+
         self.values.update({
             'summaries': summaries
         })
@@ -362,6 +369,10 @@ class CollectionSummariesHandler(base.BaseHandler):
         except Exception:
             raise self.PageNotFoundException
 
+        user_available_collections = collection_services.get_available_collections_for_user(
+            self.user_id
+        )
+
         summaries = [
             summary for summary in summary_services.get_displayable_collection_summary_dicts_matching_ids( # pylint: disable=line-too-long
                 collection_ids,
@@ -370,6 +381,10 @@ class CollectionSummariesHandler(base.BaseHandler):
                 user=self.user,
             )
         ]
+
+        for collection_summary in summaries:
+            collection_summary["is_access_open"] = collection_summary["id"] in user_available_collections
+
         self.values.update({
             'summaries': summaries
         })

@@ -76,16 +76,17 @@ class StoryPageDataHandler(base.BaseHandler):
             self.user_id
         )
 
-        for exp_summary in exp_summary_dicts:
-            exp_summary["is_access_open"] = exp_summary["id"] in user_available_explorations
-
-        for ind, node in enumerate(ordered_node_dicts):
-            node['exp_summary_dict'] = exp_summary_dicts[ind]
-
         is_user_access_open = bool(topic_services.get_topic_user_access(
             topic_id=topic_id,
             user_id=self.user_id,
         ))
+
+        for exp_summary in exp_summary_dicts:
+            exp_summary["is_access_open"] = is_user_access_open or (exp_summary["id"] in user_available_explorations)
+
+        for ind, node in enumerate(ordered_node_dicts):
+            node['exp_summary_dict'] = exp_summary_dicts[ind]
+
         topic_right = topic_services.get_multi_topic_rights([topic_id])
         topic_right = topic_right[0] if topic_right else None
 
