@@ -47,11 +47,9 @@ payload={}
 
 Все параметры обязательны.
 
-## GET /libraryindexhandler и др.
+## GET /librarygrouphandler и др.
 
-* GET /libraryindexhandler - библиотека курсов и занятий
 * GET /librarygrouphandler - библиотека курсов и занятий
-* GET /searchhandler/data - поиск курсов и занятий
 * GET /explorationsummarieshandler/data - подробная информация по занятию
 * GET /collectionsummarieshandler/data - подробная информация по курсу
 
