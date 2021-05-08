@@ -82,7 +82,7 @@
       </ul>
     </li>
   </ul>
-  <ul class="nav oppia-navbar-nav oppia-navbar-profile">
+  <ul class="nav oppia-navbar-nav">
     <li ng-class="{'open' : $ctrl.activeMenuName === 'profileMenu'}" uib-dropdown ng-if="$ctrl.userIsLoggedIn" class="nav-item protractor-test-profile-dropdown oppia-navbar-clickable-dropdown">
       <a ng-keydown="$ctrl.onMenuKeypress($event, 'profileMenu', {shiftTab: $ctrl.ACTION_CLOSE, enter: $ctrl.ACTION_OPEN})"
          class="nav-link oppia-navbar-dropdown-toggle"
