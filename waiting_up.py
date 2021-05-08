@@ -9,14 +9,14 @@ URL = "http://oqustudy.kz/"
 
 
 def main():
-    # status_code = get(URL_HTTPS, verify=False).status_code
     status_code = 0
     while status_code != 200:
         try:
             disable_warnings()
 
             sleep(5)
-            status_code = get(URL).status_code
+            status_code = get(URL_HTTPS, verify=False).status_code
+            # status_code = get(URL).status_code
             print(status_code)
         except Exception as e:
             pass
