@@ -171,4 +171,4 @@ payload={"user_id":"uid_some_user_id"}
 Какая информация:
 
 * "paid_status": "need_paid"/"free" - платная или бесплатная сущность
-* "is_access_open": true/false - есть ли у пользователя доступ до данной сущности
+* "is_access_open": true/false - есть ли у пользователя доступ до данной сущности (купил ли её пользователь)
