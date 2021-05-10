@@ -169,16 +169,12 @@ class BaseHandler(webapp2.RequestHandler):
             self.payload = None
         self.iframed = False
 
-        self.is_super_admin = (
-            current_user_services.is_current_user_super_admin())
-        if feconf.ENABLE_MAINTENANCE_MODE and not self.is_super_admin:
-            return
-
         self.gae_id = current_user_services.get_current_gae_id()
         self.user_id = None
         self.username = None
         self.partially_logged_in = False
         self.user_is_scheduled_for_deletion = False
+        self.is_super_admin = False
 
         if self.gae_id:
             user_settings = user_services.get_user_settings_by_gae_id(
@@ -189,6 +185,12 @@ class BaseHandler(webapp2.RequestHandler):
                     self.gae_id, email)
             self.values['user_email'] = user_settings.email
             self.user_id = user_settings.user_id
+
+            self.is_super_admin = (
+                user_services.is_admin(self.user_id)
+            )
+            if feconf.ENABLE_MAINTENANCE_MODE and not self.is_super_admin:
+                return
 
             if user_settings.deleted:
                 self.user_is_scheduled_for_deletion = user_settings.deleted
