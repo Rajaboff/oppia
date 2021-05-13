@@ -86,5 +86,7 @@ RUN mkdir -p /oppia/.git/hooks/ && cd /oppia/.git/hooks/ && if [ ! -L pre-commit
 RUN cd /oppia && ls && python2 -m scripts.start --no_browser --disable_host_checking --prod_env --docker
 RUN rm -rf /oppia
 
+STOPSIGNAL SIGINT
+
 ENTRYPOINT ["/oppia/entrypoint.sh"]
 CMD ["python2", "-m", "scripts.start", "--no_browser", "--disable_host_checking", "--prod_env", "--save_datastore"]
