@@ -12,8 +12,12 @@ build_base_image:
   script:
     - docker login --username akhanbakhitov777 --password ${DOCKER_HUB_TOKEN}
     - ls
-    - docker build -t akhanbakhitov777/oqustudy -f oqustudy.Dockerfile .
+    - docker build -t akhanbakhitov777/oqustudy:latest -f oqustudy.Dockerfile .
+    - TAG_NAME=$(date +%Y.%m.%d)
+    - echo "Tag name for image $TAG_NAME"
+    - docker tag akhanbakhitov777/oqustudy:latest akhanbakhitov777/oqustudy:$TAG_NAME
     - docker push akhanbakhitov777/oqustudy:latest
+    - docker push akhanbakhitov777/oqustudy:$TAG_NAME
     - docker system prune -f
 
 deploy:
