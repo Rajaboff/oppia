@@ -20,6 +20,7 @@ server.
 from __future__ import absolute_import  # pylint: disable=import-only-modules
 from __future__ import unicode_literals  # pylint: disable=import-only-modules
 
+import signal
 import argparse
 import atexit
 import os
@@ -101,9 +102,21 @@ def cleanup():
         'INFORMATION',
         'Cleaning up the servers.'])
     while common.is_port_open(PORT_NUMBER_FOR_GAE_SERVER):
+        python_utils.PRINT('Waiting...')
         time.sleep(1)
     build.set_constants_to_default()
     common.stop_redis_server()
+    python_utils.PRINT('Finishing')
+
+
+def stop_processes(processes):
+    """Stopping background processes"""
+    python_utils.PRINT('Stopping...')
+    for process in processes:
+        python_utils.PRINT('Sending stop signal to %d' % process.pid)
+        os.killpg(os.getpgid(process.pid), signal.SIGINT)
+
+    python_utils.PRINT('Stopping finish')
 
 
 def main(args=None):
@@ -111,8 +124,11 @@ def main(args=None):
     parsed_args = _PARSER.parse_args(args=args)
     install_third_party_libs.main(is_docker=parsed_args.docker)
 
+    background_processes = []
+
     # Runs cleanup function on exit.
     atexit.register(cleanup)
+    atexit.register(lambda: stop_processes(background_processes))
 
     if parsed_args.docker:
         sys.exit()
@@ -148,7 +164,6 @@ def main(args=None):
     # To turn emailing on, add the option '--enable_sendmail=yes' and change the
     # relevant settings in feconf.py. Be careful with this -- you do not want to
     # spam people accidentally.
-    background_processes = []
     if not parsed_args.prod_env:
         # In prod mode webpack is launched through scripts/build.py
         python_utils.PRINT('Compiling webpack...')
@@ -174,7 +189,7 @@ def main(args=None):
             common.GOOGLE_APP_ENGINE_SDK_HOME, clear_datastore_arg,
             enable_console_arg, disable_host_checking_arg, no_auto_restart,
             python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER),
-            app_yaml_filepath), shell=True))
+            app_yaml_filepath), preexec_fn=os.setsid, shell=True))
 
     # Wait for the servers to come up.
     while not common.is_port_open(PORT_NUMBER_FOR_GAE_SERVER):
@@ -222,6 +237,7 @@ def main(args=None):
             % python_utils.UNICODE(PORT_NUMBER_FOR_GAE_SERVER)])
 
     python_utils.PRINT('Done!')
+    sys.stdout.flush()
 
     for process in background_processes:
         process.wait()
