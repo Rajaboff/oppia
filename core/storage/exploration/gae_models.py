@@ -986,6 +986,19 @@ class ExplorationUserAccessModel(base_models.BaseModel):
         return cls.query().filter(cls.user_id == user_id)
 
     @classmethod
+    def get_by_exploration(cls, exploration_id):
+        """Gets ExplorationUserAccessModel by exploration ID.
+        Returns empty list if the exploration does not have an access to any explorations.
+
+        Args:
+            exploration_id: str. The ID of the exploration.
+
+        Returns:
+            list[ExplorationUserAccessModel]. The exploration access model to the explorations.
+        """
+        return cls.query().filter(cls.exploration_id == exploration_id)
+
+    @classmethod
     def delete_by_user_id(cls, user_id):
         """Delete all user access models.
 

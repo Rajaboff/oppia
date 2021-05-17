@@ -129,6 +129,24 @@ payload={"paid_status":"need_paid"}
 
 ```bash
 payload={"user_id":"uid_some_user_id"}
+
+или
+
+payload={"username":"TestUsername"}
+
+или
+
+payload={"email":"test@example.com"}
+```
+
+## GET /createhandler/user_access/list/{exploration_id}
+
+Получаем список пользователей, которым доступно платное занятие [MR63](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/63).
+
+Результат:
+
+```bash
+{"user_list": [{"username": "TestUsername", "email": "test@example.com"}]}
 ```
 
 ## PUT /collection_editor_handler/user_access/allow/{collection_id} и /collection_editor_handler/user_access/restrict/{collection_id}

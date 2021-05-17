@@ -688,6 +688,10 @@ URLS = MAPREDUCE_HANDLERS + [
         editor.ExplorationUserAccessRestrictHandler,
     ),
     get_redirect_route(
+        r'%s/<exploration_id>' % feconf.EXPLORATION_USER_ACCESS_LIST_PREFIX,
+        reader.ExplorationUserAccessListHandler,
+    ),
+    get_redirect_route(
         r'%s/<exploration_id>' % feconf.USER_PERMISSIONS_URL_PREFIX,
         editor.UserExplorationPermissionsHandler),
     get_redirect_route(
