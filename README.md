@@ -8,6 +8,7 @@
 * [Изменения в хендлерах](docs/handlers.md)
 * [Работа с API](docs/api.md)
 * [Задачи (jobs) для фиксации БД](docs/jobs.md)
+* [Бекапы](docs/backup.md)
 
 ## Что изменилось?
 
