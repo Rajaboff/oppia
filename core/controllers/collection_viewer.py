@@ -21,6 +21,7 @@ from core.controllers import acl_decorators
 from core.controllers import base
 from core.domain import rights_manager
 from core.domain import summary_services
+from core.domain import collection_services
 from core.platform import models
 import feconf
 import utils
@@ -65,3 +66,17 @@ class CollectionDataHandler(base.BaseHandler):
         })
 
         self.render_json(self.values)
+
+
+class CollectionUserAccessListHandler(base.BaseHandler):
+    """Getting list of users to be allowed to have access to the collection."""
+
+    GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
+
+    @acl_decorators.can_change_paid_status_collection
+    def get(self, collection_id):
+        """get"""
+        user_list = collection_services.get_available_list_of_users(collection_id)
+        self.render_json({
+            'user_list': [{ "email": user.email, "username": user.username } for user in user_list]
+        })

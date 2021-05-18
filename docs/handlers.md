@@ -159,6 +159,24 @@ payload={"email":"test@example.com"}
 
 ```bash
 payload={"user_id":"uid_some_user_id"}
+
+или
+
+payload={"username":"TestUsername"}
+
+или
+
+payload={"email":"test@example.com"}
+```
+
+## GET /collection_handler/user_access/list/{collection_id}
+
+Получаем список пользователей, которым доступен платный курс [MR64](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/64).
+
+Результат:
+
+```bash
+{"user_list": [{"username": "TestUsername", "email": "test@example.com"}]}
 ```
 
 ## PUT /rightshandler/topic/user_access/allow/{topic_id} и /rightshandler/topic/user_access/restrict/{topic_id}
