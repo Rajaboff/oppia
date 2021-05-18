@@ -859,6 +859,10 @@ URLS = MAPREDUCE_HANDLERS + [
         r'%s/<topic_id>' % feconf.TOPIC_USER_ACCESS_RESTRICT_PREFIX,
         topic_editor.TopicUserAccessRestrictHandler,
     ),
+    get_redirect_route(
+        r'%s/<topic_id>' % feconf.TOPIC_USER_ACCESS_LIST_PREFIX,
+        topic_viewer.TopicUserAccessListHandler,
+    ),
 
     get_redirect_route(
         r'%s/<comma_separated_skill_ids>' % feconf.CONCEPT_CARD_DATA_URL_PREFIX,

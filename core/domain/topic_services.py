@@ -1326,6 +1326,21 @@ def get_available_topics_for_user(user_id):
 
     return res
 
+def get_available_list_of_users(topic_id):
+    """Get topic list the topic has access to
+
+    Args:
+        topic_id (str): topic ID
+
+    Returns:
+        list[UserSettings]: list of UserSettings
+    """
+    user_ids = []
+    for model in topic_models.TopicUserAccessModel.get_by_topic(topic_id=topic_id):
+        user_ids.append(model.user_id)
+
+    return user_services.get_users_settings(user_ids)
+
 def update_topic_user_access(topic_user_access):
     """Update to access model for user to the topic.
     If there is no model - it will be created.

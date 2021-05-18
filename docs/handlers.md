@@ -189,6 +189,24 @@ payload={"email":"test@example.com"}
 
 ```bash
 payload={"user_id":"uid_some_user_id"}
+
+или
+
+payload={"username":"TestUsername"}
+
+или
+
+payload={"email":"test@example.com"}
+```
+
+## GET /rightshandler/topic/user_access/list/{topic_id}
+
+Получаем список пользователей, которым доступна платная тема [MR65](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/65).
+
+Результат:
+
+```bash
+{"user_list": [{"username": "TestUsername", "email": "test@example.com"}]}
 ```
 
 ## Информация о платных сущностях

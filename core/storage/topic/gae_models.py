@@ -606,6 +606,19 @@ class TopicUserAccessModel(base_models.BaseModel):
         return cls.query().filter(cls.user_id == user_id)
 
     @classmethod
+    def get_by_topic(cls, topic_id):
+        """Gets TopicUserAccessModel by topic ID.
+        Returns empty list if the topic does not have an access to any topics.
+
+        Args:
+            topic_id: str. The ID of the topic.
+
+        Returns:
+            list[TopicUserAccessModel]. The topic access model to the topics.
+        """
+        return cls.query().filter(cls.topic_id == topic_id)
+
+    @classmethod
     def delete_by_user_id(cls, user_id):
         """Delete all user access models.
 

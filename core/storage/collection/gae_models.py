@@ -830,14 +830,14 @@ class CollectionUserAccessModel(base_models.BaseModel):
 
     @classmethod
     def get_by_collection(cls, collection_id):
-        """Gets ExplorationUserAccessModel by collection ID.
+        """Gets CollectionUserAccessModel by collection ID.
         Returns empty list if the collection does not have an access to any collections.
 
         Args:
             collection_id: str. The ID of the collection.
 
         Returns:
-            list[ExplorationUserAccessModel]. The collection access model to the collections.
+            list[CollectionUserAccessModel]. The collection access model to the collections.
         """
         return cls.query().filter(cls.collection_id == collection_id)
 

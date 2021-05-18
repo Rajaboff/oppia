@@ -403,13 +403,11 @@ class TopicUserAccessAllowHandler(base.BaseHandler):
 
     @acl_decorators.can_change_paid_status_topic
     def put(self, topic_id):
-        user_id = self.payload.get('user_id')
-
-        user = user_services.get_user_settings(user_id, strict=True)
+        user = user_services.get_user_settings_from_payload(self.payload, strict=True)
 
         topic_user_access = topic_domain.TopicUserAccess(
             topic_id=topic_id,
-            user_id=user_id,
+            user_id=user.user_id,
         )
         topic_services.update_topic_user_access(topic_user_access)
 
@@ -424,13 +422,11 @@ class TopicUserAccessRestrictHandler(base.BaseHandler):
 
     @acl_decorators.can_change_paid_status_topic
     def put(self, topic_id):
-        user_id = self.payload.get('user_id')
-
-        user = user_services.get_user_settings(user_id, strict=True)
+        user = user_services.get_user_settings_from_payload(self.payload, strict=True)
 
         topic_user_access = topic_domain.TopicUserAccess(
             topic_id=topic_id,
-            user_id=user_id,
+            user_id=user.user_id,
         )
         topic_services.delete_topic_user_access(topic_user_access)
 
