@@ -146,6 +146,20 @@ class ExplorationPage(base.BaseHandler):
         self.render_template('exploration-player-page.mainpage.html')
 
 
+class ExplorationUserAccessListHandler(base.BaseHandler):
+    """Getting list of users to be allowed to have access to the exploration."""
+
+    GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
+
+    @acl_decorators.can_change_paid_status_exploration
+    def get(self, exploration_id):
+        """get"""
+        user_list = exp_services.get_available_list_of_users(exploration_id)
+        self.render_json({
+            'user_list': [{ "email": user.email, "username": user.username } for user in user_list]
+        })
+
+
 class ExplorationHandler(base.BaseHandler):
     """Provides the initial data for a single exploration."""
 

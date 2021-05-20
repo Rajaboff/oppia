@@ -1178,6 +1178,35 @@ def _get_user_settings_from_model(user_settings_model):
     )
 
 
+def get_user_settings_from_payload(payload, strict=True):
+    """Getting user settings from payload data
+
+    Args:
+        payload (Dict[str, str]): POST payload info
+        strict (bool): If true throws the exception when no user found
+
+    Returns:
+        UserSettings: User settings for the exploration
+    """
+    user_id = payload.get('user_id')
+    if user_id:
+        return get_user_settings(user_id, strict=strict)
+
+    email = payload.get('email')
+    if email:
+        user = get_user_settings_from_email(email)
+        if not strict or user:
+            return user
+
+    username = payload.get('username')
+    if username:
+        user = get_user_settings_from_username(username)
+        if not strict or user:
+            return user
+
+    raise Exception('User not found.')
+
+
 def is_user_registered(user_id):
     """Checks if a user is registered with the given user_id.
 

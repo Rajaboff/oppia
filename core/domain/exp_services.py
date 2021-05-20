@@ -1826,6 +1826,22 @@ def get_available_explorations_for_user(user_id):
 
     return res
 
+
+def get_available_list_of_users(exploration_id):
+    """Get exploration list the exploration has access to
+
+    Args:
+        exploration_id (str): exploration ID
+
+    Returns:
+        list[UserSettings]: list of UserSettings
+    """
+    user_ids = []
+    for model in exp_models.ExplorationUserAccessModel.get_by_exploration(exploration_id=exploration_id):
+        user_ids.append(model.user_id)
+
+    return user_services.get_users_settings(user_ids)
+
 def update_exploration_user_access(exploration_user_access):
     """Update to access model for user to the exploration.
     If there is no model - it will be created.
