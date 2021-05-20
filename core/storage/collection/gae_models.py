@@ -829,6 +829,19 @@ class CollectionUserAccessModel(base_models.BaseModel):
         return cls.query().filter(cls.user_id == user_id)
 
     @classmethod
+    def get_by_collection(cls, collection_id):
+        """Gets ExplorationUserAccessModel by collection ID.
+        Returns empty list if the collection does not have an access to any collections.
+
+        Args:
+            collection_id: str. The ID of the collection.
+
+        Returns:
+            list[ExplorationUserAccessModel]. The collection access model to the collections.
+        """
+        return cls.query().filter(cls.collection_id == collection_id)
+
+    @classmethod
     def delete_by_user_id(cls, user_id):
         """Delete all user access models.
 

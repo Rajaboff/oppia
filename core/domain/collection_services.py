@@ -1259,6 +1259,21 @@ def get_available_collections_for_user(user_id):
 
     return res
 
+def get_available_list_of_users(collection_id):
+    """Get collection list the collection has access to
+
+    Args:
+        collection_id (str): collection ID
+
+    Returns:
+        list[UserSettings]: list of UserSettings
+    """
+    user_ids = []
+    for model in collection_models.CollectionUserAccessModel.get_by_collection(collection_id=collection_id):
+        user_ids.append(model.user_id)
+
+    return user_services.get_users_settings(user_ids)
+
 def update_collection_user_access(collection_user_access):
     """Update to access model for user to the collection.
     If there is no model - it will be created.

@@ -821,6 +821,10 @@ URLS = MAPREDUCE_HANDLERS + [
         collection_editor.CollectionUserAccessRestrictHandler,
     ),
     get_redirect_route(
+        r'%s/<collection_id>' % feconf.COLLECTION_USER_ACCESS_LIST_PREFIX,
+        collection_viewer.CollectionUserAccessListHandler,
+    ),
+    get_redirect_route(
         r'%s/<collection_id>' % feconf.COLLECTION_UNPUBLISH_PREFIX,
         collection_editor.CollectionUnpublishHandler),
 

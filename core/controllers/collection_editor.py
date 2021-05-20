@@ -206,13 +206,11 @@ class CollectionUserAccessAllowHandler(base.BaseHandler):
 
     @acl_decorators.can_change_paid_status_collection
     def put(self, collection_id):
-        user_id = self.payload.get('user_id')
-
-        user = user_services.get_user_settings(user_id, strict=True)
+        user = user_services.get_user_settings_from_payload(self.payload, strict=True)
 
         collection_user_access = collection_domain.CollectionUserAccess(
             collection_id=collection_id,
-            user_id=user_id,
+            user_id=user.user_id,
         )
         collection_services.update_collection_user_access(collection_user_access)
 
@@ -227,13 +225,11 @@ class CollectionUserAccessRestrictHandler(base.BaseHandler):
 
     @acl_decorators.can_change_paid_status_collection
     def put(self, collection_id):
-        user_id = self.payload.get('user_id')
-
-        user = user_services.get_user_settings(user_id, strict=True)
+        user = user_services.get_user_settings_from_payload(self.payload, strict=True)
 
         collection_user_access = collection_domain.CollectionUserAccess(
             collection_id=collection_id,
-            user_id=user_id,
+            user_id=user.user_id,
         )
         collection_services.delete_collection_user_access(collection_user_access)
 
