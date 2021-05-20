@@ -22,6 +22,8 @@ from core.controllers import base
 from core.domain import classroom_services
 from core.domain import config_domain
 from core.domain import topic_services
+from core.domain import topic_domain
+from core.domain import user_services
 import feconf
 
 
@@ -88,4 +90,81 @@ class ClassroomPromosStatusHandler(base.BaseHandler):
         self.render_json({
             'classroom_promos_are_enabled': (
                 config_domain.CLASSROOM_PROMOS_ARE_ENABLED.value)
+        })
+
+
+class ClassroomUserAccessAllowHandler(base.BaseHandler):
+    """Handles opening access to the class that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_class
+    def put(self, classroom_url_fragment):
+        user = user_services.get_user_settings_from_payload(self.payload, strict=True)
+
+        classroom = classroom_services.get_classroom_by_url_fragment(
+            classroom_url_fragment
+        )
+
+        res = []
+        for topic_id in classroom.topic_ids:
+            topic_user_access = topic_domain.TopicUserAccess(
+                topic_id=topic_id,
+                user_id=user.user_id,
+            )
+            topic_services.update_topic_user_access(topic_user_access)
+            res.append(topic_user_access)
+
+        self.render_json({
+            'class_user_access': [topic_user_access.to_dict() for topic_user_access in res]
+        })
+
+
+class ClassroomUserAccessRestrictHandler(base.BaseHandler):
+    """Handles restricting access to the class that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_class
+    def put(self, classroom_url_fragment):
+        user = user_services.get_user_settings_from_payload(self.payload, strict=True)
+
+        classroom = classroom_services.get_classroom_by_url_fragment(
+            classroom_url_fragment
+        )
+
+        for topic_id in classroom.topic_ids:
+            topic_user_access = topic_domain.TopicUserAccess(
+                topic_id=topic_id,
+                user_id=user.user_id,
+            )
+            topic_services.delete_topic_user_access(topic_user_access)
+
+        self.render_json({
+            'class_user_access': []
+        })
+
+
+class ClassroomUserAccessListHandler(base.BaseHandler):
+    """Getting list of users to be allowed to have access to the class."""
+
+    GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
+
+    @acl_decorators.can_change_paid_status_class
+    def get(self, classroom_url_fragment):
+        """get"""
+        classroom = classroom_services.get_classroom_by_url_fragment(
+            classroom_url_fragment
+        )
+
+        topic_summaries = topic_services.get_multi_topic_summaries(classroom.topic_ids)
+
+        topic_user_info = {}  # type: Dict[UserId, UserSettings]
+
+        for topic in topic_summaries:
+            if not topic:
+                continue
+            user_list = topic_services.get_available_list_of_users(topic.id)
+            topic_user_info[topic.name] = [{ "email": user.email, "username": user.username } for user in user_list]
+
+        self.render_json({
+            'user_list': topic_user_info
         })
