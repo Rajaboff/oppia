@@ -209,7 +209,7 @@ payload={"email":"test@example.com"}
 {"user_list": [{"username": "TestUsername", "email": "test@example.com"}]}
 ```
 
-## PUT /classroom_data_handler/user_access/allow/{topic_id} и /classroom_data_handler/user_access/restrict/{topic_id}
+## PUT /classroom_data_handler/user_access/allow/{classroom_url_fragment} и /classroom_data_handler/user_access/restrict/{classroom_url_fragment}
 
 Открытие или закрытие доступа пользователю до класса [MR66](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/66).
 
@@ -229,9 +229,9 @@ payload={"username":"TestUsername"}
 payload={"email":"test@example.com"}
 ```
 
-## GET /classroom_data_handler/user_access/list/{topic_id}
+## GET /classroom_data_handler/user_access/list/{classroom_url_fragment}
 
-Получаем список пользователей, которым доступен класс [MR65](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/65).
+Получаем список пользователей, которым доступен класс [MR66](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/66).
 
 Результат:
 
