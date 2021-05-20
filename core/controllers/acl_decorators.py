@@ -1308,6 +1308,49 @@ def can_change_paid_status_topic(handler):
     return test
 
 
+def can_change_paid_status_class(handler):
+    """Decorator to check whether user change class paid status.
+
+    Args:
+        handler: function. The function to be decorated.
+
+    Returns:
+        function. The newly decorated function that checks if
+        a user has permission to save a given exploration.
+    """
+
+    def test(self, classroom_url_fragment, **kwargs):
+        """Checks if the user can change class paid status.
+
+        Args:
+            classroom_url_fragment: str. The class id.
+            **kwargs: dict(str: *). Keyword arguments.
+
+        Returns:
+            *. The return value of the decorated function.
+
+        Raises:
+            NotLoggedInException. The user is not logged in.
+            PageNotFoundException. The page is not found.
+            UnauthorizedUserException. The user does not have credentials to
+                        change class paid status
+        """
+
+        if not self.user_id:
+            raise base.UserFacingExceptions.NotLoggedInException
+
+        if not user_services.is_admin(self.user_id):
+            raise base.UserFacingExceptions.UnauthorizedUserException(
+                'You do not have permissions to change paid status for this class.'
+            )
+
+        return handler(self, classroom_url_fragment, **kwargs)
+
+    test.__wrapped__ = True
+
+    return test
+
+
 def can_delete_exploration(handler):
     """Decorator to check whether user can delete exploration.
 

@@ -456,6 +456,18 @@ URLS = MAPREDUCE_HANDLERS + [
         r'%s/<classroom_url_fragment>' % feconf.CLASSROOM_DATA_HANDLER,
         classroom.ClassroomDataHandler),
     get_redirect_route(
+        r'%s/<classroom_url_fragment>' % feconf.CLASSROOM_USER_ACCESS_ALLOW_HANDLER,
+        classroom.ClassroomUserAccessAllowHandler,
+    ),
+    get_redirect_route(
+        r'%s/<classroom_url_fragment>' % feconf.CLASSROOM_USER_ACCESS_RESTRICT_HANDLER,
+        classroom.ClassroomUserAccessRestrictHandler,
+    ),
+    get_redirect_route(
+        r'%s/<classroom_url_fragment>' % feconf.CLASSROOM_USER_ACCESS_LIST_HANDLER,
+        classroom.ClassroomUserAccessListHandler,
+    ),
+    get_redirect_route(
         r'%s' % feconf.NEW_TOPIC_URL,
         topics_and_skills_dashboard.NewTopicHandler),
     get_redirect_route(

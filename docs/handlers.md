@@ -185,7 +185,7 @@ payload={"email":"test@example.com"}
 
 Пользователи, которым открыт доступ до темы, могут его запускать любое занятие, которое есть внутри темы.
 
-Открыть доступ до тему может супер-админ.
+Открыть доступ до темы может супер-админ.
 
 ```bash
 payload={"user_id":"uid_some_user_id"}
@@ -207,6 +207,36 @@ payload={"email":"test@example.com"}
 
 ```bash
 {"user_list": [{"username": "TestUsername", "email": "test@example.com"}]}
+```
+
+## PUT /classroom_data_handler/user_access/allow/{classroom_url_fragment} и /classroom_data_handler/user_access/restrict/{classroom_url_fragment}
+
+Открытие или закрытие доступа пользователю до класса [MR66](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/66).
+
+Пользователи, которым открыт доступ до класса, могут его запускать любое занятие, которое есть внутри него.
+
+Открыть доступ до класса может супер-админ.
+
+```bash
+payload={"user_id":"uid_some_user_id"}
+
+или
+
+payload={"username":"TestUsername"}
+
+или
+
+payload={"email":"test@example.com"}
+```
+
+## GET /classroom_data_handler/user_access/list/{classroom_url_fragment}
+
+Получаем список пользователей, которым доступен класс [MR66](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/66).
+
+Результат:
+
+```bash
+{"user_list": {"HelloWorld": [{"username": "TestUsername", "email": "test@example.com"}]}}
 ```
 
 ## Информация о платных сущностях
