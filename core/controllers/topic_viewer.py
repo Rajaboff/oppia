@@ -145,3 +145,16 @@ class TopicPageDataHandler(base.BaseHandler):
             'meta_tag_content': topic.meta_tag_content
         })
         self.render_json(self.values)
+
+class TopicUserAccessListHandler(base.BaseHandler):
+    """Getting list of users to be allowed to have access to the topic."""
+
+    GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
+
+    @acl_decorators.can_change_paid_status_topic
+    def get(self, topic_id):
+        """get"""
+        user_list = topic_services.get_available_list_of_users(topic_id)
+        self.render_json({
+            'user_list': [{ "email": user.email, "username": user.username } for user in user_list]
+        })
