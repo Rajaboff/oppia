@@ -284,7 +284,10 @@ class BaseHandler(webapp2.RequestHandler):
 
                 if 'custom_auth' in self.request.uri:
                     email = self.payload.get('email')
-                    user_settings = user_services.get_user_settings_from_email(email)
+                    if '@' in email:
+                        user_settings = user_services.get_user_settings_from_email(email)
+                    else:
+                        user_settings = user_services.get_user_settings_from_username(email)
 
                     if not user_settings:
                         raise Exception('No credentials')

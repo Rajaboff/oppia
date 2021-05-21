@@ -147,7 +147,9 @@ angular.module('oppia').component('signupPage', {
                     username: null,
                     email: null,
                     password: null,
-                    role: "EXPLORATION_EDITOR"
+                    role: "EXPLORATION_EDITOR",
+                    name: null,
+                    surname: null,
                 };
 
                 if (!ctrl.hasUsername) {
@@ -156,6 +158,14 @@ angular.module('oppia').component('signupPage', {
 
                 if (ctrl.email) {
                     requestParams.email = ctrl.email
+                }
+
+                if (ctrl.name) {
+                    requestParams.name = ctrl.name
+                }
+
+                if (ctrl.surname) {
+                    requestParams.surname = ctrl.surname
                 }
 
                 if (ctrl.role) {
