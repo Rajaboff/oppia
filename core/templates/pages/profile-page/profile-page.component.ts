@@ -35,10 +35,10 @@ require('pages/profile-page/profile-page-backend-api.service');
 angular.module('oppia').component('profilePage', {
   template: require('./profile-page.component.html'),
   controller: [
-    '$log', '$rootScope', '$scope', 'DateTimeFormatService', 'LoaderService',
+    '$log', '$rootScope', '$scope', '$http', 'DateTimeFormatService', 'LoaderService',
     'UrlInterpolationService', 'UserService', 'WindowRef',
     function(
-        $log, $rootScope, $scope, DateTimeFormatService, LoaderService,
+        $log, $rootScope, $scope, $http, DateTimeFormatService, LoaderService,
         UrlInterpolationService, UserService, WindowRef) {
       var ctrl = this;
       const ProfilePageBackendApiService = (
@@ -54,6 +54,17 @@ angular.module('oppia').component('profilePage', {
       };
       ctrl.$onInit = function() {
         LoaderService.showLoadingScreen('Loading');
+
+        ctrl.name = ''
+        ctrl.surname = ''
+        var preferencesPromise = $http.get('/preferenceshandler/data');
+        preferencesPromise.then(function(response) {
+          var data = response.data;
+          console.log(data);
+          ctrl.name = data.name;
+          ctrl.surname = data.surname;
+        });
+
         let fetchProfileData = () =>
           ProfilePageBackendApiService.fetchProfileDataAsync();
         fetchProfileData().then(function(data) {

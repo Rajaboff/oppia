@@ -86,6 +86,14 @@ angular.module('oppia').component('preferencesPage', {
         _saveDataItem('user_bio', userBio);
       };
 
+      ctrl.saveUserName = function(name) {
+        _saveDataItem('name', name);
+      };
+
+      ctrl.saveUserSurname = function(surname) {
+        _saveDataItem('surname', surname);
+      };
+
       ctrl.onSubjectInterestsSelectionChange = function(subjectInterests) {
         AlertsService.clearWarnings();
         ctrl.subjectInterestsChangedAtLeastOnce = true;
@@ -196,6 +204,8 @@ angular.module('oppia').component('preferencesPage', {
         preferencesPromise.then(function(response) {
           var data = response.data;
           ctrl.userBio = data.user_bio;
+          ctrl.name = data.name;
+          ctrl.surname = data.surname;
           ctrl.subjectInterests = data.subject_interests;
           ctrl.preferredLanguageCodes = data.preferred_language_codes;
           ctrl.profilePictureDataUrl = data.profile_picture_data_url;

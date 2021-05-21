@@ -49,6 +49,14 @@
     </div>
 
     <p class="oppia-profile-user-bio protractor-test-profile-bio">
+      Имя: <span class="oppia-user-bio-text"><[$ctrl.name]></span>
+    </p>
+
+    <p class="oppia-profile-user-bio protractor-test-profile-bio">
+      Фамилия: <span class="oppia-user-bio-text"><[$ctrl.surname]></span>
+    </p>
+
+    <p class="oppia-profile-user-bio protractor-test-profile-bio">
       <span ng-if="$ctrl.userBio" class="oppia-user-bio-text"><[$ctrl.userBio]></span>
       <span ng-if="!$ctrl.userBio">
         <em>Этот пользователь еще не заполнил биографию.</em>
