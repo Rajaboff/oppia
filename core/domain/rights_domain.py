@@ -34,6 +34,8 @@ CMD_CHANGE_EXPLORATION_STATUS = feconf.CMD_CHANGE_EXPLORATION_STATUS
 CMD_CHANGE_COLLECTION_STATUS = feconf.CMD_CHANGE_COLLECTION_STATUS
 CMD_CHANGE_EXPLORATION_PAID_STATUS = feconf.CMD_CHANGE_EXPLORATION_PAID_STATUS
 CMD_CHANGE_COLLECTION_PAID_STATUS = feconf.CMD_CHANGE_COLLECTION_PAID_STATUS
+CMD_CHANGE_EXPLORATION_COST = feconf.CMD_CHANGE_EXPLORATION_COST
+CMD_CHANGE_COLLECTION_COST = feconf.CMD_CHANGE_COLLECTION_COST
 CMD_CHANGE_PRIVATE_VIEWABILITY = feconf.CMD_CHANGE_PRIVATE_VIEWABILITY
 CMD_RELEASE_OWNERSHIP = feconf.CMD_RELEASE_OWNERSHIP
 CMD_UPDATE_FIRST_PUBLISHED_MSEC = feconf.CMD_UPDATE_FIRST_PUBLISHED_MSEC
@@ -64,7 +66,7 @@ class ActivityRights(python_utils.OBJECT):
     def __init__(
             self, exploration_id, owner_ids, editor_ids, voice_artist_ids,
             viewer_ids, community_owned=False, cloned_from=None,
-            paid_status=feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+            paid_status=feconf.DEFAULT_EXPLORATION_PAID_STATUS, cost=None,
             status=ACTIVITY_STATUS_PRIVATE, viewable_if_private=False,
             first_published_msec=None, activity_type=None):
         self.id = exploration_id
@@ -76,6 +78,7 @@ class ActivityRights(python_utils.OBJECT):
         self.cloned_from = cloned_from
         self.status = status
         self.paid_status = paid_status
+        self.cost = cost
         self.viewable_if_private = viewable_if_private
         self.first_published_msec = first_published_msec
         self.activity_type = activity_type
@@ -146,6 +149,7 @@ class ActivityRights(python_utils.OBJECT):
                 'cloned_from': self.cloned_from,
                 'status': self.status,
                 'paid_status': self.paid_status,
+                'cost': self.cost,
                 'community_owned': True,
                 'owner_names': [],
                 'editor_names': [],
@@ -158,6 +162,7 @@ class ActivityRights(python_utils.OBJECT):
                 'cloned_from': self.cloned_from,
                 'status': self.status,
                 'paid_status': self.paid_status,
+                'cost': self.cost,
                 'community_owned': False,
                 'owner_names': user_services.get_human_readable_user_ids(
                     self.owner_ids),

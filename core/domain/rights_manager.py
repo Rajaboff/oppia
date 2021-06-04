@@ -63,6 +63,7 @@ def get_activity_rights_from_model(activity_rights_model, activity_type):
             if activity_type == constants.ACTIVITY_TYPE_EXPLORATION else None),
         status=activity_rights_model.status,
         paid_status=activity_rights_model.paid_status,
+        cost=activity_rights_model.cost,
         viewable_if_private=activity_rights_model.viewable_if_private,
         first_published_msec=activity_rights_model.first_published_msec,
         activity_type=activity_type,
@@ -101,6 +102,7 @@ def _save_activity_rights(
     model.community_owned = activity_rights.community_owned
     model.status = activity_rights.status
     model.paid_status = activity_rights.paid_status
+    model.cost = activity_rights.cost
     model.viewable_if_private = activity_rights.viewable_if_private
     model.first_published_msec = activity_rights.first_published_msec
 
@@ -205,6 +207,7 @@ def create_new_exploration_rights(exploration_id, committer_id):
         community_owned=exploration_rights.community_owned,
         status=exploration_rights.status,
         paid_status=exploration_rights.paid_status,
+        cost=exploration_rights.cost,
         viewable_if_private=exploration_rights.viewable_if_private,
         first_published_msec=exploration_rights.first_published_msec,
     ).commit(committer_id, 'Created new exploration', commit_cmds)
@@ -322,6 +325,7 @@ def create_new_collection_rights(collection_id, committer_id):
         community_owned=collection_rights.community_owned,
         status=collection_rights.status,
         paid_status=collection_rights.paid_status,
+        # cost=collection_rights.cost,
         viewable_if_private=collection_rights.viewable_if_private,
         first_published_msec=collection_rights.first_published_msec
     ).commit(committer_id, 'Created new collection', commit_cmds)
@@ -1035,7 +1039,7 @@ def _change_activity_status(
 
 
 def _change_activity_paid_status(
-        committer_id, activity_id, activity_type, new_status, commit_message):
+        committer_id, activity_id, activity_type, new_status, new_cost, commit_message):
     """Changes the status of the given activity.
 
     Args:
@@ -1045,6 +1049,7 @@ def _change_activity_paid_status(
             constants.ACTIVITY_TYPE_EXPLORATION,
             constants.ACTIVITY_TYPE_COLLECTION.
         new_status: str. The new status of the activity.
+        new_cost: Optional[double]. The cost of the activity, in conventional units
         commit_message: str. The human-written commit message for this change.
     """
     if new_status not in (
@@ -1055,24 +1060,43 @@ def _change_activity_paid_status(
 
     activity_rights = _get_activity_rights(activity_type, activity_id)
     old_status = activity_rights.paid_status
-    activity_rights.paid_status = new_status
-    if activity_type == constants.ACTIVITY_TYPE_EXPLORATION:
-        cmd_type = rights_domain.CMD_CHANGE_EXPLORATION_PAID_STATUS
-    elif activity_type == constants.ACTIVITY_TYPE_COLLECTION:
-        cmd_type = rights_domain.CMD_CHANGE_COLLECTION_PAID_STATUS
-    commit_cmds = [{
-        'cmd': cmd_type,
-        'old_status': old_status,
-        'new_status': new_status
-    }]
+    old_cost = activity_rights.cost
 
-    _save_activity_rights(
-        committer_id,
-        activity_rights,
-        activity_type,
-        commit_message,
-        commit_cmds
-    )
+    activity_rights.paid_status = new_status
+    activity_rights.cost = new_cost
+
+    commit_cmds = []
+
+    if old_status != new_status:
+        if activity_type == constants.ACTIVITY_TYPE_EXPLORATION:
+            cmd_type = rights_domain.CMD_CHANGE_EXPLORATION_PAID_STATUS
+        elif activity_type == constants.ACTIVITY_TYPE_COLLECTION:
+            cmd_type = rights_domain.CMD_CHANGE_COLLECTION_PAID_STATUS
+        commit_cmds.append({
+            'cmd': cmd_type,
+            'old_status': old_status,
+            'new_status': new_status,
+        })
+
+    if old_cost != new_cost:
+        if activity_type == constants.ACTIVITY_TYPE_EXPLORATION:
+            cmd_type = rights_domain.CMD_CHANGE_EXPLORATION_COST
+        elif activity_type == constants.ACTIVITY_TYPE_COLLECTION:
+            cmd_type = rights_domain.CMD_CHANGE_COLLECTION_COST
+        commit_cmds.append({
+            'cmd': cmd_type,
+            'old_cost': old_cost,
+            'new_cost': new_cost,
+        })
+
+    if commit_cmds:
+        _save_activity_rights(
+            committer_id,
+            activity_rights,
+            activity_type,
+            commit_message,
+            commit_cmds
+        )
     # _update_activity_summary(activity_type, activity_rights)
 
 
@@ -1108,7 +1132,7 @@ def _publish_activity(committer, activity_id, activity_type):
     )
 
 
-def _set_paid_status_activity(committer, activity_id, activity_type, paid_status):
+def _set_paid_status_activity(committer, activity_id, activity_type, paid_status, cost):
     """Publishes the given activity.
 
     Args:
@@ -1118,6 +1142,7 @@ def _set_paid_status_activity(committer, activity_id, activity_type, paid_status
             constants.ACTIVITY_TYPE_EXPLORATION,
             constants.ACTIVITY_TYPE_COLLECTION.
         paid_status: str. The paid status of activity. Possible values:
+        cost: Optional[double]. The cost of the activity, in conventional units
 
     Raises:
         Exception. The committer does not have rights to publish the
@@ -1137,17 +1162,19 @@ def _set_paid_status_activity(committer, activity_id, activity_type, paid_status
         activity_id,
         activity_type,
         paid_status,
-        '%s changed paid status to %s.' % (activity_type, paid_status)
+        cost,
+        '%s changed paid status to %s, cost to %s.' % (activity_type, paid_status, cost)
     )
 
 
-def change_exploration_paid_status(committer, exploration_id, paid_status):
+def change_exploration_paid_status(committer, exploration_id, paid_status, cost):
     """Change paid status of the given exploration.
 
     Args:
         committer: UserActionsInfo. UserActionsInfo object for the committer.
         exploration_id: str. ID of the exploration.
         paid_status: str. Paid status
+        cost: Optional[double]. The cost of the activity, in conventional units
 
     Raises:
         Exception. The committer does not have rights to change the paid status
@@ -1157,16 +1184,18 @@ def change_exploration_paid_status(committer, exploration_id, paid_status):
         exploration_id,
         constants.ACTIVITY_TYPE_EXPLORATION,
         paid_status,
+        cost,
     )
 
 
-def change_collection_paid_status(committer, collection_id, paid_status):
+def change_collection_paid_status(committer, collection_id, paid_status, cost):
     """Change paid status of the given collection.
 
     Args:
         committer: UserActionsInfo. UserActionsInfo object for the committer.
         collection_id: str. ID of the collection.
         paid_status: str. Paid status
+        cost: Optional[double]. The cost of the activity, in conventional units
 
     Raises:
         Exception. The committer does not have rights to change the paid status
@@ -1176,6 +1205,7 @@ def change_collection_paid_status(committer, collection_id, paid_status):
         collection_id,
         constants.ACTIVITY_TYPE_COLLECTION,
         paid_status,
+        cost,
     )
 
 

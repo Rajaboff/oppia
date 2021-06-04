@@ -301,14 +301,16 @@ class ExplorationPaidStatusHandler(EditorHandler):
 
     @acl_decorators.can_change_paid_status_exploration
     def put(self, exploration_id):
-        paid_status = self.payload.get('paid_status')
+        rights_activity = rights_manager.get_exploration_rights(exploration_id)
+        paid_status = self.payload.get('paid_status', rights_activity.paid_status)
+        cost = self.payload.get('cost', rights_activity.cost)
 
-        if paid_status:
-            rights_manager.change_exploration_paid_status(
-                self.user,
-                exploration_id,
-                paid_status,
-            )
+        rights_manager.change_exploration_paid_status(
+            self.user,
+            exploration_id,
+            paid_status,
+            cost,
+        )
 
         self.render_json({
             'rights': rights_manager.get_exploration_rights(

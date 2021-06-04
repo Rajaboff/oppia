@@ -331,6 +331,8 @@ class ExplorationRightsModel(base_models.VersionedModel):
             constants.ACTIVITY_PAID_STATUS_FREE,
         ]
     )
+    # Cost of the exploration, in conventional units
+    cost = datastore_services.FloatProperty(indexed=True, default=None)
 
     # DEPRECATED in v2.8.3. Do not use.
     translator_ids = (
@@ -357,6 +359,7 @@ class ExplorationRightsModel(base_models.VersionedModel):
             'first_published_msec': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'paid_status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'cost': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'translator_ids': base_models.EXPORT_POLICY.NOT_APPLICABLE
         })
 

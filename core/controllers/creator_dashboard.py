@@ -230,6 +230,7 @@ class CreatorDashboardHandler(base.BaseHandler):
                         collection_summary.collection_model_created_on),
                     'status': collection_summary.status,
                     'paid_status': rights.paid_status if rights else feconf.DEFAULT_COLLECTION_PAID_STATUS,
+                    'cost': rights.cost if rights else None,
                     'node_count': collection_summary.node_count,
                     'community_owned': collection_summary.community_owned,
                     'thumbnail_icon_url': (
