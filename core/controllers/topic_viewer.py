@@ -139,7 +139,7 @@ class TopicPageDataHandler(base.BaseHandler):
             'subtopics': subtopics,
             'is_access_open': is_user_access_open,
             'paid_status': topic_right.paid_status if topic_right else feconf.DEFAULT_TOPIC_PAID_STATUS,
-            'cost': topic_right.cost,
+            'cost': topic_right.cost if topic_right else None,
             'degrees_of_mastery': degrees_of_mastery,
             'skill_descriptions': skill_descriptions,
             'practice_tab_is_displayed': topic.practice_tab_is_displayed,
