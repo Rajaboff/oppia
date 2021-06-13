@@ -381,14 +381,16 @@ class TopicPaidStatusHandler(base.BaseHandler):
 
     @acl_decorators.can_change_paid_status_topic
     def put(self, topic_id):
-        paid_status = self.payload.get('paid_status')
+        rights_activity = topic_fetchers.get_topic_rights(topic_id)
+        paid_status = self.payload.get('paid_status', rights_activity.paid_status)
+        cost = self.payload.get('cost', rights_activity.cost)
 
-        if paid_status:
-            topic_services.change_topic_paid_status(
-                topic_id=topic_id,
-                committer_id=self.user_id,
-                paid_status=paid_status,
-            )
+        topic_services.change_topic_paid_status(
+            topic_id=topic_id,
+            committer_id=self.user_id,
+            paid_status=paid_status,
+            cost=cost,
+        )
 
         self.render_json({
             'rights': topic_fetchers.get_topic_rights(

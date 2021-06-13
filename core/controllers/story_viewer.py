@@ -97,6 +97,7 @@ class StoryPageDataHandler(base.BaseHandler):
             'story_nodes': ordered_node_dicts,
             'is_access_open': is_user_access_open,
             'paid_status': topic_right.paid_status if topic_right else feconf.DEFAULT_TOPIC_PAID_STATUS,
+            'cost': topic_right.cost,
             'topic_name': topic_name,
             'meta_tag_content': story.meta_tag_content
         })

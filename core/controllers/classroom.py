@@ -65,6 +65,7 @@ class ClassroomDataHandler(base.BaseHandler):
             if topic_summary is not None and topic_right.topic_is_published:
                 topic_dict = topic_summary.to_dict()
                 topic_dict["paid_status"] = topic_right.paid_status
+                topic_dict["cost"] = topic_right.cost
                 topic_dict["is_access_open"] = topic_summary.id in user_availbale_topics
                 topic_summary_dicts.append(topic_dict)
 

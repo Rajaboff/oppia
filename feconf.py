@@ -1263,6 +1263,7 @@ EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
 CMD_REMOVE_MANAGER_ROLE = 'remove_manager_role'
 CMD_PUBLISH_TOPIC = 'publish_topic'
 CMD_CHANGE_TOPIC_PAID_STATUS = 'change_topic_paid_status'
+CMD_CHANGE_TOPIC_COST = 'change_topic_cost'
 CMD_UNPUBLISH_TOPIC = 'unpublish_topic'
 
 ROLE_MANAGER = 'manager'
@@ -1305,7 +1306,8 @@ TOPIC_RIGHTS_CHANGE_ALLOWED_COMMANDS = [{
     'required_attribute_names': [],
     'optional_attribute_names': [],
     'user_id_attribute_names': []
-}, {
+},
+{
     'name': CMD_CHANGE_TOPIC_PAID_STATUS,
     'required_attribute_names': ['old_status', 'new_status'],
     'optional_attribute_names': [],
@@ -1314,7 +1316,14 @@ TOPIC_RIGHTS_CHANGE_ALLOWED_COMMANDS = [{
         'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
         'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
     }
-}]
+},
+{
+    'name': CMD_CHANGE_TOPIC_COST,
+    'required_attribute_names': ['old_cost', 'new_cost'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': [],
+},
+]
 
 USER_ID_RANDOM_PART_LENGTH = 32
 USER_ID_LENGTH = 36

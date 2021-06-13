@@ -38,6 +38,7 @@ CMD_REMOVE_MANAGER_ROLE = feconf.CMD_REMOVE_MANAGER_ROLE
 CMD_PUBLISH_TOPIC = feconf.CMD_PUBLISH_TOPIC
 CMD_UNPUBLISH_TOPIC = feconf.CMD_UNPUBLISH_TOPIC
 CMD_CHANGE_TOPIC_PAID_STATUS = feconf.CMD_CHANGE_TOPIC_PAID_STATUS
+CMD_CHANGE_TOPIC_COST = feconf.CMD_CHANGE_TOPIC_COST
 
 ROLE_MANAGER = feconf.ROLE_MANAGER
 ROLE_NONE = feconf.ROLE_NONE
@@ -1841,7 +1842,7 @@ class TopicSummary(python_utils.OBJECT):
 class TopicRights(python_utils.OBJECT):
     """Domain object for topic rights."""
 
-    def __init__(self, topic_id, manager_ids, topic_is_published, paid_status):
+    def __init__(self, topic_id, manager_ids, topic_is_published, paid_status, cost):
         """Constructs a TopicRights domain object.
 
         Args:
@@ -1851,11 +1852,13 @@ class TopicRights(python_utils.OBJECT):
             topic_is_published: bool. Whether the topic is viewable by a
                 learner.
             paid_status: str. Is the topic need to be paid
+            cost: Optional[double]. The cost of the topic
         """
         self.id = topic_id
         self.manager_ids = manager_ids
         self.topic_is_published = topic_is_published
         self.paid_status = paid_status
+        self.cost = cost
 
     def to_dict(self):
         """Returns a dict suitable for use by the frontend.
@@ -1870,6 +1873,7 @@ class TopicRights(python_utils.OBJECT):
                 self.manager_ids),
             'topic_is_published': self.topic_is_published,
             'paid_status': self.paid_status,
+            'cost': self.cost,
         }
 
     def is_manager(self, user_id):
