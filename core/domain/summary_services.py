@@ -175,7 +175,7 @@ def get_learner_collection_dict_by_id(
 
     collection_rights = rights_manager.get_collection_rights(collection_id)
     collection_dict["paid_status"] = collection_rights.paid_status
-    collection_dict["cost"] = collection_rights.cost
+    collection_dict["cost"] = collection_rights.get_cost()
 
     # Insert an 'exploration' dict into each collection node, where the
     # dict includes meta information about the exploration (ID and title).
@@ -425,7 +425,7 @@ def get_displayable_exp_summary_dicts(exploration_summaries):
                 ),
                 'status': exploration_summary.status,
                 'paid_status': rights.paid_status if rights else feconf.DEFAULT_EXPLORATION_PAID_STATUS,
-                'cost': rights.cost if rights else None,
+                'cost': rights.get_cost() if rights else None,
                 'ratings': exploration_summary.ratings,
                 'community_owned': exploration_summary.community_owned,
                 'tags': exploration_summary.tags,
@@ -487,7 +487,7 @@ def _get_displayable_collection_summary_dicts(collection_summaries):
                 'language_code': collection_summary.language_code,
                 'tags': collection_summary.tags,
                 'paid_status': rights.paid_status if rights else feconf.DEFAULT_COLLECTION_PAID_STATUS,
-                'cost': rights.cost if rights else None,
+                'cost': rights.get_cost() if rights else None,
                 'node_count': collection_summary.node_count,
                 'last_updated_msec': utils.get_time_in_millisecs(
                     collection_summary.collection_model_last_updated),

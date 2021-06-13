@@ -42,6 +42,8 @@ from core.domain import user_services
 from core.platform import models
 import feconf
 import utils
+from python_utils import as_money
+
 
 app_identity_services = models.Registry.import_app_identity_services()
 current_user_services = models.Registry.import_current_user_services()
@@ -303,7 +305,7 @@ class ExplorationPaidStatusHandler(EditorHandler):
     def put(self, exploration_id):
         rights_activity = rights_manager.get_exploration_rights(exploration_id)
         paid_status = self.payload.get('paid_status', rights_activity.paid_status)
-        cost = self.payload.get('cost', rights_activity.cost)
+        cost = as_money(self.payload.get('cost', rights_activity.cost))
 
         rights_manager.change_exploration_paid_status(
             self.user,
