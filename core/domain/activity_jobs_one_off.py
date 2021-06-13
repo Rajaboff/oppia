@@ -659,6 +659,7 @@ class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
                 model.id,
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER.user_id,
                 feconf.DEFAULT_TOPIC_PAID_STATUS,
+                None,
             )
 
         yield ('SUCCESS', model.id)
