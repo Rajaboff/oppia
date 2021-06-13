@@ -41,6 +41,7 @@ from core.domain import topic_services
 from core.domain import user_services
 import feconf
 import utils
+from python_utils import as_money
 
 
 class TopicEditorStoryHandler(base.BaseHandler):
@@ -383,7 +384,7 @@ class TopicPaidStatusHandler(base.BaseHandler):
     def put(self, topic_id):
         rights_activity = topic_fetchers.get_topic_rights(topic_id)
         paid_status = self.payload.get('paid_status', rights_activity.paid_status)
-        cost = self.payload.get('cost', rights_activity.cost)
+        cost = as_money(self.payload.get('cost', rights_activity.cost))
 
         topic_services.change_topic_paid_status(
             topic_id=topic_id,

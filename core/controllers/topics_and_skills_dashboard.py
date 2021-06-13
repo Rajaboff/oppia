@@ -81,7 +81,7 @@ class TopicsAndSkillsDashboardPageDataHandler(base.BaseHandler):
                         topic_rights.paid_status
                     )
                     topic_summary['cost'] = (
-                        topic_rights.cost
+                        topic_rights.get_cost()
                     )
                     topic_summary['can_edit_topic'] = (
                         topic_services.check_can_edit_topic(

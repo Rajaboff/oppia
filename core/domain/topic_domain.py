@@ -1852,13 +1852,13 @@ class TopicRights(python_utils.OBJECT):
             topic_is_published: bool. Whether the topic is viewable by a
                 learner.
             paid_status: str. Is the topic need to be paid
-            cost: Optional[double]. The cost of the topic
+            cost: Optional[float]. The cost of the topic
         """
         self.id = topic_id
         self.manager_ids = manager_ids
         self.topic_is_published = topic_is_published
         self.paid_status = paid_status
-        self.cost = cost
+        self.cost = python_utils.as_money(cost)
 
     def to_dict(self):
         """Returns a dict suitable for use by the frontend.
@@ -1873,7 +1873,7 @@ class TopicRights(python_utils.OBJECT):
                 self.manager_ids),
             'topic_is_published': self.topic_is_published,
             'paid_status': self.paid_status,
-            'cost': self.cost,
+            'cost': self.get_cost(),
         }
 
     def is_manager(self, user_id):
@@ -1886,6 +1886,10 @@ class TopicRights(python_utils.OBJECT):
             bool. Whether user is a topic manager of this topic.
         """
         return bool(user_id in self.manager_ids)
+
+    def get_cost(self):
+        """Return cost as float"""
+        return python_utils.from_money(self.cost)
 
 class TopicUserAccess(python_utils.OBJECT):
     """Domain object for an Oppia topic user access."""
