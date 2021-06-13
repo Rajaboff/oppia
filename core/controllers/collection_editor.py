@@ -31,6 +31,7 @@ from core.domain import collection_domain
 from core.domain import user_services
 from core.platform import models
 import feconf
+from python_utils import as_money
 
 current_user_services = models.Registry.import_current_user_services()
 
@@ -186,7 +187,7 @@ class CollectionPaidStatusHandler(base.BaseHandler):
     def put(self, collection_id):
         rights_activity = rights_manager.get_collection_rights(collection_id)
         paid_status = self.payload.get('paid_status', rights_activity.paid_status)
-        cost = self.payload.get('cost', rights_activity.cost)
+        cost = as_money(self.payload.get('cost', rights_activity.cost))
 
         rights_manager.change_collection_paid_status(
             self.user,

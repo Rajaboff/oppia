@@ -78,7 +78,7 @@ class ActivityRights(python_utils.OBJECT):
         self.cloned_from = cloned_from
         self.status = status
         self.paid_status = paid_status
-        self.cost = cost
+        self.cost = python_utils.as_money(cost)
         self.viewable_if_private = viewable_if_private
         self.first_published_msec = first_published_msec
         self.activity_type = activity_type
@@ -149,7 +149,7 @@ class ActivityRights(python_utils.OBJECT):
                 'cloned_from': self.cloned_from,
                 'status': self.status,
                 'paid_status': self.paid_status,
-                'cost': self.cost,
+                'cost': self.get_cost(),
                 'community_owned': True,
                 'owner_names': [],
                 'editor_names': [],
@@ -162,7 +162,7 @@ class ActivityRights(python_utils.OBJECT):
                 'cloned_from': self.cloned_from,
                 'status': self.status,
                 'paid_status': self.paid_status,
-                'cost': self.cost,
+                'cost': self.get_cost(),
                 'community_owned': False,
                 'owner_names': user_services.get_human_readable_user_ids(
                     self.owner_ids),
@@ -266,6 +266,10 @@ class ActivityRights(python_utils.OBJECT):
             bool. Whether activity rights of collection.
         """
         return self.activity_type == constants.ACTIVITY_TYPE_COLLECTION
+
+    def get_cost(self):
+        """Get cost of activity"""
+        return python_utils.from_money(self.cost)
 
 
 class ExplorationRightsChange(change_domain.BaseChange):
