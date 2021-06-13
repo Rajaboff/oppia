@@ -1017,13 +1017,14 @@ def unpublish_topic(topic_id, committer_id):
     suggestion_services.auto_reject_translation_suggestions_for_exp_ids(exp_ids)
 
 
-def change_topic_paid_status(topic_id, committer_id, paid_status):
+def change_topic_paid_status(topic_id, committer_id, paid_status, cost):
     """Change topic paid status
 
     Args:
         topic_id: str. The id of the given topic.
         committer_id: str. ID of the committer.
         paid_status: str. Paid status of the topic
+        cost: Optional[Money]. Cost of the topic
     """
     topic_rights = topic_fetchers.get_topic_rights(topic_id, strict=False)
     if topic_rights is None:
@@ -1035,20 +1036,32 @@ def change_topic_paid_status(topic_id, committer_id, paid_status):
             'The user does not have enough rights to change paid status of the topic.'
         )
 
-    if topic_rights.paid_status == paid_status:
-        return
-
-    commit_cmds = [topic_domain.TopicRightsChange({
-        'cmd': topic_domain.CMD_CHANGE_TOPIC_PAID_STATUS,
-        'old_status': topic_rights.paid_status,
-        'new_status': paid_status,
-    })]
+    old_status = topic_rights.paid_status
+    old_cost = topic_rights.cost
 
     topic_rights.paid_status = paid_status
+    topic_rights.cost = cost
 
-    save_topic_rights(
-        topic_rights, committer_id, 'Changes paid status of the topic', commit_cmds
-    )
+    commit_cmds = []
+
+    if old_status != paid_status:
+        commit_cmds.append(topic_domain.TopicRightsChange({
+            'cmd': topic_domain.CMD_CHANGE_TOPIC_PAID_STATUS,
+            'old_status': old_status,
+            'new_status': paid_status,
+        }))
+
+    if old_cost != cost:
+        commit_cmds.append(topic_domain.TopicRightsChange({
+            'cmd': topic_domain.CMD_CHANGE_TOPIC_COST,
+            'old_cost': python_utils.from_money(old_cost),
+            'new_cost': python_utils.from_money(cost),
+        }))
+
+    if commit_cmds:
+        save_topic_rights(
+            topic_rights, committer_id, 'Changes paid status of the topic', commit_cmds
+        )
 
 
 def save_topic_rights(topic_rights, committer_id, commit_message, commit_cmds):
@@ -1068,6 +1081,7 @@ def save_topic_rights(topic_rights, committer_id, commit_message, commit_cmds):
     model.manager_ids = topic_rights.manager_ids
     model.topic_is_published = topic_rights.topic_is_published
     model.paid_status = topic_rights.paid_status
+    model.cost = topic_rights.get_cost()
     commit_cmd_dicts = [commit_cmd.to_dict() for commit_cmd in commit_cmds]
     model.commit(committer_id, commit_message, commit_cmd_dicts)
 
@@ -1079,7 +1093,7 @@ def create_new_topic_rights(topic_id, committer_id):
         topic_id: str. ID of the topic.
         committer_id: str. ID of the committer.
     """
-    topic_rights = topic_domain.TopicRights(topic_id, [], False, feconf.DEFAULT_TOPIC_PAID_STATUS)
+    topic_rights = topic_domain.TopicRights(topic_id, [], False, feconf.DEFAULT_TOPIC_PAID_STATUS, None)
     commit_cmds = [{'cmd': topic_domain.CMD_CREATE_NEW}]
 
     topic_models.TopicRightsModel(
@@ -1087,6 +1101,7 @@ def create_new_topic_rights(topic_id, committer_id):
         manager_ids=topic_rights.manager_ids,
         topic_is_published=topic_rights.topic_is_published,
         paid_status=topic_rights.paid_status,
+        cost=topic_rights.get_cost(),
     ).commit(committer_id, 'Created new topic rights', commit_cmds)
 
 

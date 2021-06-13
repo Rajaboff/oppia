@@ -112,11 +112,11 @@ payload={"paid_status":"need_paid", "cost": 197.0}
 Для изменения статуса нужно передать:
 
 ```bash
-payload={"paid_status":"free"}
+payload={"paid_status":"free", "cost": null}
 
 или
 
-payload={"paid_status":"need_paid"}
+payload={"paid_status":"need_paid", "cost": 197.0}
 ```
 
 ## PUT /createhandler/user_access/allow/{exploration_id} и /createhandler/user_access/restrict/{exploration_id}
