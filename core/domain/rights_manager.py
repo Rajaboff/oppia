@@ -325,7 +325,7 @@ def create_new_collection_rights(collection_id, committer_id):
         community_owned=collection_rights.community_owned,
         status=collection_rights.status,
         paid_status=collection_rights.paid_status,
-        # cost=collection_rights.cost,
+        cost=collection_rights.cost,
         viewable_if_private=collection_rights.viewable_if_private,
         first_published_msec=collection_rights.first_published_msec
     ).commit(committer_id, 'Created new collection', commit_cmds)
