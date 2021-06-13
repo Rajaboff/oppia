@@ -68,11 +68,11 @@ payload={}
 Для изменения статуса нужно передать:
 
 ```bash
-payload={"paid_status":"free"}
+payload={"paid_status":"free", "cost": null}
 
 или
 
-payload={"paid_status":"need_paid"}
+payload={"paid_status":"need_paid", "cost": 197.0}
 ```
 
 ## PUT /collection_editor_handler/paid_status/{collection_id}
@@ -90,11 +90,11 @@ payload={"paid_status":"need_paid"}
 Для изменения статуса нужно передать:
 
 ```bash
-payload={"paid_status":"free"}
+payload={"paid_status":"free", "cost": null}
 
 или
 
-payload={"paid_status":"need_paid"}
+payload={"paid_status":"need_paid", "cost": 197.0}
 ```
 
 ## PUT /rightshandler/change_topic_paid_status/{topic_id}
