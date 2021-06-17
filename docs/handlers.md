@@ -121,7 +121,7 @@ payload={"paid_status":"need_paid", "cost": 197.0}
 
 ## PUT /classroom_data_handler/paid_status/{classroom_url_fragment}
 
-Выставление стоимости для класса.
+Выставление стоимости для класса [MR72](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/72).
 
 Стоимость класса может менять только супер-админ.
 
