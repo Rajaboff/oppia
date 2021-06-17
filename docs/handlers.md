@@ -119,6 +119,22 @@ payload={"paid_status":"free", "cost": null}
 payload={"paid_status":"need_paid", "cost": 197.0}
 ```
 
+## PUT /classroom_data_handler/paid_status/{classroom_url_fragment}
+
+Выставление стоимости для класса [MR72](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/72).
+
+Стоимость класса может менять только супер-админ.
+
+Для изменения статуса нужно передать:
+
+```bash
+payload={"cost": null}
+
+или
+
+payload={"cost": 197.0}
+```
+
 ## PUT /createhandler/user_access/allow/{exploration_id} и /createhandler/user_access/restrict/{exploration_id}
 
 Открытие или закрытие доступа пользователю до платного занятия [MR35](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/35).

@@ -57,5 +57,7 @@ def get_classroom_by_url_fragment(classroom_url_fragment):
                 classroom_dict['url_fragment'],
                 classroom_dict['topic_ids'],
                 classroom_dict['course_details'],
-                classroom_dict['topic_list_intro'])
+                classroom_dict['topic_list_intro'],
+                classroom_dict.get('cost'),
+            )
     return None

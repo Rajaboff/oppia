@@ -724,6 +724,7 @@ TASK_URL_DEFERRED = (
 ADMIN_URL = '/admin'
 ADMIN_ROLE_HANDLER_URL = '/adminrolehandler'
 CLASSROOM_DATA_HANDLER = '/classroom_data_handler'
+CLASSROOM_PAID_STATUS_HANDLER = '/classroom_data_handler/paid_status'
 CLASSROOM_USER_ACCESS_ALLOW_HANDLER = '/classroom_data_handler/user_access/allow'
 CLASSROOM_USER_ACCESS_RESTRICT_HANDLER = '/classroom_data_handler/user_access/restrict'
 CLASSROOM_USER_ACCESS_LIST_HANDLER = '/classroom_data_handler/user_access/list'
