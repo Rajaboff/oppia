@@ -27,7 +27,7 @@ class Classroom(python_utils.OBJECT):
 
     def __init__(
             self, name, url_fragment, topic_ids,
-            course_details, topic_list_intro):
+            course_details, topic_list_intro, cost):
         """Constructs a Classroom domain object.
 
         Args:
@@ -36,9 +36,26 @@ class Classroom(python_utils.OBJECT):
             topic_ids: list(str). List of topic ids attached to the classroom.
             course_details: str. Course details for the classroom.
             topic_list_intro: str. Topic list introduction for the classroom.
+            cost: Optional[float]. Cost of the class
         """
         self.name = name
         self.url_fragment = url_fragment
         self.topic_ids = topic_ids
         self.course_details = course_details
         self.topic_list_intro = topic_list_intro
+        self.cost = python_utils.as_money(cost)
+
+    def get_cost(self):
+        """Get cost value from money"""
+        return python_utils.from_money(self.cost)
+
+    def to_dict(self):
+        """to_dict"""
+        return {
+            "name": self.name,
+            "url_fragment": self.url_fragment,
+            "topic_ids": self.topic_ids,
+            "course_details": self.course_details,
+            "topic_list_intro": self.topic_list_intro,
+            "cost": self.get_cost(),
+        }
