@@ -17,6 +17,7 @@
 from __future__ import absolute_import  # pylint: disable=import-only-modules
 from __future__ import unicode_literals  # pylint: disable=import-only-modules
 
+import json
 import logging
 from constants import constants
 
@@ -65,7 +66,6 @@ from core.domain import user_services
 from core.platform.email.mailgun_email_services import send_email_to_recipients
 from core.platform import models
 import feconf
-
 
 from mapreduce import main as mapreduce_main
 from mapreduce import parameters as mapreduce_parameters
@@ -127,7 +127,11 @@ class CustomAuthHandler(base.BaseHandler):
 
         email = self.payload.get('email')
         password = self.payload.get('password')
-        user_settings = user_services.get_user_settings_from_email(email)
+
+        if '@' in email:
+            user_settings = user_services.get_user_settings_from_email(email)
+        else:
+            user_settings = user_services.get_user_settings_from_username(email)
 
         if not user_settings or not python_utils.verify_password(user_settings.password, password):
             logging.error('Invalid credentials')
@@ -135,9 +139,20 @@ class CustomAuthHandler(base.BaseHandler):
 
         path_params = ""
         for item in self.request.GET.items():
+
             if path_params:
                 path_params += "&"
-            path_params += item[0] + "=" + item[1]
+
+            if item[0] == 'email':
+                path_param = (item[0], user_settings.email)
+            elif item[0] == 'payload':
+                path_param = (
+                item[0], json.dumps({"email": user_settings.email, "password": json.loads(item[1])["password"]}))
+            else:
+                path_param = (item[0], item[1])
+
+            print(path_param)
+            path_params += path_param[0] + "=" + path_param[1]
         url = "http://localhost/_ah/login?" + path_params
 
         response = requests.get(url, allow_redirects=True)
@@ -726,7 +741,8 @@ URLS = MAPREDUCE_HANDLERS + [
         r'/createhandler/statistics/<exploration_id>',
         editor.ExplorationStatisticsHandler),
     get_redirect_route(
-        r'/createhandler/state_interaction_stats/<exploration_id>/<escaped_state_name>',  # pylint: disable=line-too-long
+        r'/createhandler/state_interaction_stats/<exploration_id>/<escaped_state_name>',
+        # pylint: disable=line-too-long
         editor.StateInteractionStatsHandler),
     get_redirect_route(
         r'%s/<exploration_id>' % feconf.EXPLORATION_STATE_ANSWER_STATS_PREFIX,

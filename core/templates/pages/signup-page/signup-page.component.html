@@ -30,6 +30,20 @@ link before completing the signup process, they will be logged out.
 "></p>
             </div>
           </div>
+          <label for="name" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_NAME"style="font-family: 'Montserrat';
+    font-weight: 500; margin-bottom: 5px;" ></label>
+            <div class="col-lg-9 col-md-9 col-sm-9" style="
+    margin-bottom: 20px;
+">
+              <input type="text" name="name" required  ng-model="$ctrl.name" id="name" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+            </div>
+          <label for="surname" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_SURNAME"style="font-family: 'Montserrat';
+    font-weight: 500; margin-bottom: 5px;" ></label>
+            <div class="col-lg-9 col-md-9 col-sm-9" style="
+    margin-bottom: 20px;
+">
+              <input type="text" name="surname" required  ng-model="$ctrl.surname" id="surname" class="form-control oppia-username-input protractor-test-username-input" ng-trim="false" autofocus="true">
+            </div>
           <label for="email" class="col-lg-3 col-md-3 col-sm-3" translate="I18N_REGISTRATION_EMAIL"style="font-family: 'Montserrat';
     font-weight: 500; margin-bottom: 5px;" ></label>
             <div class="col-lg-9 col-md-9 col-sm-9" style="
