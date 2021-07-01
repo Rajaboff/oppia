@@ -269,6 +269,7 @@ angular.module('oppia').directive('topNavigationBar', [
               ctrl.isAdmin = userInfo.isAdmin();
               ctrl.isTopicManager = userInfo.isTopicManager();
               ctrl.isSuperAdmin = userInfo.isSuperAdmin();
+              ctrl.canCreateCollections = userInfo.canCreateCollections();
               ctrl.userIsLoggedIn = userInfo.isLoggedIn();
               ctrl.username = userInfo.getUsername();
               if (ctrl.username) {

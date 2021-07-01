@@ -34,6 +34,9 @@ angular.module('oppia').directive('explorationSummaryTile', [
     return {
       restrict: 'E',
       scope: {
+        getCost: '&cost',
+        getPaidStatus: '&paidStatus',
+        getIsAccessOpen: '&isAccessOpen',
         getCollectionId: '&collectionId',
         getExplorationId: '&explorationId',
         getExplorationTitle: '&explorationTitle',
@@ -109,6 +112,10 @@ angular.module('oppia').directive('explorationSummaryTile', [
 
           $scope.loadParentExploration = function() {
             $window.location.href = $scope.getExplorationLink();
+          };
+
+          $scope.getDisplayCost = function() {
+            return $scope.getPaidStatus() === 'free' ? 'Бесплатно' : $scope.getCost() + ' ₸';
           };
 
           $scope.getAverageRating = function() {
