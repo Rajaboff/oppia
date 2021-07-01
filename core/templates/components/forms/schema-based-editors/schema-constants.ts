@@ -22,6 +22,7 @@ export class SchemaConstants {
   static readonly SCHEMA_TYPE_CUSTOM = 'custom';
   static readonly SCHEMA_TYPE_DICT = 'dict';
   static readonly SCHEMA_TYPE_FLOAT = 'float';
+  static readonly SCHEMA_TYPE_FLOAT_OR_NONE = 'float_or_none';
   static readonly SCHEMA_TYPE_HTML = 'html';
   static readonly SCHEMA_TYPE_INT = 'int';
   static readonly SCHEMA_TYPE_UNICODE = 'unicode';

@@ -152,6 +152,8 @@ export class SchemaDefaultValueService {
     } else if (schema.type === SchemaConstants.SCHEMA_TYPE_INT ||
         schema.type === SchemaConstants.SCHEMA_TYPE_FLOAT) {
       return 0;
+    } else if (schema.type === SchemaConstants.SCHEMA_TYPE_FLOAT_OR_NONE) {
+      return null;
     } else {
       this.logger.error('Invalid schema: ' + JSON.stringify(schema));
     }
