@@ -547,14 +547,14 @@ DEFAULT_SALUTATION_HTML_FN = (
     lambda recipient_username: 'Hi %s,' % recipient_username)
 DEFAULT_SIGNOFF_HTML_FN = (
     lambda sender_username: (
-        'Thanks!<br>%s (Oppia moderator)' % sender_username))
+        'Thanks!<br>%s (Oqustudy moderator)' % sender_username))
 
 VALID_MODERATOR_ACTIONS = {
     MODERATOR_ACTION_UNPUBLISH_EXPLORATION: {
         'email_config': 'unpublish_exploration_email_html_body',
         'email_subject_fn': (
             lambda exp_title: (
-                'Your Oppia exploration "%s" has been unpublished' % exp_title)
+                'Your Oqustudy exploration "%s" has been unpublished' % exp_title)
         ),
         'email_intent': 'unpublish_exploration',
         'email_salutation_html_fn': DEFAULT_SALUTATION_HTML_FN,
