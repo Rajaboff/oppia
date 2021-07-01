@@ -622,16 +622,17 @@
     "I18N_TOPIC_VIEWER_VIEW_ALL": "Посмотреть все",
     "I18N_TOPIC_VIEWER_VIEW_LESS": "Посмотреть меньше",
     "I18N_CLASSROOM_CALLOUT_BUTTON": "Начать",
-    "I18N_CLASSROOM_CALLOUT_HEADING_11": "Математика - 5 класс",
-    "I18N_CLASSROOM_CALLOUT_HEADING_1": "Начальная школа - 3 класс",
+    "I18N_CLASSROOM_CALLOUT_HEADING_1": "Математика - 5 класс",
+    "I18N_CLASSROOM_CALLOUT_HEADING_11": "Начальная школа - 3 класс",
     "I18N_CLASSROOM_CALLOUT_HEADING_2": "Oqustudy.kz представляет ученикам, программу обучения",
-    "I18N_CLASSROOM_CALLOUT_PARAGRAPH_1": "Класс является дополнительным обучающим материалом к основной программе начальной школы за 3 класс, где основной упор курса ориентирован  на практические упражнения.",
-    "I18N_CLASSROOM_CALLOUT_PARAGRAPH_11": "Класс является дополнительным обучающим материалом к основной программе математики основной школы за 5 класс, основной упор курса  на практических упражнениях.",
+    "I18N_CLASSROOM_CALLOUT_PARAGRAPH_11": "Класс является дополнительным обучающим материалом к основной программе начальной школы за 3 класс, где основной упор курса ориентирован  на практические упражнения.",
+    "I18N_CLASSROOM_CALLOUT_PARAGRAPH_1": "Класс является дополнительным обучающим материалом к основной программе математики основной школы за 5 класс, основной упор курса  на практических упражнениях.",
     "I18N_CLASSROOM_PAGE_HEADING": "Страница класса от Oqustudy.kz",
     "I18N_CLASSROOM_PAGE_SEARCH_BAR_HEADING": "Изучите больше уроков",
     "I18N_CLASSROOM_PAGE_SEARCH_BAR_SUBHEADING": "Сделан лучшими преподавателями Казахстана",
     "I18N_SUBTOPIC_VIEWER_NEXT_SKILL": "Посмотреть следующую подтему",
-    "I18N_TOPNAV_CLASSROOM_BASIC_MATHS": "Начальная школа - 3 класс",
+    "I18N_TOPNAV_CLASSROOM_BASIC_MATHS_11": "Начальная школа - 3 класс",
+    "I18N_TOPNAV_CLASSROOM_BASIC_MATHS": "Математика - 5 класс",
     "I18N_SPLASH_BUTTON1": "ППопробывать"
 
 
