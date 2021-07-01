@@ -39,7 +39,7 @@ export class MathInteractionsService {
     // show the location.
     if (errorMessage.indexOf('bracket') !== -1) {
       // The error is about invalid bracket pairings.
-      return 'It looks like your answer has an invalid bracket pairing.';
+      return 'Похоже, в вашем ответе неверная пара скобок.';
     }
     let colonIndex = errorMessage.indexOf(':');
     if (colonIndex !== -1) {
@@ -55,16 +55,16 @@ export class MathInteractionsService {
     if (errorMessage[errorMessage.length - 1] !== '.') {
       errorMessage += '.';
     }
-    if (errorMessage === 'Division by zero not allowed.') {
-      errorMessage = 'Your answer includes a division by zero, which is ' +
-        'not valid.';
+    if (errorMessage === 'Деление на ноль не допускается.') {
+      errorMessage = 'Ваш ответ включает деление на ноль, т.е. ' +
+        'невалидный.';
     }
-    if (errorMessage.indexOf('is not a valid postfix operator.') !== -1) {
+    if (errorMessage.indexOf('не является допустимым постфиксным оператором.') !== -1) {
       errorMessage = (
-        'Your answer seems to be missing a variable/number after the "' +
+        'В вашем ответе отсутствует переменная / число после "' +
         errorMessage[0] + '".');
     }
-    if (errorMessage === 'A prefix operator was expected.') {
+    if (errorMessage === 'Ожидался префиксный оператор.') {
       let symbol1, symbol2;
       for (let s1 of '/*^') {
         for (let s2 of '+-/*^') {
@@ -75,11 +75,11 @@ export class MathInteractionsService {
         }
       }
       errorMessage = (
-        'Your answer has two symbols next to each other: "' + symbol1 +
-        '" and "' + symbol2 + '".');
+        'В вашем ответе два символа расположены рядом друг с другом: "' + symbol1 +
+        '" и "' + symbol2 + '".');
     }
     if (
-      errorMessage === 'Cannot read property \'parent\' of undefined.') {
+      errorMessage === 'Невозможно прочитать свойство \'parent\' неопределено.') {
       let emptyFunctionNames = [];
       for (let functionName of this.mathFunctionNames) {
         if (expressionString.includes(functionName + '()')) {
@@ -87,8 +87,8 @@ export class MathInteractionsService {
         }
       }
       errorMessage = (
-        'The ' + emptyFunctionNames.join(', ') +
-        ' function(s) cannot be empty. Please enter a variable/number in it.');
+        ' ' + emptyFunctionNames.join(', ') +
+        ' функция (и) не может быть пустой. Пожалуйста, введите в него переменную / число.');
     }
     return errorMessage;
   }
@@ -96,22 +96,22 @@ export class MathInteractionsService {
   _validateExpression(expressionString: string): boolean {
     expressionString = expressionString.replace(/\s/g, '');
     if (expressionString.length === 0) {
-      this.warningText = 'Please enter an answer before submitting.';
+      this.warningText = 'Пожалуйста, введите ответ перед отправкой.';
       return false;
     } else if (expressionString.indexOf('=') !== -1 || expressionString.indexOf(
       '<') !== -1 || expressionString.indexOf('>') !== -1) {
-      this.warningText = 'It looks like you have entered an ' +
-        'equation/inequality. Please enter an expression instead.';
+      this.warningText = 'Похоже, вы ввели  ' +
+        'уравнение / неравенство. Вместо этого введите выражение.';
       return false;
     } else if (expressionString.indexOf('_') !== -1) {
-      this.warningText = 'Your answer contains an invalid character: "_".';
+      this.warningText = 'Ваш ответ содержит недопустимый символ: "_".';
       return false;
     }
     let invalidIntegers = expressionString.match(
       /(\d*\.\d*\.\d*)|(\d+\.\D)|(\D\.\d+)|(\d+\.$)/g);
     if (invalidIntegers !== null) {
       this.warningText = (
-        'Your answer contains an invalid term: ' + invalidIntegers[0]);
+        'Ваш ответ содержит недопустимый термин: ' + invalidIntegers[0]);
       return false;
     }
     try {
@@ -150,17 +150,17 @@ export class MathInteractionsService {
       }
     }
     if (variablesList.length === 0) {
-      this.warningText = 'It looks like you have entered only ' +
-      'numbers. Make sure to include the necessary variables' +
-      ' mentioned in the question.';
+      this.warningText = 'Похоже, вы ввели только ' +
+      'числа. Обязательно укажите необходимые переменные' +
+      ' упомянутый в вопросе.';
       return false;
     } else if (validVariablesList.length !== 0) {
       for (let variable of variablesList) {
         if (validVariablesList.indexOf(variable) === -1) {
           this.warningText = (
-            'You have entered an invalid variable: ' + variable +
-            '. Please use only the variables ' + validVariablesList.join() +
-            ' in your answer.');
+            'Вы ввели недопустимую переменную: ' + variable +
+            '. Пожалуйста, используйте только переменные ' + validVariablesList.join() +
+            ' в вашем ответе.');
           return false;
         }
       }
@@ -177,8 +177,8 @@ export class MathInteractionsService {
         new RegExp(functionName, 'g'), '');
     }
     if (/[a-zA-Z]/.test(expressionString)) {
-      this.warningText = 'It looks like you have entered some variables. ' +
-        'Please enter numbers only.';
+      this.warningText = 'Похоже, вы ввели какие-то переменные. ' +
+        'Пожалуйста, введите только цифры.';
       return false;
     }
     return true;
@@ -188,27 +188,27 @@ export class MathInteractionsService {
       equationString: string, validVariablesList: string[]): boolean {
     equationString = equationString.replace(/\s/g, '');
     if (equationString.length === 0) {
-      this.warningText = 'Please enter an answer before submitting.';
+      this.warningText = 'Пожалуйста, введите ответ перед отправкой.';
       return false;
     } else if (equationString.indexOf(
       '<') !== -1 || equationString.indexOf('>') !== -1) {
-      this.warningText = 'It looks like you have entered an ' +
-        'inequality. Please enter an equation instead.';
+      this.warningText = 'Похоже, вы ввели ' +
+        'неравенство. Вместо этого введите уравнение.';
       return false;
     } else if (equationString.indexOf('=') === -1) {
-      this.warningText = 'It looks like you have entered an ' +
-        'expression. Please enter an equation instead.';
+      this.warningText = 'Похоже, вы ввели ' +
+        'выражение. Пожалуйста, введите вместо этого уравнение.';
       return false;
     } else if (equationString.indexOf('=') === 0) {
-      this.warningText = 'The LHS of your equation is empty.';
+      this.warningText = 'Левая часть вашего уравнения пуста.';
       return false;
     } else if (equationString.indexOf('=') === equationString.length - 1) {
-      this.warningText = 'The RHS of your equation is empty.';
+      this.warningText = 'Правая часть вашего уравнения пуста.';
       return false;
     }
     let splitString = equationString.split('=');
     if (splitString.length !== 2) {
-      this.warningText = 'Your equation contains multiple = signs.';
+      this.warningText = 'Ваше уравнение содержит несколько знаков =.';
       return false;
     }
     let lhsString = splitString[0], rhsString = splitString[1];
@@ -222,7 +222,7 @@ export class MathInteractionsService {
     // At least one side must be algebraic. Purely numeric equations are
     // considered as invalid.
     if (lhsIsNumericallyValid && rhsIsNumericallyValid) {
-      this.warningText = 'The equation must contain at least one variable.';
+      this.warningText = 'Уравнение должно содержать хотя бы одну переменную.';
       return false;
     }
     if (lhsIsAlgebraicallyValid && rhsIsAlgebraicallyValid ||

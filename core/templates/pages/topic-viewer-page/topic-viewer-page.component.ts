@@ -90,7 +90,7 @@ export class TopicViewerPageComponent implements OnInit {
         this.topicName = readOnlyTopic.getTopicName();
         this.topicDescription = readOnlyTopic.getTopicDescription();
         this.pageTitleService.setPageTitle(
-          `Learn ${this.topicName} | ${this.topicDescription} | Oppia`);
+          `Изучаем ${this.topicName} | ${this.topicDescription} | Oqustudy`);
         this.pageTitleService.updateMetaTag(readOnlyTopic.getMetaTagContent());
         this.canonicalStorySummaries = (
           readOnlyTopic.getCanonicalStorySummaries());
@@ -110,7 +110,7 @@ export class TopicViewerPageComponent implements OnInit {
       errorResponse => {
         let errorCodes = AppConstants.FATAL_ERROR_CODES;
         if (errorCodes.indexOf(errorResponse.status) !== -1) {
-          this.alertsService.addWarning('Failed to get dashboard data');
+          this.alertsService.addWarning('Не удалось получить данные доски');
         }
       }
     );
