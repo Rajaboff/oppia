@@ -29,13 +29,16 @@
                               is-community-editable="activity.community_editable"
                               show-learner-dashboard-icons-if-possible="true"
                               container-is-narrow="$ctrl.libraryWindowIsNarrow"
+                              paid-status="activity.paid_status"
+                              cost="activity.cost"
+                              is-access-open="activity.is_access_open"
                               class="protractor-test-exp-summary-tile">
     </exploration-summary-tile>
   </div>
 </div>
 <div class="oppia-search-results-loading-message"
      ng-if="$ctrl.searchResultsAreLoading">
-Загружаются еще 
+Загружаются еще
   <loading-dots></loading-dots>
 </div>
 
