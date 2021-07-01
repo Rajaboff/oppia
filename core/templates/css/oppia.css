@@ -5063,5 +5063,10 @@ b3 {
 
 .oppia-exploration-dashboard-card .price {
    text-align: center;
-   color: #fff;
+    color: #fff;
+    font-family: 'Montserrat';
+    border: 1px solid #fff;
+    border-radius: 8px;
+    width: 120px;
+    margin: 10px 10px 0px 40px;
 }
