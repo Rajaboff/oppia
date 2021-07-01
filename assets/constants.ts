@@ -28,7 +28,7 @@ export = {
 
   // The default classroom URL fragment to use when the provided classroom URL
   // fragment in the controller is invalid.
-  "DEFAULT_CLASSROOM_URL_FRAGMENT": "mathfive",
+  "DEFAULT_CLASSROOM_URL_FRAGMENT": "math",
 
   "ALL_CATEGORIES": ["Algebra", "Algorithms", "Architecture", "Arithmetic",
     "Art", "Astronomy", "Biology", "Business", "Calculus", "Chemistry",
