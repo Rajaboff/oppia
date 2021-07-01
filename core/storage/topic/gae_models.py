@@ -398,6 +398,8 @@ class TopicRightsModel(base_models.VersionedModel):
             constants.ACTIVITY_PAID_STATUS_FREE,
         ]
     )
+    # Cost of the exploration, in conventional units
+    cost = datastore_services.FloatProperty(indexed=True, default=None)
 
     @staticmethod
     def get_deletion_policy():
@@ -501,6 +503,7 @@ class TopicRightsModel(base_models.VersionedModel):
             'manager_ids': base_models.EXPORT_POLICY.EXPORTED,
             'topic_is_published': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'paid_status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'cost': base_models.EXPORT_POLICY.NOT_APPLICABLE,
         })
 
     @classmethod

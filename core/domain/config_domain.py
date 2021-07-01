@@ -110,7 +110,14 @@ SET_OF_CLASSROOM_DICTS_SCHEMA = {
                     'id': 'is_uniquified',
                 }]
             }
-        }]
+        },
+        {
+            'name': 'cost',
+            'schema': {
+                'type': 'float_or_none',
+            }
+        },
+        ]
     }
 }
 
@@ -389,7 +396,8 @@ CLASSROOM_PAGES_DATA = ConfigProperty(
         'url_fragment': 'math',
         'topic_ids': [],
         'course_details': '',
-        'topic_list_intro': ''
+        'topic_list_intro': '',
+        'cost': None,
     }]
 )
 

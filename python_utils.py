@@ -26,6 +26,7 @@ import hashlib
 import io
 import os
 import sys
+from decimal import Decimal
 
 _FUTURE_PATH = os.path.join(
     os.getcwd(), 'third_party', 'python_libs')
@@ -474,3 +475,24 @@ def verify_password(stored_password, provided_password):
     hashed = hexlify(hashed).decode("ascii")
 
     return hashed == stored_password
+
+# Number of digits after decimal to which money is rounded off to.
+MONEY_PRECISION = 2
+
+Money = Decimal
+
+def as_money(money):
+    """Round as money
+
+    Args:
+        money (Optional[double]): Money value
+
+    Returns:
+        Optional[Money]: money as Money class
+    """
+    return Money(str(ROUND(money, MONEY_PRECISION))) if money is not None else None
+
+
+def from_money(money):
+    """Transform money to float"""
+    return float(money) if money is not None else None

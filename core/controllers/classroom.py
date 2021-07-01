@@ -21,10 +21,12 @@ from core.controllers import acl_decorators
 from core.controllers import base
 from core.domain import classroom_services
 from core.domain import config_domain
+from core.domain import config_services
 from core.domain import topic_services
 from core.domain import topic_domain
 from core.domain import user_services
 import feconf
+from python_utils import as_money, from_money
 
 
 class ClassroomPage(base.BaseHandler):
@@ -65,6 +67,7 @@ class ClassroomDataHandler(base.BaseHandler):
             if topic_summary is not None and topic_right.topic_is_published:
                 topic_dict = topic_summary.to_dict()
                 topic_dict["paid_status"] = topic_right.paid_status
+                topic_dict["cost"] = topic_right.get_cost()
                 topic_dict["is_access_open"] = topic_summary.id in user_availbale_topics
                 topic_summary_dicts.append(topic_dict)
 
@@ -72,7 +75,8 @@ class ClassroomDataHandler(base.BaseHandler):
             'topic_summary_dicts': topic_summary_dicts,
             'topic_list_intro': classroom.topic_list_intro,
             'course_details': classroom.course_details,
-            'name': classroom.name
+            'name': classroom.name,
+            'cost': classroom.get_cost(),
         })
         self.render_json(self.values)
 
@@ -168,3 +172,29 @@ class ClassroomUserAccessListHandler(base.BaseHandler):
         self.render_json({
             'user_list': topic_user_info
         })
+
+
+class ClassroomPaidStatusHandler(base.BaseHandler):
+    """Handles opening access to the class that should be paid
+    for user or users."""
+
+    @acl_decorators.can_change_paid_status_class
+    def put(self, classroom_url_fragment):
+        if "cost" in self.payload:
+            cost = as_money(self.payload["cost"])
+
+            classrooms = config_domain.CLASSROOM_PAGES_DATA.value
+            for classroom_dict in classrooms:
+                if classroom_url_fragment == classroom_dict['url_fragment']:
+                    classroom_dict["cost"] =  from_money(cost)
+
+            config_services.set_property(
+                self.user_id,
+                config_domain.CLASSROOM_PAGES_DATA.name,
+                classrooms,
+            )
+
+        classroom = classroom_services.get_classroom_by_url_fragment(
+            classroom_url_fragment
+        )
+        self.render_json(classroom.to_dict())

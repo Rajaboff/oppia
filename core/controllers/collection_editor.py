@@ -31,6 +31,7 @@ from core.domain import collection_domain
 from core.domain import user_services
 from core.platform import models
 import feconf
+from python_utils import as_money
 
 current_user_services = models.Registry.import_current_user_services()
 
@@ -184,14 +185,16 @@ class CollectionPaidStatusHandler(base.BaseHandler):
 
     @acl_decorators.can_change_paid_status_collection
     def put(self, collection_id):
-        paid_status = self.payload.get('paid_status')
+        rights_activity = rights_manager.get_collection_rights(collection_id)
+        paid_status = self.payload.get('paid_status', rights_activity.paid_status)
+        cost = as_money(self.payload.get('cost', rights_activity.cost))
 
-        if paid_status:
-            rights_manager.change_collection_paid_status(
-                self.user,
-                collection_id,
-                paid_status,
-            )
+        rights_manager.change_collection_paid_status(
+            self.user,
+            collection_id,
+            paid_status,
+            cost,
+        )
 
         self.render_json({
             'rights': rights_manager.get_collection_rights(

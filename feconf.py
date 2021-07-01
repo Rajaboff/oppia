@@ -547,14 +547,14 @@ DEFAULT_SALUTATION_HTML_FN = (
     lambda recipient_username: 'Hi %s,' % recipient_username)
 DEFAULT_SIGNOFF_HTML_FN = (
     lambda sender_username: (
-        'Thanks!<br>%s (Oppia moderator)' % sender_username))
+        'Thanks!<br>%s (Oqustudy moderator)' % sender_username))
 
 VALID_MODERATOR_ACTIONS = {
     MODERATOR_ACTION_UNPUBLISH_EXPLORATION: {
         'email_config': 'unpublish_exploration_email_html_body',
         'email_subject_fn': (
             lambda exp_title: (
-                'Your Oppia exploration "%s" has been unpublished' % exp_title)
+                'Your Oqustudy exploration "%s" has been unpublished' % exp_title)
         ),
         'email_intent': 'unpublish_exploration',
         'email_salutation_html_fn': DEFAULT_SALUTATION_HTML_FN,
@@ -724,6 +724,7 @@ TASK_URL_DEFERRED = (
 ADMIN_URL = '/admin'
 ADMIN_ROLE_HANDLER_URL = '/adminrolehandler'
 CLASSROOM_DATA_HANDLER = '/classroom_data_handler'
+CLASSROOM_PAID_STATUS_HANDLER = '/classroom_data_handler/paid_status'
 CLASSROOM_USER_ACCESS_ALLOW_HANDLER = '/classroom_data_handler/user_access/allow'
 CLASSROOM_USER_ACCESS_RESTRICT_HANDLER = '/classroom_data_handler/user_access/restrict'
 CLASSROOM_USER_ACCESS_LIST_HANDLER = '/classroom_data_handler/user_access/list'
@@ -1128,7 +1129,9 @@ CMD_REMOVE_ROLE = 'remove_role'
 CMD_CHANGE_EXPLORATION_STATUS = 'change_exploration_status'
 CMD_CHANGE_COLLECTION_STATUS = 'change_collection_status'
 CMD_CHANGE_EXPLORATION_PAID_STATUS = 'change_exploration_paid_status'
+CMD_CHANGE_EXPLORATION_COST = 'change_exploration_cost'
 CMD_CHANGE_COLLECTION_PAID_STATUS = 'change_collection_paid_status'
+CMD_CHANGE_COLLECTION_COST = 'change_collection_cost'
 CMD_CHANGE_PRIVATE_VIEWABILITY = 'change_private_viewability'
 CMD_RELEASE_OWNERSHIP = 'release_ownership'
 CMD_UPDATE_FIRST_PUBLISHED_MSEC = 'update_first_published_msec'
@@ -1217,7 +1220,15 @@ COLLECTION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
         'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
         'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
     }
-}])
+},
+{
+    'name': CMD_CHANGE_COLLECTION_COST,
+    'required_attribute_names': [
+        'old_cost', 'new_cost'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': []
+}
+])
 
 EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS = copy.deepcopy(
     COMMON_RIGHTS_ALLOWED_COMMANDS)
@@ -1240,11 +1251,20 @@ EXPLORATION_RIGHTS_CHANGE_ALLOWED_COMMANDS.extend([{
         'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
         'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
     }
-}])
+},
+{
+    'name': CMD_CHANGE_EXPLORATION_COST,
+    'required_attribute_names': [
+        'old_cost', 'new_cost'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': []
+}
+])
 
 CMD_REMOVE_MANAGER_ROLE = 'remove_manager_role'
 CMD_PUBLISH_TOPIC = 'publish_topic'
 CMD_CHANGE_TOPIC_PAID_STATUS = 'change_topic_paid_status'
+CMD_CHANGE_TOPIC_COST = 'change_topic_cost'
 CMD_UNPUBLISH_TOPIC = 'unpublish_topic'
 
 ROLE_MANAGER = 'manager'
@@ -1287,7 +1307,8 @@ TOPIC_RIGHTS_CHANGE_ALLOWED_COMMANDS = [{
     'required_attribute_names': [],
     'optional_attribute_names': [],
     'user_id_attribute_names': []
-}, {
+},
+{
     'name': CMD_CHANGE_TOPIC_PAID_STATUS,
     'required_attribute_names': ['old_status', 'new_status'],
     'optional_attribute_names': [],
@@ -1296,7 +1317,14 @@ TOPIC_RIGHTS_CHANGE_ALLOWED_COMMANDS = [{
         'old_status': ALLOWED_ACTIVITY_PAID_STATUS,
         'new_status': ALLOWED_ACTIVITY_PAID_STATUS,
     }
-}]
+},
+{
+    'name': CMD_CHANGE_TOPIC_COST,
+    'required_attribute_names': ['old_cost', 'new_cost'],
+    'optional_attribute_names': [],
+    'user_id_attribute_names': [],
+},
+]
 
 USER_ID_RANDOM_PART_LENGTH = 32
 USER_ID_LENGTH = 36

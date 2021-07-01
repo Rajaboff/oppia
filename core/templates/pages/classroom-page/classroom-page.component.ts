@@ -63,12 +63,12 @@ angular.module('oppia').component('classroomPage', {
           ctrl.classroomDisplayName = (
             $filter('capitalize')(classroomData.getName()));
           PageTitleService.setPageTitle(
-            ctrl.classroomDisplayName + ' Classroom | Oppia');
+            ctrl.classroomDisplayName + ' Класс | Oqustudy');
           LoaderService.hideLoadingScreen();
           ctrl.classroomBackendApiService.onInitializeTranslation.emit();
         }, function(errorResponse) {
           if (FATAL_ERROR_CODES.indexOf(errorResponse.status) !== -1) {
-            AlertsService.addWarning('Failed to get dashboard data');
+            AlertsService.addWarning('Не удалось получить данные доски');
           }
         });
       };

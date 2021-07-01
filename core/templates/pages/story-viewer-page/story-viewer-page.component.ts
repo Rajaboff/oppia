@@ -123,7 +123,7 @@ angular.module('oppia').component('storyViewerPage', {
 
       ctrl.$onInit = function() {
         ctrl.storyIsLoaded = false;
-        LoaderService.showLoadingScreen('Loading');
+        LoaderService.showLoadingScreen('Загрузка');
         var topicUrlFragment = (
           UrlService.getTopicUrlFragmentFromLearnerUrl());
         var classroomUrlFragment = (
@@ -140,7 +140,7 @@ angular.module('oppia').component('storyViewerPage', {
             ctrl.storyId = ctrl.storyPlaythroughObject.getStoryId();
             var topicName = ctrl.storyPlaythroughObject.topicName;
             ctrl.pageTitleService.setPageTitle(
-              `Learn ${topicName} | ${storyDataDict.title} | Oppia`);
+              `Изучаем ${topicName} | ${storyDataDict.title} | Oqustudy`);
             ctrl.pageTitleService.updateMetaTag(
               storyDataDict.getMetaTagContent());
             ctrl.storyTitle = storyDataDict.title;

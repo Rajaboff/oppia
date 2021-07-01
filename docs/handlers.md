@@ -68,11 +68,11 @@ payload={}
 Для изменения статуса нужно передать:
 
 ```bash
-payload={"paid_status":"free"}
+payload={"paid_status":"free", "cost": null}
 
 или
 
-payload={"paid_status":"need_paid"}
+payload={"paid_status":"need_paid", "cost": 197.0}
 ```
 
 ## PUT /collection_editor_handler/paid_status/{collection_id}
@@ -90,11 +90,11 @@ payload={"paid_status":"need_paid"}
 Для изменения статуса нужно передать:
 
 ```bash
-payload={"paid_status":"free"}
+payload={"paid_status":"free", "cost": null}
 
 или
 
-payload={"paid_status":"need_paid"}
+payload={"paid_status":"need_paid", "cost": 197.0}
 ```
 
 ## PUT /rightshandler/change_topic_paid_status/{topic_id}
@@ -112,11 +112,27 @@ payload={"paid_status":"need_paid"}
 Для изменения статуса нужно передать:
 
 ```bash
-payload={"paid_status":"free"}
+payload={"paid_status":"free", "cost": null}
 
 или
 
-payload={"paid_status":"need_paid"}
+payload={"paid_status":"need_paid", "cost": 197.0}
+```
+
+## PUT /classroom_data_handler/paid_status/{classroom_url_fragment}
+
+Выставление стоимости для класса [MR72](https://gitlab.com/AkhanBakhitov/oppia/-/merge_requests/72).
+
+Стоимость класса может менять только супер-админ.
+
+Для изменения статуса нужно передать:
+
+```bash
+payload={"cost": null}
+
+или
+
+payload={"cost": 197.0}
 ```
 
 ## PUT /createhandler/user_access/allow/{exploration_id} и /createhandler/user_access/restrict/{exploration_id}

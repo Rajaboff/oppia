@@ -645,18 +645,21 @@ class SetPaidStatus4ActivityRightsOneOffJob(jobs.BaseMapReduceOneOffJobManager):
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
                 model.id,
                 feconf.DEFAULT_EXPLORATION_PAID_STATUS,
+                None,
             )
         elif isinstance(model, collection_models.CollectionRightsModel):
             rights_manager.change_collection_paid_status(
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER,
                 model.id,
                 feconf.DEFAULT_COLLECTION_PAID_STATUS,
+                None,
             )
         elif isinstance(model, topic_models.TopicRightsModel):
             topic_services.change_topic_paid_status(
                 model.id,
                 SetPaidStatus4ActivityRightsOneOffJob.COMMITER.user_id,
                 feconf.DEFAULT_TOPIC_PAID_STATUS,
+                None,
             )
 
         yield ('SUCCESS', model.id)

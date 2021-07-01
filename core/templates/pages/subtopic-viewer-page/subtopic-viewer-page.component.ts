@@ -73,9 +73,9 @@ angular.module('oppia').component('subtopicViewerPage', {
             ContextService.setCustomEntityContext(
               ENTITY_TYPE.TOPIC, ctrl.parentTopicId);
             ctrl.pageTitleService.setPageTitle(
-              `Review ${ctrl.subtopicTitle} | Oppia`);
+              `Рассмотрим ${ctrl.subtopicTitle} | Oqustudy`);
             ctrl.pageTitleService.updateMetaTag(
-              `Review the skill of ${ctrl.subtopicTitle.toLowerCase()}.`);
+              `Оцените навыки ${ctrl.subtopicTitle.toLowerCase()}.`);
 
             let nextSubtopic = (
               subtopicDataObject.getNextSubtopic());
@@ -89,7 +89,7 @@ angular.module('oppia').component('subtopicViewerPage', {
           },
           function(errorResponse) {
             if (FATAL_ERROR_CODES.indexOf(errorResponse.status) !== -1) {
-              AlertsService.addWarning('Failed to get subtopic data');
+              AlertsService.addWarning('Не удалось получить данные подтемы');
             }
           }
         );

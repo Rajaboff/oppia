@@ -101,7 +101,7 @@ angular.module('oppia').component('practiceSessionPage', {
           ctrl.questionPlayerConfig = questionPlayerConfig;
           ctrl.topicName = result.data.topic_name;
           PageTitleService.setPageTitle(
-            'Practice Session: ' + ctrl.topicName + ' - Oppia');
+            'Практическbt занятия: ' + ctrl.topicName + ' - Oqustudy');
         });
       };
       ctrl.$onInit = function() {

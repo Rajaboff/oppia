@@ -51,6 +51,7 @@ SCHEMA_TYPE_BOOL = 'bool'
 SCHEMA_TYPE_CUSTOM = 'custom'
 SCHEMA_TYPE_DICT = 'dict'
 SCHEMA_TYPE_FLOAT = 'float'
+SCHEMA_TYPE_FLOAT_OR_NONE = 'float_or_none'
 SCHEMA_TYPE_HTML = 'html'
 SCHEMA_TYPE_INT = 'int'
 SCHEMA_TYPE_LIST = 'list'
@@ -116,6 +117,21 @@ def normalize_against_schema(obj, schema, apply_custom_validators=True):
                 type(obj).__name__, obj))
         assert isinstance(obj, numbers.Real), (
             'Expected float, received %s' % obj)
+        normalized_obj = obj
+    elif schema[SCHEMA_KEY_TYPE] == SCHEMA_TYPE_FLOAT_OR_NONE:
+        assert obj is None or isinstance(obj, float), (
+            'Expected float or None, received %s' % obj
+        )
+        if obj is not None:
+            try:
+                obj = float(obj)
+            except Exception:
+                raise Exception('Could not convert %s to float: %s' % (
+                    type(obj).__name__, obj))
+
+            assert isinstance(obj, numbers.Real), (
+                'Expected float, received %s' % obj
+            )
         normalized_obj = obj
     elif schema[SCHEMA_KEY_TYPE] == SCHEMA_TYPE_INT:
         try:

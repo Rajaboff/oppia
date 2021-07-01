@@ -313,4 +313,5 @@ def get_topic_rights_from_model(topic_rights_model):
         topic_rights_model.manager_ids,
         topic_rights_model.topic_is_published,
         topic_rights_model.paid_status,
+        topic_rights_model.cost,
     )
