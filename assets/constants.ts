@@ -4742,6 +4742,9 @@ export = {
     "code": "ru",
     "description": "Русский"
   }, {
+    "code": "kaz",
+    "description": "Қазақша"
+  }, {
     "code": "en",
     "description": "English"
   }],
@@ -4750,6 +4753,12 @@ export = {
   // languages are in alphabetical order.
   // List of supported site languages in which the platform is offered.
   "SUPPORTED_SITE_LANGUAGES": [{
+    "id": "ru",
+    "text": "Русский"
+  }, {
+    "id": "kaz",
+    "text": "Қазақша"
+  }, {
     "id": "en",
     "text": "English"
   }],
@@ -4761,8 +4770,13 @@ export = {
   "SUPPORTED_AUDIO_LANGUAGES": [
    {
     "id": "ru",
-    "description": "Russian",
+    "description": "Русский",
     "relatedLanguages": ["ru"]
+  },
+  {
+    "id": "kaz",
+    "description": "Қазақша",
+    "relatedLanguages": ["kaz"]
   }, {
     "id": "en",
     "description": "English",
