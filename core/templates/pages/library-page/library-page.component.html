@@ -51,7 +51,25 @@
           <search-bar enable-dropup="false"></search-bar>
         </div>
 
-        <div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" >
+        
+
+<div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" style="
+    background-color: #FFE4CC;">
+          <div class="oppia-classroom-text">
+            
+            <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_11"></h1>
+            <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_11"></p>
+            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/math5" href="/learn/math5"></a>
+          </div>
+          <picture>
+            <source type="image/png"
+                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/programming.png')]>">
+            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/programming.png')]>"
+                 alt="math classroom illustration" style="
+    margin: 20px 10px 0px 30px; max-width: 44%;">
+          </picture>
+        </div>
+<div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" >
           <div class="oppia-classroom-text">
             
             <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_1"></h1>
@@ -67,24 +85,6 @@
     margin: 20px 10px 0px 30px; max-width: 44%;">
           </picture>
         </div>
-
-<div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" style="
-    background-color: #FFE4CC;">
-          <div class="oppia-classroom-text">
-            
-            <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_11"></h1>
-            <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_11"></p>
-            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/programming" href="/learn/programming"></a>
-          </div>
-          <picture>
-            <source type="image/png"
-                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/programming.png')]>">
-            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/programming.png')]>"
-                 alt="math classroom illustration" style="
-    margin: 20px 10px 0px 30px; max-width: 44%;">
-          </picture>
-        </div>
-
         <div ng-if="$ctrl.libraryGroups.length === 0"
              class="text-center w-100 oppia-library-no-exploration-groups"
              translate="I18N_LIBRARY_NO_EXPLORATION_GROUPS">

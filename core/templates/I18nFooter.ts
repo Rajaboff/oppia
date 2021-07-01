@@ -71,7 +71,7 @@ angular.module('oppia').config([
       availableLanguageKeys.push(language.id);
       availableLanguageKeysMap[language.id + '*'] = language.id;
     });
-    availableLanguageKeysMap['*'] = 'en';
+    availableLanguageKeysMap['*'] = 'ru';
 
     $translateProvider
       .registerAvailableLanguageKeys(
@@ -82,8 +82,8 @@ angular.module('oppia').config([
       })
       // The use of default translation improves the loading time when English
       // is selected.
-      .translations('en', DEFAULT_TRANSLATIONS)
-      .fallbackLanguage('en')
+      .translations('ru', DEFAULT_TRANSLATIONS)
+      .fallbackLanguage('ru')
       .determinePreferredLanguage()
       .useCookieStorage()
       // The messageformat interpolation method is necessary for pluralization.
