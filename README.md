@@ -9,6 +9,7 @@
 * [Работа с API](docs/api.md)
 * [Задачи (jobs) для фиксации БД](docs/jobs.md)
 * [Бекапы](docs/backup.md)
+* [Оплата](docs/payment.md)
 
 ## Что изменилось?
 
