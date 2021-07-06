@@ -190,17 +190,18 @@ angular.module('oppia').directive('questionPlayer', [
 
           ctrl.getActionButtonIconHtml = function(actionButtonType) {
             var iconHtml = '';
-            if (actionButtonType === 'BOOST_SCORE') {
+            if (actionButtonType === 'DASHBOARD') {
               iconHtml = `<picture>
               <source type="image/webp" 
               srcset="${getStaticImageUrl('/icons/rocket@2x.webp')}">
               <source type="image/png" 
-              srcset="${getStaticImageUrl('/icons/rocket@2x.png')}">
+              srcset="${getStaticImageUrl('/icons/house.png')}">
               <img alt=""
                    class="action-button-icon" 
-                   src="${getStaticImageUrl('/icons/rocket@2x.png')}"/>
+                   src="${getStaticImageUrl('/icons/house.png')}"/>
               </picture>`;
-            } else if (actionButtonType === 'RETRY_SESSION') {
+            }
+             else if (actionButtonType === 'RETRY_SESSION') {
               iconHtml = `<picture>
               <source type="image/webp" 
               srcset="${getStaticImageUrl('/icons/rocket@2x.webp')}">
@@ -210,15 +211,15 @@ angular.module('oppia').directive('questionPlayer', [
                    class="action-button-icon" 
                    src="${getStaticImageUrl('/icons/game.png')}"/>
               </picture>`;
-            } else if (actionButtonType === 'DASHBOARD') {
+            } else if (actionButtonType === 'BOOST_SCORE') {
               iconHtml = `<picture>
               <source type="image/webp" 
               srcset="${getStaticImageUrl('/icons/rocket@2x.webp')}">
               <source type="image/png" 
-              srcset="${getStaticImageUrl('/icons/house.png')}">
+              srcset="${getStaticImageUrl('/icons/rocket@2x.png')}">
               <img alt=""
                    class="action-button-icon" 
-                   src="${getStaticImageUrl('/icons/house.png')}"/>
+                   src="${getStaticImageUrl('/icons/rocket@2x.png')}"/>
               </picture>`;
             }
             return $sce.trustAsHtml($sanitize(iconHtml));
@@ -282,14 +283,14 @@ angular.module('oppia').directive('questionPlayer', [
           };
 
           var getClassNameForType = function(actionButtonType) {
-            if (actionButtonType === 'BOOST_SCORE') {
-              return 'boost-score-';
+            if (actionButtonType === 'DASHBOARD') {
+              return 'my-dashboard-';
             }
             if (actionButtonType === 'RETRY_SESSION') {
               return 'new-session-';
             }
-            if (actionButtonType === 'DASHBOARD') {
-              return 'my-dashboard-';
+            if (actionButtonType === 'BOOST_SCORE') {
+              return 'boost-score-';
             }
             return null;
           };
