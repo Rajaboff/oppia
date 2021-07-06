@@ -82,6 +82,24 @@ class ActivityTokenAccessModel(base_models.BaseModel):
     # The email where the message was sended
     email = datastore_services.StringProperty(required=True, indexed=True)
 
+    # The transaction ID of the payment from pay service
+    payment_transaction = datastore_services.StringProperty(required=False, indexed=True)
+
+    # The cost of the activity
+    cost = datastore_services.FloatProperty(indexed=True, default=None)
+
+    # Request body
+    request_body = datastore_services.TextProperty(required=False, indexed=False)
+
+    # User ID who activated the token
+    activated_user_id = datastore_services.StringProperty(required=False, indexed=True)
+
+    # Status of the token
+    status = datastore_services.StringProperty(required=True, indexed=True, default="active")
+
+    # Time of the activation
+    activated_time = datastore_services.DateTimeProperty(indexed=True)
+
     @staticmethod
     def get_deletion_policy():
         """Exploration context should be kept if the story and exploration are
@@ -102,6 +120,12 @@ class ActivityTokenAccessModel(base_models.BaseModel):
             'activity_type': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'activity_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'email': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'payment_transaction': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'cost': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'request_body': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'activated_user_id': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'status': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+            'activated_time': base_models.EXPORT_POLICY.NOT_APPLICABLE,
         })
 
     @classmethod

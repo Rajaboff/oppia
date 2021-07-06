@@ -20,6 +20,7 @@ from __future__ import absolute_import  # pylint: disable=import-only-modules
 from __future__ import unicode_literals  # pylint: disable=import-only-modules
 
 import logging
+from datetime import datetime
 
 from constants import constants
 from core.domain import activity_domain
@@ -151,6 +152,10 @@ def create_activity_token_access(activity_token_access):
         activity_type=activity_token_access.activity_type,
         activity_id=activity_token_access.activity_id,
         email=activity_token_access.email,
+        payment_transaction=activity_token_access.payment_transaction,
+        cost=activity_token_access.cost,
+        request_body=activity_token_access.request_body,
+        status=activity_token_access.status,
     )
     model.put()
     activity_token_access.token = model.token
@@ -165,10 +170,20 @@ def get_activity_token_access(token):
             activity_id=model.activity_id,
             email=model.email,
             token=model.token,
+            payment_transaction=model.payment_transaction,
+            cost=model.cost,
+            request_body=model.request_body,
+            activated_user_id=model.activated_user_id,
+            status=model.status,
+            activated_time=model.activated_time,
         )
 
     return None
 
 
-def delete_activity_token_access(token):
-    activity_models.ActivityTokenAccessModel.delete_by_token(token)
+def mark_activity_token_activated(token, user_id):
+    model = activity_models.ActivityTokenAccessModel.get_by_token(token)
+    model.status = "activated"
+    model.activated_time = datetime.now()
+    model.activated_user_id = user_id
+    model.put()

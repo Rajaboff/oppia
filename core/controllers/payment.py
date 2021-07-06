@@ -73,17 +73,8 @@ class PayDoneHandler(base.BaseHandler):
 
         # TODO(anyone): Add IP-address validation https://developers.cloudpayments.ru/#proverka-uvedomleniy
 
-    def __send_email_for_user(self, activity_type, activity_id, user_email):
+    def __send_email_for_user(self, activity_type, activity_id, user_email, token):
         logging.info("Sending email to '%s'", user_email)
-
-        activity_token_access = activity_domain.ActivityTokenAccess(
-            activity_type=activity_type,
-            activity_id=activity_id,
-            email=user_email,
-        )
-        activity_token_access = activity_services.create_activity_token_access(activity_token_access)
-
-        logging.info("Generated token '%s'", activity_token_access.token)
 
         message = """
 Congratulations!
@@ -91,7 +82,7 @@ Congratulations!
 You've got access to the {0}.
 
 Use the token '{1}' at the platform to activate it.
-        """.format(activity_type, activity_token_access.token)
+        """.format(activity_type, token)
 
         send_email_to_recipients(
             sender_email=feconf.SENDER_EMAIL,
@@ -132,9 +123,21 @@ Use the token '{1}' at the platform to activate it.
         assert activity_id, "No activity ID"
 
         if is_present or not user:
+            email_to_send = present_email or email
             # If it is present - send email.
             # Or if user email does not exists at the system
-            self.__send_email_for_user(activity_type, activity_id, present_email or email)
+            activity_token_access = activity_domain.ActivityTokenAccess(
+                activity_type=activity_type,
+                activity_id=activity_id,
+                email=email_to_send,
+                payment_transaction=self.request.get("TransactionId", ""),
+                cost=float(self.request.get("Amount")) if self.request.get("Amount") else None,
+                request_body=str(self.request),
+            )
+            activity_token_access = activity_services.create_activity_token_access(activity_token_access)
+
+            logging.info("Generated token '%s'", activity_token_access.token)
+            self.__send_email_for_user(activity_type, activity_id, email_to_send, activity_token_access.token)
         else:
             # Otherwise - allow user access for the activity
             self.__open_access_for_user(activity_type, activity_id, user.user_id)
@@ -150,7 +153,7 @@ class TokenActivityAccessHandler(base.BaseHandler):
         logging.info("Got token '%s'", token)
 
         activity_token_access = activity_services.get_activity_token_access(token)
-        if not activity_token_access:
+        if not activity_token_access or not activity_token_access.is_active():
             raise self.PageNotFoundException
 
         open_access_for_user(
@@ -159,6 +162,6 @@ class TokenActivityAccessHandler(base.BaseHandler):
             user_id=self.user_id,
         )
 
-        activity_services.delete_activity_token_access(token)
+        activity_services.mark_activity_token_activated(token, self.user_id)
 
         self.render_json({'status': 'ok'})

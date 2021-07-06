@@ -113,7 +113,19 @@ class ActivityTokenAccess(python_utils.OBJECT):
             ActivityReference domain objects.
     """
 
-    def __init__(self, activity_type, activity_id, email, token=""):
+    def __init__(
+        self,
+        activity_type,
+        activity_id,
+        email,
+        token="",
+        payment_transaction="",
+        cost=None,
+        request_body="",
+        activated_user_id="",
+        status="created",
+        activated_time="",
+    ):
         """Constructs an ActivityReferences domain object.
 
         Args:
@@ -124,3 +136,12 @@ class ActivityTokenAccess(python_utils.OBJECT):
         self.activity_id = activity_id
         self.email = email
         self.token = token
+        self.payment_transaction = payment_transaction
+        self.cost = cost
+        self.request_body = request_body
+        self.activated_user_id = activated_user_id
+        self.status = status
+        self.activated_time = activated_time
+
+    def is_active(self):
+        return self.status == "created"
