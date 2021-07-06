@@ -154,7 +154,7 @@ export = {
       "schema": {
         "type": "unicode"
       },
-      "default_value": "концептуальная карта"
+      "default_value": "Шпаргалка"
     }, {
       "name": "skill_id",
       "description": "Навык, к которому относится эта ссылка",

@@ -1631,7 +1631,7 @@ textarea.cdk-textarea-autosize-measuring-firefox {
   color: rgba(0, 0, 0, 0.54); }
 
 .mat-checkbox-frame {
-  border-color: rgba(0, 0, 0, 0.54); }
+  border-color: #007EFF; }
 
 .mat-checkbox-checkmark {
   fill: #fafafa; }

@@ -58,7 +58,13 @@
               ng-mouseover="$ctrl.openSubmenu($event, 'classroomMenu')"
               ng-mouseleave="$ctrl.closeSubmenuIfNotMobile($event)"
               role="menu">
+            
             <li class="nav-item">
+              <a ng-keydown="$ctrl.onMenuKeypress($event, 'classroomMenu', {shiftTab: $ctrl.ACTION_CLOSE})"
+                 class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-classroom-link"
+                 href="/learn/mathsix" translate="I18N_TOPNAV_CLASSROOM_BASIC_MATHS_111">
+              </a>
+            </li><li class="nav-item">
               <a ng-keydown="$ctrl.onMenuKeypress($event, 'classroomMenu', {shiftTab: $ctrl.ACTION_CLOSE})"
                  class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-classroom-link"
                  href="/learn/math" translate="I18N_TOPNAV_CLASSROOM_BASIC_MATHS">
@@ -67,7 +73,7 @@
             <li class="nav-item">
               <a ng-keydown="$ctrl.onMenuKeypress($event, 'classroomMenu', {shiftTab: $ctrl.ACTION_CLOSE})"
                  class="dropdown-item nav-link oppia-navbar-tab-content protractor-test-classroom-link"
-                 href="/learn/maththree" translate="I18N_TOPNAV_CLASSROOM_BASIC_MATHS_11">
+                 href="/learn/mathfour" translate="I18N_TOPNAV_CLASSROOM_BASIC_MATHS_11">
               </a>
             </li>
 
