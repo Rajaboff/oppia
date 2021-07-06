@@ -103,3 +103,24 @@ class ActivityReferences(python_utils.OBJECT):
         """
         for reference in self.activity_reference_list:
             reference.validate()
+
+
+class ActivityTokenAccess(python_utils.OBJECT):
+    """Domain object for a list of activity references.
+
+    Attributes:
+        activity_reference_list: list(ActivityReference). A list of
+            ActivityReference domain objects.
+    """
+
+    def __init__(self, activity_type, activity_id, email, token=""):
+        """Constructs an ActivityReferences domain object.
+
+        Args:
+            activity_reference_list: list(ActivityReference). A list of
+                ActivityReference domain objects.
+        """
+        self.activity_type = activity_type
+        self.activity_id = activity_id
+        self.email = email
+        self.token = token

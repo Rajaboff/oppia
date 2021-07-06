@@ -143,3 +143,32 @@ def split_by_type(activity_references):
                 (activity_reference.type, activity_reference.id))
 
     return exploration_ids, collection_ids
+
+
+def create_activity_token_access(activity_token_access):
+    model = activity_models.ActivityTokenAccessModel(
+        token=activity_models.ActivityTokenAccessModel.generate_token(),
+        activity_type=activity_token_access.activity_type,
+        activity_id=activity_token_access.activity_id,
+        email=activity_token_access.email,
+    )
+    model.put()
+    activity_token_access.token = model.token
+    return activity_token_access
+
+
+def get_activity_token_access(token):
+    model = activity_models.ActivityTokenAccessModel.get_by_token(token)
+    if model:
+        return activity_domain.ActivityTokenAccess(
+            activity_type=model.activity_type,
+            activity_id=model.activity_id,
+            email=model.email,
+            token=model.token,
+        )
+
+    return None
+
+
+def delete_activity_token_access(token):
+    activity_models.ActivityTokenAccessModel.delete_by_token(token)
