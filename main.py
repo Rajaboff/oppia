@@ -45,6 +45,7 @@ from core.controllers import pages
 from core.controllers import platform_feature
 from core.controllers import practice_sessions
 from core.controllers import profile
+from core.controllers import payment
 from core.controllers import question_editor
 from core.controllers import questions_list
 from core.controllers import reader
@@ -302,6 +303,7 @@ mapreduce_parameters.config.BASE_PATH = '/mapreduce/worker'
 # Register the URLs with the classes responsible for handling them.
 URLS = MAPREDUCE_HANDLERS + [
     get_redirect_route(r'/login', LoginHandler),
+    get_redirect_route(r'/payment/ok', payment.PayDoneHandler),
     get_redirect_route(r'/custom_auth', CustomAuthHandler),
     get_redirect_route(r'/_ah/login_proxy', AhLoginProxyHandler),
     get_redirect_route(r'/forgot_password', profile.ForgotPasswordPageHandler),
