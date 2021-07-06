@@ -76,7 +76,7 @@ angular.module('oppia').component('reviewTestPage', {
             var skillIdList = [];
             var skillDescriptions = [];
             PageTitleService.setPageTitle(
-              'Review Test: ' + result.storyName + ' - Oppia');
+              'Тест: ' + result.storyName + ' - Oqustudy');
             for (var skillId in result.skillDescriptions) {
               skillIdList.push(skillId);
               skillDescriptions.push(
@@ -85,8 +85,9 @@ angular.module('oppia').component('reviewTestPage', {
             var questionPlayerConfig = {
               resultActionButtons: [
                 {
-                  type: 'BOOST_SCORE',
-                  i18nId: 'I18N_QUESTION_PLAYER_BOOST_SCORE'
+                  type: 'DASHBOARD',
+                  i18nId: 'I18N_QUESTION_PLAYER_RETURN_TO_STORY',
+                  url: storyViewerUrl
                 },
                 {
                   type: 'RETRY_SESSION',
@@ -94,9 +95,8 @@ angular.module('oppia').component('reviewTestPage', {
                   url: reviewTestsUrl
                 },
                 {
-                  type: 'DASHBOARD',
-                  i18nId: 'I18N_QUESTION_PLAYER_RETURN_TO_STORY',
-                  url: storyViewerUrl
+                 type: 'BOOST_SCORE',
+                  i18nId: 'I18N_QUESTION_PLAYER_BOOST_SCORE' 
                 }
               ],
               skillList: skillIdList,
