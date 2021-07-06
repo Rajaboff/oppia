@@ -304,6 +304,7 @@ mapreduce_parameters.config.BASE_PATH = '/mapreduce/worker'
 URLS = MAPREDUCE_HANDLERS + [
     get_redirect_route(r'/login', LoginHandler),
     get_redirect_route(r'/payment/ok', payment.PayDoneHandler),
+    get_redirect_route(r'/activity/access/<token>', payment.TokenActivityAccessHandler),
     get_redirect_route(r'/custom_auth', CustomAuthHandler),
     get_redirect_route(r'/_ah/login_proxy', AhLoginProxyHandler),
     get_redirect_route(r'/forgot_password', profile.ForgotPasswordPageHandler),
