@@ -5112,9 +5112,9 @@ export = {
 
   // Placeholder texts for the math interactions.
   "MATH_INTERACTION_PLACEHOLDERS": {
-    "AlgebraicExpressionInput": "Введите здесь выражение.",
-    "NumericExpressionInput": "Введите здесь выражение, используя только числа.",
-    "MathEquationInput": "Введите здесь уравнение."
+    "AlgebraicExpressionInput": "Введите выражение.",
+    "NumericExpressionInput": "Введите выражение, используя только числа.",
+    "MathEquationInput": "Введите уравнение."
   },
 
   // Unfinished features.

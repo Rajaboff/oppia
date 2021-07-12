@@ -2135,7 +2135,7 @@ pre.oppia-pre-wrapped-text {
 .oppia-learner-view-card-top-content {
   background-color: #fff;
   border-top-left-radius: 0;
-  margin-bottom: 12px;
+  margin-bottom: 32px;
   padding: 12px;
   width: 100%;
 }
@@ -5069,4 +5069,11 @@ b3 {
     border-radius: 8px;
     width: 120px;
     margin: 10px 10px 0px 40px;
+}
+
+
+div[disabled]
+{
+  pointer-events: none;
+ 
 }
