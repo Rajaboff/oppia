@@ -29,9 +29,9 @@ export const QuestionPlayerConstants = {
     // Color shallow orange.
     FAILED_COLOR_OUTER: '#FF6262',
     // Color green.
-    PASSED_COLOR: '#1AB759',
+    PASSED_COLOR: '#007EFF',
     // Color shallow green.
-    PASSED_COLOR_OUTER: '#40DD7F'
+    PASSED_COLOR_OUTER: '#80BFFF'
   },
 
   QUESTION_PLAYER_MODE: {
