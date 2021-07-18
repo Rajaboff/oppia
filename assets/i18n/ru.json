@@ -39,7 +39,7 @@
     "I18N_ABOUT_PAGE_TITLE": "Всё об Oqustudy.kz",
     "I18N_ACTION_APPLY_TO_TEACH_WITH_OPPIA": "Подать заявку на обучение в Oqustudy.kz",
     "I18N_ACTION_BROWSE_EXPLORATIONS": "Посмотреть занятия",
-    "I18N_ACTION_BROWSE_LESSONS": "Попробывать",
+    "I18N_ACTION_BROWSE_LESSONS": "Попробовать",
     "I18N_ACTION_CREATE_EXPLORATION": "Подробнее о методике",
     "I18N_CLASSROOM_PAGE_TOPICS_COVERED": "Предметы",
     "I18N_CLASSROOM_PAGE_COURSE_DETAILS": "Описание класса",
@@ -636,7 +636,7 @@
     "I18N_TOPNAV_CLASSROOM_BASIC_MATHS_111": "Математика - 6 класс",
     "I18N_TOPNAV_CLASSROOM_BASIC_MATHS_11": "Математика - 4 класс",
     "I18N_TOPNAV_CLASSROOM_BASIC_MATHS": "Математика - 5 класс",
-    "I18N_SPLASH_BUTTON1": "ППопробывать"
+    "I18N_SPLASH_BUTTON1": "Попробовать"
 
 
 
