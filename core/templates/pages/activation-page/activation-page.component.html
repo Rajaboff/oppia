@@ -1,0 +1,93 @@
+<div class="oppia-page-cards-container oppia-signup-page-container">
+    <md-card class="oppia-page-card" style="
+    border-radius: 19px;
+">
+        <h1 class="oppia-signup-page-title">Активация кода</h1>
+        <form ng-submit="$ctrl.submit()">
+            <div class="form-group row">
+                <label for="token" style="font-family: 'Montserrat'; font-weight: 500; color: #757575"
+                       class="col-lg-3 col-md-3 col-sm-3">Введите код</label>
+
+                <div class="col-lg-9 col-md-9 col-sm-9">
+                    <input type="text" required ng-model="$ctrl.ui.token" id="token"
+                           ng-disabled="$ctrl.ui.step === 'activation'"
+                           class="form-control oppia-username-input protractor-test-username-input" ng-trim="false"
+                           autofocus="true">
+                </div>
+            </div>
+
+            <div ng-if="$ctrl.ui.activity" class="activity-info">
+                <h3 translate="Выбранный курс:"></h3>
+                <h3><[$ctrl.ui.activity.title]></h3>
+                <h4><[$ctrl.ui.activity.category]></h4>
+            </div>
+
+            <div ng-if="$ctrl.ui.activityNotFound" class="activity-not-found">
+                <strong>Неверный код</strong>
+            </div>
+
+            <div ng-if="$ctrl.ui.step === 'success'" class="token-activated">
+                <strong>Код успешно активирован!</strong>
+            </div>
+
+            <div class="center oppia-splash-button-container" ng-if="$ctrl.ui.step !== 'success'">
+                <button type="submit" class="btn oppia-navbar-button"
+                        ng-disabled="!$ctrl.ui.token"
+                        translate="<[ $ctrl.ui.step === 'token' ? 'Активировать' : 'Всё верно, активировать!' ]>"
+                        style="width: 250px;height: 40px;border-radius: 25px;">
+                    <span></span>
+                </button>
+            </div>
+        </form>
+    </md-card>
+</div>
+<style>
+    .activity-info {
+
+    }
+
+    .activity-not-found {
+
+    }
+
+    .token-activated {
+
+    }
+
+    signup-page .oppia-signup-page-container .oppia-long-text > label {
+        font-weight: normal;
+    }
+
+    signup-page .oppia-username-input {
+        width: 260px;
+    }
+
+
+    .center {
+        margin: 50px auto 20px auto;
+        text-align: center;
+        position: relative;
+    }
+
+    signup-page .oppia-username-explanation-text {
+        font-size: 0.8em;
+    }
+
+    signup-page .oppia-warning-text-container {
+        height: 18px;
+        width: 550px;
+    }
+
+    signup-page .oppia-warning-text {
+        color: #ff0000;
+        font-size: 0.8em;
+    }
+
+    signup-page .oppia-form-text-size {
+        font-size: smaller
+    }
+
+    signup-page .oppia-signup-site-description-text {
+        font-size: 1em;
+    }
+</style>

@@ -17,6 +17,7 @@
  */
 
 require('components/profile-link-directives/circular-image.directive.ts');
+require('components/purchases/buy-modal/buy-modal.controller.ts');
 require('domain/learner_dashboard/learner-dashboard-icons.directive.ts');
 require('filters/summarize-nonnegative-number.filter.ts');
 require('filters/string-utility-filters/truncate-and-capitalize.filter.ts');
@@ -30,7 +31,7 @@ require('services/contextual/url.service.ts');
 require('services/contextual/window-dimensions.service.ts');
 
 angular.module('oppia').directive('explorationSummaryTile', [
-  'UrlInterpolationService', function(UrlInterpolationService) {
+  'UrlInterpolationService', function (UrlInterpolationService) {
     return {
       restrict: 'E',
       scope: {
@@ -66,14 +67,14 @@ angular.module('oppia').directive('explorationSummaryTile', [
         showLearnerDashboardIconsIfPossible: (
           '&showLearnerDashboardIconsIfPossible'),
         isContainerNarrow: '&containerIsNarrow',
-        isOwnedByCurrentUser: '&activityIsOwnedByCurrentUser',
+        isOwnedByCurrentUser: '&activityIsOwnedByCurrentUser'
       },
       templateUrl: UrlInterpolationService.getDirectiveTemplateUrl(
         '/components/summary-tile/exploration-summary-tile.directive.html'),
-      link: function(scope, element) {
+      link: function (scope, element) {
         element.find('.exploration-summary-avatars').on(
           'mouseenter',
-          function() {
+          function () {
             element.find('.mask').attr(
               'class', 'exploration-summary-tile-mask mask');
             // As animation duration time may be 400ms, .stop(true) is used to
@@ -81,7 +82,7 @@ angular.module('oppia').directive('explorationSummaryTile', [
             // .hide(1) and .show(1) used to place the animation in the effects
             // queue.
             element.find('.avatars-num-minus-one').stop(true).hide(
-              1, function() {
+              1, function () {
                 element.find('.all-avatars').stop(true).slideDown();
               }
             );
@@ -89,9 +90,9 @@ angular.module('oppia').directive('explorationSummaryTile', [
         );
 
         element.find('.exploration-summary-avatars').on(
-          'mouseleave', function() {
+          'mouseleave', function () {
             element.find('.mask').attr('class', 'top-section-mask mask');
-            element.find('.all-avatars').stop(true).slideUp(400, function() {
+            element.find('.all-avatars').stop(true).slideUp(400, function () {
               element.find('.avatars-num-minus-one').stop(true).show(1);
             });
           }
@@ -100,25 +101,61 @@ angular.module('oppia').directive('explorationSummaryTile', [
       controller: [
         '$scope', '$window', 'DateTimeFormatService',
         'RatingComputationService', 'UrlService', 'UserService',
-        'WindowDimensionsService', 'ACTIVITY_TYPE_EXPLORATION',
-        function(
-            $scope, $window, DateTimeFormatService,
-            RatingComputationService, UrlService, UserService,
-            WindowDimensionsService, ACTIVITY_TYPE_EXPLORATION) {
+        'WindowDimensionsService', 'ACTIVITY_TYPE_EXPLORATION', '$uibModal',
+        function (
+          $scope, $window, DateTimeFormatService,
+          RatingComputationService, UrlService, UserService,
+          WindowDimensionsService, ACTIVITY_TYPE_EXPLORATION, $uibModal) {
           var ctrl = this;
-          $scope.setHoverState = function(hoverState) {
+          $scope.setHoverState = function (hoverState) {
             $scope.explorationIsCurrentlyHoveredOver = hoverState;
           };
 
-          $scope.loadParentExploration = function() {
+          $scope.loadParentExploration = function () {
             $window.location.href = $scope.getExplorationLink();
           };
 
-          $scope.getDisplayCost = function() {
-            return $scope.getPaidStatus() === 'free' ? 'Бесплатно' : $scope.getCost() + ' ₸';
+          $scope.getDisplayCost = function () {
+            const paidStatus = $scope.getPaidStatus();
+            if (paidStatus === 'free') {
+              return 'Бесплатно';
+            }
+
+            if ($scope.getIsAccessOpen()) {
+              return 'Куплено';
+            }
+
+            return $scope.getCost() + ' ₸';
           };
 
-          $scope.getAverageRating = function() {
+          $scope.openOrBuy = function ($event) {
+            if ($scope.getIsAccessOpen()) {
+              return;
+            }
+
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $uibModal.open({
+              templateUrl:
+                UrlInterpolationService.getDirectiveTemplateUrl(
+                  '/components/purchases/buy-modal/buy-modal.template.html'),
+              backdrop: true,
+              resolve: {
+                params: () => {
+                  return {
+                    activityId: $scope.getExplorationId(),
+                    activityType: 'exploration',
+                    title: $scope.getExplorationTitle(),
+                    cost: $scope.getCost()
+                  }
+                }
+              },
+              controller: 'BuyModalController'
+            });
+          };
+
+          $scope.getAverageRating = function () {
             if (!$scope.getRatings()) {
               return null;
             }
@@ -126,7 +163,7 @@ angular.module('oppia').directive('explorationSummaryTile', [
               $scope.getRatings());
           };
 
-          $scope.getLastUpdatedDatetime = function() {
+          $scope.getLastUpdatedDatetime = function () {
             if (!$scope.getLastUpdatedMsec()) {
               return null;
             }
@@ -134,7 +171,11 @@ angular.module('oppia').directive('explorationSummaryTile', [
               $scope.getLastUpdatedMsec());
           };
 
-          $scope.getExplorationLink = function() {
+          $scope.getExplorationLink = function () {
+            if (!$scope.getIsAccessOpen()) {
+              return '#';
+            }
+
             if (!$scope.getExplorationId()) {
               return '#';
             } else {
@@ -148,7 +189,7 @@ angular.module('oppia').directive('explorationSummaryTile', [
               // Replace the collection ID with the one in the URL if it exists
               // in urlParams.
               if (parentExplorationIds &&
-                  urlParams.hasOwnProperty('collection_id')) {
+                urlParams.hasOwnProperty('collection_id')) {
                 collectionIdToAdd = urlParams.collection_id;
               } else if (
                 UrlService.getPathname().match(/\/story\/(\w|-){12}/g) &&
@@ -181,20 +222,20 @@ angular.module('oppia').directive('explorationSummaryTile', [
             }
           };
 
-          $scope.getCompleteThumbnailIconUrl = function() {
+          $scope.getCompleteThumbnailIconUrl = function () {
             return UrlInterpolationService.getStaticImageUrl(
               $scope.getThumbnailIconUrl());
           };
-          ctrl.$onInit = function() {
+          ctrl.$onInit = function () {
             $scope.userIsLoggedIn = null;
-            UserService.getUserInfoAsync().then(function(userInfo) {
+            UserService.getUserInfoAsync().then(function (userInfo) {
               $scope.userIsLoggedIn = userInfo.isLoggedIn();
             });
             $scope.ACTIVITY_TYPE_EXPLORATION = ACTIVITY_TYPE_EXPLORATION;
             var contributorsSummary = $scope.getContributorsSummary() || {};
             $scope.contributors = Object.keys(
               contributorsSummary).sort(
-              function(contributorUsername1, contributorUsername2) {
+              function (contributorUsername1, contributorUsername2) {
                 var commitsOfContributor1 = contributorsSummary[
                   contributorUsername1].num_commits;
                 var commitsOfContributor2 = contributorsSummary[
@@ -218,15 +259,14 @@ angular.module('oppia').directive('explorationSummaryTile', [
             $scope.isWindowLarge = (
               WindowDimensionsService.getWidth() >= $scope.mobileCutoffPx);
 
-            ctrl.resizeSubscription = WindowDimensionsService.getResizeEvent().
-              subscribe(evt => {
-                $scope.isWindowLarge = (
-                  WindowDimensionsService.getWidth() >= $scope.mobileCutoffPx);
-                $scope.$applyAsync();
-              });
+            ctrl.resizeSubscription = WindowDimensionsService.getResizeEvent().subscribe(evt => {
+              $scope.isWindowLarge = (
+                WindowDimensionsService.getWidth() >= $scope.mobileCutoffPx);
+              $scope.$applyAsync();
+            });
           };
 
-          ctrl.$onDestroy = function() {
+          ctrl.$onDestroy = function () {
             if (ctrl.resizeSubscription) {
               ctrl.resizeSubscription.unsubscribe();
             }
@@ -238,6 +278,7 @@ angular.module('oppia').directive('explorationSummaryTile', [
 
 import { Directive, ElementRef, Injector } from '@angular/core';
 import { UpgradeComponent } from '@angular/upgrade/static';
+
 @Directive({
   selector: 'exploration-summary-tile'
 })
