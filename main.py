@@ -63,8 +63,8 @@ from core.controllers import topic_editor
 from core.controllers import topic_viewer
 from core.controllers import topics_and_skills_dashboard
 from core.controllers import voice_artist
+from core.controllers import activation
 from core.domain import user_services
-from core.platform.email.mailgun_email_services import send_email_to_recipients
 from core.platform import models
 import feconf
 
@@ -325,6 +325,9 @@ URLS = MAPREDUCE_HANDLERS + [
     get_redirect_route(r'/console_errors', pages.ConsoleErrorPage),
 
     get_redirect_route(r'/forum', pages.ForumRedirectPage),
+
+    get_redirect_route(r'/activation', activation.ActivationPage),
+    get_redirect_route(r'/activation/info/<token>', activation.ActivationHandler),
 
     get_redirect_route(r'%s' % feconf.ADMIN_URL, admin.AdminPage),
     get_redirect_route(r'/adminhandler', admin.AdminHandler),
