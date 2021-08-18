@@ -1,8 +1,10 @@
 /* The following is needed so that the radio button does not show. */
 .item-selection-info-text {
   display: block;
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 12px;
+  font-family: 'Montserrat';
+  font-style: italic;
+  color: #0000005c;
   padding-bottom: 10px;
 }
 
