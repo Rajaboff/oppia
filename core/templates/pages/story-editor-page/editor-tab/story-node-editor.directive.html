@@ -3,7 +3,7 @@
     <div class="story-node-content">
       <md-card class="oppia-page-card oppia-long-text story-node-card story-node-input-card oppia-mobile-collapsible-card">
         <div class="story-node-header oppia-mobile-collapsible-card-header" ng-click="toggleChapterCard()">
-          <span>Карточка главы</span>
+          <span>Карточка Урока</span>
           <i class="fa fa-caret-down"
              ng-if="!mainChapterCardIsShown"
              aria-hidden="true">
@@ -28,7 +28,7 @@
                    placeholder="Enter a title for the chapter." maxlength="<[MAX_CHARS_IN_CHAPTER_TITLE]>" ng-trim="false">
             <span class="oppia-input-box-subtitle">
               <i>
-                Название главы должно быть не более <[MAX_CHARS_IN_CHAPTER_TITLE]> символов.
+                Название урока должно быть не более <[MAX_CHARS_IN_CHAPTER_TITLE]> символов.
               </i>
             </span>
           </div>
@@ -40,7 +40,7 @@
             </textarea>
             <span class="oppia-input-box-subtitle">
               <i>
-                Описание главы должно быть не более <[MAX_CHARS_IN_CHAPTER_DESCRIPTION]> символов.
+                Описание урока должно быть не более <[MAX_CHARS_IN_CHAPTER_DESCRIPTION]> символов.
               </i>
             </span>
           </div>
@@ -82,13 +82,13 @@
         <div ng-if="mainChapterCardIsShown">
           <div ng-if="!chapterPreviewCardIsShown">
             <button class="btn btn-default show-chapter-preview-button" ng-click="togglePreview()">
-              Предпросмотр карточки главы
+              Предпросмотр карточки урока
               <i class="fa fa-angle-down"></i>
             </button>
           </div>
           <div ng-if="chapterPreviewCardIsShown">
             <button class="btn btn-default show-chapter-preview-button" ng-click="togglePreview()">
-              Свернуть карточку главы
+              Свернуть карточку урока
               <i class="fa fa-angle-up"></i>
             </button>
           </div>
@@ -145,7 +145,7 @@
         <div>
           <span class="oppia-input-box-subtitle">
             <i>
-              Навык должен быть одним из навыков, связанных с этой темой..
+              Навык должен быть одним из навыков, связанных с этом уроком..
             </i>
           </span>
         </div>
