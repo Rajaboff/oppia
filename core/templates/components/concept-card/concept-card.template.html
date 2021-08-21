@@ -7,11 +7,11 @@
     </div>
   </div>
   <div class="concept-card-worked-examples" ng-if="$ctrl.numberOfWorkedExamplesShown > 0">
-    <strong>Рабочий пример </strong>
+    <strong style="font-family: Montserrat;">Шпаргалка </strong>
     <div class="oppia-worked-examples-container"
          ng-repeat="example in $ctrl.currentConceptCard.getWorkedExamples()"
          ng-if="$index < $ctrl.numberOfWorkedExamplesShown">
-      <strong> Вопрос: </strong>
+      <strong style="font-family: Montserrat;"> Вопрос: </strong>
       <angular-html-bind class="example-content" html-data="example.getQuestion().getHtml()"></angular-html-bind>
 
       <button class="btn btn-secondary show-example-explanation-button"
@@ -20,14 +20,14 @@
         Показать объяснение
       </button>
       <div ng-if="$ctrl.explanationIsShown || $index < $ctrl.numberOfWorkedExamplesShown - 1">
-        <strong> Объяснение: </strong>
+        <strong style="font-family: Montserrat;"> Объяснение: </strong>
         <angular-html-bind class="example-content" html-data="example.getExplanation().getHtml()"></angular-html-bind>
       </div>
     </div>
     <button class="btn btn-secondary show-more-worked-examples-button"
             ng-if="!$ctrl.isLastWorkedExample()"
             ng-click="$ctrl.showMoreWorkedExamples()">
-      + Рабочий пример
+      + Шпаргалка
     </button>
   </div>
 </div>
