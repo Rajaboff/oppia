@@ -6,19 +6,19 @@
       <h1 class="oppia-error-h1">
         <div *ngIf="getStatusCode() === 400">
           <span [innerHTML]="'I18N_ERROR_HEADER_400' | translate"></span>
-          - Bad Request
+          - Неправильный запрос
         </div>
         <div *ngIf="getStatusCode() === 401">
           <span [innerHTML]="'I18N_ERROR_HEADER_401' | translate"></span>
-          - Unauthorized
+          - Не авторизован
         </div>
         <div *ngIf="getStatusCode() === 404" class="protractor-test-error-page">
           <span [innerHTML]="'I18N_ERROR_HEADER_404' | translate"></span>
-          - Page Not Found
+          - Страница не найдена
         </div>
         <div *ngIf="getStatusCode() === 500">
           <span [innerHTML]="'I18N_ERROR_HEADER_500' | translate"></span>
-          - System Error
+          - Системная ошибка
         </div>
       </h1>
 
@@ -35,8 +35,19 @@
         <h2 *ngIf="statusCode === 404" class="oppia-error-h2" [innerHTML]="'I18N_ERROR_MESSAGE_404' | translate"></h2>
         <h2 *ngIf="statusCode === 500" class="oppia-error-h2" [innerHTML]="'I18N_ERROR_MESSAGE_500' | translate"></h2>
       </div>
-     
-    </div>
+     <div style="
+"><p style="
+    text-align: center;
+    color: #757575;
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    margin-top: 70px;
+    
+" >или</p></div>
+      <div class="center oppia-splash-button-container">
+        <button type="submit" class="btn oppia-navbar-button" ng-click="$ctrl.submitLoginForm()" translate="I18N_SIGNUP_BUTTON_ENTER" id="login-submit" style="width: 250px;height: 40px;border-radius: 25px;"></button>
+      </div>
   </div>
 </div>
 <style>

@@ -1525,9 +1525,10 @@ md-card.oppia-dashboard-tile {
 }
 
 .oppia-wide-panel {
-  border: 1px solid #dde0FF;
+  
   border-radius: 20px;
   width: 100%;
+  background: white;
 }
 
 .oppia-error-wide-container {
@@ -1539,6 +1540,7 @@ md-card.oppia-dashboard-tile {
   margin: 5px auto;
   min-height: 400px;
   padding: 20px;
+  text-align: center;
 }
 
 .oppia-placeholder {
@@ -1761,13 +1763,13 @@ pre.oppia-pre-wrapped-text {
 }
 .btn.oppia-navbar-button:hover,
 .btn.oppia-navbar-button:focus {
-  background-color: #3398FF;
+  background-color: #007EFF;
   color: rgba(255,255,255,1);
   box-shadow: 0px 8px 16px rgba(0, 126, 255, 0.30);
 }
 
 .btn.oppia-navbar-signup {
-  background-color: #3398FF;
+  background-color: #007EFF;
   border-radius: 19px;
   border: 1px solid #007EFF;
   color: #fff;
