@@ -65,7 +65,7 @@ angular.module('oppia').directive('topicEditorTab', [
       templateUrl: UrlInterpolationService.getDirectiveTemplateUrl(
         '/pages/topic-editor-page/editor-tab/topic-editor-tab.directive.html'),
       controller: [
-        '$rootScope', '$scope', '$uibModal', 'ContextService',
+        '$rootScope', '$scope', '$http', '$uibModal', 'ContextService',
         'EntityCreationService', 'ImageUploadHelperService',
         'PageTitleService', 'StoryCreationService',
         'TopicEditorRoutingService', 'TopicEditorStateService',
@@ -75,7 +75,7 @@ angular.module('oppia').directive('topicEditorTab', [
         'MAX_CHARS_IN_META_TAG_CONTENT', 'MAX_CHARS_IN_TOPIC_DESCRIPTION',
         'MAX_CHARS_IN_TOPIC_NAME',
         function(
-            $rootScope, $scope, $uibModal, ContextService,
+            $rootScope, $scope, $http, $uibModal, ContextService,
             EntityCreationService, ImageUploadHelperService,
             PageTitleService, StoryCreationService,
             TopicEditorRoutingService, TopicEditorStateService,
@@ -92,8 +92,10 @@ angular.module('oppia').directive('topicEditorTab', [
           $scope.MAX_CHARS_IN_TOPIC_DESCRIPTION = (
             MAX_CHARS_IN_TOPIC_DESCRIPTION);
           $scope.MAX_CHARS_IN_META_TAG_CONTENT = MAX_CHARS_IN_META_TAG_CONTENT;
+
           ctrl.initEditor = function() {
             $scope.topic = TopicEditorStateService.getTopic();
+            console.log($scope.topic);
             $scope.skillQuestionCountDict = (
               TopicEditorStateService.getSkillQuestionCountDict());
             $scope.topicRights = TopicEditorStateService.getTopicRights();
@@ -104,6 +106,7 @@ angular.module('oppia').directive('topicEditorTab', [
             }
             $scope.editableName = $scope.topic.getName();
             $scope.editableMetaTagContent = $scope.topic.getMetaTagContent();
+            $scope.editableCost = $scope.topic.getCost();
             $scope.editablePracticeIsDisplayed = (
               $scope.topic.getPracticeTabIsDisplayed());
             $scope.initialTopicName = $scope.topic.getName();
@@ -300,6 +303,12 @@ angular.module('oppia').directive('topicEditorTab', [
             }
           };
 
+          $scope.updateCost = function(newCost) {
+            if (newCost !== $scope.topic.getCost()) {
+              $scope.topic.setCost(newCost);
+            }
+          };
+          
           $scope.updatePracticeTabIsDisplayed = function(
               newPracticeTabIsDisplayed) {
             if (
@@ -442,6 +451,17 @@ angular.module('oppia').directive('topicEditorTab', [
             $scope.selectedSkillEditOptionsIndex[subtopicIndex] = {
               [skillIndex]: true
             };
+          };
+
+          $scope.changeCost = function() {
+            let cost = $scope.topic.getCost();
+            const paidStatus = cost ? 'need_paid' : 'free'; 
+            $http.put(`/rightshandler/change_topic_paid_status/${$scope.topic._id}`, {
+              paid_status: paidStatus,
+              cost: cost
+            }).then(function(response) {
+              console.log(response);
+            });
           };
 
           ctrl.$onInit = function() {

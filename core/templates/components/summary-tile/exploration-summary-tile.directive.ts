@@ -129,7 +129,7 @@ angular.module('oppia').directive('explorationSummaryTile', [
           };
 
           $scope.openOrBuy = function ($event) {
-            if ($scope.getIsAccessOpen()) {
+            if ($scope.getPaidStatus() === 'free' || $scope.getIsAccessOpen()) {
               return;
             }
 
@@ -172,7 +172,7 @@ angular.module('oppia').directive('explorationSummaryTile', [
           };
 
           $scope.getExplorationLink = function () {
-            if (!$scope.getIsAccessOpen()) {
+            if (!($scope.getPaidStatus() === 'free' || $scope.getIsAccessOpen())) {
               return '#';
             }
 
