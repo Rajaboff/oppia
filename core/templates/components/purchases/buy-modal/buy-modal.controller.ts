@@ -14,7 +14,7 @@ angular.module('oppia').controller('BuyModalController', [
       UserService.getUserInfoAsync().then(function (userInfo) {
         const data = {
           isPresent: params.isPresent,
-          presentEmail: params.presentEmail,
+          presentEmail: params.isPresent ? params.presentEmail : '',
           activityType: params.activityType,
           activityId: params.activityId
         };

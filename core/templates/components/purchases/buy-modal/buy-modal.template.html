@@ -42,7 +42,9 @@
   </div>
 </div>
 <div class="modal-footer buy-modal">
-  <button class="btn btn-success protractor-test-confirm-skill-selection-button" ng-click="buy()">Купить</button>
+  <button class="btn btn-success protractor-test-confirm-skill-selection-button" ng-click="buy()"
+          ng-disabled="params.isPresent && !params.presentEmail">Купить
+  </button>
   <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
 </div>
 
