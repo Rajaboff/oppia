@@ -19,6 +19,14 @@
              can-edit-edge-weight="$ctrl.canEditEdgeWeight"
              interaction-is-active="$ctrl.interactionIsActive">
   </graph-viz>
+  <table width="10%" cellspacing="0" cellpadding="0">
+   <tbody><tr> 
+    <td style="
+    padding-right: 5px;
+"><img src="/assets/images/general/quadro.png" width="30" height="30" alt=""></td>
+    <td valign="top"> -1см</td>
+   </tr>
+  </tbody></table>
   <md-button class="md-raised" ng-click="$ctrl.resetGraph()" ng-disabled="!$ctrl.interactionIsActive" translate="I18N_INTERACTIONS_GRAPH_RESET_BUTTON"></md-button>
   <span ng-show="$ctrl.errorMessage" class="text-danger oppia-error-message-text" aria-live="assertive">
     <[$ctrl.errorMessage | translate]>
