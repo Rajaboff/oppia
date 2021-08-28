@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>http://oqustudy.kz/</loc>
+    <loc>https://oqustudy.kz/</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/learner-dashboard</loc>
+    <loc>https://oqustudy.kz/learner-dashboard</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/creator-dashboard</loc>
+    <loc>https://oqustudy.kz/creator-dashboard</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/learn/math</loc>
+    <loc>https://oqustudy.kz/learn/math</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/get-started</loc>
+    <loc>https://oqustudy.kz/get-started</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/community-library</loc>
+    <loc>https://oqustudy.kz/community-library</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/contact</loc>
+    <loc>https://oqustudy.kz/contact</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/fractions</loc>
+    <loc>https://oqustudy.kz/explore/5qdhQytNbc95</loc>
   </url>
   <url>
-    <loc>http://oqustudy.kz/explore/5qdhQytNbc95</loc>
-  </url>
-  <url>
-    <loc>http://oqustudy.kz/collection/BeFdi9R40cBR</loc>
+    <loc>https://oqustudy.kz/collection/BeFdi9R40cBR</loc>
   </url>
 </urlset>

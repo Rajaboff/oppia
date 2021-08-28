@@ -52,8 +52,8 @@ export class GraphInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'График, используемый при настройке, превышает поддерживаемые ' +
-          'максимальное количество вершин ' + this.VERTICES_LIMIT + '.')
+          'Фигура, используемый при настройке, превышает поддерживаемые ' +
+          'максимальное количество точек ' + this.VERTICES_LIMIT + '.')
       });
     }
 
@@ -62,7 +62,7 @@ export class GraphInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'Учащийся не может редактировать веса ребер невзвешенного графа.')
+          'Учащийся не может редактировать значения отрезков.')
       });
     }
 
@@ -71,7 +71,7 @@ export class GraphInputValidationService {
       warningsList.push({
         type: AppConstants.WARNING_TYPES.CRITICAL,
         message: (
-          'Учащийся не может редактировать метки вершин для немаркированного графа..')
+          'Учащийся не может редактировать названия точек для немаркированной фигуры')
       });
     }
     return warningsList;
@@ -104,8 +104,8 @@ export class GraphInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.CRITICAL,
               message: (
-                'График, используемый в правиле ' + (j + 1) + ' в группе ' +
-                (i + 1) + ' превышает поддерживаемое максимальное количество вершин ' +
+                'Фигура, используемый в правиле ' + (j + 1) + ' в группе ' +
+                (i + 1) + ' превышает поддерживаемое максимальное количество точек ' +
                 'of ' + ISOMORPHISM_VERTICES_LIMIT +
                 ' для проверки изоморфизма.')
             });
@@ -113,8 +113,8 @@ export class GraphInputValidationService {
             warningsList.push({
               type: AppConstants.WARNING_TYPES.CRITICAL,
               message: (
-                'График, используемый в правиле ' + (j + 1) + ' в группе ' +
-                (i + 1) + ' превышает поддерживаемое максимальное количество вершин ' +
+                'Фигура, используемый в правиле ' + (j + 1) + ' в группе ' +
+                (i + 1) + ' превышает поддерживаемое максимальное количество точек ' +
                 ' ' + this.VERTICES_LIMIT + '.')
             });
           }
