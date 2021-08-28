@@ -575,7 +575,7 @@ angular.module('oppia').directive('graphViz', [
             ctrl.vizWidth = vizContainer.width();
 
             ctrl.graphOptions = [{
-              text: 'Метка',
+              text: 'Название',
               option: 'isLabeled'
             },
             {
@@ -583,7 +583,7 @@ angular.module('oppia').directive('graphViz', [
               option: 'isDirected'
             },
             {
-              text: 'Вес',
+              text: 'Значение',
               option: 'isWeighted'
             }];
             ctrl.helpText = null;

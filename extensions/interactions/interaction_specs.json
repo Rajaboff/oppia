@@ -292,19 +292,19 @@
   "GraphInput": {
     "can_have_solution": true,
     "show_generic_submit_button": true,
-    "instructions": "Создать граф",
+    "instructions": "Создать фигуру",
     "is_trainable": false,
-    "narrow_instructions": "Просмотр графа",
-    "description": "Позволяет учащимся создавать графики и управлять ими.",
+    "narrow_instructions": "Просмотр фигуры",
+    "description": "Позволяет учащимся создавать фигуры и управлять ими.",
     "needs_summary": true,
-    "name": "Теория графов",
+    "name": "Фигуры",
     "answer_type": "Graph",
     "is_linear": false,
     "display_mode": "supplemental",
     "id": "GraphInput",
     "customization_arg_specs": [
       {
-        "description": "Просмотр графа",
+        "description": "Просмотр фигур",
         "name": "graph",
         "schema": {
           "obj_type": "Graph",
@@ -346,7 +346,7 @@
         }
       },
       {
-        "description": "Разрешить учащемуся добавлять вершины",
+        "description": "Разрешить учащемуся добавлять точки",
         "name": "canAddVertex",
         "schema": {
           "type": "bool"
@@ -354,7 +354,7 @@
         "default_value": false
       },
       {
-        "description": "Разрешить учащемуся удалять вершины",
+        "description": "Разрешить учащемуся удалять точки",
         "name": "canDeleteVertex",
         "schema": {
           "type": "bool"
@@ -362,7 +362,7 @@
         "default_value": false
       },
       {
-        "description": "Разрешить учащемуся перемещать вершины",
+        "description": "Разрешить учащемуся перемещать точки",
         "name": "canMoveVertex",
         "schema": {
           "type": "bool"
@@ -370,7 +370,7 @@
         "default_value": true
       },
       {
-        "description": "Разрешить учащемуся редактировать метки вершин",
+        "description": "Разрешить учащемуся редактировать имена точек",
         "name": "canEditVertexLabel",
         "schema": {
           "type": "bool"
@@ -378,7 +378,7 @@
         "default_value": false
       },
       {
-        "description": "Разрешить учащемуся добавлять края",
+        "description": "Разрешить учащемуся добавлять отрезки",
         "name": "canAddEdge",
         "schema": {
           "type": "bool"
@@ -386,7 +386,7 @@
         "default_value": true
       },
       {
-        "description": "Разрешить учащемуся удалять края",
+        "description": "Разрешить учащемуся удалять отрезки",
         "name": "canDeleteEdge",
         "schema": {
           "type": "bool"
@@ -394,7 +394,7 @@
         "default_value": true
       },
       {
-        "description": "Разрешить учащемуся редактировать веса ребер",
+        "description": "Разрешить учащемуся редактировать значения",
         "name": "canEditEdgeWeight",
         "schema": {
           "type": "bool"
@@ -405,7 +405,7 @@
     "is_terminal": false,
     "default_outcome_heading": null,
     "rule_descriptions": {
-      "IsIsomorphicTo": "изоморфен {{g|Graph}}, включая соответствующие ярлыки"
+      "IsIsomorphicTo": "изоморфен {{g|Graph}}, включая соответствующие точки"
     }
   },
   "EndExploration": {

@@ -177,10 +177,10 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'С Oqustudy.kz вы можете получить доступ к урокам на темы ' +
-          'математики, физики, статистики, химии, музыки, истории и  ' +
-          'другие предметы из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование ' +
+          'математики и  ' +
+          'логики из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование ' +
           'c высоким качеством контента и процесса обучения ' +
-          'для тех, кому не досточно классического образования.'
+          'для тех, кому недосточно классического образования.'
       },
       template: commonPrefix + '/pages/admin-page/admin-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -206,7 +206,7 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
-          'как стать учителем платформы Oqustudy.kz.'
+          'как стать методистом платформы Oqustudy.kz.'
       },
       template:
         commonPrefix + '/pages/collection-editor-page/' +
@@ -220,7 +220,7 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
-          'как стать учителем платформы Oqustudy.kz.'
+          'как стать методистом платформы Oqustudy.kz.'
       },
       template:
         commonPrefix + '/pages/collection-player-page/' +
@@ -234,7 +234,7 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
-          'как стать учителем платформы Oqustudy.kz.'
+          'как стать методистом платформы Oqustudy.kz.'
       },
       template: commonPrefix + '/tests/console_errors.html',
       minify: htmlMinifyConfig,
@@ -246,7 +246,7 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'Свяжитесь с командой Oqustudy.kz, отправьте отзыв и узнайте ' +
-          'как стать учителем платформы Oqustudy.kz.'
+          'как стать методистом платформы Oqustudy.kz.'
       },
       template: commonPrefix + '/pages/contact-page/contact-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -287,8 +287,8 @@ module.exports = {
       filename: 'donate-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Сделайте пожертвование платформе Oqustudy.kz, чтобы ' +
-        'ученики получали качественное образование, которого они заслуживают.'
+        description: 'Оплатите курс на платформе Oqustudy.kz, чтобы ' +
+        'ученики могли получить качественное образование, которого они заслуживают.'
       },
       template: commonPrefix + '/pages/donate-page/donate-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -395,7 +395,7 @@ module.exports = {
       filename: 'get-started-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Узнайте, как начать использовать Oqustudy.'
+        description: 'Узнайте, как начать использовать Oqustudy.kz'
       },
       template:
         commonPrefix + '/pages/get-started-page/get-started-page.mainpage.html',
@@ -475,7 +475,7 @@ module.exports = {
       filename: 'library-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Хотите узнать что-то новое? Учите любой предмет ' +
+        description: 'Хотите узнать что-то новое? Учите школьные темы по предмету математики и логики ' +
           'на ваш выбор, созданные методистами, учителями платформы Oqustudy.kz ' +
           'Уроки всегда доступны на любую тему и ' +
           'любого уровня подготовки.'
@@ -602,8 +602,8 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'С Oqustudy.kz вы можете получить доступ к урокам на темы  ' +
-        'математики, физики, химии, музыки, истории и ' +
-        'другие предметы из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование с ' +
+        'математики и ' +
+        'логики из любой точки мира. Oqustudy.kz -  Следует миссии, что у каждого должно быть свое образование с ' +
         'высоким качеством контента и процесса обучения ' +
           'для тех, кому не досточно классического образования.'
       },
@@ -658,8 +658,8 @@ module.exports = {
       meta: {
         name: defaultMeta.name,
         description: 'Библиотека Oqustudy.kz полна уроков, созданных методистами и преподавателями. ' +
-        'называется \'занятия\'. Читайте о том, как принять участие в ' +
-        'создании контента и начать с создания занятия.'
+        'называется \'Уроки\'. Читайте о том, как принять участие в ' +
+        'создании контента и начать с создания урока.'
       },
       template: commonPrefix + '/pages/teach-page/teach-page.mainpage.html',
       minify: htmlMinifyConfig,
@@ -683,7 +683,7 @@ module.exports = {
       filename: 'thanks-page.mainpage.html',
       meta: {
         name: defaultMeta.name,
-        description: 'Спасибо за пожертвование проекту Oqustudy.kz!'
+        description: 'Спасибо за доверие проекту Oqustudy.kz!'
       },
       template: commonPrefix + '/pages/thanks-page/thanks-page.mainpage.html',
       minify: htmlMinifyConfig,
