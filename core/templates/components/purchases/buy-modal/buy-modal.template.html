@@ -1,45 +1,62 @@
 <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
 
 <div class="modal-header select-skill-modal-header">
-    <h3>
-        Покупка
-    </h3>
-    <i class="fa fa-times modal-close-button" ng-click="cancel()"></i>
+  <h3>
+    Покупка
+  </h3>
+  <i class="fa fa-times modal-close-button" ng-click="cancel()"></i>
 </div>
-<div class="modal-body">
-    <[params.title]>, <[params.cost | number:0]> ₸
+<div class="modal-body buy-modal">
+  <h3><[params.title]></h3>
 
-    <div role="form" class="form-horizontal">
-        <div class="oppia-features-header">
-            <label for="isPresent">
-                Купить в подарок
-            </label>
-            <div>
-                <div class="oppia-on-off-switch">
-                    <input span ng-if="params.isPresent" type="checkbox"
-                           class="oppia-on-off-switch-checkbox" id="isPresent" checked
-                           ng-click="params.isPresent = false">
-                    <input span ng-if="!params.isPresent" type="checkbox"
-                           class="oppia-on-off-switch-checkbox" id="isPresent"
-                           ng-click="params.isPresent = true">
-                    <label class="oppia-on-off-switch-label protractor-test-enable-parameters" for="isPresent">
-                        <span class="oppia-on-off-switch-inner"></span>
-                        <span class="oppia-on-off-switch-main"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
+  <h4>Стоимость: <strong><[params.cost | number:0]> ₸</strong></h4>
 
-        <div ng-if="params.isPresent">
-            <label for="presentEmail">E-mail получателя</label>
-            <input id="presentEmail" type="email"
-                   class="form-control"
-                   ng-model="params.presentEmail"
-                   width="100%">
+  <div role="form" class="form-horizontal">
+    <div class="present-switch">
+      <label for="isPresent">
+        Купить в подарок
+      </label>
+      <div>
+        <div class="oppia-on-off-switch">
+          <input span ng-if="params.isPresent" type="checkbox"
+                 class="oppia-on-off-switch-checkbox" id="isPresent" checked
+                 ng-click="params.isPresent = false">
+          <input span ng-if="!params.isPresent" type="checkbox"
+                 class="oppia-on-off-switch-checkbox" id="isPresent"
+                 ng-click="params.isPresent = true">
+          <label class="oppia-on-off-switch-label protractor-test-enable-parameters" for="isPresent">
+            <span class="oppia-on-off-switch-inner"></span>
+            <span class="oppia-on-off-switch-main"></span>
+          </label>
         </div>
+      </div>
     </div>
+
+    <div ng-if="params.isPresent">
+      <label for="presentEmail">E-mail получателя</label>
+      <input id="presentEmail" type="email"
+             class="form-control"
+             ng-model="params.presentEmail"
+             width="100%">
+    </div>
+  </div>
 </div>
-<div class="modal-footer">
-    <button class="btn btn-success protractor-test-confirm-skill-selection-button" ng-click="buy()">Купить</button>
-    <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
+<div class="modal-footer buy-modal">
+  <button class="btn btn-success protractor-test-confirm-skill-selection-button" ng-click="buy()">Купить</button>
+  <button class="btn btn-secondary" ng-click="cancel()">Отмена</button>
 </div>
+
+<style>
+  .modal-body.buy-modal .present-switch {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .modal-body.buy-modal .present-switch label {
+    margin-right: 10px;
+  }
+
+  .modal-footer.buy-modal {
+    justify-content: center;
+  }
+</style>

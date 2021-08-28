@@ -621,7 +621,7 @@
     "I18N_TOPIC_VIEWER_STUDY_SKILLS_SUBTITLE": "Подробно изучите конспекты и можете вернуться к урокам или тренировкам.",
     "I18N_TOPIC_VIEWER_VIEW_ALL": "Посмотреть все",
     "I18N_TOPIC_VIEWER_VIEW_LESS": "Посмотреть меньше",
-    "I18N_CLASSROOM_CALLOUT_BUTTON": "Начать",
+    "I18N_CLASSROOM_CALLOUT_BUTTON": "Подробнее",
     "I18N_CLASSROOM_CALLOUT_HEADING_1": "Математика - 5 класс",
     "I18N_CLASSROOM_CALLOUT_HEADING_11": "Математика - 4 класс",
     "I18N_CLASSROOM_CALLOUT_HEADING_111": "Математика - 6 класс",
@@ -637,10 +637,4 @@
     "I18N_TOPNAV_CLASSROOM_BASIC_MATHS_11": "Математика - 4 класс",
     "I18N_TOPNAV_CLASSROOM_BASIC_MATHS": "Математика - 5 класс",
     "I18N_SPLASH_BUTTON1": "Попробовать"
-
-
-
-
-
-
 }

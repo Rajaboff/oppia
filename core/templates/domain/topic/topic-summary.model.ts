@@ -37,31 +37,38 @@ export interface TopicSummaryBackendDict {
   'is_published'?: boolean;
   'classroom'?: string;
   'url_fragment': string;
+  'cost': number;
+  'paid_status': string;
+  'is_access_open': boolean;
 }
 
 export class TopicSummary {
   constructor(
-      public id: string,
-      public name: string,
-      public canonicalStoryCount: number,
-      public subtopicCount: number,
-      public totalSkillCount: number,
-      public uncategorizedSkillCount: number,
-      public languageCode: string,
-      public description: string,
-      public version: number,
-      public additionalStoryCount: number,
-      public topicModelCreatedOn: number,
-      public topicModelLastUpdated: number,
-      public canEditTopic: boolean,
-      public isPublished: boolean,
-      public classroom: string,
-      public thumbnailFilename: string,
-      public thumbnailBgColor: string,
-      public urlFragment: string) { }
+    public id: string,
+    public name: string,
+    public canonicalStoryCount: number,
+    public subtopicCount: number,
+    public totalSkillCount: number,
+    public uncategorizedSkillCount: number,
+    public languageCode: string,
+    public description: string,
+    public version: number,
+    public additionalStoryCount: number,
+    public topicModelCreatedOn: number,
+    public topicModelLastUpdated: number,
+    public canEditTopic: boolean,
+    public isPublished: boolean,
+    public classroom: string,
+    public thumbnailFilename: string,
+    public thumbnailBgColor: string,
+    public urlFragment: string,
+    public cost: number,
+    public paidStatus: string,
+    public isAccessOpen: boolean) {
+  }
 
   static createFromBackendDict(
-      topicSummaryBackendDict: TopicSummaryBackendDict): TopicSummary {
+    topicSummaryBackendDict: TopicSummaryBackendDict): TopicSummary {
     return new TopicSummary(
       topicSummaryBackendDict.id,
       topicSummaryBackendDict.name,
@@ -80,7 +87,10 @@ export class TopicSummary {
       topicSummaryBackendDict.classroom,
       topicSummaryBackendDict.thumbnail_filename,
       topicSummaryBackendDict.thumbnail_bg_color,
-      topicSummaryBackendDict.url_fragment);
+      topicSummaryBackendDict.url_fragment,
+      topicSummaryBackendDict.cost,
+      topicSummaryBackendDict.paid_status,
+      topicSummaryBackendDict.is_access_open);
   }
 
   getId(): string {

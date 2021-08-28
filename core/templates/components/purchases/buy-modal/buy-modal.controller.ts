@@ -21,7 +21,7 @@ angular.module('oppia').controller('BuyModalController', [
 
         const accountId = userInfo.isLoggedIn() ? userInfo.getEmail() : '';
         const config = {
-          publicId: 'test_api_00000000000000000000001',
+          publicId: 'pk_4dd17d695df63c7e0f781ec124acb',
           description: `Покупка '${params.title}'`,
           amount: params.cost,
           currency: 'KZT',

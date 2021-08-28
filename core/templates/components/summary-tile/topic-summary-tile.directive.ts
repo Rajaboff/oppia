@@ -21,7 +21,7 @@ require('domain/utilities/url-interpolation.service.ts');
 require('services/assets-backend-api.service.ts');
 
 angular.module('oppia').directive('topicSummaryTile', [
-  'UrlInterpolationService', function(UrlInterpolationService) {
+  'UrlInterpolationService', function (UrlInterpolationService) {
     return {
       restrict: 'E',
       scope: {},
@@ -34,12 +34,25 @@ angular.module('oppia').directive('topicSummaryTile', [
       controllerAs: '$ctrl',
       controller: [
         'AssetsBackendApiService', 'ENTITY_TYPE',
-        'TOPIC_VIEWER_URL_TEMPLATE',
-        function(
-            AssetsBackendApiService, ENTITY_TYPE,
-            TOPIC_VIEWER_URL_TEMPLATE) {
-          var ctrl = this;
-          ctrl.getTopicPageUrl = function() {
+        'TOPIC_VIEWER_URL_TEMPLATE', '$uibModal',
+        function (
+          AssetsBackendApiService, ENTITY_TYPE,
+          TOPIC_VIEWER_URL_TEMPLATE, $uibModal) {
+          const ctrl = this;
+
+          ctrl.getPaidStatus = function () {
+            return ctrl.getTopicSummary().paidStatus;
+          };
+
+          ctrl.getIsAccessOpen = function() {
+            return ctrl.getTopicSummary().isAccessOpen;
+          };
+
+          ctrl.getTopicPageUrl = function () {
+            if (!(ctrl.getPaidStatus() === 'free' || ctrl.getIsAccessOpen())) {
+              return '#';
+            }
+
             return UrlInterpolationService.interpolateUrl(
               TOPIC_VIEWER_URL_TEMPLATE, {
                 topic_url_fragment: ctrl.getTopicSummary().getUrlFragment(),
@@ -47,15 +60,44 @@ angular.module('oppia').directive('topicSummaryTile', [
               });
           };
 
-          var getColorValueInHexForm = function(colorValue) {
+          ctrl.openOrBuy = function ($event) {
+            if (ctrl.getPaidStatus() === 'free' || ctrl.getIsAccessOpen()) {
+              return;
+            }
+
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            const topic = ctrl.getTopicSummary();
+
+            $uibModal.open({
+              templateUrl:
+                UrlInterpolationService.getDirectiveTemplateUrl(
+                  '/components/purchases/buy-modal/buy-modal.template.html'),
+              backdrop: true,
+              resolve: {
+                params: () => {
+                  return {
+                    activityId: topic.id,
+                    activityType: 'topic',
+                    title: topic.name,
+                    cost: topic.cost
+                  }
+                }
+              },
+              controller: 'BuyModalController'
+            });
+          };
+
+          var getColorValueInHexForm = function (colorValue) {
             colorValue = (colorValue < 0) ? 0 : colorValue;
             var colorValueString = colorValue.toString(16);
             return (
               (colorValueString.length === 1) ?
-              '0' + colorValueString : colorValueString);
+                '0' + colorValueString : colorValueString);
           };
 
-          ctrl.getDarkerThumbnailBgColor = function() {
+          ctrl.getDarkerThumbnailBgColor = function () {
             var bgColor = ctrl.getTopicSummary().getThumbnailBgColor();
             // Remove the '#' from the first position.
             bgColor = bgColor.slice(1);
@@ -71,7 +113,21 @@ angular.module('oppia').directive('topicSummaryTile', [
             return '#' + newRValue + newGValue + newBValue;
           };
 
-          ctrl.$onInit = function() {
+          ctrl.getDisplayCost = function () {
+            const topic = ctrl.getTopicSummary();
+            const paidStatus = topic.paidStatus;
+            if (paidStatus === 'free') {
+              return 'Бесплатно';
+            }
+
+            if (topic.isAccessOpen) {
+              return 'Куплено';
+            }
+
+            return topic.cost + ' ₸';
+          };
+
+          ctrl.$onInit = function () {
             if (ctrl.getTopicSummary().getThumbnailFilename()) {
               ctrl.thumbnailUrl = (
                 AssetsBackendApiService.getThumbnailUrlForPreview(
