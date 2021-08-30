@@ -53,6 +53,8 @@ interface TopicBackendDict {
   'url_fragment': string;
   'practice_tab_is_displayed': boolean;
   'meta_tag_content': string;
+  'cost': number;
+  'paid_status': string;
 }
 
 const constants = require('constants.ts');
@@ -74,6 +76,8 @@ export class Topic {
   _urlFragment: string;
   _practiceTabIsDisplayed: boolean;
   _metaTagContent: string;
+  _cost: number;
+  _paid_status: string;
   skillSummaryObjectFactory: ShortSkillSummaryObjectFactory;
   subtopicObjectFactory: SubtopicObjectFactory;
   storyReferenceObjectFactory: StoryReferenceObjectFactory;
@@ -91,7 +95,9 @@ export class Topic {
       subtopicObjectFactory: SubtopicObjectFactory,
       storyReferenceObjectFactory: StoryReferenceObjectFactory,
       practiceTabIsDisplayed: boolean,
-      metaTagContent: string) {
+      metaTagContent: string,
+      cost: number,
+      paid_status: string) {
     this._id = id;
     this._name = name;
     this._abbreviatedName = abbreviatedName;
@@ -115,8 +121,10 @@ export class Topic {
     this.storyReferenceObjectFactory = storyReferenceObjectFactory;
     this._practiceTabIsDisplayed = practiceTabIsDisplayed;
     this._metaTagContent = metaTagContent;
+    this._cost = cost;
+    this._paid_status = paid_status;
   }
-
+  
   // ---- Instance methods ----
   getId(): string {
     return this._id;
@@ -200,6 +208,22 @@ export class Topic {
 
   getVersion(): number {
     return this._version;
+  }
+  
+  getCost(): number {
+    return this._cost;
+  }
+  
+  setCost(value: number) {
+    this._cost = value;
+  }
+  
+  getPaidStatus() {
+    return this._paid_status;
+  }
+  
+  setPaidStatus(value: string) {
+    this._paid_status = value;
   }
 
   validate(): string[] {
@@ -527,6 +551,8 @@ export class Topic {
     this.setLanguageCode(otherTopic.getLanguageCode());
     this.setPracticeTabIsDisplayed(otherTopic.getPracticeTabIsDisplayed());
     this.setMetaTagContent(otherTopic.getMetaTagContent());
+    this.setCost(otherTopic.getCost());
+    this.setPaidStatus(otherTopic.getPaidStatus());
     this._version = otherTopic.getVersion();
     this._nextSubtopicId = otherTopic.getNextSubtopicId();
     this.clearAdditionalStoryReferences();
@@ -591,7 +617,9 @@ export class TopicObjectFactory {
       skillIdToDescriptionDict, this.skillSummaryObjectFactory,
       this.subtopicObjectFactory, this.storyReferenceObjectFactory,
       topicBackendDict.practice_tab_is_displayed,
-      topicBackendDict.meta_tag_content
+      topicBackendDict.meta_tag_content, 
+      topicBackendDict.cost,
+      topicBackendDict.paid_status
     );
   }
 
@@ -603,7 +631,7 @@ export class TopicObjectFactory {
       'Url Fragment loading', 'Topic description loading', 'en',
       [], [], [], 1, 1, [], '', '', {},
       this.skillSummaryObjectFactory, this.subtopicObjectFactory,
-      this.storyReferenceObjectFactory, false, ''
+      this.storyReferenceObjectFactory, false, '', null, null
     );
   }
 }

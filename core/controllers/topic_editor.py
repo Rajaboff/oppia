@@ -255,7 +255,11 @@ class EditableTopicDataHandler(base.BaseHandler):
                 question_services.get_total_question_count_for_skill_ids(
                     [skill_id]))
 
+        topic_rights = topic_fetchers.get_topic_rights(topic_id, strict=False)
+
         self.values.update({
+            'cost': topic_rights.get_cost(),
+            'paid_status': topic_rights.paid_status,
             'classroom_url_fragment': classroom_url_fragment,
             'topic_dict': topic.to_dict(),
             'grouped_skill_summary_dicts': grouped_skill_summary_dicts,

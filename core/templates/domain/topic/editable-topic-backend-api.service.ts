@@ -44,8 +44,11 @@ angular.module('oppia').factory('EditableTopicBackendApiService', [
           // callback function in $q in fetchTopic(), and according to its
           // documentation (https://docs.angularjs.org/api/ng/service/$q),
           // resolve or reject can have only a single parameter.
+          let topicDict = angular.copy(response.data.topic_dict);
+          topicDict.cost = response.data.cost;
+          topicDict.paid_status = response.data.paid_status;
           successCallback({
-            topicDict: angular.copy(response.data.topic_dict),
+            topicDict: topicDict,
             groupedSkillSummaries: angular.copy(
               response.data.grouped_skill_summary_dicts),
             skillIdToDescriptionDict: angular.copy(

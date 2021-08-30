@@ -96,6 +96,12 @@
                 </em>
               </span>
             </div>
+            <div class="topic-meta-tag-content">
+              <label for="cost" class="form-heading">Цена, ₸</label>
+              <input id="cost" type="number" class="form-control" placeholder="Бесплатно" ng-model="editableCost"
+                     ng-blur="updateCost(editableCost)"/>
+              <button class="btn btn-info" ng-click="changeCost()">Изменить</button>
+            </div>
             <label class="form-heading">Обложка</label>
             <thumbnail-uploader disabled="!topicRights.canEditTopic()"
                                 filename="topic.getThumbnailFilename()"

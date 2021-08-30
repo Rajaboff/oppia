@@ -22,10 +22,10 @@ from __future__ import unicode_literals  # pylint: disable=import-only-modules
 import logging
 from datetime import datetime
 
-from constants import constants
-from core.domain import activity_domain
-from core.platform import models
 import feconf
+from constants import constants
+from core.domain import activity_domain, exp_fetchers
+from core.platform import models
 
 (activity_models,) = models.Registry.import_models([models.NAMES.activity])
 
@@ -179,6 +179,22 @@ def get_activity_token_access(token):
         )
 
     return None
+
+
+def get_activity_by_token(token):
+    token_model = activity_models.ActivityTokenAccessModel.get_by_token(token)
+    if not token_model:
+        return None
+
+    exploration = exp_fetchers.get_exploration_by_id(token_model.activity_id, False)
+
+    if not exploration:
+        return None
+
+    return {
+        'title': exploration.title,
+        'category': exploration.category
+    }
 
 
 def mark_activity_token_activated(token, user_id):

@@ -68,12 +68,21 @@ mkdir -p ~/appengine.None.root
 
 9. Создаем и запускаем контейнер с проектом
 
+Linux/macOS:
+
 ```bash
-docker run -d --name oqustudy -p 80:80 -v "~/appengine.None.root/:/tmp" -v "${PWD}/../oppia:/oppia" akhanbakhitov777/oqustudy
+docker run -d --name oqustudy -p 80:80 -p 8000:8000 -v "~/appengine.None.root/:/tmp" -v "${PWD}/../oppia:/oppia" akhanbakhitov777/oqustudy
+```
+
+Windows:
+
+```
+docker run -d --name oqustudy -p 80:80 -p 8000:8000 -v "C://oppia/appengine.None.root/:/tmp" -v "C://Git/.oqustudy.kz/oppia/../oppia:/oppia" akhanbakhitov777/oqustudy
 ```
 
 где:
-- `-p 80:80` - прокидываем порт из докера на localhost
+- `-p 80:80` - прокидываем порт приложения из докера на localhost
+- `-p 8000:8000` - прокидываем порт GAE из докера на localhost
 - `-v "~/appengine.None.root/:/tmp"` - прокидываем локальную базу в докер, все изменения останутся в ней даже если остановить и удалить контейнер с приложением
 - `-v "${PWD}/../oppia:/oppia"` - прокидываем локальную директорию с проектом в контейнер с приложением. Т.е. все изменения сделанные локально - автоматически попадают в контейнер, как будто приложение и не в докере вовсе.
 

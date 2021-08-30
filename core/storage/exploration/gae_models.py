@@ -958,7 +958,7 @@ class ExplorationUserAccessModel(base_models.BaseModel):
         )
 
     @classmethod
-    def get_by_exploration_and_user(cls, exploration_id,  user_id):
+    def get_by_exploration_and_user(cls, exploration_id, user_id):
         """Gets ExplorationUserAccessModel by exploration and user IDs.
         Returns `None` if the user does not have an access to the exploration.
 

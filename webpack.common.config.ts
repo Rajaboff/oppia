@@ -58,6 +58,7 @@ module.exports = {
   },
   entry: {
     about: commonPrefix + '/pages/about-page/about-page.import.ts',
+    activation: commonPrefix + '/pages/activation-page/activation-page.import.ts',
     admin: commonPrefix + '/pages/admin-page/admin-page.import.ts',
     classroom:
       commonPrefix + '/pages/classroom-page/classroom-page.import.ts',
@@ -168,6 +169,15 @@ module.exports = {
           'для тех, кому не досточно классического образования.'
       },
       template: commonPrefix + '/pages/about-page/about-page.mainpage.html',
+      minify: htmlMinifyConfig,
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['activation'],
+      filename: 'activation-page.mainpage.html',
+      meta: defaultMeta,
+      template:
+        commonPrefix + '/pages/activation-page/activation-page.mainpage.html',
       minify: htmlMinifyConfig,
       inject: false
     }),

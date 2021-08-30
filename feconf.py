@@ -721,6 +721,7 @@ TASK_URL_DEFERRED = (
     '%s/deferredtaskshandler' % TASKQUEUE_URL_PREFIX)
 
 # TODO(sll): Add all other URLs here.
+ACTIVATION_PAGE = '/activation'
 ADMIN_URL = '/admin'
 ADMIN_ROLE_HANDLER_URL = '/adminrolehandler'
 CLASSROOM_DATA_HANDLER = '/classroom_data_handler'
