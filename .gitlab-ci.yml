@@ -19,6 +19,8 @@ build_base_image:
     - docker push akhanbakhitov777/oqustudy:latest
     - docker push akhanbakhitov777/oqustudy:$TAG_NAME
     - docker system prune -f
+  variables: 
+    GIT_STRATEGY: none
 
 deploy:
   when: manual
