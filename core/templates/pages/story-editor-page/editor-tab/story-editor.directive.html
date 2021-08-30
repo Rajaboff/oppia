@@ -15,7 +15,7 @@
     <div class="content-container">
       <md-card class="oppia-page-card oppia-long-text content-card story-content-card oppia-mobile-collapsible-card">
         <div class="chapter-list-card-header oppia-mobile-collapsible-card-header" ng-click="toggleStoryEditorCard()">
-          <h3 class="story-card-header">Карточка истории</h3>
+          <h3 class="story-card-header">Карточка Раздела</h3>
           <i class="fa fa-caret-down"
              ng-if="!mainStoryCardIsShown"
              aria-hidden="true">
@@ -34,7 +34,7 @@
                      placeholder="Enter a title for the story." maxlength="<[MAX_CHARS_IN_STORY_TITLE]>" ng-trim="false">
               <span class="oppia-input-box-subtitle">
                 <em>
-                  Название истории должно быть не более <[MAX_CHARS_IN_STORY_TITLE]> символов.
+                  Название раздела должно быть не более <[MAX_CHARS_IN_STORY_TITLE]> символов.
                 </em>
               </span>
             </div>
@@ -47,7 +47,7 @@
                         placeholder="Enter the description of the story">
               </textarea>
               <span ng-if="editableDescriptionIsEmpty && storyDescriptionChanged" class="form-text story-contain-text">
-               Что содержит эта история?
+               Что содержит этот раздел?
               </span>
             </div>
             <div class="story-meta-tag-content" ng-class="{'has-error': editableMetaTagContent.length === 0}">
@@ -66,14 +66,14 @@
                      ng-class="{'is-invalid': storyUrlFragmentExists}">
               <span class="oppia-input-box-subtitle">
                 <em>
-                  Фрагмент URL-адреса истории используется для однозначного доступа к странице просмотра истории. Он должен состоять из одного или нескольких слов, разделенных дефисом, в нижнем регистре, не более <[MAX_CHARS_IN_STORY_URL_FRAGMENT]> всего символов и должны быть уникальными по теме. Используйте значимые ключевые слова и избегайте таких слов, как "and", "of", или "the".
-                  Эта история доступна по следующему URL-адресу:<br>
+                  Фрагмент URL-адреса раздела используется для однозначного доступа к странице просмотра раздела. Он должен состоять из одного или нескольких слов, разделенных дефисом, в нижнем регистре, не более <[MAX_CHARS_IN_STORY_URL_FRAGMENT]> всего символов и должны быть уникальными по теме. Используйте значимые ключевые слова и избегайте таких слов, как "and", "of", или "the".
+                  Этот раздел доступен по следующему URL-адресу:<br>
                   <[hostname]>/learn/<[getClassroomUrlFragment()]>/<[getTopicUrlFragment()]>/story/<[editableUrlFragment]>
                 </em>
               </span>
               <div ng-if="storyUrlFragmentExists" class="oppia-input-box-subtitle text-danger">
                 <em>
-                  Этот фрагмент URL истории уже существует.
+                  Этот фрагмент URL раздела уже существует.
                 </em>
               </div>
             </div>
@@ -103,7 +103,7 @@
                          ng-class="oppia-prevent-selection"
                          title="Story notes">
                       <span class="oppia-placeholder" ng-show="editableNotes === ''">
-                          Добавляйте примечания к истории, чтобы помочь другим участникам.
+                          Добавляйте примечания к раздел, чтобы помочь другим участникам.
                       </span>
                       <angular-html-bind class="story-notes protractor-test-story-notes" html-data="editableNotes">
                       </angular-html-bind>
@@ -161,7 +161,7 @@
       <md-card class="oppia-page-card oppia-long-text content-card oppia-mobile-collapsible-card">
         <div class="story-node-editor">
           <div class="chapter-list-card-header oppia-mobile-collapsible-card-header" ng-click="toggleChapterLists()">
-            <span>Главы</span>
+            <span>Уроки</span>
             <i class="fa fa-caret-down"
                ng-if="!chaptersListIsShown"
                aria-hidden="true">
@@ -175,11 +175,11 @@
         <div ng-if="chaptersListIsShown" class="oppia-mobile-collapsible-card-content">
           <div>
             <button ng-click="createNode()" class="btn add-chapter-btn protractor-test-add-chapter-button">
-              + Добавить главу
+              + Добавить урок
             </button>
             <div ng-if="!linearNodesList.length">
               <p class="no-chapters-message">
-                В этой истории нет глав.
+                В этом разделе нет уроков.
               </p>
             </div>
             <div ng-if="linearNodesList.length">

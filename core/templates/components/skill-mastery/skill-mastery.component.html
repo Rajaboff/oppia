@@ -1,6 +1,6 @@
 <div class="oppia-skill-mastery-viewer" *ngIf="!loadingMessage">
   <div class="skill-mastery-degree">
-    <b> Результаты тренировки: </b>
+    <b style="font-family: Montserrat;"> Результаты тестов: </b>
     <div class="oppia-mastery-percentage-container">
       {{ getSkillMasteryPercentage() }}%
       <span class="oppia-mastery-percentage-increment" *ngIf="masteryChange >= 0"> ({{ getMasteryChangePercentage() }}%) </span>
@@ -8,8 +8,8 @@
     </div>
   </div>
   <div class="learning-tips">
-    <b> Совет: </b>
-    <div> {{ getLearningTips() }} </div>
+    <b style="font-family: Montserrat;"> Совет: </b>
+    <div style="font-family: Montserrat;font-style: italic;font-size: 14px;"> {{ getLearningTips() }} </div>
   </div>
 </div>
 <style>
@@ -20,6 +20,10 @@
     color: red;
   }
   .oppia-skill-mastery-viewer .oppia-mastery-percentage-container {
-    margin-bottom: 10px;
+margin-bottom: 20px;
+margin-top: 10px;
+font-family: Montserrat;
+font-weight: 800;
+font-size: 25px;
   }
 </style>

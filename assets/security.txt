@@ -1,4 +1,4 @@
 Contact: info_support@oqustudy.kz
 Preferred-Languages: ru
-Canonical: http://oqustudy.kz/security.txt
-Acknowledgements: http://oqustudy.kz/terms
+Canonical: https://oqustudy.kz/security.txt
+Acknowledgements: https://oqustudy.kz/terms

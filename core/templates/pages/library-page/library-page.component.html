@@ -59,6 +59,22 @@
     background-color: #A8F39C;">
           <div class="oppia-classroom-text">
 
+            <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_1"></h1>
+            <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_1"></p>
+            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/math" href="/learn/math"></a>
+          </div>
+          <picture>
+            <source type="image/png"
+                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/math5.png')]>">
+            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/math5.png')]>"
+                 alt="math classroom illustration" style="
+    margin: 0px 10px 0px 30px; max-width: 44%;">
+          </picture>
+        </div>
+<div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" style="
+    background-color: #FFE4CC;">
+          <div class="oppia-classroom-text">
+
             <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_111"></h1>
             <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_111"></p>
             <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/mathsix" href="/learn/mathsix"></a>
@@ -68,23 +84,7 @@
                     ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/math6.png')]>">
             <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/math6.png')]>"
                  alt="math classroom illustration" style="
-    margin: 20px 10px 0px 30px; max-width: 44%;">
-          </picture>
-        </div>
-<div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" style="
-    background-color: #FFE4CC;">
-          <div class="oppia-classroom-text">
-
-            <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_1"></h1>
-            <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_1"></p>
-            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/math" href="/learn/math"></a>
-          </div>
-          <picture>
-            <source type="image/png"
-                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/programming.png')]>">
-            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/programming.png')]>"
-                 alt="math classroom illustration" style="
-    margin: 20px 10px 0px 30px; max-width: 44%;">
+    margin: 0px 10px 0px 30px; max-width: 44%;">
           </picture>
         </div>
 <div class="oppia-classroom-div" ng-if="$ctrl.CLASSROOM_PROMOS_ARE_ENABLED" >
@@ -92,15 +92,15 @@
 
             <h1 class="oppia-classroom-h1" translate="I18N_CLASSROOM_CALLOUT_HEADING_11"></h1>
             <p class="oppia-classroom-p" translate="I18N_CLASSROOM_CALLOUT_PARAGRAPH_11"></p>
-            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/mathfour" href="/learn/mathfour"></a>
+            <a class="btn oppia-dashboard-intro-button oppia-transition-200" translate="I18N_CLASSROOM_CALLOUT_BUTTON" ng-href="/learn/mathseven" href="/learn/mathseven"></a>
           </div>
           <picture>
 
             <source type="image/png"
-                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/math.png')]>">
-            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/math.png')]>"
+                    ng-srcset="<[$ctrl.getStaticImageUrl('/landing/math/fractions/math7.png')]>">
+            <img ng-src="<[$ctrl.getStaticImageUrl('/assets/images/landing/math/fractions/math7.png')]>"
                  alt="math classroom illustration" style="
-    margin: 20px 10px 0px 30px; max-width: 44%;">
+    margin: 0px 10px 0px 30px; max-width: 44%;">
           </picture>
         </div>
         <div ng-if="$ctrl.libraryGroups.length === 0"
@@ -239,7 +239,7 @@
   library-page .oppia-classroom-div {
     background-color: #B3D8FF;
     border-radius: 10px;
-    height: 300px;
+    height: 310px;
     margin: 20px 45px;
     overflow: hidden;
     padding: 30px 45px 45px 45px;
