@@ -14,7 +14,8 @@ RUN apt update && apt install -y \
 RUN ln -s /usr/bin/python2 /usr/bin/python
 
 # Install Redis
-RUN sudo apt-get install -y build-essential && \
+RUN sudo apt-get update && \
+    apt-get install -y build-essential && \
     mkdir oppia_tools && \
     cd oppia_tools && \
     wget https://download.redis.io/releases/redis-6.0.5.tar.gz && \
