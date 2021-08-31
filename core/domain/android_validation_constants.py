@@ -26,7 +26,7 @@ from __future__ import unicode_literals  # pylint: disable=import-only-modules
 VALID_INTERACTION_IDS = [
     'AlgebraicExpressionInput', 'Continue', 'DragAndDropSortInput',
     'EndExploration', 'FractionInput', 'ImageClickInput', 'ItemSelectionInput',
-    'MathEquationInput', 'MultipleChoiceInput', 'NumericExpressionInput',
+    'MathEquationInput', 'MultipleChoiceInput', 'ButtonChoiceInput', 'NumericExpressionInput',
     'NumericInput', 'NumberWithUnits', 'TextInput'
 ]
 

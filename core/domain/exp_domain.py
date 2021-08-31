@@ -2528,6 +2528,32 @@ class Exploration(python_utils.OBJECT):
         return states_dict
 
     @classmethod
+    def _convert_states_v32_dict_to_v33_dict(cls, states_dict):
+        """Converts from version 32 to 33. Version 33 adds a new
+        customization arg to MultipleChoiceInput which allows
+        answer choices to be shuffled.
+
+        Args:
+            states_dict: dict. A dict where each key-value pair represents,
+                respectively, a state name and a dict used to initialize a
+                State domain object.
+
+        Returns:
+            dict. The converted states_dict.
+        """
+        for state_dict in states_dict.values():
+            if state_dict['interaction']['id'] == 'ButtonChoiceInput':
+                customization_args = state_dict[
+                    'interaction']['customization_args']
+                customization_args.update({
+                    'showChoicesInShuffledOrder': {
+                        'value': False
+                    }
+                })
+
+        return states_dict    
+
+    @classmethod
     def _convert_states_v33_dict_to_v34_dict(cls, states_dict):
         """Converts from version 33 to 34. Version 34 adds a new
         attribute math components. The new attribute has an additional field to

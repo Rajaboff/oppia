@@ -1,0 +1,42 @@
+<form>
+  <div class="Button-choice-option-container protractor-test-Button-choice-option-container" ng-repeat="choice in $ctrl.choices">
+    <button class="Button-choice-option"  ng-click="$ctrl.selectAnswer($event, choice.originalIndex)">
+      <div class="Button-choice-radio-button-container">
+        <span class="Button-choice-outer-radio-button">
+          <span class="Button-choice-inner-radio-button"></span>
+        </span>
+      </div>
+      <div class="Button-choice-content-container">
+        <span>
+          <angular-html-bind class="protractor-test-Button-choice-option" html-data="choice.value">
+          </angular-html-bind>
+        </span>
+      </div>
+    </button>
+  </div>
+</form>
+
+<style>
+  .Button-choice-option {
+    width: 100%;
+    background-color: rgb(66, 142, 255);
+    border-radius: 15px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .Button-choice-option:hover {
+    background-color: rgb(57, 124, 225);
+    color: white;
+  }
+
+  .Button-choice-radio-button-container {
+    display: none;
+  }
+</style>

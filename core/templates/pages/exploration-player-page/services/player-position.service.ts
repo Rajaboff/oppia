@@ -24,6 +24,9 @@ import { PlayerTranscriptService } from
 import { StateCard } from
   'domain/state_card/StateCardObjectFactory';
 
+
+export var cardInfo = []; 
+
 interface HelpCardEventResponse {
   helpCardHtml: string;
   hasContinueButton: boolean;
@@ -33,6 +36,9 @@ interface HelpCardEventResponse {
   providedIn: 'root'
 })
 export class PlayerPositionService {
+  static getCurrentStateCard() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private playerTranscriptService: PlayerTranscriptService) {}
 
   private _activeCardChangedEventEmitter = new EventEmitter<void>();
@@ -61,11 +67,23 @@ export class PlayerPositionService {
         this.displayedCardIndex).getStateName());
   }
 
+  getCurrentStateCard(): StateCard {
+    cardInfo.push(this.playerTranscriptService.getCard(
+      this.displayedCardIndex));
+    cardInfo = [... new Set(cardInfo)];  
+
+      return (
+        this.playerTranscriptService.getCard(
+          this.displayedCardIndex));
+
+  }
+
   /**
    * This function is used to set the index of the displayed card.
    * @param {number} index - The new index of the card.
    */
   setDisplayedCardIndex(index: number): void {
+    
     let oldIndex = this.displayedCardIndex;
     this.displayedCardIndex = index;
 

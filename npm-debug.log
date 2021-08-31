@@ -1,0 +1,220 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'angular' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData angular@^1.7.9
+8 silly fetchNamedPackageData angular
+9 silly mapToRegistry name angular
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/angular
+13 verbose request uri https://registry.npmjs.org/angular
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 6:30:15 PM
+16 verbose request id c603c433b5447de8
+17 verbose etag W/"4b56a39a794b9f32c0e721b6d16971ea"
+18 verbose lastModified Sun, 08 Aug 2021 01:05:14 GMT
+19 http request GET https://registry.npmjs.org/angular
+20 http 304 https://registry.npmjs.org/angular
+21 verbose headers { date: 'Mon, 16 Aug 2021 13:30:30 GMT',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'cf-ray': '67fb04861c667b7f-DME',
+21 verbose headers   age: '2173',
+21 verbose headers   'cache-control': 'public, max-age=300',
+21 verbose headers   etag: '"4b56a39a794b9f32c0e721b6d16971ea"',
+21 verbose headers   'last-modified': 'Sun, 08 Aug 2021 01:05:14 GMT',
+21 verbose headers   vary: 'Accept-Encoding',
+21 verbose headers   'cf-cache-status': 'HIT',
+21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+21 verbose headers   'x-amz-replication-status': 'COMPLETED',
+21 verbose headers   server: 'cloudflare' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Mon, 16 Aug 2021 13:30:30 GMT',
+22 silly get     connection: 'keep-alive',
+22 silly get     'cf-ray': '67fb04861c667b7f-DME',
+22 silly get     age: '2173',
+22 silly get     'cache-control': 'public, max-age=300',
+22 silly get     etag: '"4b56a39a794b9f32c0e721b6d16971ea"',
+22 silly get     'last-modified': 'Sun, 08 Aug 2021 01:05:14 GMT',
+22 silly get     vary: 'Accept-Encoding',
+22 silly get     'cf-cache-status': 'HIT',
+22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 silly get     'x-amz-replication-status': 'COMPLETED',
+22 silly get     server: 'cloudflare' } ]
+23 verbose etag https://registry.npmjs.org/angular from cache
+24 verbose get saving angular to /home/manu/.npm/registry.npmjs.org/angular/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule angular@1.8.2 checking installable status
+38 silly cache add args [ 'angular@^1.7.9', null ]
+39 verbose cache add spec angular@^1.7.9
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'angular@^1.7.9',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'angular',
+40 silly cache add   rawSpec: '^1.7.9',
+40 silly cache add   spec: '>=1.7.9 <2.0.0',
+40 silly cache add   type: 'range' }
+41 silly addNamed angular@>=1.7.9 <2.0.0
+42 verbose addNamed ">=1.7.9 <2.0.0" is a valid semver range for angular
+43 silly addNameRange { name: 'angular', range: '>=1.7.9 <2.0.0', hasData: false }
+44 silly mapToRegistry name angular
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/angular
+48 verbose addNameRange registry:https://registry.npmjs.org/angular not in flight; fetching
+49 verbose get https://registry.npmjs.org/angular not expired, no request
+50 silly addNameRange number 2 { name: 'angular', range: '>=1.7.9 <2.0.0', hasData: true }
+51 silly addNameRange versions [ 'angular',
+51 silly addNameRange   [ '0.0.1',
+51 silly addNameRange     '0.0.1-1',
+51 silly addNameRange     '0.0.1-2',
+51 silly addNameRange     '0.0.2',
+51 silly addNameRange     '0.0.3',
+51 silly addNameRange     '0.0.4',
+51 silly addNameRange     '1.0.0',
+51 silly addNameRange     '1.0.1',
+51 silly addNameRange     '1.0.2',
+51 silly addNameRange     '1.0.3',
+51 silly addNameRange     '1.0.4',
+51 silly addNameRange     '1.0.5',
+51 silly addNameRange     '1.0.6',
+51 silly addNameRange     '1.0.7',
+51 silly addNameRange     '1.0.8',
+51 silly addNameRange     '1.1.0',
+51 silly addNameRange     '1.1.1',
+51 silly addNameRange     '1.1.2',
+51 silly addNameRange     '1.1.3',
+51 silly addNameRange     '1.1.4',
+51 silly addNameRange     '1.1.5',
+51 silly addNameRange     '1.2.0',
+51 silly addNameRange     '1.2.1',
+51 silly addNameRange     '1.2.2',
+51 silly addNameRange     '1.2.3',
+51 silly addNameRange     '1.2.4',
+51 silly addNameRange     '1.2.5',
+51 silly addNameRange     '1.2.6',
+51 silly addNameRange     '1.2.7',
+51 silly addNameRange     '1.2.8',
+51 silly addNameRange     '1.2.9',
+51 silly addNameRange     '1.2.10',
+51 silly addNameRange     '1.2.11',
+51 silly addNameRange     '1.2.12',
+51 silly addNameRange     '1.2.13',
+51 silly addNameRange     '1.2.14',
+51 silly addNameRange     '1.2.15',
+51 silly addNameRange     '1.2.16',
+51 silly addNameRange     '1.2.17',
+51 silly addNameRange     '1.2.18',
+51 silly addNameRange     '1.2.19',
+51 silly addNameRange     '1.2.20',
+51 silly addNameRange     '1.2.21',
+51 silly addNameRange     '1.2.22',
+51 silly addNameRange     '1.2.23',
+51 silly addNameRange     '1.3.0-rc.5',
+51 silly addNameRange     '1.3.0',
+51 silly addNameRange     '1.3.1',
+51 silly addNameRange     '1.3.2',
+51 silly addNameRange     '1.3.3',
+51 silly addNameRange     '1.3.4-build.3588',
+51 silly addNameRange     '1.2.27',
+51 silly addNameRange     '1.3.4',
+51 silly addNameRange     '1.3.5',
+51 silly addNameRange     '1.3.6',
+51 silly addNameRange     '1.3.7',
+51 silly addNameRange     '1.2.28',
+51 silly addNameRange     '1.3.8',
+51 silly addNameRange     '1.4.0-beta.0',
+51 silly addNameRange     '1.3.9',
+51 silly addNameRange     '1.3.10',
+51 silly addNameRange     '1.4.0-beta.1',
+51 silly addNameRange     '1.4.0-beta.2',
+51 silly addNameRange     '1.3.11',
+51 silly addNameRange     '1.4.0-beta.3',
+51 silly addNameRange     '1.3.12',
+51 silly addNameRange     '1.3.13',
+51 silly addNameRange     '1.4.0-beta.4',
+51 silly addNameRange     '1.3.14',
+51 silly addNameRange     '1.4.0-beta.5',
+51 silly addNameRange     '1.4.0-beta.6',
+51 silly addNameRange     '1.3.15',
+51 silly addNameRange     '1.4.0-rc.0',
+51 silly addNameRange     '1.4.0-rc.1',
+51 silly addNameRange     '1.4.0-rc.2',
+51 silly addNameRange     '1.4.0',
+51 silly addNameRange     '1.3.16',
+51 silly addNameRange     '1.4.1',
+51 silly addNameRange     '1.4.2',
+51 silly addNameRange     '1.3.17',
+51 silly addNameRange     '1.4.3',
+51 silly addNameRange     '1.4.4',
+51 silly addNameRange     '1.3.18',
+51 silly addNameRange     '1.4.5',
+51 silly addNameRange     '1.3.19',
+51 silly addNameRange     '1.4.6',
+51 silly addNameRange     '1.5.0-beta.0',
+51 silly addNameRange     '1.2.29',
+51 silly addNameRange     '1.3.20',
+51 silly addNameRange     '1.4.7',
+51 silly addNameRange     '1.5.0-beta.2',
+51 silly addNameRange     '1.4.8',
+51 silly addNameRange     '1.5.0-rc.0',
+51 silly addNameRange     '1.5.0-rc.1',
+51 silly addNameRange     '1.4.9',
+51 silly addNameRange     '1.5.0-rc.2',
+51 silly addNameRange     '1.5.0',
+51 silly addNameRange     '1.5.1',
+51 silly addNameRange     '1.4.10',
+51 silly addNameRange     '1.5.2',
+51 silly addNameRange     ... 43 more items ] ]
+52 silly addNamed angular@1.8.2
+53 verbose addNamed "1.8.2" is a plain semver version for angular
+54 silly cache afterAdd angular@1.8.2
+55 verbose afterAdd /home/manu/.npm/angular/1.8.2/package/package.json not in flight; writing
+56 verbose afterAdd /home/manu/.npm/angular/1.8.2/package/package.json written
+57 silly loadAllDepsIntoIdealTree Finishing
+58 silly idealTree:prePrune oppia@2.8.1
+58 silly idealTree:prePrune └── angular@1.8.2
+59 silly loadIdealTree Finishing
+60 silly currentTree oppia@2.8.1
+61 silly idealTree oppia@2.8.1
+61 silly idealTree └── angular@1.8.2
+62 silly generateActionsToTake Starting
+63 silly install generateActionsToTake
+64 warn checkPermissions Missing write access to /home/manu/Project/oppia/node_modules
+65 silly rollbackFailedOptional Starting
+66 silly rollbackFailedOptional Finishing
+67 silly runTopLevelLifecycles Starting
+68 silly runTopLevelLifecycles Finishing
+69 silly install printInstalled
+70 verbose stack Error: EACCES: permission denied, access '/home/manu/Project/oppia/node_modules'
+71 verbose cwd /home/manu/Project/oppia
+72 error Linux 4.15.0-153-generic
+73 error argv "/usr/bin/node" "/usr/bin/npm" "install" "angular"
+74 error node v8.10.0
+75 error npm  v3.5.2
+76 error path /home/manu/Project/oppia/node_modules
+77 error code EACCES
+78 error errno -13
+79 error syscall access
+80 error Error: EACCES: permission denied, access '/home/manu/Project/oppia/node_modules'
+80 error  { Error: EACCES: permission denied, access '/home/manu/Project/oppia/node_modules'
+80 error   errno: -13,
+80 error   code: 'EACCES',
+80 error   syscall: 'access',
+80 error   path: '/home/manu/Project/oppia/node_modules' }
+81 error Please try running this command again as root/Administrator.
+82 verbose exit [ -13, true ]

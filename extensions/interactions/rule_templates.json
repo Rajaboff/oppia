@@ -153,6 +153,11 @@
       "description": "равно {{x|NonnegativeInt}}"
     }
   },
+  "ButtonChoiceInput": {
+    "Equals": {
+      "description": "равно {{x|NonnegativeInt}}"
+    }
+  },
   "MusicNotesInput": {
     "Equals": {
       "description": "равно {{x|MusicPhrase}}"

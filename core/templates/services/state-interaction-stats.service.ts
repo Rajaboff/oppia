@@ -23,9 +23,9 @@ import { AnswerClassificationService } from
   'pages/exploration-player-page/services/answer-classification.service';
 import { FractionObjectFactory } from
   'domain/objects/FractionObjectFactory';
-import { InteractionAnswer, FractionAnswer, MultipleChoiceAnswer } from
+import { InteractionAnswer, FractionAnswer, MultipleChoiceAnswer, ButtonChoiceAnswer } from
   'interactions/answer-defs';
-import { MultipleChoiceInputCustomizationArgs } from
+import { MultipleChoiceInputCustomizationArgs, ButtonChoiceInputCustomizationArgs } from
   'extensions/interactions/customization-args-defs';
 import { InteractionRulesRegistryService } from
   'services/interaction-rules-registry.service';
@@ -88,6 +88,12 @@ export class StateInteractionStatsService {
         state.interaction.customizationArgs);
       return customizationArgs.choices.value[
         <MultipleChoiceAnswer> answer].getHtml();
+    } else if (state.interaction.id === 'ButtonChoiceInput') {
+      const customizationArgs = (
+        <ButtonChoiceInputCustomizationArgs>
+        state.interaction.customizationArgs);
+      return customizationArgs.choices.value[
+        <ButtonChoiceAnswer> answer].getHtml();
     }
     return answer;
   }

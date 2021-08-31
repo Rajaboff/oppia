@@ -37,6 +37,7 @@ export class LearnerAnswerDetails {
     this.interactionId = interactionId;
     this.customizationArgs = customizationArgs;
     this.learnerAnswerInfoData = learnerAnswerInfoData;
+    console.log(learnerAnswerInfoData);
   }
 
   static createDefaultLearnerAnswerDetails(

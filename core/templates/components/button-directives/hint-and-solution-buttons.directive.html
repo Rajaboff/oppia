@@ -1,11 +1,8 @@
 <div ng-if="$ctrl.isHintButtonVisible(0) && $ctrl.currentlyOnLatestCard" class="oppia-hint-and-solution-buttons float-left">
-  <span class="float-left footer-hints-label">Подсказки</span>
+  <!-- <span class="float-left footer-hints-label">Подсказки</span> -->
   <ul class="list-inline float-right">
     <li ng-repeat="hintIndex in $ctrl.hintIndexes track by $index">
       <button class="oppia-learner-hint-solution-button md-button md-default-theme protractor-test-view-hint"
-              popover-trigger="'none'"
-              popover-is-open="$ctrl.isTooltipVisible()"
-              uib-popover="Нажмите здесь, чтобы получить подсказку!"
               ng-if="hintIndex === 0 && $ctrl.isHintButtonVisible(hintIndex)"
               ng-class="{'viewed': $ctrl.isHintConsumed(hintIndex)}"
               ng-click="$ctrl.displayHintModal(hintIndex)">
@@ -28,11 +25,13 @@
   </ul>
 </div>
 
-<style>
-  .oppia-hint-and-solution-buttons ul {
-    padding: 0 10px 0 10px;
-    display: grid;
 
+<style>
+  .oppia-hint-and-solution-buttons{
+  }
+
+  .oppia-hint-and-solution-buttons ul {
+    display: grid;
   }
   .oppia-hint-and-solution-buttons .footer-hints-label {
     cursor: default;

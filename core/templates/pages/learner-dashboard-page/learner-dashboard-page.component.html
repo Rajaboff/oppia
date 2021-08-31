@@ -130,8 +130,13 @@
       </md-card>
     </div>
 
+    <!-- Main Content Tile -->
+
     <div class="col-md-8 oppia-learner-dashboard-main-content"
          ng-class="{'oppia-learner-dashboard-mobile-mode': $ctrl.checkMobileView()}">
+
+      <!-- Top Info -->
+
       <div>
         <span class="oppia-learner-dashboard-main-content-title">
           <span translate="<[$ctrl.activeSection]>"></span>
@@ -189,7 +194,15 @@
           </span>
         </span>
       </div>
+
+      <!-- End Top Info -->
+
+      <!-- Start Content Card Tile -->
+
       <div class="oppia-learner-dashboard-main-content-container">
+
+        <!-- Start InProgress Explorations Cards Tile -->
+
         <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.INCOMPLETE && $ctrl.activeSubsection === $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.EXPLORATIONS">
           <span class="oppia-learner-dashboard-nonexistent-exploration"
                 ng-if="$ctrl.numberNonexistentIncompleteExplorations !== 0">
@@ -256,7 +269,7 @@
             </span>
             &#9785
           </span>
-
+          
           <md-card layout="row"
                    class="oppia-learner-dashboard-no-activity-card"
                    ng-if="$ctrl.completedExplorationsList.length === 0">
@@ -294,6 +307,11 @@
             <i class="material-icons md-18" ng-click="$ctrl.goToNextPage($ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.COMPLETED, $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.EXPLORATIONS)">&#xE5C8;</i>
           </div>
         </div>
+
+        <!-- End InProgress Explorations Cards Tile -->
+
+
+        <!-- Start Play Later Explor Card Tile -->
 
         <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.PLAYLIST && $ctrl.activeSubsection === $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.EXPLORATIONS">
           <span class="oppia-learner-dashboard-nonexistent-exploration"
@@ -349,6 +367,10 @@
           </div>
 
         </div>
+
+        <!-- End Play Later Explor Card Tile -->
+
+        <!-- Start inProgress Collec. Card Tile -->
 
         <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.INCOMPLETE && $ctrl.activeSubsection === $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.COLLECTIONS">
           <span class="oppia-learner-dashboard-nonexistent-exploration"
@@ -406,6 +428,10 @@
           </div>
         </div>
 
+        <!-- End inProgress Collec. Card Tile -->
+
+        <!-- Start Play Later Collect. Card Tile -->
+
         <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.PLAYLIST && $ctrl.activeSubsection === $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.COLLECTIONS">
           <span class="oppia-learner-dashboard-nonexistent-exploration"
                 ng-if="$ctrl.collectionPlaylist.length > 0">
@@ -458,6 +484,10 @@
             </div>
           </div>
         </div>
+
+        <!-- End Play Later Collect. Card Tile -->
+
+        <!-- Start Copmleted Collec. Card Tile -->
 
         <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.COMPLETED && $ctrl.activeSubsection === $ctrl.LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.COLLECTIONS">
           <span class="oppia-learner-dashboard-nonexistent-exploration"
@@ -518,7 +548,11 @@
           </div>
         </div>
 
-        <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.SUBSCRIPTIONS" class="oppia-subscription-container">
+        <!-- End Copmleted Collec. Card Tile -->
+
+        <!-- Start Subsc Tile -->
+
+        <div  ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.SUBSCRIPTIONS" class="oppia-subscription-container">
           <md-card layout="row"
                    class="oppia-learner-dashboard-no-activity-card"
                    ng-if="$ctrl.subscriptionsList.length === 0">
@@ -553,6 +587,10 @@
             </a>
           </md-card>
         </div>
+
+        <!-- End Subsc Tile -->
+
+        <!-- Start FeedBack Tile -->
 
         <div ng-if="$ctrl.activeSection === $ctrl.LEARNER_DASHBOARD_SECTION_I18N_IDS.FEEDBACK" class="oppia-learner-dashboard-feedback-section">
           <md-card layout="row"
@@ -727,8 +765,16 @@
             <span translate="I18N_LEARNER_DASHBOARD_FEEDBACK_THREAD_WARNING"></span>
           </div>
         </div>
+
+        <!-- End FeedBack Tile -->
+
       </div>
+
+      <!-- End Content Card Tile -->
+
     </div>
+
+    <!-- End Main Content Tile -->
 
     <div class="col-md-2 oppia-learner-dashboard-side-content"
          ng-class="{'oppia-learner-dashboard-mobile-mode': $ctrl.checkMobileView()}">

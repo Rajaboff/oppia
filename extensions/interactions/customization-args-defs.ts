@@ -315,6 +315,23 @@ export interface MultipleChoiceInputCustomizationArgs {
   };
 }
 
+export interface ButtonChoiceInputCustomizationArgsBackendDict {
+  showChoicesInShuffledOrder: {
+    value: boolean;
+  };
+  choices: {
+    value: SubtitledHtmlBackendDict[];
+  };
+}
+export interface ButtonChoiceInputCustomizationArgs {
+  showChoicesInShuffledOrder: {
+    value: boolean;
+  };
+  choices: {
+    value: SubtitledHtml[];
+  };
+}
+
 
 export interface MusicNotesInputCustomizationArgsBackendDict {
   sequenceToGuess: {

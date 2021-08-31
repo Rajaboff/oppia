@@ -185,6 +185,7 @@ import { MathEquationInputRulesService } from 'interactions/MathEquationInput/di
 import { MathEquationInputValidationService } from 'interactions/MathEquationInput/directives/math-equation-input-validation.service';
 import { MultipleChoiceInputRulesService } from 'interactions/MultipleChoiceInput/directives/multiple-choice-input-rules.service';
 import { MultipleChoiceInputValidationService } from 'interactions/MultipleChoiceInput/directives/multiple-choice-input-validation.service';
+import { ButtonChoiceInputRulesService } from 'interactions/ButtonChoiceInput/directives/Button-choice-input-rules.service';
 import { MusicNotesInputRulesService } from 'interactions/MusicNotesInput/directives/music-notes-input-rules.service';
 import { MusicNotesInputValidationService } from 'interactions/MusicNotesInput/directives/music-notes-input-validation.service';
 import { MusicPhrasePlayerService } from 'interactions/MusicNotesInput/directives/music-phrase-player.service';
@@ -456,6 +457,7 @@ export const angularServices: [string, unknown][] = [
   ['MisconceptionObjectFactory', MisconceptionObjectFactory],
   ['MockCsrfTokenService', MockCsrfTokenService],
   ['MultipleChoiceInputRulesService', MultipleChoiceInputRulesService],
+  ['ButtonChoiceInputRulesService', ButtonChoiceInputRulesService],
   ['MultipleChoiceInputValidationService',
     MultipleChoiceInputValidationService],
   ['MusicNotesInputRulesService', MusicNotesInputRulesService],

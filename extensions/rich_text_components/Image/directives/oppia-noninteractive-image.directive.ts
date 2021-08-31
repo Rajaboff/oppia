@@ -27,6 +27,8 @@ require('services/context.service.ts');
 require('services/html-escaper.service.ts');
 require('services/image-local-storage.service.ts');
 
+export var imageSrc = '';
+
 angular.module('oppia').directive('oppiaNoninteractiveImage', [
   'AssetsBackendApiService', 'ContextService',
   'HtmlEscaperService', 'ImageLocalStorageService', 'ImagePreloaderService',
@@ -123,6 +125,7 @@ angular.module('oppia').directive('oppiaNoninteractiveImage', [
               e.message += additionalInfo;
               throw e;
             }
+
           }
 
           ctrl.imageCaption = '';
@@ -135,6 +138,9 @@ angular.module('oppia').directive('oppiaNoninteractiveImage', [
             ctrl.imageAltText = HtmlEscaperService.escapedJsonToObj(
               $attrs.altWithValue);
           }
+
+          imageSrc = ctrl.imageUrl;
+          
         };
       }]
     };

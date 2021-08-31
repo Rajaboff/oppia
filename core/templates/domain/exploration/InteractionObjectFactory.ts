@@ -51,6 +51,8 @@ import {
   MathEquationInputCustomizationArgs,
   MultipleChoiceInputCustomizationArgs,
   MultipleChoiceInputCustomizationArgsBackendDict,
+  ButtonChoiceInputCustomizationArgs,
+  ButtonChoiceInputCustomizationArgsBackendDict,
   MusicNotesInputCustomizationArgs,
   NumberWithUnitsCustomizationArgs,
   NumericExpressionInputCustomizationArgs,
@@ -319,6 +321,22 @@ export class InteractionObjectFactory {
     };
   }
 
+  _createFromIButtonChoiceInputCustomizationArgsBackendDict(
+    caBackendDict: ButtonChoiceInputCustomizationArgsBackendDict
+): ButtonChoiceInputCustomizationArgs {
+  const {
+    choices, showChoicesInShuffledOrder
+  } = caBackendDict;
+  return {
+    showChoicesInShuffledOrder,
+    choices: {
+      value: choices.value.map(
+        subtitledHtmlDict =>
+          this.subtitledHtmlFactory.createFromBackendDict(subtitledHtmlDict))
+    }
+  };
+}
+
   _createFromSetInputCustomizationArgsBackendDict(
       caBackendDict: SetInputCustomizationArgsBackendDict
   ): SetInputCustomizationArgs {
@@ -410,6 +428,9 @@ export class InteractionObjectFactory {
       case 'MultipleChoiceInput':
         return this._createFromIMultipleChoiceInputCustomizationArgsBackendDict(
           <MultipleChoiceInputCustomizationArgsBackendDict> caBackendDict);
+      case 'ButtonChoiceInput':
+        return this._createFromIButtonChoiceInputCustomizationArgsBackendDict(
+          <ButtonChoiceInputCustomizationArgsBackendDict> caBackendDict);
       case 'MusicNotesInput':
         return <MusicNotesInputCustomizationArgs> cloneDeep(caBackendDict);
       case 'NumberWithUnits':

@@ -1,0 +1,67 @@
+.Button-choice-option-container {
+  padding: 4px 0;
+}
+
+.Button-choice-option {
+  background: none;
+  border: none;
+  color: ;
+  text-align: left;
+  /* This is needed so that images stay bounded by the container in Firefox. */
+  /* This also limits the selection area of the option to the text and radio button. */
+  width: auto;
+}
+
+.Button-choice-radio-button-container {
+  display: table-cell;
+}
+
+.Button-choice-content-container {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.Button-choice-outer-radio-button {
+  border: 2px solid #007EFF;
+  border-radius: 50%;
+  display: inline-block;
+  height: 16px;
+  margin-bottom: -1px;
+  margin-right: 12px;
+  width: 16px;
+}
+
+.Button-choice-option.selected .Button-choice-inner-radio-button {
+  background-color: #007EFF;
+  border-radius: 50%;
+  display: block;
+  height: 8px;
+  margin: 2px;
+  width: 8px;
+}
+
+.Button-choice-option:focus .Button-choice-outer-radio-button {
+  border-color: #007EFF;
+}
+
+/* Hover pseudo-class should only be used in desktops because it
+ * breaks functionality on mobile.
+ */
+@media screen and (min-width: 800px) {
+  .Button-choice-option:hover {
+    color: #007EFF;
+  }
+
+  .Button-choice-option:hover .Button-choice-inner-radio-button {
+    background-color: #007EFF;
+    border-radius: 50%;
+    display: block;
+    height: 8px;
+    margin: 2px;
+    width: 8px;
+  }
+
+  .Button-choice-option:hover .Button-choice-outer-radio-button {
+    border-color: #007EFF;
+  }
+}

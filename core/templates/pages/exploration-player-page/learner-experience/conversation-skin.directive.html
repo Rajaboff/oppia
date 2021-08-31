@@ -2,7 +2,17 @@
   Off-screen preview of the next card in order to pre-determine the target
   height for the card content transition animation.
 -->
-<div class="conversation-skin-future-tutor-card" aria-hidden="true">
+
+<div class="top-bottom-slide">
+  <div class="top-slide" ng-if="!topB" ng-click="topSlide(); topBottomBtnClick()">
+    T
+  </div>
+  <div class="bottom-slide" ng-if="topB" ng-click="bottomSlide(); topBottomBtnClick()">
+    B
+  </div>
+</div>
+
+<div class="conversation-skin-future-tutor-card" aria-hidden="false">
   <div class="oppia-learner-view-card-content">
     <div class="oppia-learner-view-card-top-section">
       <angular-html-bind class="oppia-rte-viewer oppia-learner-view-card-top-content"
@@ -32,16 +42,49 @@
   <div class="conversation-skin-cards-container conversation-skin-animate-cards protractor-test-conversation-skin-cards-container"
        ng-class="{'animate-to-two-cards': isAnimatingToTwoCards, 'animate-to-one-card': isAnimatingToOneCard}">
 
+       <div class="previousCardInfo" ng-repeat="card in curCardInfo">
+        <div class="previous-hint-vertical">
+          <div class="hint-container" ng-repeat="hint in card.hints">
+            <p ng-click="prevHintsDisplay(hint)">H</p>
+          </div>
+        </div>
+        <div class="title">
+          <img ng-src="<[card.img]>">
+          <p style="margin-top: 20px;"><[card.title]></p>
+        </div>
+        <div class="learnerAnswer">
+          <p>
+            <[card.answer]>
+          </p>
+        </div>
+      </div>
+
+      <div class="hintDisplay" ng-if="hintsDisplayed">
+        <div class="hintDisplayContent">
+          <h2>Подсказка</h2>
+          <p><[hintInfor]></p>
+          <div class="btn">
+            <button ng-click="hideHintsDisplay()">Понял</button>
+          </div>
+        </div>
+        <div class="bg"></div>
+      </div>
+
     <div class="conversation-skin-tutor-card-container"
          ng-class="{'conversation-skin-animate-tutor-card-on-narrow':
-                      !canWindowShowTwoCards() && isCurrentSupplementalCardNonempty(),
+                      canWindowShowTwoCards() && isCurrentSupplementalCardNonempty(),
                     'conversation-skin-tutor-card-alone':
-                      !canWindowShowTwoCards() && !isCurrentSupplementalCardNonempty()}">
+                      canWindowShowTwoCards() && !isCurrentSupplementalCardNonempty()}">
       <tutor-card displayed-card="displayedCard"
                   is-learn-again-button="isLearnAgainButton()"
                   avatar-image-is-shown="true"
                   start-card-change-animation="startCardChangeAnimation">
       </tutor-card>
+
+  
+      <div class="hints-vertical">
+        <hint-and-solution-buttons></hint-and-solution-buttons>
+      </div>
       <div ng-if="isCurrentSupplementalCardNonempty() && !canWindowShowTwoCards()">
         <supplemental-card on-click-continue-button="showUpcomingCard()"
                            displayed-card="displayedCard"
@@ -162,6 +205,152 @@ otherwise they will interfere with the iframed conversation skin directive.
     color: rgba(0,0,0,0.87);
     font-family: "Roboto", sans-serif;
     font-size: 1.0em;
+    scroll-behavior: smooth;
+  }
+
+  .hintDisplay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hintDisplay > .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .hintDisplay > .hintDisplayContent {
+    width: 42%;
+    height: auto;
+    padding: 35px;
+    border-radius: 8px;
+    background-color: white;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 11000;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+  }
+
+  .hintDisplayContent > h2 {
+    text-align: center;
+    color: #007EFF;
+    margin: 0;
+  }
+
+  .hintDisplayContent > p {
+    margin: 30px 0 20px 0;
+  }
+
+  .hintDisplayContent > .btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+  }
+
+  .btn > button {
+    padding: 7px 20px 7px 20px;
+    background-color: #007EFF;
+    border-radius: 50px;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 15px;
+  }
+
+  .previous-hint-vertical {
+    height: auto;
+    width: 50px;
+    position: absolute;
+    top: 50px;
+    left: -50px;
+    z-index: 1000;
+  }
+
+  .hint-container {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: white;
+    margin-bottom: 20px;
+  }
+
+  .hint-container > p {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .top-bottom-slide {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 10px 10px rgb(37 40 43 / 8%);
+    position: fixed;
+    bottom: 150px;
+    right: 50px;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .top-slide, .bottom-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+
+  .previousCardInfo {
+    position: relative;
+    width: 42%;
+    height: auto;
+    background-color: rgb(247, 247, 247);
+    border-radius: 15px;
+    box-shadow: 0px 20px 20px rgb(37 40 43 / 8%);
+    margin-bottom: 25px;
+  }
+
+  .previousCardInfo > .title {
+    padding: 25px 35px; 
+  }
+
+  .previousCardInfo > .learnerAnswer {
+    margin-bottom: 25px;
+    padding-right: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .previousCardInfo > .learnerAnswer > p {
+    padding: 12px;
+    background-color: #E8E8E8;
+    border-radius: 10px 0px 10px 10px;
+  }
+
+  .hints-vertical {
+    width: 50px;
+    position: absolute;
+    top: 120px;
+    left: -53px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   /* All classes below should start with .conversation-skin */
@@ -408,7 +597,7 @@ otherwise they will interfere with the iframed conversation skin directive.
 
   conversation-skin .oppia-conversation-skin-next-lession-text-container {
     cursor: default;
-    color: #007EFF;
+    color: #27292b;
     font-size: 19px;
     font-family: 'Montserrat';
     font-weight: 700;
@@ -434,6 +623,15 @@ otherwise they will interfere with the iframed conversation skin directive.
       padding: 0px 0;
       position: relative;
       width: 100%;
+    }
+
+    .previousCardInfo {
+      width: 100%;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      margin-top: 25px;
+      margin-bottom: 0;
+      border-radius: 0;
     }
 
     .conversation-skin-tutor-card-container {

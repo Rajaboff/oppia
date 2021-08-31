@@ -176,7 +176,27 @@ angular.module('oppia').directive('stateResponses', [
               return choiceIndices.every(function(choiceIndex) {
                 return handledAnswersArray.indexOf(choiceIndex) !== -1;
               });
-            } else if (interactionId === 'ItemSelectionInput') {
+            } else if(interactionId === 'ButtonChoiceInput') {
+              var numChoices = $scope.getAnswerChoices().length;
+              var choiceIndices = [];
+              // Collect all answers which have been handled by at least one
+              // answer group.
+              for (var i = 0; i < answerGroups.length; i++) {
+                for (var j = 0; j < answerGroups[i].rules.length; j++) {
+                  handledAnswersArray.push(answerGroups[i].rules[j].inputs.x);
+                }
+              }
+              for (var i = 0; i < numChoices; i++) {
+                choiceIndices.push(i);
+              }
+              // We only suppress the default warning if each choice index has
+              // been handled by at least one answer group.
+              return choiceIndices.every(function(choiceIndex) {
+                return handledAnswersArray.indexOf(choiceIndex) !== -1;
+              });
+            }
+            
+            else if (interactionId === 'ItemSelectionInput') {
               var maxSelectionCount = (
                 customizationArgs.maxAllowableSelectionCount.value);
               if (maxSelectionCount === 1) {

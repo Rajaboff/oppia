@@ -1,16 +1,16 @@
 <div class="progress-nav-bar" layout="row" layout-align="space-between center">
   <!-- Wrapping div on first button keeps the second button right-aligned
     even when the first button is not present. -->
-  <div>
+  <!-- <div> -->
     <!-- ng-if on this second wrapping div because ng-if lags on buttons. -->
-    <div ng-if="hasPrevious && !helpCardHasContinueButton">
+    <!-- <div ng-if="hasPrevious && !helpCardHasContinueButton">
       <md-button aria-label="Previous Card"
                  ng-click="changeCard(displayedCardIndex-1)"
                  class="md-raised protractor-test-back-button oppia-back-button oppia-nav-left-button">
         <i class="material-icons oppia-vcenter" aria-hidden="true">&#xE5C4;</i>
       </md-button>
     </div>
-  </div>
+  </div> -->
   <div ng-if="hasNext">
     <md-button ng-click="changeCard(displayedCardIndex+1)"
                aria-label="Next Card"
@@ -35,7 +35,7 @@
     <continue-button ng-if="shouldContinueButtonBeShown()"
                      focus-on="<[::CONTINUE_BUTTON_FOCUS_LABEL]>"
                      is-learn-again-button="isLearnAgainButton()"
-                     ng-click="onClickContinueButton()"
+                     ng-click="onClickContinueButton(); changeCard(displayedCardIndex)"
                      class="d-block">
     </continue-button>
   </div>

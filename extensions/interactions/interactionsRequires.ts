@@ -37,3 +37,4 @@ require('interactions/PencilCodeEditor/PencilCodeEditor.ts');
 require('interactions/RatioExpressionInput/RatioExpressionInput.ts');
 require('interactions/SetInput/SetInput.ts');
 require('interactions/TextInput/TextInput.ts');
+require('interactions/ButtonChoiceInput/ButtonChoiceInput.ts');

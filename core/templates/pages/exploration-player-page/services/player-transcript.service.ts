@@ -111,6 +111,7 @@ export class PlayerTranscriptService {
           ', but transcript only has length ' +
           this.transcript.length + ' cards.');
     }
+
     return this.transcript[index];
   }
 
@@ -131,7 +132,7 @@ export class PlayerTranscriptService {
     return index === this.transcript.length - 1;
   }
 
-  getLastCard(): StateCard {
+  getLastCard(): StateCard {    
     return this.getCard(this.transcript.length - 1);
   }
 

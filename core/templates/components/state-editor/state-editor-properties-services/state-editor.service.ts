@@ -30,7 +30,8 @@ import {
   ImageClickInputCustomizationArgs,
   InteractionCustomizationArgs,
   ItemSelectionInputCustomizationArgs,
-  MultipleChoiceInputCustomizationArgs
+  MultipleChoiceInputCustomizationArgs,
+  ButtonChoiceInputCustomizationArgs
 } from 'extensions/interactions/customization-args-defs';
 import { Interaction } from 'domain/exploration/InteractionObjectFactory';
 import { Outcome } from 'domain/exploration/OutcomeObjectFactory';
@@ -192,7 +193,11 @@ export class StateEditorService {
     if (interactionId === 'MultipleChoiceInput') {
       return (<MultipleChoiceInputCustomizationArgs> customizationArgs)
         .choices.value.map((val, ind) => ({ val: ind, label: val.getHtml() }));
-    } else if (interactionId === 'ImageClickInput') {
+    } else if (interactionId === 'ButtonChoiceInput') {
+      return (<ButtonChoiceInputCustomizationArgs> customizationArgs)
+        .choices.value.map((val, ind) => ({ val: ind, label: val.getHtml() })); 
+    }
+    else if (interactionId === 'ImageClickInput') {
       var _answerChoices = [];
       var imageWithRegions = (
         <ImageClickInputCustomizationArgs> customizationArgs)

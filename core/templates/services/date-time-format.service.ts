@@ -36,15 +36,17 @@ export class DateTimeFormatService {
   */
   getLocaleAbbreviatedDatetimeString(millisSinceEpoch: number): string {
     let date = new Date(millisSinceEpoch);
+    let mnth = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+    
     if (date.toLocaleDateString() === new Date().toLocaleDateString()) {
       return date.toLocaleTimeString([], {
         hour: 'numeric',
         minute: 'numeric',
-        hour12: true
+        hour12: false
       });
     } else if (date.getFullYear() === new Date().getFullYear()) {
       // Moment will return Oct 10.
-      return dayjs(date).format('MMM D');
+      return (mnth[date.getMonth()] + ' ' + date.getDate())
     } else {
       // Moment will return 10/22/35(shortDate).
       return dayjs(date).format('MM/DD/YY');

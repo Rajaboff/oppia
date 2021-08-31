@@ -36,11 +36,11 @@ angular.module('oppia').directive('learnerDashboardIcons', [
       controller: [
         '$scope', 'LearnerDashboardIdsBackendApiService',
         'LearnerPlaylistService', 'ACTIVITY_TYPE_COLLECTION',
-        'ACTIVITY_TYPE_EXPLORATION',
+        'ACTIVITY_TYPE_EXPLORATION', 'ACTIVITY_TYPE_TOPIC',
         function(
             $scope, LearnerDashboardIdsBackendApiService,
             LearnerPlaylistService, ACTIVITY_TYPE_COLLECTION,
-            ACTIVITY_TYPE_EXPLORATION) {
+            ACTIVITY_TYPE_EXPLORATION, ACTIVITY_TYPE_TOPIC) {
           $scope.activityIsCurrentlyHoveredOver = true;
           $scope.playlistTooltipIsEnabled = false;
           $scope.enablePlaylistTooltip = function() {

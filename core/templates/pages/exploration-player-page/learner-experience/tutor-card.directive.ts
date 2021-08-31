@@ -64,13 +64,15 @@ angular.module('oppia').animation(
       },
       addClass: function(element, className, done) {
         if (className !== 'ng-hide') {
-          done();
+          done(); 
           return;
         }
         element.slideUp(400, <(this: HTMLElement) => void>done);
       }
     };
   });
+
+var curCard;  
 
 angular.module('oppia').directive('tutorCard', [
   'UrlInterpolationService', function(UrlInterpolationService) {
@@ -110,6 +112,10 @@ angular.module('oppia').directive('tutorCard', [
           ctrl.directiveSubscriptions = new Subscription();
           var _editorPreviewMode = ContextService.isInExplorationEditorPage();
           var updateDisplayedCard = function() {
+
+            this.curCard = PlayerPositionService.getCurrentStateCard();
+            
+            
             $scope.arePreviousResponsesShown = false;
             $scope.lastAnswer = null;
             $scope.conceptCardIsBeingShown = Boolean(
@@ -202,6 +208,7 @@ angular.module('oppia').directive('tutorCard', [
           };
 
           $scope.getInputResponsePairId = function(index) {
+            
             return 'input-response-pair-' + index;
           };
           ctrl.$onInit = function() {

@@ -177,6 +177,7 @@ export class StateCard {
     if (this._inputResponsePairs.length === 0) {
       return null;
     }
+    
     return this._inputResponsePairs[this._inputResponsePairs.length - 1];
   }
 

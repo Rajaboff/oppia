@@ -141,7 +141,6 @@ export class StateTopAnswersStatsService {
 
   private refreshAddressedInfo(updatedState: State): void {
     const stateName = updatedState.name;
-
     if (!this.topAnswersStatsByStateName.has(stateName)) {
       throw new Error(stateName + ' does not exist.');
     }

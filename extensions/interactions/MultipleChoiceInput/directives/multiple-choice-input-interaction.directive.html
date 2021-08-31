@@ -1,6 +1,6 @@
 <form>
   <div class="multiple-choice-option-container protractor-test-multiple-choice-option-container" ng-repeat="choice in $ctrl.choices">
-    <button class="multiple-choice-option" ng-click="$ctrl.selectAnswer($event, choice.originalIndex)">
+    <button class="multiple-choice-option"  ng-click="$ctrl.selectAnswer($event, choice.originalIndex)">
       <div class="multiple-choice-radio-button-container">
         <span class="multiple-choice-outer-radio-button">
           <span class="multiple-choice-inner-radio-button"></span>
@@ -15,3 +15,19 @@
     </button>
   </div>
 </form>
+
+<style>
+  /* .multiple-choice-option {
+    width: 100%;
+    background-color: rgb(66, 142, 255);
+    border-radius: 15px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+  } */
+</style>

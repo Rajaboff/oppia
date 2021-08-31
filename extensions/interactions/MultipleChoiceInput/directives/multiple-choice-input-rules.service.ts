@@ -29,6 +29,8 @@ export class MultipleChoiceInputRulesService {
   Equals(
       answer: MultipleChoiceAnswer,
       inputs: MultipleChoiceRuleInputs): boolean {
+    console.log(answer, inputs.x);
+    
     return answer === inputs.x;
   }
 }

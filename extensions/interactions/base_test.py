@@ -237,6 +237,7 @@ class InteractionUnitTests(test_utils.GenericTestBase):
             self.assertEqual(len(interaction.rules_dict), expected_num)
 
         _check_num_interaction_rules('MultipleChoiceInput', 1)
+        _check_num_interaction_rules('ButtonChoiceInput', 1)
         _check_num_interaction_rules('NumericInput', 7)
         _check_num_interaction_rules('Continue', 0)
         with self.assertRaisesRegexp(KeyError, 'u\'FakeObjType\''):

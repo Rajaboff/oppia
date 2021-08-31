@@ -22,15 +22,18 @@ import { EventEmitter } from '@angular/core';
 require(
   'pages/exploration-player-page/exploration-player-page.constants.ajs.ts');
 
+export var hints = [];  
+export var allHints = [];
+
 angular.module('oppia').factory('HintsAndSolutionManagerService', [
-  '$timeout', 'PlayerPositionService',
+  '$timeout', 'PlayerPositionService', 
   'WAIT_FOR_FIRST_HINT_MSEC', 'WAIT_FOR_SUBSEQUENT_HINTS_MSEC',
   function(
       $timeout, PlayerPositionService,
       WAIT_FOR_FIRST_HINT_MSEC, WAIT_FOR_SUBSEQUENT_HINTS_MSEC) {
     var timeout = null;
-    var ACCELERATED_HINT_WAIT_TIME_MSEC = 10000;
-    var WAIT_FOR_TOOLTIP_TO_BE_SHOWN_MSEC = 60000;
+    var ACCELERATED_HINT_WAIT_TIME_MSEC = 2000;
+    var WAIT_FOR_TOOLTIP_TO_BE_SHOWN_MSEC = 3000;
     var _solutionViewedEventEmitter = new EventEmitter();
 
     var numHintsReleased = 0;
@@ -136,6 +139,9 @@ angular.module('oppia').factory('HintsAndSolutionManagerService', [
         if (hintsForLatestCard.length > 0) {
           enqueueTimeout(releaseHint, WAIT_FOR_FIRST_HINT_MSEC);
         }
+
+        // console.log(newHints, newSolution);
+        
       },
       // WARNING: This method has a side-effect. If the retrieved hint is a
       // pending hint that's being viewed, it starts the timer for the next
@@ -147,6 +153,11 @@ angular.module('oppia').factory('HintsAndSolutionManagerService', [
         }
 
         if (index < numHintsReleased) {
+          hints.push(hintsForLatestCard[index].hintContent._html.trim().slice(3).slice(0, -4));
+          hints = [... new Set(hints)];
+          
+          allHints = hintsForLatestCard;
+
           return hintsForLatestCard[index].hintContent;
         }
         return null;

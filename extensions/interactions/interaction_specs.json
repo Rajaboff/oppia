@@ -693,6 +693,66 @@
       "Equals": "равно {{x|NonnegativeInt}}"
     }
   },
+
+  "ButtonChoiceInput": {
+    "can_have_solution": false,
+    "show_generic_submit_button": false,
+    "instructions": null,
+    "is_trainable": false,
+    "narrow_instructions": null,
+    "description": "Позволяет учащимся выбрать один из списка вариантов.",
+    "needs_summary": false,
+    "name": "Выбор c кнопками",
+    "answer_type": "NonnegativeInt",
+    "is_linear": false,
+    "display_mode": "inline",
+    "id": "ButtonChoiceInput",
+    "customization_arg_specs": [
+      {
+        "description": "Варианты единичного выбора",
+        "name": "choices",
+        "schema": {
+          "items": {
+            "type": "custom",
+            "obj_type": "SubtitledHtml",
+            "replacement_ui_config": {
+              "html": {
+                "hide_complex_extensions": true,
+                "placeholder": "Введите вариант, который должен выбрать учащийся"
+              }
+            }
+          },
+          "type": "list",
+          "validators": [
+            {
+              "min_value": 1,
+              "id": "has_length_at_least"
+            }
+          ],
+          "ui_config": {
+            "add_element_text": "Добавить вариант"
+          }
+        },
+        "default_value": [{
+          "content_id": null,
+          "html": ""
+        }]
+      }, {
+        "name": "showChoicesInShuffledOrder",
+        "description": "Перемешать варианты ответов",
+        "schema": {
+            "type": "bool"
+        },
+        "default_value": true
+    }
+    ],
+    "is_terminal": false,
+    "default_outcome_heading": null,
+    "rule_descriptions": {
+      "Equals": "равно {{x|NonnegativeInt}}"
+    }
+  },
+  
   "PencilCodeEditor": {
     "can_have_solution": true,
     "show_generic_submit_button": false,

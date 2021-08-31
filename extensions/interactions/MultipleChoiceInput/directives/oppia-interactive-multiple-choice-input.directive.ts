@@ -90,8 +90,10 @@ angular.module('oppia').directive('oppiaInteractiveMultipleChoiceInput', [
             var choicesWithIndex = choices.map(
               function(value, originalIndex) {
                 return {originalIndex: originalIndex, value: value.getHtml()};
-              }
+              }              
             );
+
+            console.log(choices);
 
             var shuffleChoices = function(choices) {
               for (var currentIndex = choices.length - 1;

@@ -62,6 +62,27 @@ describe('Answer Submit Action directive', function() {
     });
   }));
 
+  beforeEach(angular.mock.module('oppia', function($provide) {
+    $provide.value('$attrs', {
+      actionIndex: 2,
+      answer: '"This is an answer string."',
+      currentStateName: 'State name',
+      destStateName: 'Introduction',
+      interactionCustomizationArgs:
+        `{
+          "choices": {
+            "value": [{
+              "content_id": "",
+              "html": "Value"
+            }]
+          },
+          "showChoicesInShuffledOrder": {"value": true}
+        }`,
+      interactionId: 'ButtonChoiceInput',
+      timeSpentInStateSecs: 2000
+    });
+  }));
+
 
   beforeEach(angular.mock.inject(function($injector, $componentController) {
     var $rootScope = $injector.get('$rootScope');

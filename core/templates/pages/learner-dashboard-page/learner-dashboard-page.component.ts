@@ -128,8 +128,9 @@ angular.module('oppia').component('learnerDashboardPage', {
               LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.COLLECTIONS)) {
             ctrl.startIncompleteCollectionIndex = Math.max(
               ctrl.startIncompleteCollectionIndex - ctrl.PAGE_SIZE, 0);
+            } 
           }
-        } else if (
+          else if (
           section === LEARNER_DASHBOARD_SECTION_I18N_IDS.COMPLETED) {
           if (subsection === (
             LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.EXPLORATIONS)) {
@@ -213,6 +214,9 @@ angular.module('oppia').component('learnerDashboardPage', {
         // explorations.
         if (ctrl.currentExpSortType ===
             EXPLORATIONS_SORT_BY_KEYS_AND_I18N_IDS.LAST_PLAYED.key) {
+          return null;
+        }  if (ctrl.currentExpSortType ===
+          EXPLORATIONS_SORT_BY_KEYS_AND_I18N_IDS.LAST_PLAYED.key) {
           return null;
         } else {
           return exploration[ctrl.currentExpSortType];
@@ -384,7 +388,7 @@ angular.module('oppia').component('learnerDashboardPage', {
                 ctrl.incompleteCollectionsList.splice(index, 1);
               }
             }
-          } else if (sectionNameI18nId ===
+           } else if (sectionNameI18nId ===
                     LEARNER_DASHBOARD_SECTION_I18N_IDS.PLAYLIST) {
             if (subsectionName ===
                 LEARNER_DASHBOARD_SUBSECTION_I18N_IDS.EXPLORATIONS) {

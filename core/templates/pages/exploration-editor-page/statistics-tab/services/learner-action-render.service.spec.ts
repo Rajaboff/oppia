@@ -87,6 +87,40 @@ describe('Learner Action Render Service', function() {
       });
   });
 
+  beforeEach(() => {
+    spyOn(explorationStatesService, 'getState')
+      .withArgs('stateName1').and.returnValue({
+        interaction: {
+          id: 'Continue',
+          customizationArgs: {
+            buttonText: {value: new SubtitledUnicode('', '')}
+          }
+        }
+      })
+      .withArgs('stateName2').and.returnValue({
+        interaction: {
+          id: 'TextInput',
+          customizationArgs: {
+            placeholder: {value: new SubtitledUnicode('', '')},
+            rows: {value: 1}
+          }
+        }
+      })
+      .withArgs('stateName3').and.returnValue({
+        interaction: {
+          id: 'ButtonChoiceInput',
+          customizationArgs: {
+            choices: {value: [
+              new SubtitledHtml('Choice1', ''),
+              new SubtitledHtml('Choice2', ''),
+              new SubtitledHtml('Choice3', '')
+            ]},
+            showChoicesInShuffledOrder: {value: true}
+          }
+        }
+      });
+  });
+
   describe('Test learner action render service functions', () => {
     it('should render correct learner actions', () => {
       let actions = [

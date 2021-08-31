@@ -84,6 +84,7 @@ export interface LogicProofAnswer {
 export type MathEquationAnswer = string;
 
 export type MultipleChoiceAnswer = number;
+export type ButtonChoiceAnswer = number;
 
 export interface MusicNotesAnswer {
   readableNoteName: string,
@@ -129,6 +130,7 @@ export type InteractionAnswer = (
   ItemSelectionAnswer |
   LogicProofAnswer |
   MultipleChoiceAnswer |
+  ButtonChoiceAnswer |
   MusicNotesAnswer |
   NumericExpressionAnswer |
   NumberWithUnitsAnswer |

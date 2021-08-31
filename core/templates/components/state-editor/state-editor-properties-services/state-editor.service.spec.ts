@@ -138,4 +138,78 @@ describe('Editor state service', () => {
       label: 'Choice 2',
     }]);
   });
+
+  it('should correctly return answer choices for interaction', () => {
+    const customizationArgsForButtonChoiceInput = {
+      choices: {
+        value: [
+          new SubtitledHtml('Choice 1', ''),
+          new SubtitledHtml('Choice 2', '')
+        ]
+      }
+    };
+    expect(
+      ecs.getAnswerChoices(
+        'ButtonChoiceInput', customizationArgsForButtonChoiceInput)
+    ).toEqual([{
+      val: 0,
+      label: 'Choice 1',
+    }, {
+      val: 1,
+      label: 'Choice 2',
+    }]);
+
+    const customizationArgsForImageClickInput = {
+      imageAndRegions: {
+        value: {
+          labeledRegions: [{
+            label: 'Label 1'
+          }, {
+            label: 'Label 2'
+          }]
+        }
+      }
+    };
+    expect(
+      ecs.getAnswerChoices(
+        'ImageClickInput', customizationArgsForImageClickInput)
+    ).toEqual([{
+      val: 'Label 1',
+      label: 'Label 1',
+    }, {
+      val: 'Label 2',
+      label: 'Label 2',
+    }]);
+
+    const customizationArgsForItemSelectionAndDragAndDropInput = {
+      choices: {
+        value: [
+          new SubtitledHtml('Choice 1', ''),
+          new SubtitledHtml('Choice 2', '')
+        ]
+      }
+    };
+    expect(
+      ecs.getAnswerChoices(
+        'ItemSelectionInput',
+        customizationArgsForItemSelectionAndDragAndDropInput)
+    ).toEqual([{
+      val: 'Choice 1',
+      label: 'Choice 1',
+    }, {
+      val: 'Choice 2',
+      label: 'Choice 2',
+    }]);
+    expect(
+      ecs.getAnswerChoices(
+        'DragAndDropSortInput',
+        customizationArgsForItemSelectionAndDragAndDropInput)
+    ).toEqual([{
+      val: 'Choice 1',
+      label: 'Choice 1',
+    }, {
+      val: 'Choice 2',
+      label: 'Choice 2',
+    }]);
+  });
 });

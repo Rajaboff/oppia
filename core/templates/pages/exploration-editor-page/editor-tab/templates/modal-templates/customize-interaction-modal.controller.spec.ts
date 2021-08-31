@@ -407,6 +407,29 @@ describe('Customize Interaction Modal Controller', function() {
     });
   });
 
+  it('should correctly populate null content ids on save', () => {
+    stateNextContentIdIndexService.displayed = 0;
+    stateInteractionIdService.displayed = 'ButtonChoiceInput';
+    stateCustomizationArgsService.displayed = {
+      choices: {value: [
+        new SubtitledHtml('<p>1</p>', null),
+        new SubtitledHtml('<p>2</p>', null)
+      ]},
+      showChoicesInShuffledOrder: {value: false}
+    };
+
+    $scope.save();
+    expect(stateCustomizationArgsService.displayed).toEqual({
+      choices: {value: [
+        new SubtitledHtml('<p>1</p>', 'ca_choices_0'),
+        new SubtitledHtml('<p>2</p>', 'ca_choices_1')
+      ]},
+      showChoicesInShuffledOrder: {value: false}
+    });
+    expect(stateNextContentIdIndexService.displayed).toEqual(2);
+  });
+});
+
   it('should error when a saved customization arg is missing', () => {
     angular.mock.inject(function($injector, $controller) {
       var $rootScope = $injector.get('$rootScope');

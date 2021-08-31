@@ -35,13 +35,15 @@ require(
   'pages/exploration-player-page/exploration-player-page.constants.ajs.ts');
 require('pages/interaction-specs.constants.ajs.ts');
 
+export var curCardInfo;
+
 angular.module('oppia').directive('progressNav', [
   function() {
     return {
       restrict: 'E',
       scope: {
         onSubmit: '&',
-        onClickContinueButton: '&',
+        onClickContinueButton: '&', 
         isLearnAgainButton: '&',
         getDisplayedCard: '&displayedCard',
         isSubmitButtonShown: '&submitButtonIsShown',
@@ -69,7 +71,7 @@ angular.module('oppia').directive('progressNav', [
           var updateDisplayedCardInfo = function() {
             transcriptLength = PlayerTranscriptService.getNumCards();
             $scope.displayedCardIndex =
-              PlayerPositionService.getDisplayedCardIndex();
+              PlayerPositionService.getDisplayedCardIndex(); 
             $scope.displayedCard = $scope.getDisplayedCard();
             $scope.hasPrevious = $scope.displayedCardIndex > 0;
             $scope.hasNext = !PlayerTranscriptService.isLastCard(
@@ -109,7 +111,7 @@ angular.module('oppia').directive('progressNav', [
             //    ItemSelectionInput or MultipleChoiceInput.
             // 2. In desktop mode, if the current interaction is
             //    ItemSelectionInput with maximum selectable choices > 1.
-            if (BrowserCheckerService.isMobileDevice()) {
+            if (BrowserCheckerService.isMobileDevice()) { 
               return (SHOW_SUBMIT_INTERACTIONS_ONLY_FOR_MOBILE.indexOf(
                 $scope.interactionId) >= 0);
             } else {
@@ -120,16 +122,28 @@ angular.module('oppia').directive('progressNav', [
             }
           };
 
-          $scope.changeCard = function(index) {
+          
+
+          $scope.changeCard = function(index) {    
+            
             if (index >= 0 && index < transcriptLength) {
               PlayerPositionService.recordNavigationButtonClick();
               PlayerPositionService.setDisplayedCardIndex(index);
               ExplorationEngineService.onUpdateActiveStateIfInEditor.emit(
                 PlayerPositionService.getCurrentStateName());
+
+              
+              curCardInfo = PlayerPositionService.getCurrentStateCard();
+              console.log("Tap!");
+              
+              
               PlayerPositionService.changeCurrentQuestion(index);
+  
             } else {
               throw new Error('Target card index out of bounds.');
             }
+
+            console.log("Selected!");
           };
 
           // Returns whether the screen is wide enough to fit two
@@ -154,7 +168,7 @@ angular.module('oppia').directive('progressNav', [
               return true;
             }
             return Boolean(
-              interactionIsInline &&
+              interactionIsInline && 
               $scope.displayedCard.isCompleted() &&
               $scope.displayedCard.getLastOppiaResponse());
           };

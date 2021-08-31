@@ -39,6 +39,9 @@ require(
 require(
   'pages/exploration-player-page/learner-experience/tutor-card.directive.ts');
 require(
+  '../../../components/button-directives/hint-and-solution-buttons.directive');
+require('../../../pages/exploration-player-page/layout-directives/exploration-footer.directive');
+require(
   'pages/exploration-player-page/services/learner-answer-info.service.ts');
 require('domain/collection/guest-collection-progress.service.ts');
 require('domain/collection/read-only-collection-backend-api.service.ts');
@@ -99,6 +102,11 @@ require('services/stateful/focus-manager.service.ts');
 require(
   'pages/exploration-player-page/exploration-player-page.constants.ajs.ts');
 require('pages/interaction-specs.constants.ajs.ts');
+
+import { cardInfo } from "pages/exploration-player-page/services/player-position.service";
+// import { imgSrc } from "../../../../../extensions/interactions/ImageClickInput/directives/oppia-interactive-image-click-input.directive";
+import { imageSrc } from "../../../../../extensions/rich_text_components/Image/directives/oppia-noninteractive-image.directive";
+import { hints, allHints } from "../../exploration-player-page/services/hints-and-solution-manager.service";
 
 // Note: This file should be assumed to be in an IIFE, and the constants below
 // should only be used within this file.
@@ -170,6 +178,8 @@ angular.module('oppia').animation(
         done();
         return;
       }
+      console.log("2");
+      
       var tutorCard = element;
       $('.conversation-skin-oppia-avatar.show-tutor-card').hide(0, function() {
         tutorCard.css({
@@ -203,12 +213,73 @@ angular.module('oppia').animation(
     };
   });
 
-angular.module('oppia').animation(
-  '.conversation-skin-animate-tutor-card-content', function() {
+
+var cardArray = {};  
+
+var hintArray = {};
+var id  = 0;
+
+angular.module('oppia'). animation(
+  '.conversation-skin-animate-tutor-card-content',
+  function() {
+    
+
     var animateCardChange = function(element, className, done) {
+
       if (className !== 'animate-card-change') {
         return;
+        
       }
+
+      let hArr = [];
+
+      
+      if(allHints.length >= 1) {
+        for (const i of allHints) {
+          let sl = i.hintContent._html.trim().slice(3).slice(0, -4);
+          if(hints.indexOf(sl) >= 0) {
+            let curIn = hints.indexOf(sl);
+            hArr.push(hints[curIn]);
+          }
+        }
+      }
+
+      hintArray[id] = hArr;
+      id++;
+
+      let aaa = function(card, curAns) {
+        if(card._interaction.customizationArgs.choices){
+          console.log(card);
+          return (card._interaction.customizationArgs.choices.value[curAns]._html.slice(3).slice(0, -4)).replace("&nbsp;", " ");
+        }
+
+        return curAns;
+
+      }
+
+      for (let i = 0; i < cardInfo.length; i++) {
+        let curAns = cardInfo[i]._inputResponsePairs[cardInfo[i]._inputResponsePairs.length-1].learnerInput
+        let curTitle = cardInfo[i]._contentHtml.split("<p>");
+        let img = "";
+
+        
+
+        if(curTitle.length > 1 && curTitle[0] != ""){
+          img = imageSrc;
+        }
+        else {
+          img = "";
+        }
+
+        cardArray[cardInfo[i]._stateName] = {
+          title: curTitle[1].trim().slice(0, -4),
+          answer: aaa(cardInfo[i], curAns),
+          img: img,
+          hints: hintArray[i]
+        }   
+      }  
+
+      console.log(cardArray);
 
       var currentHeight = element.height();
       var expectedNextHeight = $(
@@ -239,7 +310,7 @@ angular.module('oppia').animation(
         }
       };
     };
-
+    
     return {
       addClass: animateCardChange
     };
@@ -251,6 +322,7 @@ angular.module('oppia').animation(
     var animateCards = function(element, className, done) {
       var supplementalCardElt = jQuery(element).find(
         '.conversation-skin-supplemental-card-container');
+        console.log("4");
 
       if (className === 'animate-to-two-cards') {
         var supplementalWidth = supplementalCardElt.width();
@@ -403,6 +475,8 @@ angular.module('oppia').directive('conversationSkin', [
           var TIME_SCROLL_MSEC = 600;
           var MIN_CARD_LOADING_DELAY_MSEC = 950;
 
+          $scope.curCardInfo = cardArray;
+
           $scope.getFeedbackPopoverUrl = function() {
             return UrlInterpolationService.getDirectiveTemplateUrl(
               FEEDBACK_POPOVER_PATH);
@@ -416,6 +490,18 @@ angular.module('oppia').directive('conversationSkin', [
           $scope.canAskLearnerForAnswerInfo = function() {
             return LearnerAnswerInfoService.canAskLearnerForAnswerInfo();
           };
+
+          $scope.hintsDisplayed = false;
+          $scope.hintInfor = "";
+
+          $scope.prevHintsDisplay = function(hintInfo) {
+            $scope.hintInfor = hintInfo;
+            $scope.hintsDisplayed = true;
+          }
+
+          $scope.hideHintsDisplay = function() {
+            $scope.hintsDisplayed = false;
+          }
 
           var initLearnerAnswerInfoService = function(
               entityId, state, answer, interactionRulesService,
@@ -1237,6 +1323,20 @@ angular.module('oppia').directive('conversationSkin', [
           $scope.submitAnswerFromProgressNav = function() {
             CurrentInteractionService.submitAnswer();
           };
+
+          $scope.topB = true;
+
+          $scope.topBottomBtnClick = function(){
+            $scope.topB = !$scope.topB;
+          }
+
+          $scope.topSlide = function() {
+            window.scrollTo(0, 0);
+          }
+
+          $scope.bottomSlide = function() {
+            window.scrollTo(0,document.body.scrollHeight);
+          }
 
           ctrl.$onInit = function() {
             $scope.CONTINUE_BUTTON_FOCUS_LABEL = CONTINUE_BUTTON_FOCUS_LABEL;

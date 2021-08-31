@@ -171,6 +171,41 @@ describe('Training Panel Component', function() {
     ctrl.$onInit();
   }));
 
+  beforeEach(angular.mock.inject(function($injector, $componentController) {
+    var $rootScope = $injector.get('$rootScope');
+    explorationStatesService = $injector.get('ExplorationStatesService');
+    responsesService = $injector.get('ResponsesService');
+    stateEditorService = $injector.get('StateEditorService');
+
+    spyOn(stateEditorService, 'getActiveStateName').and.returnValue(stateName);
+    spyOn(explorationStatesService, 'getState').and.returnValue(
+      stateObjectFactory.createFromBackendDict(stateName, state));
+    spyOn(generateContentIdService, 'getNextStateId').and.returnValue(
+      'feedback_1');
+
+    stateInteractionIdService.init(stateName, 'ButtonChoiceInput');
+    stateCustomizationArgsService.init(stateName, {
+      choices: {value: []},
+      showChoicesInShuffledOrder: {value: true}
+    });
+
+    $scope = $rootScope.$new();
+    ctrl = $componentController('trainingPanel', {
+      $scope: $scope,
+      StateInteractionIdService: stateInteractionIdService,
+      StateCustomizationArgsService: stateCustomizationArgsService
+    }, {
+      answer: {},
+      classification: {
+        answerGroupIndex: 0,
+        newOutcome: {}
+      },
+      onFinishTraining: () => {},
+      addingNewResponse: null
+    });
+    ctrl.$onInit();
+  }));
+
   it('should initialize $scope properties after controller is initialized',
     function() {
       expect(ctrl.addingNewResponse).toBe(false);

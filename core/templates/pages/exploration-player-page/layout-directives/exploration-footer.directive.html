@@ -1,21 +1,22 @@
 <style>
   .oppia-exploration-footer {
+    display: none;
     background-color: inherit;
     color: #0000005c;
     font-family: 'Montserrat';
     font-size: 12px;
-    height: 12px;
+    width: 100px;
+    height: 100px;
     line-height: 0;
-    margin-top: 30px;
-    width: 15%;
-    top: 350px;
-    left: 440px;
     font-weight: 500;
+    position: fixed;
+    top: 100px;
+    left: 20%;
+    z-index: 10000;
   }
 
   .oppia-exploration-footer .exploration-footer-img {
     height: 60px;
-    margin: -25px 0 0 10px;
     width: 60px;
   }
 
@@ -163,7 +164,7 @@
   }
 </style>
 
-<div class="footer navbar-fixed-bottom oppia-exploration-footer" ng-if="!iframed">
+<div class="footer oppia-exploration-footer" ng-if="!iframed" style="border: 1px solid blue;">
   <div>
     <!--
     <div class="col-sm-5">
@@ -200,7 +201,7 @@
     </div>
     -->
     <div class="col-sm-7">
-      <div class="float-right">
+      <div class="float-left">
         <hint-and-solution-buttons ng-if="!windowIsNarrow"></hint-and-solution-buttons>
       </div>
     </div>

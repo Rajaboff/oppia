@@ -119,6 +119,8 @@ export class CurrentInteractionService {
         '\nState Name: ' + displayedCard.getStateName() +
         '\nContext: ' + this.contextService.getPageContext() +
         '\nErrored at index: ' + index);
+      console.log(additionalInfo);
+      
       throw new Error(
         'The current interaction did not ' +
         'register a _submitAnswerFn.' + additionalInfo);

@@ -138,6 +138,11 @@ export interface MultipleChoiceRuleInputs {
   x: number;
 }
 
+export interface ButtonChoiceRuleInputs {
+  x: number;
+}
+
+
 // MusicNotes interaction has multiple types of inputs based on
 // rule type.
 export interface MusicNotesEqualsRuleInputs {
@@ -244,6 +249,7 @@ export type InteractionRuleInputs = (
   LogicProofRuleInputs |
   MathEquationRuleInputs |
   MultipleChoiceRuleInputs |
+  ButtonChoiceRuleInputs |
   MusicNotesRuleInputs |
   NumericExpressionRuleInputs |
   NumberWithUnitsRuleInputs |

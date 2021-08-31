@@ -39,6 +39,7 @@ export = {
     "Probability", "Programming", "Puzzles", "Reading", "Spanish", "Sport",
     "Statistics", "Trigonometry", "Welcome"],
   "ACTIVITY_TYPE_EXPLORATION": "exploration",
+  "ACTIVITY_TYPE_TOPIC": "topic",
   "ACTIVITY_TYPE_COLLECTION": "collection",
   "DISABLED_EXPLORATION_IDS": ["5"],
   "TESTING_CONSTANT": "test",
@@ -4803,6 +4804,7 @@ export = {
       "ImageClickInput",
       "ItemSelectionInput",
       "MultipleChoiceInput",
+      "ButtonChoiceInput",
       "TextInput",
       "DragAndDropSortInput"
     ]
@@ -4825,6 +4827,7 @@ export = {
       "ImageClickInput",
       "ItemSelectionInput",
       "MultipleChoiceInput",
+      "ButtonChoiceInput",
       "SetInput",
       "TextInput",
       "DragAndDropSortInput"

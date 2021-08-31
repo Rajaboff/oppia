@@ -33,6 +33,8 @@ require('pages/exploration-player-page/services/player-position.service.ts');
 
 import { Subscription } from 'rxjs';
 
+export var imgSrc = '';
+
 angular.module('oppia').directive('oppiaInteractiveImageClickInput', [
   'AssetsBackendApiService', 'ContextService',
   'ImageClickInputRulesService', 'ImagePreloaderService',
@@ -158,6 +160,8 @@ angular.module('oppia').directive('oppiaInteractiveImageClickInput', [
             ctrl.imageUrl = '';
             ctrl.loadingIndicatorUrl = UrlInterpolationService
               .getStaticImageUrl(LOADING_INDICATOR_URL);
+            
+            
             ctrl.isLoadingIndicatorShown = false;
             ctrl.isTryAgainShown = false;
             ctrl.dimensions = (
@@ -200,6 +204,8 @@ angular.module('oppia').directive('oppiaInteractiveImageClickInput', [
                 ContextService.getEntityType(), ContextService.getEntityId(),
                 ctrl.filepath);
             }
+
+            imgSrc = ctrl.imageUrl;
 
             ctrl.mouseX = 0;
             ctrl.mouseY = 0;
